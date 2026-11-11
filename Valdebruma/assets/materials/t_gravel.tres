@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/t_gravel_albedo.jpg" id="1_21xed"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/t_gravel_normal.png" id="2_pc1vs"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/t_gravel_orm.jpg" id="3_g7yvf"]
+
+[resource]
+resource_name = "t_gravel"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_21xed")
+orm_texture = ExtResource("3_g7yvf")
+normal_enabled = true
+normal_texture = ExtResource("2_pc1vs")
+uv1_scale = Vector3(0.5, 0.5, 1)

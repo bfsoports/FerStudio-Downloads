@@ -67,6 +67,31 @@ func _initialize() -> void:
 		inst.position = Vector3(cx * spacing, 0, -(i / cols) * spacing)
 		inst.rotation.y = float(_arg("yaw", "0")) * PI / 180.0
 		world.add_child(inst)
+		var anims := _arg("anim", "").split(",", false)
+		if not anims.is_empty():
+			var ap: AnimationPlayer = inst.find_child("AnimationPlayer", true, false)
+			if ap != null:
+				var an: String = anims[i % anims.size()]
+				if ap.has_animation(an):
+					ap.play(an)
+					ap.seek(float(_arg("at", "0.3")) * ap.get_animation(an).length, true)
+					ap.pause()
+				else:
+					print("ANIMACIONES: ", ap.get_animation_list())
+	var bname := _arg("building", "")
+	if bname != "":
+		var b := BuildingFactory.create(bname, false, true)
+		world.add_child(b)
+		var meta := DataFiles.building(bname)
+		for c: Dictionary in meta.get("containers", []):
+			b.add_child(BuildingFactory.place_prop(String(c.model), DataFiles.v3(c.pos) + Vector3(0, float(DataFiles.prop(String(c.model)).get("wall", 0.0)), 0), float(c.yaw)))
+		for d: Dictionary in meta.get("doors", []):
+			var leaf := BuildingFactory.door_leaf(d)
+			leaf.rotation_degrees.y += float(_arg("door_open", "70")) * float(d.get("swing", -1))
+			b.add_child(leaf)
+		if _arg("cut", "") != "":
+			# corte: oculta el tejado/techo con un plano de recorte para ver la planta
+			pass
 	var cam := Camera3D.new()
 	cam.fov = float(_arg("fov", "50"))
 	world.add_child(cam)

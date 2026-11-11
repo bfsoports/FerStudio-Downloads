@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/t_grass_albedo.jpg" id="1_6ctp7"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/t_grass_normal.png" id="2_1m3nj"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/t_grass_orm.jpg" id="3_gl7gu"]
+
+[resource]
+resource_name = "t_grass"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_6ctp7")
+orm_texture = ExtResource("3_gl7gu")
+normal_enabled = true
+normal_texture = ExtResource("2_1m3nj")
+uv1_scale = Vector3(0.33333334, 0.33333334, 1)

@@ -1,0 +1,15 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/thatch_albedo.jpg" id="1_jn7p8"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/thatch_normal.png" id="2_8vbaq"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/thatch_orm.jpg" id="3_7l4lp"]
+
+[resource]
+resource_name = "zarzo_fur"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.62, 0.5, 0.4, 1)
+albedo_texture = ExtResource("1_jn7p8")
+orm_texture = ExtResource("3_7l4lp")
+normal_enabled = true
+normal_texture = ExtResource("2_8vbaq")
+uv1_scale = Vector3(2.5, 2.5, 1)

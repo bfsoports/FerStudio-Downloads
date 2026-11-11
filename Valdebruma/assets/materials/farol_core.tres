@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "farol_core"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.8, 1, 0.9, 1)
+roughness = 0.4
+emission_enabled = true
+emission = Color(0.5, 1, 0.85, 1)
+emission_energy_multiplier = 3.0

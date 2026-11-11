@@ -789,5 +789,241 @@
 0.4
 ],
 "rough": 0.6
+},
+"t_gravel": {
+"type": "pbr",
+"set": "t_gravel",
+"tile": 2.0
+},
+"t_grass": {
+"type": "pbr",
+"set": "t_grass",
+"tile": 3.0
+},
+"item_paint": {
+"type": "flat",
+"color": [
+1,
+1,
+1
+],
+"rough": 0.55
+},
+"item_metal": {
+"type": "flat",
+"color": [
+0.7,
+0.72,
+0.74
+],
+"rough": 0.35,
+"metal": 0.85
+},
+"item_dark": {
+"type": "flat",
+"color": [
+0.1,
+0.1,
+0.11
+],
+"rough": 0.6
+},
+"item_glass": {
+"type": "glass",
+"color": [
+0.7,
+0.82,
+0.84,
+0.38
+]
+},
+"item_cloth": {
+"type": "flat",
+"color": [
+0.62,
+0.62,
+0.62
+],
+"rough": 0.95
+},
+"item_wood": {
+"type": "pbr",
+"set": "wood_raw",
+"tile": 0.5
+},
+"char_skin": {
+"type": "flat",
+"color": [
+0.78,
+0.6,
+0.48
+],
+"rough": 0.75
+},
+"char_jacket": {
+"type": "flat",
+"color": [
+0.34,
+0.4,
+0.27
+],
+"rough": 0.9
+},
+"char_trousers": {
+"type": "flat",
+"color": [
+0.3,
+0.28,
+0.24
+],
+"rough": 0.9
+},
+"char_boots": {
+"type": "flat",
+"color": [
+0.17,
+0.12,
+0.09
+],
+"rough": 0.7
+},
+"char_gloves": {
+"type": "flat",
+"color": [
+0.2,
+0.19,
+0.17
+],
+"rough": 0.85
+},
+"char_hat": {
+"type": "flat",
+"color": [
+0.5,
+0.2,
+0.14
+],
+"rough": 0.95
+},
+"char_scarf": {
+"type": "flat",
+"color": [
+0.56,
+0.5,
+0.38
+],
+"rough": 0.95
+},
+"char_pack": {
+"type": "flat",
+"color": [
+0.36,
+0.42,
+0.46
+],
+"rough": 0.9
+},
+"char_eye": {
+"type": "flat",
+"color": [
+0.05,
+0.05,
+0.06
+],
+"rough": 0.3
+},
+"char_hair": {
+"type": "flat",
+"color": [
+0.16,
+0.11,
+0.08
+],
+"rough": 0.8
+},
+"brumal_hide": {
+"type": "pbr",
+"set": "bark_willow",
+"uv": [
+2,
+1.2
+],
+"tint": [
+0.5,
+0.52,
+0.56
+]
+},
+"brumal_moss": {
+"type": "pbr",
+"set": "rock_mossy",
+"tile": 0.8,
+"tint": [
+0.9,
+1.05,
+0.85
+]
+},
+"zarzo_fur": {
+"type": "pbr",
+"set": "thatch",
+"tile": 0.4,
+"tint": [
+0.62,
+0.5,
+0.4
+]
+},
+"zarzo_belly": {
+"type": "flat",
+"color": [
+0.74,
+0.66,
+0.52
+],
+"rough": 0.9
+},
+"farol_bell": {
+"type": "shader",
+"shader": "farol",
+"params": {
+"base_color": [
+0.45,
+0.85,
+0.9,
+0.42
+],
+"glow": 1.2
+}
+},
+"farol_core": {
+"type": "flat",
+"color": [
+0.8,
+1.0,
+0.9
+],
+"rough": 0.4,
+"emission": [
+0.5,
+1.0,
+0.85
+],
+"emission_energy": 3.0
+},
+"farol_tendril": {
+"type": "flat",
+"color": [
+0.3,
+0.55,
+0.6
+],
+"rough": 0.5,
+"emission": [
+0.15,
+0.5,
+0.5
+],
+"emission_energy": 0.6
 }
 }

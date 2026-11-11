@@ -59,6 +59,8 @@ class Parts:
         self.lock = self.bm.faces.layers.int.new("uvlock")
         self.flag = self.bm.faces.layers.int.new("flag")
         self.cur_flag = 0
+        self.cur_part = ""          # etiqueta por vértice (la usa rig.skin para limitar huesos)
+        self.vparts = []
         self.stack = [Matrix.Identity(4)]
 
     # ---- transformaciones anidadas -------------------------------------------------
@@ -104,6 +106,7 @@ class Parts:
         return f
 
     def _v(self, co, m=None):
+        self.vparts.append(self.cur_part)
         return self.bm.verts.new((m if m is not None else self.M) @ Vector(co))
 
     # ---- primitivas -----------------------------------------------------------------
@@ -259,6 +262,25 @@ class Parts:
 
     def tri(self, p0, p1, p2, mat, uvs=None, tint=None):
         return self._face([self._v(p) for p in (p0, p1, p2)], mat, uvs=uvs, tint=tint, smooth=False)
+
+    def loft(self, sections, mat, seg=12, tint=None, cap_top=False, cap_bottom=False):
+        """Piel entre secciones elípticas: [(cx, cy, cz, rx, ry), ...] de abajo arriba."""
+        rings = []
+        for (cx, cy, cz, rx, ry) in sections:
+            rings.append([self._v((cx + rx * math.cos(2 * math.pi * i / seg), cy + ry * math.sin(2 * math.pi * i / seg), cz)) for i in range(seg)])
+        v = 0.0
+        for k in range(len(rings) - 1):
+            d = abs(sections[k + 1][2] - sections[k][2]) + 0.001
+            per = 2 * math.pi * max(sections[k][3], sections[k + 1][3])
+            for i in range(seg):
+                j = (i + 1) % seg
+                self._face([rings[k][i], rings[k][j], rings[k + 1][j], rings[k + 1][i]], mat,
+                           uvs=[(per * i / seg, v), (per * (i + 1) / seg, v), (per * (i + 1) / seg, v + d), (per * i / seg, v + d)], tint=tint)
+            v += d
+        if cap_bottom:
+            self._face(list(reversed(rings[0])), mat, tint=tint, smooth=False)
+        if cap_top:
+            self._face(rings[-1], mat, tint=tint, smooth=False)
 
     def grid(self, fn, nu, nv, mat, uv_fn=None, tint=None, flip=False):
         """Superficie paramétrica fn(u, v)->(x, y, z) con u, v en [0, 1]."""
@@ -468,6 +490,7 @@ class Parts:
             me.color_attributes.render_color_index = 0
         ob = bpy.data.objects.new(name, me)
         bpy.context.scene.collection.objects.link(ob)
+        ob["vparts"] = ",".join(self.vparts) if len(self.vparts) == len(me.vertices) else ""
         return ob
 
 
