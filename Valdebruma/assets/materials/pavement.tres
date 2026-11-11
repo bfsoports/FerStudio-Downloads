@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/pavement_albedo.jpg" id="1_k10n5"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/pavement_normal.png" id="2_lf8tk"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/pavement_orm.jpg" id="3_u833p"]
+
+[resource]
+resource_name = "pavement"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_k10n5")
+orm_texture = ExtResource("3_u833p")
+normal_enabled = true
+normal_texture = ExtResource("2_lf8tk")
+uv1_scale = Vector3(0.4, 0.4, 1)

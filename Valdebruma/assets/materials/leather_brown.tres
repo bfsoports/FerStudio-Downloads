@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/leather_brown_albedo.jpg" id="1_dmjnr"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/leather_brown_normal.png" id="2_h6j4s"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/leather_brown_orm.jpg" id="3_fpf1u"]
+
+[resource]
+resource_name = "leather_brown"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_dmjnr")
+orm_texture = ExtResource("3_fpf1u")
+normal_enabled = true
+normal_texture = ExtResource("2_h6j4s")
+uv1_scale = Vector3(1.6666666, 1.6666666, 1)

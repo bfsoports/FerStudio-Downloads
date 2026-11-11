@@ -1,0 +1,621 @@
+{
+"_doc": "Definici\u00f3n de materiales compartidos. tools/godot/build_materials.gd genera assets/materials/<nombre>.tres. Las UV de los modelos est\u00e1n en metros: 'tile' = metros por repetici\u00f3n.",
+"bark_oak": {
+"type": "pbr",
+"set": "bark_oak",
+"uv": [
+2,
+0.6
+]
+},
+"bark_pine": {
+"type": "pbr",
+"set": "bark_pine",
+"uv": [
+2,
+0.55
+]
+},
+"bark_willow": {
+"type": "pbr",
+"set": "bark_willow",
+"uv": [
+2,
+0.6
+]
+},
+"bark_birch": {
+"type": "pbr",
+"set": "bark_birch",
+"uv": [
+1,
+0.5
+]
+},
+"bark_dead": {
+"type": "pbr",
+"set": "wood_grey",
+"uv": [
+1,
+0.4
+],
+"tint": [
+0.8,
+0.78,
+0.74
+]
+},
+"wood_end": {
+"type": "albedo",
+"tex": "pbr/wood_end_albedo.jpg",
+"rough": 0.9
+},
+"rock_boulder": {
+"type": "pbr",
+"set": "rock_boulder",
+"tile": 2.2
+},
+"rock_mossy": {
+"type": "pbr",
+"set": "rock_mossy",
+"tile": 3.0
+},
+"rock_cliff": {
+"type": "pbr",
+"set": "rock_cliff",
+"tile": 4.5
+},
+"mushroom_cap": {
+"type": "flat",
+"color": [
+0.55,
+0.3,
+0.16
+],
+"rough": 0.6
+},
+"mushroom_stem": {
+"type": "flat",
+"color": [
+0.86,
+0.82,
+0.72
+],
+"rough": 0.8
+},
+"fruit_red": {
+"type": "flat",
+"color": [
+0.7,
+0.16,
+0.1
+],
+"rough": 0.45
+},
+"leaf_oak": {
+"type": "foliage",
+"tex": "leaf_oak"
+},
+"leaf_birch": {
+"type": "foliage",
+"tex": "leaf_birch"
+},
+"leaf_poplar": {
+"type": "foliage",
+"tex": "leaf_poplar"
+},
+"leaf_apple": {
+"type": "foliage",
+"tex": "leaf_apple"
+},
+"leaf_autumn": {
+"type": "foliage",
+"tex": "leaf_autumn"
+},
+"leaf_pine": {
+"type": "foliage",
+"tex": "leaf_pine",
+"wind": 0.6
+},
+"leaf_fir": {
+"type": "foliage",
+"tex": "leaf_fir",
+"wind": 0.6
+},
+"leaf_willow": {
+"type": "foliage",
+"tex": "leaf_willow",
+"wind": 1.5
+},
+"leaf_bush": {
+"type": "foliage",
+"tex": "leaf_bush",
+"wind": 0.7
+},
+"leaf_bush_berry": {
+"type": "foliage",
+"tex": "leaf_bush_berry",
+"wind": 0.7
+},
+"leaf_bush_dark": {
+"type": "foliage",
+"tex": "leaf_bush_dark",
+"wind": 0.7
+},
+"leaf_fern": {
+"type": "foliage",
+"tex": "leaf_fern",
+"wind": 0.9
+},
+"grass_tuft": {
+"type": "foliage",
+"tex": "grass_tuft",
+"wind": 1.3
+},
+"grass_dry": {
+"type": "foliage",
+"tex": "grass_dry",
+"wind": 1.3
+},
+"grass_flowers": {
+"type": "foliage",
+"tex": "grass_flowers",
+"wind": 1.3
+},
+"reed": {
+"type": "foliage",
+"tex": "reed",
+"wind": 1.2
+},
+"herb": {
+"type": "foliage",
+"tex": "herb",
+"wind": 1.0
+},
+"fiber_plant": {
+"type": "foliage",
+"tex": "fiber_plant",
+"wind": 1.0
+},
+"plaster_white": {
+"type": "pbr",
+"set": "plaster_white",
+"tile": 2.5
+},
+"plaster_yellow": {
+"type": "pbr",
+"set": "plaster_yellow",
+"tile": 2.5
+},
+"plaster_worn": {
+"type": "pbr",
+"set": "plaster_worn",
+"tile": 2.5
+},
+"plaster_blue": {
+"type": "pbr",
+"set": "plaster_blue",
+"tile": 2.5
+},
+"brick_red": {
+"type": "pbr",
+"set": "brick_red",
+"tile": 1.6
+},
+"brick_factory": {
+"type": "pbr",
+"set": "brick_factory",
+"tile": 2.2
+},
+"stone_wall": {
+"type": "pbr",
+"set": "stone_wall",
+"tile": 2.2
+},
+"wood_siding": {
+"type": "pbr",
+"set": "wood_siding",
+"tile": 2.0
+},
+"wood_grey": {
+"type": "pbr",
+"set": "wood_grey",
+"tile": 1.6
+},
+"wood_green": {
+"type": "pbr",
+"set": "wood_green",
+"tile": 1.6
+},
+"wood_floor": {
+"type": "pbr",
+"set": "wood_floor",
+"tile": 2.0
+},
+"wood_raw": {
+"type": "pbr",
+"set": "wood_raw",
+"tile": 2.0
+},
+"wood_dark": {
+"type": "pbr",
+"set": "wood_dark",
+"tile": 1.6
+},
+"roof_clay": {
+"type": "pbr",
+"set": "roof_clay",
+"tile": 1.9
+},
+"roof_slate": {
+"type": "pbr",
+"set": "roof_slate",
+"tile": 1.8
+},
+"metal_corrugated": {
+"type": "pbr",
+"set": "metal_corrugated",
+"tile": 2.0
+},
+"metal_corr_rust": {
+"type": "pbr",
+"set": "metal_corr_rust",
+"tile": 2.0
+},
+"metal_rust": {
+"type": "pbr",
+"set": "metal_rust",
+"tile": 1.5
+},
+"metal_green": {
+"type": "pbr",
+"set": "metal_green",
+"tile": 1.5
+},
+"metal_shutter": {
+"type": "pbr",
+"set": "metal_shutter",
+"tile": 1.8
+},
+"metal_plate": {
+"type": "pbr",
+"set": "metal_plate",
+"tile": 1.2
+},
+"metal_blue": {
+"type": "pbr",
+"set": "metal_blue",
+"tile": 1.5
+},
+"concrete_wall": {
+"type": "pbr",
+"set": "concrete_wall",
+"tile": 3.0
+},
+"concrete_floor": {
+"type": "pbr",
+"set": "concrete_floor",
+"tile": 3.0
+},
+"concrete_block": {
+"type": "pbr",
+"set": "concrete_block",
+"tile": 2.0
+},
+"concrete_painted": {
+"type": "pbr",
+"set": "concrete_painted",
+"tile": 3.0
+},
+"asphalt": {
+"type": "pbr",
+"set": "asphalt",
+"tile": 4.0
+},
+"cobble": {
+"type": "pbr",
+"set": "cobble",
+"tile": 2.5
+},
+"pavement": {
+"type": "pbr",
+"set": "pavement",
+"tile": 2.5
+},
+"tiles_floor": {
+"type": "pbr",
+"set": "tiles_floor",
+"tile": 1.5
+},
+"tiles_white": {
+"type": "pbr",
+"set": "tiles_white",
+"tile": 1.2
+},
+"fabric_denim": {
+"type": "pbr",
+"set": "fabric_denim",
+"tile": 0.5
+},
+"fabric_pattern": {
+"type": "pbr",
+"set": "fabric_pattern",
+"tile": 0.6
+},
+"leather_brown": {
+"type": "pbr",
+"set": "leather_brown",
+"tile": 0.6
+},
+"wallpaper_old": {
+"type": "pbr",
+"set": "wallpaper_old",
+"tile": 1.6
+},
+"carpet_dirty": {
+"type": "pbr",
+"set": "carpet_dirty",
+"tile": 1.5
+},
+"thatch": {
+"type": "pbr",
+"set": "thatch",
+"tile": 1.5
+},
+"plaster_inner": {
+"type": "pbr",
+"set": "plaster_white",
+"tile": 2.5,
+"tint": [
+0.95,
+0.9,
+0.8
+]
+},
+"plaster_ceiling": {
+"type": "pbr",
+"set": "plaster_white",
+"tile": 3.0,
+"tint": [
+0.96,
+0.95,
+0.92
+]
+},
+"plaster_green": {
+"type": "pbr",
+"set": "plaster_white",
+"tile": 2.5,
+"tint": [
+0.72,
+0.82,
+0.7
+]
+},
+"plaster_pink": {
+"type": "pbr",
+"set": "plaster_white",
+"tile": 2.5,
+"tint": [
+0.92,
+0.74,
+0.66
+]
+},
+"wood_red": {
+"type": "pbr",
+"set": "wood_grey",
+"tile": 1.6,
+"tint": [
+0.75,
+0.3,
+0.24
+]
+},
+"wood_blue": {
+"type": "pbr",
+"set": "wood_grey",
+"tile": 1.6,
+"tint": [
+0.42,
+0.56,
+0.68
+]
+},
+"wood_white": {
+"type": "pbr",
+"set": "wood_grey",
+"tile": 1.6,
+"tint": [
+1.25,
+1.25,
+1.2
+]
+},
+"metal_white": {
+"type": "pbr",
+"set": "metal_shutter",
+"tile": 1.8,
+"tint": [
+1.15,
+1.15,
+1.12
+]
+},
+"metal_red": {
+"type": "pbr",
+"set": "metal_blue",
+"tile": 1.5,
+"tint": [
+1.3,
+0.45,
+0.35
+]
+},
+"metal_yellow": {
+"type": "pbr",
+"set": "metal_blue",
+"tile": 1.5,
+"tint": [
+1.5,
+1.15,
+0.35
+]
+},
+"paint_white": {
+"type": "flat",
+"color": [
+0.86,
+0.85,
+0.8
+],
+"rough": 0.6
+},
+"paint_dark": {
+"type": "flat",
+"color": [
+0.2,
+0.22,
+0.2
+],
+"rough": 0.6
+},
+"paint_green": {
+"type": "flat",
+"color": [
+0.22,
+0.36,
+0.26
+],
+"rough": 0.55
+},
+"paint_red": {
+"type": "flat",
+"color": [
+0.55,
+0.16,
+0.12
+],
+"rough": 0.55
+},
+"paint_blue": {
+"type": "flat",
+"color": [
+0.2,
+0.33,
+0.48
+],
+"rough": 0.55
+},
+"paint_yellow": {
+"type": "flat",
+"color": [
+0.8,
+0.62,
+0.16
+],
+"rough": 0.55
+},
+"metal_dark": {
+"type": "flat",
+"color": [
+0.16,
+0.17,
+0.18
+],
+"rough": 0.5,
+"metal": 0.7
+},
+"metal_steel": {
+"type": "flat",
+"color": [
+0.62,
+0.64,
+0.66
+],
+"rough": 0.35,
+"metal": 0.9
+},
+"metal_brass": {
+"type": "flat",
+"color": [
+0.72,
+0.56,
+0.26
+],
+"rough": 0.4,
+"metal": 0.9
+},
+"rubber": {
+"type": "flat",
+"color": [
+0.06,
+0.06,
+0.065
+],
+"rough": 0.9
+},
+"plastic_white": {
+"type": "flat",
+"color": [
+0.88,
+0.88,
+0.85
+],
+"rough": 0.4
+},
+"plastic_black": {
+"type": "flat",
+"color": [
+0.07,
+0.07,
+0.08
+],
+"rough": 0.45
+},
+"cloth_white": {
+"type": "flat",
+"color": [
+0.8,
+0.78,
+0.72
+],
+"rough": 0.95
+},
+"glass": {
+"type": "glass"
+},
+"glass_dark": {
+"type": "glass",
+"color": [
+0.12,
+0.16,
+0.18,
+0.72
+]
+},
+"signs": {
+"type": "albedo",
+"tex": "gen/signs_atlas.png",
+"rough": 0.7,
+"uv": [
+1,
+1
+]
+},
+"leaf_ivy": {
+"type": "foliage",
+"tex": "leaf_bush_dark",
+"wind": 0.25
+},
+"plaster_inner_worn": {
+"type": "pbr",
+"set": "plaster_worn",
+"tile": 2.5,
+"tint": [
+1.35,
+1.3,
+1.2
+]
+}
+}

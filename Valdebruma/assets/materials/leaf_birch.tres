@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/foliage.gdshader" id="1_jgpo3"]
+[ext_resource type="Texture2D" path="res://assets/textures/foliage/leaf_birch.png" id="2_ayleq"]
+
+[resource]
+resource_name = "leaf_birch"
+render_priority = 0
+shader = ExtResource("1_jgpo3")
+shader_parameter/albedo_tex = ExtResource("2_ayleq")
+shader_parameter/alpha_cut = 0.42
+shader_parameter/wind_scale = 1.0
+shader_parameter/tint = null
+shader_parameter/hue_variation = null

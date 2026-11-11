@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/concrete_block_albedo.jpg" id="1_33iu5"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/concrete_block_normal.png" id="2_3kmf7"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/concrete_block_orm.jpg" id="3_w8nl3"]
+
+[resource]
+resource_name = "concrete_block"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_33iu5")
+orm_texture = ExtResource("3_w8nl3")
+normal_enabled = true
+normal_texture = ExtResource("2_3kmf7")
+uv1_scale = Vector3(0.5, 0.5, 1)

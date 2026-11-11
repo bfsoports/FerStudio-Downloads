@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/tiles_white_albedo.jpg" id="1_jngww"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/tiles_white_normal.png" id="2_l20up"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/tiles_white_orm.jpg" id="3_eu3qe"]
+
+[resource]
+resource_name = "tiles_white"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_jngww")
+orm_texture = ExtResource("3_eu3qe")
+normal_enabled = true
+normal_texture = ExtResource("2_l20up")
+uv1_scale = Vector3(0.8333333, 0.8333333, 1)

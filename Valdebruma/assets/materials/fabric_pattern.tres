@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/fabric_pattern_albedo.jpg" id="1_ebuyv"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/fabric_pattern_normal.png" id="2_sl3o3"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/fabric_pattern_orm.jpg" id="3_cmib1"]
+
+[resource]
+resource_name = "fabric_pattern"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_ebuyv")
+orm_texture = ExtResource("3_cmib1")
+normal_enabled = true
+normal_texture = ExtResource("2_sl3o3")
+uv1_scale = Vector3(1.6666666, 1.6666666, 1)

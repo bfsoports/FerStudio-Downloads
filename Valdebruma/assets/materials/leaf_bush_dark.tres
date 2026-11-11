@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/foliage.gdshader" id="1_ekwxu"]
+[ext_resource type="Texture2D" path="res://assets/textures/foliage/leaf_bush_dark.png" id="2_ty50s"]
+
+[resource]
+resource_name = "leaf_bush_dark"
+render_priority = 0
+shader = ExtResource("1_ekwxu")
+shader_parameter/albedo_tex = ExtResource("2_ty50s")
+shader_parameter/alpha_cut = 0.42
+shader_parameter/wind_scale = 0.7
+shader_parameter/tint = null
+shader_parameter/hue_variation = null

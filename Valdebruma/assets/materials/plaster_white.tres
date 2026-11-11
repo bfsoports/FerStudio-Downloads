@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/plaster_white_albedo.jpg" id="1_sahx1"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/plaster_white_normal.png" id="2_5vd4k"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/plaster_white_orm.jpg" id="3_74x7j"]
+
+[resource]
+resource_name = "plaster_white"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_sahx1")
+orm_texture = ExtResource("3_74x7j")
+normal_enabled = true
+normal_texture = ExtResource("2_5vd4k")
+uv1_scale = Vector3(0.4, 0.4, 1)

@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/foliage.gdshader" id="1_ccxfq"]
+[ext_resource type="Texture2D" path="res://assets/textures/foliage/reed.png" id="2_kt0vv"]
+
+[resource]
+resource_name = "reed"
+render_priority = 0
+shader = ExtResource("1_ccxfq")
+shader_parameter/albedo_tex = ExtResource("2_kt0vv")
+shader_parameter/alpha_cut = 0.42
+shader_parameter/wind_scale = 1.2
+shader_parameter/tint = null
+shader_parameter/hue_variation = null

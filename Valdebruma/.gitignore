@@ -1,0 +1,15 @@
+# Caché de importación de Godot (se regenera con: godot --headless --path . --import)
+.godot/
+*.translation
+# Python / Blender
+__pycache__/
+*.pyc
+*.blend1
+# Android (claves y artefactos locales)
+*.keystore
+*.jks
+export/credentials/
+android/build/
+# Temporales
+*.tmp
+*.log

@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/foliage.gdshader" id="1_4pysu"]
+[ext_resource type="Texture2D" path="res://assets/textures/foliage/herb.png" id="2_pvygt"]
+
+[resource]
+resource_name = "herb"
+render_priority = 0
+shader = ExtResource("1_4pysu")
+shader_parameter/albedo_tex = ExtResource("2_pvygt")
+shader_parameter/alpha_cut = 0.42
+shader_parameter/wind_scale = 1.0
+shader_parameter/tint = null
+shader_parameter/hue_variation = null

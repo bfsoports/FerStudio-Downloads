@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/brick_factory_albedo.jpg" id="1_k5vin"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/brick_factory_normal.png" id="2_4uqdd"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/brick_factory_orm.jpg" id="3_1wan2"]
+
+[resource]
+resource_name = "brick_factory"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_k5vin")
+orm_texture = ExtResource("3_1wan2")
+normal_enabled = true
+normal_texture = ExtResource("2_4uqdd")
+uv1_scale = Vector3(0.45454547, 0.45454547, 1)

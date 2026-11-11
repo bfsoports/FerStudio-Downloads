@@ -1,0 +1,15 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/plaster_worn_albedo.jpg" id="1_t2lxm"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/plaster_worn_normal.png" id="2_7w64m"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/plaster_worn_orm.jpg" id="3_cipqk"]
+
+[resource]
+resource_name = "plaster_inner"
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.97, 0.9, 1)
+albedo_texture = ExtResource("1_t2lxm")
+orm_texture = ExtResource("3_cipqk")
+normal_enabled = true
+normal_texture = ExtResource("2_7w64m")
+uv1_scale = Vector3(0.4, 0.4, 1)

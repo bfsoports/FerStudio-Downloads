@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/asphalt_albedo.jpg" id="1_qk73k"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/asphalt_normal.png" id="2_35mhl"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/asphalt_orm.jpg" id="3_efqgw"]
+
+[resource]
+resource_name = "asphalt"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_qk73k")
+orm_texture = ExtResource("3_efqgw")
+normal_enabled = true
+normal_texture = ExtResource("2_35mhl")
+uv1_scale = Vector3(0.25, 0.25, 1)

@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/bark_oak_albedo.jpg" id="1_n2fr5"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/bark_oak_normal.png" id="2_vedh4"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/bark_oak_orm.jpg" id="3_s6ovn"]
+
+[resource]
+resource_name = "bark_oak"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_n2fr5")
+orm_texture = ExtResource("3_s6ovn")
+normal_enabled = true
+normal_texture = ExtResource("2_vedh4")
+uv1_scale = Vector3(2, 0.6, 1)

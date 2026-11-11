@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/bark_willow_albedo.jpg" id="1_1u4wn"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/bark_willow_normal.png" id="2_cd26y"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/bark_willow_orm.jpg" id="3_j58mu"]
+
+[resource]
+resource_name = "bark_willow"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_1u4wn")
+orm_texture = ExtResource("3_j58mu")
+normal_enabled = true
+normal_texture = ExtResource("2_cd26y")
+uv1_scale = Vector3(2, 0.6, 1)

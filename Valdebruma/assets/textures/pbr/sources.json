@@ -1,0 +1,366 @@
+{
+ "asphalt": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "asphalt_02",
+  "url": "https://polyhaven.com/a/asphalt_02"
+ },
+ "bark_oak": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "bark_brown_02",
+  "url": "https://polyhaven.com/a/bark_brown_02"
+ },
+ "bark_pine": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "pine_bark",
+  "url": "https://polyhaven.com/a/pine_bark"
+ },
+ "bark_willow": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "bark_willow",
+  "url": "https://polyhaven.com/a/bark_willow"
+ },
+ "brick_factory": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "factory_brick",
+  "url": "https://polyhaven.com/a/factory_brick"
+ },
+ "brick_red": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "red_brick_03",
+  "url": "https://polyhaven.com/a/red_brick_03"
+ },
+ "carpet_dirty": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "dirty_carpet",
+  "url": "https://polyhaven.com/a/dirty_carpet"
+ },
+ "cobble": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "cobblestone_floor_08",
+  "url": "https://polyhaven.com/a/cobblestone_floor_08"
+ },
+ "concrete_block": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "concrete_block_wall_02",
+  "url": "https://polyhaven.com/a/concrete_block_wall_02"
+ },
+ "concrete_floor": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "concrete_floor_worn_001",
+  "url": "https://polyhaven.com/a/concrete_floor_worn_001"
+ },
+ "concrete_painted": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "painted_concrete",
+  "url": "https://polyhaven.com/a/painted_concrete"
+ },
+ "concrete_wall": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "concrete_wall_008",
+  "url": "https://polyhaven.com/a/concrete_wall_008"
+ },
+ "fabric_denim": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "denim_fabric",
+  "url": "https://polyhaven.com/a/denim_fabric"
+ },
+ "fabric_pattern": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "fabric_pattern_07",
+  "url": "https://polyhaven.com/a/fabric_pattern_07"
+ },
+ "leather_brown": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "brown_leather",
+  "url": "https://polyhaven.com/a/brown_leather"
+ },
+ "metal_blue": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "blue_metal_plate",
+  "url": "https://polyhaven.com/a/blue_metal_plate"
+ },
+ "metal_corr_rust": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "rusty_corrugated_iron",
+  "url": "https://polyhaven.com/a/rusty_corrugated_iron"
+ },
+ "metal_corrugated": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "corrugated_iron_02",
+  "url": "https://polyhaven.com/a/corrugated_iron_02"
+ },
+ "metal_green": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "green_metal_rust",
+  "url": "https://polyhaven.com/a/green_metal_rust"
+ },
+ "metal_plate": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "metal_plate",
+  "url": "https://polyhaven.com/a/metal_plate"
+ },
+ "metal_rust": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "rusty_metal_02",
+  "url": "https://polyhaven.com/a/rusty_metal_02"
+ },
+ "metal_shutter": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "painted_metal_shutter",
+  "url": "https://polyhaven.com/a/painted_metal_shutter"
+ },
+ "pavement": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "concrete_pavement",
+  "url": "https://polyhaven.com/a/concrete_pavement"
+ },
+ "plaster_blue": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "blue_plaster_weathered",
+  "url": "https://polyhaven.com/a/blue_plaster_weathered"
+ },
+ "plaster_white": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "plastered_wall_04",
+  "url": "https://polyhaven.com/a/plastered_wall_04"
+ },
+ "plaster_worn": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "worn_plaster_wall",
+  "url": "https://polyhaven.com/a/worn_plaster_wall"
+ },
+ "plaster_yellow": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "yellow_plaster",
+  "url": "https://polyhaven.com/a/yellow_plaster"
+ },
+ "rock_boulder": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "rock_boulder_dry",
+  "url": "https://polyhaven.com/a/rock_boulder_dry"
+ },
+ "rock_cliff": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "rock_face_03",
+  "url": "https://polyhaven.com/a/rock_face_03"
+ },
+ "rock_mossy": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "mossy_rock",
+  "url": "https://polyhaven.com/a/mossy_rock"
+ },
+ "roof_clay": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "clay_roof_tiles_02",
+  "url": "https://polyhaven.com/a/clay_roof_tiles_02"
+ },
+ "roof_slate": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "grey_roof_tiles_02",
+  "url": "https://polyhaven.com/a/grey_roof_tiles_02"
+ },
+ "stone_wall": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "rustic_stone_wall_02",
+  "url": "https://polyhaven.com/a/rustic_stone_wall_02"
+ },
+ "t_dirt": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 1024,
+  "source_id": "brown_mud_leaves_01",
+  "url": "https://polyhaven.com/a/brown_mud_leaves_01"
+ },
+ "t_forest": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 1024,
+  "source_id": "forest_leaves_02",
+  "url": "https://polyhaven.com/a/forest_leaves_02"
+ },
+ "t_grass": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 1024,
+  "source_id": "leafy_grass",
+  "url": "https://polyhaven.com/a/leafy_grass"
+ },
+ "t_grass_dry": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "sparse_grass",
+  "url": "https://polyhaven.com/a/sparse_grass"
+ },
+ "t_gravel": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "gravel_floor_02",
+  "url": "https://polyhaven.com/a/gravel_floor_02"
+ },
+ "t_mud": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "brown_mud_02",
+  "url": "https://polyhaven.com/a/brown_mud_02"
+ },
+ "t_pebbles": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "ganges_river_pebbles",
+  "url": "https://polyhaven.com/a/ganges_river_pebbles"
+ },
+ "t_rock": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "rock_ground",
+  "url": "https://polyhaven.com/a/rock_ground"
+ },
+ "t_soil": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "farm_soil",
+  "url": "https://polyhaven.com/a/farm_soil"
+ },
+ "thatch": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "reed_roof_03",
+  "url": "https://polyhaven.com/a/reed_roof_03"
+ },
+ "tiles_floor": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "floor_tiles_06",
+  "url": "https://polyhaven.com/a/floor_tiles_06"
+ },
+ "tiles_white": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "long_white_tiles",
+  "url": "https://polyhaven.com/a/long_white_tiles"
+ },
+ "wallpaper_old": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "decrepit_wallpaper",
+  "url": "https://polyhaven.com/a/decrepit_wallpaper"
+ },
+ "wood_dark": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "dark_wooden_planks",
+  "url": "https://polyhaven.com/a/dark_wooden_planks"
+ },
+ "wood_floor": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "wood_floor_worn",
+  "url": "https://polyhaven.com/a/wood_floor_worn"
+ },
+ "wood_green": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "green_rough_planks",
+  "url": "https://polyhaven.com/a/green_rough_planks"
+ },
+ "wood_grey": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "wood_planks_grey",
+  "url": "https://polyhaven.com/a/wood_planks_grey"
+ },
+ "wood_raw": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "raw_plank_wall",
+  "url": "https://polyhaven.com/a/raw_plank_wall"
+ },
+ "wood_siding": {
+  "author": "Poly Haven",
+  "license": "CC0 1.0",
+  "size": 512,
+  "source_id": "weathered_brown_planks",
+  "url": "https://polyhaven.com/a/weathered_brown_planks"
+ }
+}

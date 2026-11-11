@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/foliage.gdshader" id="1_cypsf"]
+[ext_resource type="Texture2D" path="res://assets/textures/foliage/leaf_autumn.png" id="2_pgh6g"]
+
+[resource]
+resource_name = "leaf_autumn"
+render_priority = 0
+shader = ExtResource("1_cypsf")
+shader_parameter/albedo_tex = ExtResource("2_pgh6g")
+shader_parameter/alpha_cut = 0.42
+shader_parameter/wind_scale = 1.0
+shader_parameter/tint = null
+shader_parameter/hue_variation = null

@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/bark_birch_albedo.jpg" id="1_010xp"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/bark_birch_normal.png" id="2_hsyec"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/bark_birch_orm.jpg" id="3_nfcid"]
+
+[resource]
+resource_name = "bark_birch"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_010xp")
+orm_texture = ExtResource("3_nfcid")
+normal_enabled = true
+normal_texture = ExtResource("2_hsyec")
+uv1_scale = Vector3(1, 0.5, 1)

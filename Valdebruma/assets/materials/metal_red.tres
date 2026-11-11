@@ -1,0 +1,15 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/metal_blue_albedo.jpg" id="1_ys3a6"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/metal_blue_normal.png" id="2_b1nhn"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/metal_blue_orm.jpg" id="3_gmpor"]
+
+[resource]
+resource_name = "metal_red"
+vertex_color_use_as_albedo = true
+albedo_color = Color(1.3, 0.45, 0.35, 1)
+albedo_texture = ExtResource("1_ys3a6")
+orm_texture = ExtResource("3_gmpor")
+normal_enabled = true
+normal_texture = ExtResource("2_b1nhn")
+uv1_scale = Vector3(0.6666667, 0.6666667, 1)

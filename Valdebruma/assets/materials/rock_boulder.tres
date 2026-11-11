@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/rock_boulder_albedo.jpg" id="1_v2pfj"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/rock_boulder_normal.png" id="2_g6yp4"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/rock_boulder_orm.jpg" id="3_y6iju"]
+
+[resource]
+resource_name = "rock_boulder"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_v2pfj")
+orm_texture = ExtResource("3_y6iju")
+normal_enabled = true
+normal_texture = ExtResource("2_g6yp4")
+uv1_scale = Vector3(0.45454547, 0.45454547, 1)

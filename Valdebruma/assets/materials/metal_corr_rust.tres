@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/metal_corr_rust_albedo.jpg" id="1_2cxaq"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/metal_corr_rust_normal.png" id="2_enug4"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/metal_corr_rust_orm.jpg" id="3_xwg5f"]
+
+[resource]
+resource_name = "metal_corr_rust"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_2cxaq")
+orm_texture = ExtResource("3_xwg5f")
+normal_enabled = true
+normal_texture = ExtResource("2_enug4")
+uv1_scale = Vector3(0.5, 0.5, 1)

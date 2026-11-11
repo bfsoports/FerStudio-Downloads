@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/tiles_floor_albedo.jpg" id="1_fdl0a"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/tiles_floor_normal.png" id="2_3msb6"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/tiles_floor_orm.jpg" id="3_dolgl"]
+
+[resource]
+resource_name = "tiles_floor"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_fdl0a")
+orm_texture = ExtResource("3_dolgl")
+normal_enabled = true
+normal_texture = ExtResource("2_3msb6")
+uv1_scale = Vector3(0.6666667, 0.6666667, 1)

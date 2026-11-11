@@ -1,0 +1,15 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/plaster_white_albedo.jpg" id="1_vrqcm"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/plaster_white_normal.png" id="2_vay8j"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/plaster_white_orm.jpg" id="3_2xmgj"]
+
+[resource]
+resource_name = "plaster_ceiling"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.96, 0.95, 0.92, 1)
+albedo_texture = ExtResource("1_vrqcm")
+orm_texture = ExtResource("3_2xmgj")
+normal_enabled = true
+normal_texture = ExtResource("2_vay8j")
+uv1_scale = Vector3(0.33333334, 0.33333334, 1)

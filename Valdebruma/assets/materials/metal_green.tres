@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/metal_green_albedo.jpg" id="1_fh01e"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/metal_green_normal.png" id="2_g0c8u"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/metal_green_orm.jpg" id="3_o3fx8"]
+
+[resource]
+resource_name = "metal_green"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_fh01e")
+orm_texture = ExtResource("3_o3fx8")
+normal_enabled = true
+normal_texture = ExtResource("2_g0c8u")
+uv1_scale = Vector3(0.6666667, 0.6666667, 1)

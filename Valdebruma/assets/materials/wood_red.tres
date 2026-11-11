@@ -1,0 +1,15 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/wood_grey_albedo.jpg" id="1_vb66q"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/wood_grey_normal.png" id="2_ed747"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/wood_grey_orm.jpg" id="3_ykuf5"]
+
+[resource]
+resource_name = "wood_red"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.75, 0.3, 0.24, 1)
+albedo_texture = ExtResource("1_vb66q")
+orm_texture = ExtResource("3_ykuf5")
+normal_enabled = true
+normal_texture = ExtResource("2_ed747")
+uv1_scale = Vector3(0.625, 0.625, 1)
