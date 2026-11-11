@@ -101,7 +101,10 @@ class Animator:
         for pb in self.ob.pose.bones:
             R = self.rest[pb.name]
             rot = pose.get(pb.name, (0, 0, 0))
-            q = (R.inverted() @ Euler([math.radians(a) for a in rot], "XYZ").to_matrix() @ R).to_quaternion()
+            if isinstance(rot, Quaternion):      # giro ya expresado en ejes del esqueleto
+                q = (R.inverted() @ rot.to_matrix() @ R).to_quaternion()
+            else:
+                q = (R.inverted() @ Euler([math.radians(a) for a in rot], "XYZ").to_matrix() @ R).to_quaternion()
             if pb.name in last and last[pb.name].dot(q) < 0:
                 q.negate()
             last[pb.name] = q.copy()
@@ -145,3 +148,31 @@ class Animator:
             pb.rotation_quaternion = Quaternion()
             pb.location = (0, 0, 0)
             pb.scale = (1, 1, 1)
+
+
+def arm_ik(pose, names, rest, target, pole, hand_dir):
+    """Cadena de dos huesos + mano hacia 'target' (posición de la muñeca).
+    names = (brazo, antebrazo, mano); rest = {hueso: (cabeza, cola)} en reposo."""
+    up, fo, ha = names
+    S = Vector(rest[up][0])
+    l1 = (Vector(rest[up][1]) - S).length
+    l2 = (Vector(rest[fo][1]) - Vector(rest[fo][0])).length
+    T = Vector(target)
+    d = max(0.02, min(l1 + l2 - 0.002, (T - S).length))
+    dirn = (T - S).normalized()
+    a = (l1 * l1 - l2 * l2 + d * d) / (2 * d)
+    h = math.sqrt(max(0.0, l1 * l1 - a * a))
+    mid = S + dirn * a
+    pv = Vector(pole) - mid
+    pv = pv - dirn * pv.dot(dirn)
+    pv = pv.normalized() if pv.length > 1e-5 else Vector((0, 0, -1))
+    elbow = mid + pv * h
+    wrist = S + dirn * d
+    r_up = (Vector(rest[up][1]) - Vector(rest[up][0])).normalized()
+    r_fo = (Vector(rest[fo][1]) - Vector(rest[fo][0])).normalized()
+    r_ha = (Vector(rest[ha][1]) - Vector(rest[ha][0])).normalized()
+    q_up = r_up.rotation_difference((elbow - S).normalized())
+    q_fo = r_fo.rotation_difference(q_up.inverted() @ (wrist - elbow).normalized())
+    acc = q_up @ q_fo
+    q_ha = r_ha.rotation_difference(acc.inverted() @ Vector(hand_dir).normalized())
+    pose[up], pose[fo], pose[ha] = q_up, q_fo, q_ha

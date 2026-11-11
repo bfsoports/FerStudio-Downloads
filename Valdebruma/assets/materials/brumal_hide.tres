@@ -7,7 +7,7 @@
 [resource]
 resource_name = "brumal_hide"
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.5, 0.52, 0.56, 1)
+albedo_color = Color(0.95, 0.97, 1.05, 1)
 albedo_texture = ExtResource("1_a08pg")
 orm_texture = ExtResource("3_eldgd")
 normal_enabled = true

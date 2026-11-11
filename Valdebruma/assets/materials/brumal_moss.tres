@@ -7,7 +7,7 @@
 [resource]
 resource_name = "brumal_moss"
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.9, 1.05, 0.85, 1)
+albedo_color = Color(1.2, 1.45, 1.1, 1)
 albedo_texture = ExtResource("1_jr0aj")
 orm_texture = ExtResource("3_ifo7r")
 normal_enabled = true
