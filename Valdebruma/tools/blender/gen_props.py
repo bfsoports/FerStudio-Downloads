@@ -31,8 +31,8 @@ def P():
     return vb.Parts()
 
 
-def fin(p, name, bevel=0.006, ao_dist=0.35, smooth=42, **kw):
-    return p.build(name, bevel=bevel, ao_dist=ao_dist, ao_strength=0.7, ao_samples=12, smooth=smooth, **kw)
+def fin(p, name, bevel=0.006, ao_dist=0.35, smooth=42, ao_samples=12, **kw):
+    return p.build(name, bevel=bevel, ao_dist=ao_dist, ao_strength=0.7, ao_samples=ao_samples, smooth=smooth, **kw)
 
 
 def bounds(obs):
@@ -690,5 +690,6 @@ def run():
 
 
 if __name__ == "__main__":
-    import gen_props_world  # noqa: F401  (registra los objetos de exterior)
-    run()
+    import gen_props as _gp          # el módulo importable es quien acumula el registro
+    import gen_props_world           # noqa: F401  (registra los objetos de exterior)
+    _gp.run()

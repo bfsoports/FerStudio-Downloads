@@ -617,5 +617,177 @@
 1.3,
 1.2
 ]
+},
+"cardboard": {
+"type": "flat",
+"color": [
+0.62,
+0.48,
+0.32
+],
+"rough": 0.9
+},
+"sack_cloth": {
+"type": "pbr",
+"set": "fabric_denim",
+"tile": 0.5,
+"tint": [
+1.5,
+1.3,
+0.95
+]
+},
+"lamp_glass": {
+"type": "flat",
+"color": [
+0.92,
+0.9,
+0.78
+],
+"rough": 0.2,
+"emission": [
+1.0,
+0.9,
+0.7
+],
+"emission_energy": 0.25
+},
+"led_green": {
+"type": "flat",
+"color": [
+0.2,
+0.9,
+0.4
+],
+"rough": 0.3,
+"emission": [
+0.2,
+1.0,
+0.4
+],
+"emission_energy": 2.0
+},
+"led_amber": {
+"type": "flat",
+"color": [
+0.95,
+0.6,
+0.15
+],
+"rough": 0.3,
+"emission": [
+1.0,
+0.6,
+0.1
+],
+"emission_energy": 2.0
+},
+"led_red": {
+"type": "flat",
+"color": [
+0.95,
+0.15,
+0.1
+],
+"rough": 0.3,
+"emission": [
+1.0,
+0.1,
+0.05
+],
+"emission_energy": 3.0
+},
+"ceramic": {
+"type": "flat",
+"color": [
+0.82,
+0.8,
+0.74
+],
+"rough": 0.25
+},
+"rope": {
+"type": "flat",
+"color": [
+0.56,
+0.46,
+0.3
+],
+"rough": 0.95
+},
+"water_still": {
+"type": "flat",
+"color": [
+0.12,
+0.2,
+0.2
+],
+"rough": 0.05,
+"metal": 0.3
+},
+"soil": {
+"type": "pbr",
+"set": "t_soil",
+"tile": 1.5
+},
+"tarp_green": {
+"type": "pbr",
+"set": "fabric_denim",
+"tile": 0.8,
+"tint": [
+0.55,
+0.75,
+0.5
+],
+"cull_off": true
+},
+"charcoal": {
+"type": "flat",
+"color": [
+0.06,
+0.055,
+0.05
+],
+"rough": 0.95
+},
+"fabric_awning": {
+"type": "albedo",
+"tex": "gen/awning.png",
+"tile": 1.2,
+"rough": 0.9,
+"cull_off": true
+},
+"lichen_glow": {
+"type": "flat",
+"color": [
+0.35,
+0.75,
+0.72
+],
+"rough": 0.5,
+"emission": [
+0.25,
+0.9,
+0.85
+],
+"emission_energy": 1.4
+},
+"lichen_stalk": {
+"type": "flat",
+"color": [
+0.3,
+0.42,
+0.38
+],
+"rough": 0.8
+},
+"spore_pod": {
+"type": "flat",
+"color": [
+0.34,
+0.3,
+0.4
+],
+"rough": 0.6
 }
 }

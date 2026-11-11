@@ -1,0 +1,16 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/fabric_denim_albedo.jpg" id="1_80i17"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/fabric_denim_normal.png" id="2_8xn7k"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/fabric_denim_orm.jpg" id="3_2du7l"]
+
+[resource]
+resource_name = "tarp_green"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.55, 0.75, 0.5, 1)
+albedo_texture = ExtResource("1_80i17")
+orm_texture = ExtResource("3_2du7l")
+normal_enabled = true
+normal_texture = ExtResource("2_8xn7k")
+uv1_scale = Vector3(1.25, 1.25, 1)
