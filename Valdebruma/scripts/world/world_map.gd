@@ -27,6 +27,7 @@ var samples := 641
 var step := 2.0
 var heights: PackedFloat32Array
 var regions: PackedByteArray
+var splat: PackedByteArray         # 256×256×3: hojarasca, tierra, roca (resto hierba)
 var veg: PackedFloat32Array
 var veg_index: Array = []
 var buildings: Array = []          # [{id, type, pos: Vector3, yaw, xf: Transform3D, inv: Transform3D, meta, radius}]
@@ -49,6 +50,7 @@ func load_all() -> void:
 	step = float(info.get("step", 2.0))
 	heights = FileAccess.get_file_as_bytes("res://data/world/height.bin").to_float32_array()
 	regions = FileAccess.get_file_as_bytes("res://data/world/regions.bin")
+	splat = FileAccess.get_file_as_bytes("res://data/world/splat.bin")
 	veg = FileAccess.get_file_as_bytes("res://data/world/veg.bin").to_float32_array()
 	veg_index = info.get("veg_index", [])
 	places = info.get("places", [])
@@ -151,6 +153,33 @@ func ground(x: float, z: float) -> float:
 	if ck >= 0 and (cells[ck] & F_DECK) != 0:
 		return maxf(h, float(cell_deck_y.get(ck, h)))
 	return h
+
+## Cubierta del suelo en un punto: Vector3(hojarasca, tierra, roca) en 0..1.
+func cover(x: float, z: float) -> Vector3:
+	var i := clampi(int(x / 5.0), 0, 255)
+	var j := clampi(int(z / 5.0), 0, 255)
+	var o := (j * 256 + i) * 3
+	if o + 2 >= splat.size():
+		return Vector3.ZERO
+	return Vector3(splat[o], splat[o + 1], splat[o + 2]) / 255.0
+
+## Tipo de superficie para pasos: "grass", "leaves", "dirt", "rock", "road", "wood", "water".
+func surface(x: float, z: float) -> String:
+	if height(x, z) < water_level - 0.05 and (cell_flags(x, z) & F_DECK) == 0:
+		return "water"
+	var f := cell_flags(x, z)
+	if (f & F_DECK) != 0:
+		return "wood"
+	var c := cover(x, z)
+	if (f & F_ROAD) != 0 and c.y < 0.5:
+		return "road"
+	if c.z > 0.5:
+		return "rock"
+	if c.y > 0.45:
+		return "dirt"
+	if c.x > 0.45:
+		return "leaves"
+	return "grass"
 
 func region_id(x: float, z: float) -> int:
 	var i := clampi(int(x / 10.0), 0, 127)

@@ -47,6 +47,36 @@ func _initialize() -> void:
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 80.0
 	world.add_child(sun)
+	var ge := _arg("game_env", "")
+	if "sky" in ge:
+		sky.process_mode = Sky.PROCESS_MODE_INCREMENTAL
+		sky.radiance_size = Sky.RADIANCE_SIZE_64
+	if "refl" in ge:
+		env.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
+	if "fogsky" in ge:
+		env.fog_sky_affect = 0.55
+	if "aerial" in ge:
+		env.fog_aerial_perspective = 0.35
+	if "scatter" in ge:
+		env.fog_sun_scatter = 0.1
+	if "sun" in ge:
+		sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS
+		sun.shadow_bias = 0.06
+		sun.shadow_normal_bias = 1.6
+		RenderingServer.directional_shadow_atlas_set_size(1024, true)
+	if "scale" in ge:
+		root.scaling_3d_scale = 0.85
+	if "glob" in ge:
+		RenderingServer.global_shader_parameter_set(&"vb_wind", Vector4(cos(0.9), sin(0.9), 0.35 + 0.3 * 1.4, 0.3))
+		RenderingServer.global_shader_parameter_set(&"vb_wetness", 0.0)
+	if "moon" in ge:
+		var moon := DirectionalLight3D.new()
+		moon.light_color = Color(0.56, 0.68, 0.95)
+		moon.shadow_enabled = false
+		moon.sky_mode = DirectionalLight3D.SKY_MODE_LIGHT_AND_SKY
+		moon.light_energy = 0.0
+		moon.visible = false
+		world.add_child(moon)
 	var ground := MeshInstance3D.new()
 	var pm := PlaneMesh.new()
 	pm.size = Vector2(400, 400)
@@ -62,7 +92,19 @@ func _initialize() -> void:
 	var cols := int(_arg("cols", "4"))
 	var spacing := float(_arg("spacing", "6"))
 	for i in models.size():
-		var inst := AssetLib.model(models[i])
+		var inst: Node3D
+		if _arg("mm", "") != "":
+			var mm := MultiMesh.new()
+			mm.transform_format = MultiMesh.TRANSFORM_3D
+			mm.mesh = AssetLib.mesh(models[i])
+			mm.instance_count = 2
+			mm.set_instance_transform(0, Transform3D.IDENTITY)
+			mm.set_instance_transform(1, Transform3D(Basis(), Vector3(0, 0, -5)))
+			var mmi := MultiMeshInstance3D.new()
+			mmi.multimesh = mm
+			inst = mmi
+		else:
+			inst = AssetLib.model(models[i])
 		var cx: float = float(i % cols) - float(mini(cols, models.size()) - 1) * 0.5
 		inst.position = Vector3(cx * spacing, 0, -(i / cols) * spacing)
 		inst.rotation.y = float(_arg("yaw", "0")) * PI / 180.0

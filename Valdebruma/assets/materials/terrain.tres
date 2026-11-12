@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/terrain.gdshader" id="1_dicvw"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/t_gravel_normal.png" id="2_2njj2"]
+[ext_resource type="Texture2D" path="res://assets/textures/gen/world_splat.png" id="3_lqqj3"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/t_dirt_albedo.jpg" id="4_cmpb7"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/t_forest_albedo.jpg" id="5_3eh23"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/t_grass_albedo.jpg" id="6_5lb2e"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/t_rock_albedo.jpg" id="7_s7gn1"]
+[ext_resource type="Texture2D" path="res://assets/textures/gen/world_tint.png" id="8_wldir"]
+
+[resource]
+resource_name = "terrain"
+render_priority = 0
+shader = ExtResource("1_dicvw")
+shader_parameter/splat_map = ExtResource("3_lqqj3")
+shader_parameter/tint_map = ExtResource("8_wldir")
+shader_parameter/tex_grass = ExtResource("6_5lb2e")
+shader_parameter/tex_forest = ExtResource("5_3eh23")
+shader_parameter/tex_dirt = ExtResource("4_cmpb7")
+shader_parameter/tex_rock = ExtResource("7_s7gn1")
+shader_parameter/detail_normal = ExtResource("2_2njj2")
+shader_parameter/world_size = null
+shader_parameter/tile = null
+shader_parameter/normal_strength = null

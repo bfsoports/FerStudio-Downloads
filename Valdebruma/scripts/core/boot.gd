@@ -24,6 +24,16 @@ func _ready() -> void:
 		ServerPersistence.base_dir = String(a.data)
 	if a.has("server"):
 		_run_server(a)
+	elif a.has("demo"):
+		var demo_script: GDScript = load("res://tests/demo_shots.gd")
+		if demo_script == null or not demo_script.can_instantiate():
+			printerr("DEMO guion con errores")
+			get_tree().quit(2)
+			return
+		var demo: Node = demo_script.new()
+		demo.name = "Demo"
+		get_tree().root.add_child.call_deferred(demo)
+		demo.call_deferred("run", a)
 	elif a.has("bot"):
 		var bot: Node = (load("res://tests/bot_client.gd") as GDScript).new()
 		bot.name = "Bot"

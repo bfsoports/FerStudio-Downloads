@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/road.gdshader" id="1_ca4ji"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/t_mud_albedo.jpg" id="2_4hq7r"]
+[ext_resource type="Texture2D" path="res://assets/textures/fx/noise_rgb.png" id="3_lf06r"]
+
+[resource]
+resource_name = "road_path"
+render_priority = 0
+shader = ExtResource("1_ca4ji")
+shader_parameter/albedo_tex = ExtResource("2_4hq7r")
+shader_parameter/noise_tex = ExtResource("3_lf06r")
+shader_parameter/width = 1.8
+shader_parameter/lines = 0.0
+shader_parameter/tint = Color(1.25, 1.15, 0.95, 1)

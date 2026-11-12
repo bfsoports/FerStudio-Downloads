@@ -10,6 +10,7 @@ Salidas:
   assets/textures/gen/world_splat.png   R hojarasca, G tierra/barro, B roca (resto = hierba)
   assets/textures/gen/world_tint.png    tinte macro del terreno (128 = neutro)
   data/world/regions.bin     uint8 128×128, id de región por celda de 10 m
+  data/world/splat.bin       uint8 256×256×3, cubierta del suelo en CPU (5 m/celda)
   assets/textures/gen/world_map.png     mapa ilustrado para la pantalla de mapa
 Coordenadas: x este, z sur, 0..1280 m. Norte = −z. Determinista (semillas fijas).
 """
@@ -358,6 +359,8 @@ def main():
     forest = forest * (1 - dirt) * (1 - rock); dirt = dirt * (1 - rock)
     splat = np.stack([forest, dirt, rock], -1)
     Image.fromarray((np.clip(splat, 0, 1) * 255).astype(np.uint8)).save(os.path.join(gen, "world_splat.png"))
+    low = np.asarray(Image.fromarray((np.clip(splat, 0, 1) * 255).astype(np.uint8)).resize((256, 256), Image.BILINEAR))
+    low.astype(np.uint8).tofile(os.path.join(ROOT, "data", "world", "splat.bin"))
     tint = np.ones((S, S, 3)) * np.array([1.0, 1.0, 0.94])
     tint *= (1.0 + 0.16 * n1[..., None]) * (1.0 + 0.07 * n2[..., None])
     tint = np.where((reg_up == 2)[..., None], tint * np.array([0.84, 0.94, 0.8]), tint)

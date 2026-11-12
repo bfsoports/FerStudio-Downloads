@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="1_n5diq"]
+[ext_resource type="Texture2D" path="res://assets/textures/fx/water_normal.png" id="2_wg45u"]
+
+[resource]
+resource_name = "water"
+render_priority = 0
+shader = ExtResource("1_n5diq")
+shader_parameter/normal_tex = ExtResource("2_wg45u")
+shader_parameter/world_size = null
+shader_parameter/water_level = null
+shader_parameter/shallow = null
+shader_parameter/deep = null
