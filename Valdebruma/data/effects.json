@@ -1,0 +1,194 @@
+{
+ "a_cubierto": {
+  "bad": false,
+  "desc": {
+   "en": "Indoors you stay dry and lose less heat.",
+   "es": "Bajo techo no te mojas y pierdes menos calor."
+  },
+  "icon": "shelter",
+  "name": {
+   "en": "Sheltered",
+   "es": "A cubierto"
+  }
+ },
+ "abrigado": {
+  "bad": false,
+  "desc": {
+   "en": "You are warming up.",
+   "es": "Entras en calor."
+  },
+  "icon": "warm",
+  "name": {
+   "en": "Warm",
+   "es": "Abrigado"
+  }
+ },
+ "agotado": {
+  "bad": true,
+  "desc": {
+   "en": "You cannot sprint. Rest in a shelter.",
+   "es": "No puedes esprintar. Descansa en un refugio."
+  },
+  "icon": "fatigue",
+  "name": {
+   "en": "Exhausted",
+   "es": "Agotamiento"
+  }
+ },
+ "alivio": {
+  "bad": false,
+  "desc": {
+   "en": "The salve is working.",
+   "es": "El ungüento hace efecto."
+  },
+  "icon": "health",
+  "name": {
+   "en": "Soothed",
+   "es": "Alivio"
+  }
+ },
+ "aturdido": {
+  "bad": true,
+  "desc": {
+   "en": "A Brumal rammed you. You move slower.",
+   "es": "Un Brumal te ha embestido. Te mueves más despacio."
+  },
+  "icon": "dazed",
+  "name": {
+   "en": "Dazed",
+   "es": "Aturdimiento"
+  }
+ },
+ "bien_alimentado": {
+  "bad": false,
+  "desc": {
+   "en": "Stamina and health recover faster.",
+   "es": "Recuperas resistencia y salud más rápido."
+  },
+  "icon": "food",
+  "name": {
+   "en": "Well fed",
+   "es": "Bien alimentado"
+  }
+ },
+ "calor": {
+  "bad": true,
+  "desc": {
+   "en": "You get thirsty faster.",
+   "es": "Bebes más de la cuenta."
+  },
+  "icon": "heat",
+  "name": {
+   "en": "Hot",
+   "es": "Calor"
+  }
+ },
+ "descansado": {
+  "bad": false,
+  "desc": {
+   "en": "You tire more slowly.",
+   "es": "Te cansas más despacio."
+  },
+  "icon": "rest",
+  "name": {
+   "en": "Rested",
+   "es": "Descansado"
+  }
+ },
+ "esporas": {
+  "bad": true,
+  "desc": {
+   "en": "You cough and tire. Leave the mist or wear a mask.",
+   "es": "Toses y te fatigas. Sal de la bruma o usa mascarilla."
+  },
+  "icon": "spores",
+  "name": {
+   "en": "Spores",
+   "es": "Esporas"
+  }
+ },
+ "frio": {
+  "bad": true,
+  "desc": {
+   "en": "You lose stamina. Find shelter or a fire.",
+   "es": "Pierdes resistencia. Busca abrigo o fuego."
+  },
+  "icon": "cold",
+  "name": {
+   "en": "Cold",
+   "es": "Frío"
+  }
+ },
+ "hambriento": {
+  "bad": true,
+  "desc": {
+   "en": "Stamina recovers slowly. Eat something.",
+   "es": "Recuperas menos resistencia. Come algo."
+  },
+  "icon": "hunger",
+  "name": {
+   "en": "Hungry",
+   "es": "Hambre"
+  }
+ },
+ "hipotermia": {
+  "bad": true,
+  "desc": {
+   "en": "The cold is hurting you. Warm up now.",
+   "es": "El frío ya te hace daño. Caliéntate cuanto antes."
+  },
+  "icon": "cold",
+  "name": {
+   "en": "Numb with cold",
+   "es": "Entumecimiento"
+  }
+ },
+ "junto_al_fuego": {
+  "bad": false,
+  "desc": {
+   "en": "The fire warms and dries you.",
+   "es": "El fuego te calienta y te seca."
+  },
+  "icon": "fire",
+  "name": {
+   "en": "By the fire",
+   "es": "Junto al fuego"
+  }
+ },
+ "malestar": {
+  "bad": true,
+  "desc": {
+   "en": "Something disagreed with you. You lose water.",
+   "es": "Algo te ha sentado mal. Pierdes agua."
+  },
+  "icon": "sick",
+  "name": {
+   "en": "Queasy",
+   "es": "Malestar"
+  }
+ },
+ "mojado": {
+  "bad": true,
+  "desc": {
+   "en": "Wet clothes chill you. Dry off indoors or by a fire.",
+   "es": "La ropa mojada enfría. Sécate bajo techo o al fuego."
+  },
+  "icon": "wet",
+  "name": {
+   "en": "Wet",
+   "es": "Mojado"
+  }
+ },
+ "sediento": {
+  "bad": true,
+  "desc": {
+   "en": "You tire sooner. Drink water.",
+   "es": "Te cansas antes. Bebe agua."
+  },
+  "icon": "thirst",
+  "name": {
+   "en": "Thirsty",
+   "es": "Sed"
+  }
+ }
+}

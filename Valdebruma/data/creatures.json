@@ -1,0 +1,83 @@
+{
+ "brumal": {
+  "behavior": "stalker",
+  "contact": 1.7,
+  "desc": {
+   "en": "A stalker of the oakwood. Noise and light bother it.",
+   "es": "Acechador del robledal. Le molestan el ruido y la luz."
+  },
+  "fear_light": true,
+  "float": 0.0,
+  "fov": 110,
+  "hear": 1.0,
+  "hit": {
+   "effect": [
+    "aturdido",
+    8,
+    1.0
+   ],
+   "health": 14,
+   "stamina": 30
+  },
+  "leash": 85,
+  "model": "creatures/brumal",
+  "name": {
+   "en": "Brumal",
+   "es": "Brumal"
+  },
+  "radius": 0.7,
+  "run": 6.0,
+  "sight": 34,
+  "walk": 1.5
+ },
+ "farol": {
+  "behavior": "drifter",
+  "contact": 3.6,
+  "desc": {
+   "en": "Drifts over the marsh and puffs spores when you get close.",
+   "es": "Flota sobre el marjal y suelta esporas si te acercas."
+  },
+  "float": 1.9,
+  "fov": 360,
+  "hear": 0.2,
+  "hit": {
+   "effect": [
+    "esporas",
+    60,
+    1.0
+   ]
+  },
+  "leash": 70,
+  "likes_light": true,
+  "model": "creatures/farol",
+  "name": {
+   "en": "Wisp",
+   "es": "Farol"
+  },
+  "radius": 0.5,
+  "run": 1.5,
+  "sight": 22,
+  "walk": 0.7
+ },
+ "zarzo": {
+  "behavior": "skittish",
+  "contact": 0.0,
+  "desc": {
+   "en": "A small, skittish forager. Curls up when cornered.",
+   "es": "Pequeño recolector asustadizo. Se hace una bola si lo acorralan."
+  },
+  "float": 0.0,
+  "fov": 200,
+  "hear": 1.4,
+  "leash": 60,
+  "model": "creatures/zarzo",
+  "name": {
+   "en": "Zarzo",
+   "es": "Zarzo"
+  },
+  "radius": 0.3,
+  "run": 4.6,
+  "sight": 14,
+  "walk": 0.9
+ }
+}

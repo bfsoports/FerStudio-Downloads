@@ -1,0 +1,579 @@
+{
+ "achievements": {
+  "a_bruma": {
+   "desc": {
+    "en": "Enter the mist wearing a mask.",
+    "es": "Entra en la bruma con mascarilla."
+   },
+   "goal": 1,
+   "name": {
+    "en": "Through the mist",
+    "es": "A través de la bruma"
+   },
+   "stat": "mist_masked"
+  },
+  "a_campamento": {
+   "desc": {
+    "en": "Build 8 structures.",
+    "es": "Construye 8 estructuras."
+   },
+   "goal": 8,
+   "name": {
+    "en": "Camp",
+    "es": "Campamento"
+   },
+   "stat": "builds"
+  },
+  "a_espanto": {
+   "desc": {
+    "en": "Drive off a Brumal.",
+    "es": "Ahuyenta a un Brumal."
+   },
+   "goal": 1,
+   "name": {
+    "en": "Tins and stones",
+    "es": "Latas y piedras"
+   },
+   "stat": "deterred"
+  },
+  "a_llegada": {
+   "desc": {
+    "en": "Enter Valdebruma for the first time.",
+    "es": "Entra en Valdebruma por primera vez."
+   },
+   "goal": 1,
+   "name": {
+    "en": "Arrival",
+    "es": "Llegada al valle"
+   },
+   "stat": "logins"
+  },
+  "a_lumbre": {
+   "desc": {
+    "en": "Light a campfire.",
+    "es": "Enciende una hoguera."
+   },
+   "goal": 1,
+   "name": {
+    "en": "Hearth",
+    "es": "Lumbre"
+   },
+   "stat": "built_hoguera"
+  },
+  "a_noche": {
+   "desc": {
+    "en": "Spend a whole night outdoors.",
+    "es": "Pasa una noche entera a la intemperie."
+   },
+   "goal": 1,
+   "name": {
+    "en": "Sleepless night",
+    "es": "Noche en vela"
+   },
+   "stat": "nights_out"
+  },
+  "a_todo": {
+   "desc": {
+    "en": "Discover every place.",
+    "es": "Descubre todos los lugares."
+   },
+   "goal": 29,
+   "name": {
+    "en": "Knowing the valley",
+    "es": "Conocer el valle"
+   },
+   "stat": "places"
+  }
+ },
+ "challenges": {
+  "archivero": {
+   "desc": {
+    "en": "Open the Town Hall archive.",
+    "es": "Abre el archivo de la Casa Consistorial."
+   },
+   "goal": 1,
+   "name": {
+    "en": "Archivist",
+    "es": "Archivero"
+   },
+   "stat": "unlock:llave_archivo",
+   "xp": 60
+  },
+  "buen_vecino": {
+   "desc": {
+    "en": "Complete 5 board errands.",
+    "es": "Cumple 5 encargos del tablón."
+   },
+   "goal": 5,
+   "name": {
+    "en": "Good neighbour",
+    "es": "Buen vecino"
+   },
+   "stat": "contracts",
+   "xp": 120
+  },
+  "caminante": {
+   "desc": {
+    "en": "Travel 10 km.",
+    "es": "Recorre 10 km."
+   },
+   "goal": 10000,
+   "name": {
+    "en": "Wayfarer",
+    "es": "Caminante"
+   },
+   "stat": "distance",
+   "xp": 80
+  },
+  "cruzar_marjal": {
+   "desc": {
+    "en": "Reach Lichen Station.",
+    "es": "Llega a la Estación Liquen."
+   },
+   "goal": 1,
+   "name": {
+    "en": "Crossing the Marsh",
+    "es": "Cruzar el Marjal"
+   },
+   "stat": "place:estacion_liquen",
+   "xp": 100
+  },
+  "en_compania": {
+   "coop": true,
+   "desc": {
+    "en": "Co-op: discover 3 places while in a group.",
+    "es": "Cooperativo: descubre 3 lugares yendo en grupo."
+   },
+   "goal": 3,
+   "name": {
+    "en": "In company",
+    "es": "En compañía"
+   },
+   "stat": "group_places",
+   "xp": 100
+  },
+  "explorador_valle": {
+   "desc": {
+    "en": "Discover 15 places.",
+    "es": "Descubre 15 lugares."
+   },
+   "goal": 15,
+   "name": {
+    "en": "Valley explorer",
+    "es": "Explorador del valle"
+   },
+   "stat": "places",
+   "xp": 120
+  },
+  "lector": {
+   "desc": {
+    "en": "Read 6 documents.",
+    "es": "Lee 6 documentos."
+   },
+   "goal": 6,
+   "name": {
+    "en": "What was left in writing",
+    "es": "Lo que quedó escrito"
+   },
+   "stat": "docs",
+   "xp": 90
+  },
+  "manitas": {
+   "desc": {
+    "en": "Craft 10 items.",
+    "es": "Fabrica 10 objetos."
+   },
+   "goal": 10,
+   "name": {
+    "en": "Handy",
+    "es": "Manitas"
+   },
+   "stat": "crafts",
+   "xp": 50
+  },
+  "obra_comun": {
+   "coop": true,
+   "desc": {
+    "en": "Co-op: finish a structure a teammate started.",
+    "es": "Cooperativo: termina una estructura que empezó un compañero."
+   },
+   "goal": 1,
+   "name": {
+    "en": "Common work",
+    "es": "Obra común"
+   },
+   "stat": "group_builds",
+   "xp": 100
+  },
+  "primer_refugio": {
+   "desc": {
+    "en": "Finish your first shelter.",
+    "es": "Termina tu primer refugio."
+   },
+   "goal": 1,
+   "name": {
+    "en": "Under a roof",
+    "es": "Bajo techo"
+   },
+   "stat": "built_refugio",
+   "xp": 60
+  },
+  "primeros_pasos": {
+   "desc": {
+    "en": "Pick up 5 items from the world.",
+    "es": "Recoge 5 objetos del mundo."
+   },
+   "goal": 5,
+   "name": {
+    "en": "First steps",
+    "es": "Primeros pasos"
+   },
+   "stat": "pickups",
+   "xp": 20
+  },
+  "recolector": {
+   "desc": {
+    "en": "Harvest 25 times.",
+    "es": "Recolecta 25 veces."
+   },
+   "goal": 25,
+   "name": {
+    "en": "What the valley gives",
+    "es": "Lo que da el valle"
+   },
+   "stat": "harvests",
+   "xp": 50
+  },
+  "secretos": {
+   "desc": {
+    "en": "Find the 4 secret places.",
+    "es": "Encuentra los 4 lugares secretos."
+   },
+   "goal": 4,
+   "name": {
+    "en": "Knowing how to look",
+    "es": "Saber mirar"
+   },
+   "stat": "secrets",
+   "xp": 150
+  },
+  "superviviente": {
+   "desc": {
+    "en": "Survive 3 days in a row.",
+    "es": "Sobrevive 3 días seguidos."
+   },
+   "goal": 3,
+   "name": {
+    "en": "Three sunrises",
+    "es": "Tres amaneceres"
+   },
+   "stat": "days",
+   "xp": 120
+  },
+  "trueque": {
+   "coop": true,
+   "desc": {
+    "en": "Co-op: complete a trade with another player.",
+    "es": "Cooperativo: completa un intercambio con otro jugador."
+   },
+   "goal": 1,
+   "name": {
+    "en": "Barter",
+    "es": "Trueque"
+   },
+   "stat": "trades",
+   "xp": 60
+  }
+ },
+ "contracts": {
+  "c_bombeo": {
+   "desc": {
+    "en": "Expedition: read the Pumping Station log.",
+    "es": "Expedición: lee el registro de la Estación de bombeo."
+   },
+   "name": {
+    "en": "What is wrong with the water?",
+    "es": "¿Qué pasa con el agua?"
+   },
+   "read": "registro_bombeo",
+   "reward": {
+    "pastillas": 6
+   },
+   "xp": 60
+  },
+  "c_conservas": {
+   "deliver": {
+    "conserva_pescado": 5
+   },
+   "desc": {
+    "en": "Hand in 5 tins of fish.",
+    "es": "Entrega 5 conservas de pescado."
+   },
+   "name": {
+    "en": "Common pantry",
+    "es": "Despensa común"
+   },
+   "reward": {
+    "mochila_pequena": 1
+   },
+   "xp": 40
+  },
+  "c_cuerda": {
+   "deliver": {
+    "cuerda": 4
+   },
+   "desc": {
+    "en": "Hand in 4 ropes.",
+    "es": "Entrega 4 cuerdas."
+   },
+   "name": {
+    "en": "Rope for everyone",
+    "es": "Cuerda para todos"
+   },
+   "reward": {
+    "lona": 1
+   },
+   "xp": 40
+  },
+  "c_ermita": {
+   "desc": {
+    "en": "Expedition: reach San Telmo Chapel.",
+    "es": "Expedición: llega a la Ermita de San Telmo."
+   },
+   "name": {
+    "en": "Up to the Chapel",
+    "es": "Subir a la Ermita"
+   },
+   "reward": {
+    "agua_potable": 2
+   },
+   "visit": "ermita",
+   "xp": 50
+  },
+  "c_lena": {
+   "deliver": {
+    "palo": 12
+   },
+   "desc": {
+    "en": "Hand in 12 sticks.",
+    "es": "Entrega 12 palos."
+   },
+   "name": {
+    "en": "Firewood for the Chapel",
+    "es": "Leña para la Ermita"
+   },
+   "reward": {
+    "infusion": 2
+   },
+   "xp": 30
+  },
+  "c_liquen": {
+   "deliver": {
+    "liquen": 4
+   },
+   "desc": {
+    "en": "Hand in 4 mist lichen samples.",
+    "es": "Entrega 4 muestras de liquen brumal."
+   },
+   "name": {
+    "en": "Samples for the Institute",
+    "es": "Muestras para el Instituto"
+   },
+   "reward": {
+    "filtro": 3,
+    "mascarilla": 1
+   },
+   "xp": 70
+  },
+  "c_repetidor": {
+   "desc": {
+    "en": "Expedition: find the Relay Mast.",
+    "es": "Expedición: encuentra el Repetidor del Alto."
+   },
+   "name": {
+    "en": "The Relay Mast",
+    "es": "El Repetidor"
+   },
+   "reward": {
+    "linterna": 1,
+    "pilas": 6
+   },
+   "visit": "repetidor",
+   "xp": 80
+  },
+  "c_vendas": {
+   "deliver": {
+    "venda": 4
+   },
+   "desc": {
+    "en": "Hand in 4 bandages at the board.",
+    "es": "Entrega 4 vendas en el tablón."
+   },
+   "name": {
+    "en": "Bandages for the Clinic",
+    "es": "Vendas para el Consultorio"
+   },
+   "reward": {
+    "botiquin": 1
+   },
+   "xp": 40
+  }
+ },
+ "cosmetics": {
+  "chaqueta_azul": {
+   "color": [
+    0.26,
+    0.36,
+    0.46
+   ],
+   "name": {
+    "en": "Mist-blue jacket",
+    "es": "Chaqueta azul bruma"
+   },
+   "unlock": "cruzar_marjal"
+  },
+  "chaqueta_ocre": {
+   "color": [
+    0.62,
+    0.48,
+    0.2
+   ],
+   "name": {
+    "en": "Ochre jacket",
+    "es": "Chaqueta ocre"
+   },
+   "unlock": "buen_vecino"
+  },
+  "chaqueta_oliva": {
+   "color": [
+    0.34,
+    0.4,
+    0.27
+   ],
+   "name": {
+    "en": "Olive jacket",
+    "es": "Chaqueta oliva"
+   },
+   "unlock": ""
+  },
+  "chaqueta_teja": {
+   "color": [
+    0.55,
+    0.26,
+    0.18
+   ],
+   "name": {
+    "en": "Rust jacket",
+    "es": "Chaqueta teja"
+   },
+   "unlock": "explorador_valle"
+  },
+  "gorro_gris": {
+   "hat": [
+    0.42,
+    0.42,
+    0.44
+   ],
+   "name": {
+    "en": "Grey hat",
+    "es": "Gorro gris"
+   },
+   "unlock": "archivero"
+  },
+  "gorro_rojo": {
+   "hat": [
+    0.5,
+    0.2,
+    0.14
+   ],
+   "name": {
+    "en": "Red hat",
+    "es": "Gorro rojo"
+   },
+   "unlock": ""
+  },
+  "gorro_verde": {
+   "hat": [
+    0.26,
+    0.36,
+    0.22
+   ],
+   "name": {
+    "en": "Moss hat",
+    "es": "Gorro musgo"
+   },
+   "unlock": "primer_refugio"
+  }
+ },
+ "difficulty": {
+  "exigente": {
+   "creatures": 1.3,
+   "damage": 1.4,
+   "name": {
+    "en": "Demanding",
+    "es": "Exigente"
+   },
+   "needs": 1.4
+  },
+  "normal": {
+   "creatures": 1.0,
+   "damage": 1.0,
+   "name": {
+    "en": "Normal",
+    "es": "Normal"
+   },
+   "needs": 1.0
+  },
+  "tranquilo": {
+   "creatures": 0.7,
+   "damage": 0.6,
+   "name": {
+    "en": "Calm",
+    "es": "Tranquilo"
+   },
+   "needs": 0.6
+  }
+ },
+ "levels": [
+  0,
+  60,
+  150,
+  280,
+  450,
+  660,
+  920,
+  1240,
+  1620,
+  2080
+ ],
+ "perks": {
+  "2": {
+   "slots": 2,
+   "text": {
+    "en": "+2 inventory slots",
+    "es": "+2 huecos de inventario"
+   }
+  },
+  "4": {
+   "sprint": 0.9,
+   "text": {
+    "en": "Sprinting costs 10% less",
+    "es": "Esprintar cansa un 10 % menos"
+   }
+  },
+  "6": {
+   "harvest": 1,
+   "text": {
+    "en": "+1 when harvesting",
+    "es": "+1 al recolectar"
+   }
+  },
+  "8": {
+   "needs": 0.9,
+   "text": {
+    "en": "Hunger and thirst 10% slower",
+    "es": "Hambre y sed un 10 % más lentas"
+   }
+  }
+ }
+}

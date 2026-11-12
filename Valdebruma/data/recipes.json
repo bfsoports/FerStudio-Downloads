@@ -1,0 +1,367 @@
+{
+ "r_agua_hervida": {
+  "cat": "cocina",
+  "id": "r_agua_hervida",
+  "in": {
+   "agua_turbia": 1
+  },
+  "level": 0,
+  "n": 1,
+  "name": {
+   "en": "Boil water",
+   "es": "Hervir agua"
+  },
+  "out": "agua_potable",
+  "station": "fire",
+  "time": 6.0,
+  "tool": ""
+ },
+ "r_agua_pastilla": {
+  "cat": "cocina",
+  "id": "r_agua_pastilla",
+  "in": {
+   "agua_turbia": 1,
+   "pastillas": 1
+  },
+  "level": 0,
+  "n": 1,
+  "name": {
+   "en": "Treat water",
+   "es": "Tratar agua"
+  },
+  "out": "agua_potable",
+  "station": "",
+  "time": 2.0,
+  "tool": ""
+ },
+ "r_cuerda": {
+  "cat": "util",
+  "id": "r_cuerda",
+  "in": {
+   "fibra": 5
+  },
+  "level": 0,
+  "n": 1,
+  "name": {
+   "en": "Braid rope",
+   "es": "Trenzar cuerda"
+  },
+  "out": "cuerda",
+  "station": "",
+  "time": 3.0,
+  "tool": ""
+ },
+ "r_espantador": {
+  "cat": "util",
+  "id": "r_espantador",
+  "in": {
+   "chatarra": 1,
+   "cuerda": 1,
+   "palo": 1,
+   "piedra": 2
+  },
+  "level": 0,
+  "n": 1,
+  "name": {
+   "en": "Rattle",
+   "es": "Espantador"
+  },
+  "out": "espantador",
+  "station": "",
+  "time": 4.0,
+  "tool": ""
+ },
+ "r_farol": {
+  "cat": "util",
+  "id": "r_farol",
+  "in": {
+   "chatarra": 3,
+   "liquen": 1,
+   "tela": 1
+  },
+  "level": 2,
+  "n": 1,
+  "name": {
+   "en": "Lantern",
+   "es": "Farol"
+  },
+  "out": "farol",
+  "station": "workbench",
+  "time": 8.0,
+  "tool": ""
+ },
+ "r_filtro": {
+  "cat": "salud",
+  "id": "r_filtro",
+  "in": {
+   "chatarra": 1,
+   "hierbas": 2,
+   "tela": 2
+  },
+  "level": 0,
+  "n": 1,
+  "name": {
+   "en": "Mask filter",
+   "es": "Filtro de mascarilla"
+  },
+  "out": "filtro",
+  "station": "workbench",
+  "time": 5.0,
+  "tool": ""
+ },
+ "r_gorro": {
+  "cat": "ropa",
+  "id": "r_gorro",
+  "in": {
+   "fibra": 4,
+   "tela": 3
+  },
+  "level": 0,
+  "n": 1,
+  "name": {
+   "en": "Wool hat",
+   "es": "Gorro de lana"
+  },
+  "out": "gorro_lana",
+  "station": "",
+  "time": 5.0,
+  "tool": ""
+ },
+ "r_guiso": {
+  "cat": "cocina",
+  "id": "r_guiso",
+  "in": {
+   "agua_potable": 1,
+   "lata_legumbres": 1,
+   "setas": 2
+  },
+  "level": 0,
+  "n": 1,
+  "name": {
+   "en": "Field stew",
+   "es": "Guiso de campo"
+  },
+  "out": "guiso",
+  "station": "fire",
+  "time": 8.0,
+  "tool": ""
+ },
+ "r_hachuela": {
+  "cat": "util",
+  "id": "r_hachuela",
+  "in": {
+   "chatarra": 2,
+   "cuerda": 1,
+   "palo": 2
+  },
+  "level": 0,
+  "n": 1,
+  "name": {
+   "en": "Hatchet",
+   "es": "Hachuela"
+  },
+  "out": "hachuela",
+  "station": "workbench",
+  "time": 6.0,
+  "tool": ""
+ },
+ "r_impermeable": {
+  "cat": "ropa",
+  "id": "r_impermeable",
+  "in": {
+   "cinta": 1,
+   "cuerda": 1,
+   "lona": 1
+  },
+  "level": 0,
+  "n": 1,
+  "name": {
+   "en": "Raincoat",
+   "es": "Impermeable"
+  },
+  "out": "impermeable",
+  "station": "workbench",
+  "time": 8.0,
+  "tool": ""
+ },
+ "r_infusion": {
+  "cat": "cocina",
+  "id": "r_infusion",
+  "in": {
+   "agua_potable": 1,
+   "hierbas": 2
+  },
+  "level": 0,
+  "n": 1,
+  "name": {
+   "en": "Herbal infusion",
+   "es": "Infusión de hierbas"
+  },
+  "out": "infusion",
+  "station": "fire",
+  "time": 5.0,
+  "tool": ""
+ },
+ "r_lona": {
+  "cat": "material",
+  "id": "r_lona",
+  "in": {
+   "cinta": 1,
+   "tela": 8
+  },
+  "level": 0,
+  "n": 1,
+  "name": {
+   "en": "Patched tarp",
+   "es": "Lona remendada"
+  },
+  "out": "lona",
+  "station": "workbench",
+  "time": 6.0,
+  "tool": ""
+ },
+ "r_martillo": {
+  "cat": "util",
+  "id": "r_martillo",
+  "in": {
+   "chatarra": 2,
+   "cinta": 1,
+   "palo": 1
+  },
+  "level": 0,
+  "n": 1,
+  "name": {
+   "en": "Hammer",
+   "es": "Martillo"
+  },
+  "out": "martillo",
+  "station": "workbench",
+  "time": 6.0,
+  "tool": ""
+ },
+ "r_mochila": {
+  "cat": "ropa",
+  "id": "r_mochila",
+  "in": {
+   "cuerda": 2,
+   "tela": 6
+  },
+  "level": 0,
+  "n": 1,
+  "name": {
+   "en": "Small backpack",
+   "es": "Mochila pequeña"
+  },
+  "out": "mochila_pequena",
+  "station": "",
+  "time": 7.0,
+  "tool": ""
+ },
+ "r_mochila_grande": {
+  "cat": "ropa",
+  "id": "r_mochila_grande",
+  "in": {
+   "cinta": 1,
+   "cuerda": 2,
+   "lona": 1,
+   "mochila_pequena": 1
+  },
+  "level": 3,
+  "n": 1,
+  "name": {
+   "en": "Trekking pack",
+   "es": "Mochila de travesía"
+  },
+  "out": "mochila_grande",
+  "station": "workbench",
+  "time": 10.0,
+  "tool": ""
+ },
+ "r_setas": {
+  "cat": "cocina",
+  "id": "r_setas",
+  "in": {
+   "palo": 1,
+   "setas": 2
+  },
+  "level": 0,
+  "n": 2,
+  "name": {
+   "en": "Roast mushrooms",
+   "es": "Asar setas"
+  },
+  "out": "setas_asadas",
+  "station": "fire",
+  "time": 5.0,
+  "tool": ""
+ },
+ "r_tablon": {
+  "cat": "material",
+  "id": "r_tablon",
+  "in": {
+   "palo": 5
+  },
+  "level": 0,
+  "n": 2,
+  "name": {
+   "en": "Cut planks",
+   "es": "Serrar tablones"
+  },
+  "out": "tablon",
+  "station": "",
+  "time": 4.0,
+  "tool": "hachuela"
+ },
+ "r_tela": {
+  "cat": "material",
+  "id": "r_tela",
+  "in": {
+   "chaqueta_campo": 1
+  },
+  "level": 0,
+  "n": 3,
+  "name": {
+   "en": "Tear old cloth",
+   "es": "Deshacer ropa vieja"
+  },
+  "out": "tela",
+  "station": "",
+  "time": 3.0,
+  "tool": ""
+ },
+ "r_unguento": {
+  "cat": "salud",
+  "id": "r_unguento",
+  "in": {
+   "hierbas": 4,
+   "tela": 1
+  },
+  "level": 0,
+  "n": 1,
+  "name": {
+   "en": "Herbal salve",
+   "es": "Ungüento de hierbas"
+  },
+  "out": "unguento",
+  "station": "",
+  "time": 3.0,
+  "tool": ""
+ },
+ "r_venda": {
+  "cat": "salud",
+  "id": "r_venda",
+  "in": {
+   "tela": 2
+  },
+  "level": 0,
+  "n": 2,
+  "name": {
+   "en": "Make bandages",
+   "es": "Preparar vendas"
+  },
+  "out": "venda",
+  "station": "",
+  "time": 3.0,
+  "tool": ""
+ }
+}

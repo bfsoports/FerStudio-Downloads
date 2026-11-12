@@ -1,0 +1,280 @@
+{
+ "arcon": {
+  "container": 20,
+  "cost": {
+   "clavos": 6,
+   "tablon": 5
+  },
+  "desc": {
+   "en": "Storage with group permissions.",
+   "es": "Almacén con permisos de grupo."
+  },
+  "frame_cost": {
+   "palo": 2
+  },
+  "id": "arcon",
+  "name": {
+   "en": "Storage chest",
+   "es": "Arcón"
+  },
+  "radius": 0.8,
+  "tool": "martillo"
+ },
+ "banco": {
+  "cost": {
+   "chatarra": 2,
+   "clavos": 8,
+   "tablon": 6
+  },
+  "desc": {
+   "en": "Lets you craft advanced items.",
+   "es": "Permite fabricar objetos avanzados."
+  },
+  "frame_cost": {
+   "palo": 4
+  },
+  "id": "banco",
+  "name": {
+   "en": "Workbench",
+   "es": "Banco de trabajo"
+  },
+  "radius": 1.2,
+  "station": "workbench",
+  "tool": "martillo"
+ },
+ "colector": {
+  "collector": 5,
+  "cost": {
+   "chatarra": 3,
+   "cuerda": 2,
+   "lona": 1
+  },
+  "desc": {
+   "en": "Collects water when it rains.",
+   "es": "Acumula agua cuando llueve."
+  },
+  "frame_cost": {
+   "palo": 4
+  },
+  "id": "colector",
+  "name": {
+   "en": "Rain collector",
+   "es": "Colector de lluvia"
+  },
+  "radius": 1.1,
+  "station": "water"
+ },
+ "hoguera": {
+  "burn": 420,
+  "cost": {
+   "palo": 4
+  },
+  "desc": {
+   "en": "Warmth, light and cooking. Needs feeding.",
+   "es": "Calor, luz y cocina. Hay que alimentarla."
+  },
+  "frame_cost": {
+   "piedra": 4
+  },
+  "fuel": "palo",
+  "id": "hoguera",
+  "light": true,
+  "name": {
+   "en": "Campfire",
+   "es": "Hoguera"
+  },
+  "radius": 0.8,
+  "station": "fire",
+  "warm": 7.0
+ },
+ "muro": {
+  "cost": {
+   "clavos": 4,
+   "tablon": 4
+  },
+  "desc": {
+   "en": "A 2.4 m panel.",
+   "es": "Panel de 2,4 m."
+  },
+  "frame_cost": {
+   "palo": 3
+  },
+  "id": "muro",
+  "name": {
+   "en": "Plank wall",
+   "es": "Muro de tablas"
+  },
+  "radius": 1.3,
+  "snap": true,
+  "tool": "martillo"
+ },
+ "muro_ventana": {
+  "cost": {
+   "clavos": 4,
+   "tablon": 3
+  },
+  "desc": {
+   "en": "A panel with an opening.",
+   "es": "Panel con hueco para mirar."
+  },
+  "frame_cost": {
+   "palo": 3
+  },
+  "id": "muro_ventana",
+  "name": {
+   "en": "Window wall",
+   "es": "Muro con ventana"
+  },
+  "radius": 1.3,
+  "snap": true,
+  "tool": "martillo"
+ },
+ "poste_farol": {
+  "cost": {
+   "cuerda": 1,
+   "farol": 1
+  },
+  "desc": {
+   "en": "A fixed camp light.",
+   "es": "Luz fija para el campamento."
+  },
+  "frame_cost": {
+   "palo": 2
+  },
+  "id": "poste_farol",
+  "light": true,
+  "name": {
+   "en": "Lantern post",
+   "es": "Poste con farol"
+  },
+  "radius": 0.4
+ },
+ "puerta": {
+  "cost": {
+   "clavos": 6,
+   "cuerda": 1,
+   "tablon": 5
+  },
+  "desc": {
+   "en": "A door only your group opens when locked.",
+   "es": "Puerta que solo abre tu grupo si la cierras."
+  },
+  "door": true,
+  "frame_cost": {
+   "palo": 3
+  },
+  "id": "puerta",
+  "name": {
+   "en": "Door frame",
+   "es": "Marco con puerta"
+  },
+  "radius": 1.3,
+  "snap": true,
+  "tool": "martillo"
+ },
+ "refugio": {
+  "cost": {
+   "cuerda": 2,
+   "lona": 1,
+   "tela": 2
+  },
+  "desc": {
+   "en": "Rest here and return if you collapse.",
+   "es": "Para descansar y volver aquí si desfalleces."
+  },
+  "frame_cost": {
+   "palo": 6
+  },
+  "id": "refugio",
+  "name": {
+   "en": "Tarp shelter",
+   "es": "Refugio de lona"
+  },
+  "radius": 1.9,
+  "respawn": true,
+  "rest": true,
+  "tool": ""
+ },
+ "saco_dormir": {
+  "cost": {
+   "fibra": 6,
+   "tela": 5
+  },
+  "desc": {
+   "en": "Quick rest wherever you unroll it.",
+   "es": "Descanso rápido donde lo extiendas."
+  },
+  "frame_cost": {},
+  "id": "saco_dormir",
+  "instant": true,
+  "name": {
+   "en": "Bedroll",
+   "es": "Saco de dormir"
+  },
+  "radius": 1.1,
+  "rest": true
+ },
+ "suelo": {
+  "cost": {
+   "clavos": 6,
+   "tablon": 6
+  },
+  "desc": {
+   "en": "A levelled 2.4 m base.",
+   "es": "Base nivelada de 2,4 m."
+  },
+  "frame_cost": {
+   "palo": 4
+  },
+  "id": "suelo",
+  "name": {
+   "en": "Floor deck",
+   "es": "Tarima"
+  },
+  "radius": 1.6,
+  "snap": true,
+  "tool": "martillo"
+ },
+ "tejado": {
+  "cost": {
+   "cuerda": 2,
+   "fibra": 12,
+   "palo": 4
+  },
+  "desc": {
+   "en": "Covers one module.",
+   "es": "Cubre un módulo."
+  },
+  "frame_cost": {
+   "palo": 3
+  },
+  "id": "tejado",
+  "name": {
+   "en": "Roof panel",
+   "es": "Tejadillo"
+  },
+  "radius": 1.6,
+  "roof": true,
+  "snap": true
+ },
+ "valla": {
+  "cost": {
+   "cuerda": 1,
+   "palo": 4
+  },
+  "desc": {
+   "en": "Marks out your camp.",
+   "es": "Delimita el campamento."
+  },
+  "frame_cost": {
+   "palo": 2
+  },
+  "id": "valla",
+  "name": {
+   "en": "Fence",
+   "es": "Valla"
+  },
+  "radius": 1.25,
+  "snap": true
+ }
+}

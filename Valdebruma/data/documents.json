@@ -1,0 +1,101 @@
+{
+ "acta_evacuacion": {
+  "text": {
+   "en": "Extraordinary session. It is agreed to clear Sotoalto and its hamlets while the mist lies over the Marsh.\nThe Institute insists it is a matter of weeks. The Co-op will keep the archive keys.\nThe Station keycard stays in the chest, in case someone must go back for their own.",
+   "es": "Sesión extraordinaria. Se acuerda desalojar Sotoalto y sus pedanías mientras dure la bruma sobre el Marjal.\nEl Instituto asegura que es cuestión de semanas. La Cooperativa guardará las llaves del archivo.\nLa tarjeta de la Estación queda en el arcón, por si alguien tiene que volver a por los suyos."
+  },
+  "title": {
+   "en": "Council minutes",
+   "es": "Acta de la Junta"
+  },
+  "where": "consistorial"
+ },
+ "aviso_tablon": {
+  "text": {
+   "en": "TO WHOEVER REACHES EL COLLADO:\nWe share what there is. Leave what you can spare, take what you need.\nDo not cross the Marsh without a mask. The mist does not forgive runners.\nIf you hear branches snap in the oakwood, do not run: kill the light, crouch and wait.\n— The last shift",
+   "es": "A QUIEN LLEGUE AL COLLADO:\nAquí se reparte lo que hay. Deja lo que te sobre y coge lo que te falte.\nNo cruces el Marjal sin mascarilla. La bruma no perdona al que corre.\nSi oyes ramas partirse en el robledal, no corras: apaga la luz, agáchate y espera.\n— Los del último turno"
+  },
+  "title": {
+   "en": "Notice on the board",
+   "es": "Aviso en el tablón"
+  },
+  "where": "el_collado"
+ },
+ "carta_ermitano": {
+  "text": {
+   "en": "The mist does not reach up here. I left blankets and whatever I could carry up.\nIf you are passing through, rest. If you mean to stay, bring firewood.",
+   "es": "Aquí arriba la bruma no llega. He dejado mantas y lo que he podido subir.\nSi vienes de paso, descansa. Si vienes a quedarte, trae leña."
+  },
+  "title": {
+   "en": "Letter at the chapel",
+   "es": "Carta en la ermita"
+  },
+  "where": "ermita"
+ },
+ "cuaderno_guarda": {
+  "text": {
+   "en": "The brumals came down from the high pass with the first fog. They do not hunt: they watch.\nThey stand, listen, and charge if you run. A rattle of tins scares them; so does a torch at night.\nI marked the old cabin and the cellar on the map. Just in case.",
+   "es": "Los brumales bajaron del collado alto con la primera niebla. No cazan: vigilan.\nSe plantan, escuchan y embisten si corres. El ruido de latas los espanta; la linterna, de noche, también.\nHe marcado en el mapa la cabaña vieja y la bodega. Por si acaso."
+  },
+  "title": {
+   "en": "The ranger's notebook",
+   "es": "Cuaderno del guarda"
+  },
+  "where": "caseta_forestal"
+ },
+ "cuaderno_maestra": {
+  "text": {
+   "en": "The children call the Marsh lights 'wisps'. They say they follow anyone carrying a lamp.\nToday we drew the valley: the river, the bridge, the chapel up high. I promised them school again by autumn.",
+   "es": "Los niños llaman 'faroles' a las luces del Marjal. Dicen que siguen a quien lleva candil.\nHoy hemos dibujado el valle: el río, el puente, la ermita arriba. Les he prometido que volveremos a clase en otoño."
+  },
+  "title": {
+   "en": "The teacher's notebook",
+   "es": "Cuaderno de la maestra"
+  },
+  "where": "escuela"
+ },
+ "diario_estacion": {
+  "text": {
+   "en": "Mist lichen is not toxic: it breathes. It sheds spores when the water warms.\nThe floaters are how it travels. They seek light and warmth; they do not attack, but their cloud wears anyone out.\nA cloth-and-herb filter is enough to cross. The hard part is convincing people to come back.",
+   "es": "El liquen brumal no es tóxico: respira. Suelta esporas cuando sube la temperatura del agua.\nLos flotadores son su manera de viajar. Buscan luz y calor; no atacan, pero su nube agota a cualquiera.\nUn filtro de tela y hierbas basta para cruzar. Lo difícil es convencer a la gente de volver."
+  },
+  "title": {
+   "en": "Station journal",
+   "es": "Diario de la Estación"
+  },
+  "where": "estacion_liquen"
+ },
+ "nota_bodega": {
+  "text": {
+   "en": "If you found this, you know how to look. What is in the chest is yours.\nLeave something for the next one.",
+   "es": "Si has encontrado esto, es que sabes mirar. Lo del arcón es para ti.\nDeja algo para el siguiente."
+  },
+  "title": {
+   "en": "Note in the cellar",
+   "es": "Nota en la bodega"
+  },
+  "where": "bodega_vieja"
+ },
+ "parte_fabrica": {
+  "text": {
+   "en": "Line 2 stopped. Water from the north intake arrives cloudy, with bluish threads.\nPumping says it is not their doing. Canning is suspended until further notice.\nWhoever locks up: leave the archive key in the office.",
+   "es": "Línea 2 parada. El agua de la toma norte llega turbia y con hilos azulados.\nBombeo dice que no es cosa suya. Se suspende el envasado hasta nuevo aviso.\nQuien cierre, que deje la llave del archivo en la oficina."
+  },
+  "title": {
+   "en": "Shift report",
+   "es": "Parte de turno"
+  },
+  "where": "conservas"
+ },
+ "registro_bombeo": {
+  "text": {
+   "en": "Day 3: normal flow. Day 9: foam at the spillway. Day 12: lichen has clogged the grate.\nDay 14: it glows at night. I am not going down to clean it alone.",
+   "es": "Día 3: caudal normal. Día 9: espuma en el aliviadero. Día 12: el liquen ha tapado la rejilla.\nDía 14: brilla de noche. No pienso bajar a limpiarlo solo."
+  },
+  "title": {
+   "en": "Pumping log",
+   "es": "Registro de bombeo"
+  },
+  "where": "bombeo"
+ }
+}

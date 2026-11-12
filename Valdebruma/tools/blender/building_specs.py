@@ -277,7 +277,7 @@ add(name="factory", kind="factory", label="Conservas Sotoalto", w=24.0, d=14.0, 
            ("chair", 8.7, -2.0, -90), ("chair", 10.1, -2.4, 90)],
     containers=[("locker", 11.5, -6.2, -90, "factory"), ("locker", 11.5, -5.7, -90, "factory"), ("locker", 11.5, -5.2, -90, "factory"), ("locker", 11.5, -4.7, -90, "factory"),
                 ("filing_cabinet", 7.6, 6.2, 0, "office"), ("filing_cabinet", 8.15, 6.2, 0, "office"), ("crate_wood", -7.6, -5.6, 0, "factory"), ("crate_wood", -8.6, -5.5, 10, "factory"),
-                ("crate_wood", 0.2, -5.6, 0, "factory"), ("chest_metal", 11.2, 1.0, -90, "factory"), ("cardboard_box", -5.0, 3.2, 0, "factory", 0), ("cardboard_box", -1.0, -0.3, 0, "factory")],
+                ("crate_wood", 0.2, -5.6, 0, "factory"), ("chest_metal", 11.2, 1.0, -90, "archive_office"), ("cardboard_box", -5.0, 3.2, 0, "factory", 0), ("cardboard_box", -1.0, -0.3, 0, "factory")],
     loot=[(-6.0, 2.0, 0.9, "factory"), (-1.8, 2.0, 0.9, "factory"), (-4.0, -1.5, 0.9, "factory"), (-3.0, 6.4, 0.58, "factory"), (-0.4, 6.4, 1.0, "factory"), (0.0, -3.0, 0.03, "factory"),
           (9.6, 4.6, 0.8, "office"), (9.4, -2.0, 0.8, "house_kitchen"), (-8.0, 5.0, 0.03, "tools")], doc="parte_fabrica")
 

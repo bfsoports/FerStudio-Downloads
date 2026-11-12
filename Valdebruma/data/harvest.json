@@ -1,0 +1,209 @@
+{
+ "bayas": {
+  "empty": "vegetation/bush_berry_empty",
+  "model": "vegetation/bush_berry",
+  "name": {
+   "en": "Berry bramble",
+   "es": "Zarza con bayas"
+  },
+  "radius": 1.3,
+  "regrow": 900,
+  "time": 2.5,
+  "verb": {
+   "en": "Pick berries",
+   "es": "Recoger bayas"
+  },
+  "yield": [
+   [
+    "bayas",
+    2,
+    5
+   ]
+  ]
+ },
+ "chatarra": {
+  "empty": "",
+  "keep": true,
+  "model": "props/barrel_rust",
+  "name": {
+   "en": "Drum of scrap",
+   "es": "Bidón con restos"
+  },
+  "radius": 0.9,
+  "regrow": 2400,
+  "time": 4.0,
+  "verb": {
+   "en": "Scavenge scrap",
+   "es": "Rebuscar chatarra"
+  },
+  "yield": [
+   [
+    "chatarra",
+    1,
+    3
+   ],
+   [
+    "clavos",
+    0,
+    4
+   ]
+  ]
+ },
+ "fibra": {
+  "empty": "vegetation/fiber_plant_empty",
+  "model": "vegetation/fiber_plant",
+  "name": {
+   "en": "Fibre rush",
+   "es": "Junco fibroso"
+  },
+  "radius": 0.7,
+  "regrow": 700,
+  "time": 2.2,
+  "verb": {
+   "en": "Cut fibre",
+   "es": "Cortar fibra"
+  },
+  "yield": [
+   [
+    "fibra",
+    2,
+    5
+   ]
+  ]
+ },
+ "hierbas": {
+  "empty": "vegetation/herb_plant_empty",
+  "model": "vegetation/herb_plant",
+  "name": {
+   "en": "Valley herbs",
+   "es": "Hierbas del valle"
+  },
+  "radius": 0.7,
+  "regrow": 800,
+  "time": 2.0,
+  "verb": {
+   "en": "Gather herbs",
+   "es": "Recoger hierbas"
+  },
+  "yield": [
+   [
+    "hierbas",
+    1,
+    3
+   ]
+  ]
+ },
+ "lena": {
+  "empty": "",
+  "keep": true,
+  "model": "vegetation/fallen_log",
+  "name": {
+   "en": "Fallen branches",
+   "es": "Ramas caídas"
+  },
+  "radius": 1.6,
+  "regrow": 1100,
+  "time": 3.5,
+  "tool_bonus": "hachuela",
+  "verb": {
+   "en": "Gather firewood",
+   "es": "Recoger leña"
+  },
+  "yield": [
+   [
+    "palo",
+    2,
+    5
+   ]
+  ]
+ },
+ "liquen": {
+  "empty": "",
+  "model": "props/lichen_cluster",
+  "name": {
+   "en": "Mist lichen",
+   "es": "Liquen brumal"
+  },
+  "radius": 0.8,
+  "regrow": 2000,
+  "time": 3.0,
+  "verb": {
+   "en": "Collect lichen",
+   "es": "Recoger liquen"
+  },
+  "yield": [
+   [
+    "liquen",
+    1,
+    2
+   ]
+  ]
+ },
+ "manzano": {
+  "empty": "vegetation/tree_apple_a_lod0",
+  "model": "vegetation/tree_apple_fruit_a_lod0",
+  "name": {
+   "en": "Apple tree",
+   "es": "Manzano"
+  },
+  "radius": 1.8,
+  "regrow": 1500,
+  "time": 3.0,
+  "trunk": 0.14,
+  "verb": {
+   "en": "Pick apples",
+   "es": "Recoger manzanas"
+  },
+  "yield": [
+   [
+    "manzana",
+    2,
+    4
+   ]
+  ]
+ },
+ "piedra": {
+  "empty": "",
+  "model": "vegetation/stone_pile",
+  "name": {
+   "en": "Stone pile",
+   "es": "Montón de piedras"
+  },
+  "radius": 0.9,
+  "regrow": 1800,
+  "time": 3.0,
+  "verb": {
+   "en": "Collect stones",
+   "es": "Recoger piedras"
+  },
+  "yield": [
+   [
+    "piedra",
+    2,
+    4
+   ]
+  ]
+ },
+ "setas": {
+  "empty": "",
+  "model": "vegetation/mushrooms",
+  "name": {
+   "en": "Mushrooms",
+   "es": "Setas"
+  },
+  "radius": 0.6,
+  "regrow": 1200,
+  "time": 2.0,
+  "verb": {
+   "en": "Pick mushrooms",
+   "es": "Recoger setas"
+  },
+  "yield": [
+   [
+    "setas",
+    1,
+    3
+   ]
+  ]
+ }
+}

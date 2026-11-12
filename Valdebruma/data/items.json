@@ -1,0 +1,930 @@
+{
+ "agua_potable": {
+  "cat": "drink",
+  "desc": {
+   "en": "Boiled or treated.",
+   "es": "Hervida o tratada."
+  },
+  "gives": "botella_vacia",
+  "id": "agua_potable",
+  "name": {
+   "en": "Clean water",
+   "es": "Agua potable"
+  },
+  "rarity": 0,
+  "stack": 5,
+  "use": {
+   "water": 38
+  },
+  "weight": 0.58
+ },
+ "agua_turbia": {
+  "cat": "drink",
+  "desc": {
+   "en": "Quenches thirst, but may upset you.",
+   "es": "Quita la sed, pero puede sentar mal."
+  },
+  "gives": "botella_vacia",
+  "id": "agua_turbia",
+  "name": {
+   "en": "Untreated water",
+   "es": "Agua sin tratar"
+  },
+  "rarity": 0,
+  "stack": 5,
+  "use": {
+   "effect": [
+    "malestar",
+    150,
+    0.5
+   ],
+   "water": 30
+  },
+  "weight": 0.58
+ },
+ "barrita": {
+  "cat": "food",
+  "desc": {
+   "en": "Quick energy for the road.",
+   "es": "Energía rápida para el camino."
+  },
+  "id": "barrita",
+  "name": {
+   "en": "Cereal bar",
+   "es": "Barrita de cereal"
+  },
+  "rarity": 0,
+  "stack": 10,
+  "use": {
+   "food": 11,
+   "stamina": 20
+  },
+  "weight": 0.06
+ },
+ "bayas": {
+  "cat": "food",
+  "desc": {
+   "en": "Picked at the forest edge.",
+   "es": "Recogidas en los lindes del bosque."
+  },
+  "id": "bayas",
+  "name": {
+   "en": "Bramble berries",
+   "es": "Bayas de zarza"
+  },
+  "rarity": 0,
+  "stack": 12,
+  "use": {
+   "food": 6,
+   "water": 4
+  },
+  "weight": 0.08
+ },
+ "botas_monte": {
+  "cat": "clothing",
+  "desc": {
+   "en": "Walking tires you less.",
+   "es": "Menos cansancio al caminar."
+  },
+  "dur": 400,
+  "equip": {
+   "slot": "pies",
+   "stamina": 0.15,
+   "warmth": 3,
+   "wet": 0.3
+  },
+  "id": "botas_monte",
+  "name": {
+   "en": "Hiking boots",
+   "es": "Botas de monte"
+  },
+  "rarity": 1,
+  "stack": 1,
+  "weight": 1.1
+ },
+ "botella_vacia": {
+  "cat": "drink",
+  "desc": {
+   "en": "Fill it at wells, pumps or the river.",
+   "es": "Se puede llenar en pozos, bombas o en el río."
+  },
+  "fill": "agua_turbia",
+  "id": "botella_vacia",
+  "name": {
+   "en": "Empty bottle",
+   "es": "Botella vacía"
+  },
+  "rarity": 0,
+  "stack": 5,
+  "weight": 0.08
+ },
+ "botiquin": {
+  "cat": "medical",
+  "desc": {
+   "en": "A thorough treatment.",
+   "es": "Cura completa y descanso para el cuerpo."
+  },
+  "id": "botiquin",
+  "name": {
+   "en": "First-aid kit",
+   "es": "Botiquín"
+  },
+  "rarity": 2,
+  "stack": 2,
+  "use": {
+   "cure": [
+    "aturdido",
+    "malestar"
+   ],
+   "health": 60
+  },
+  "weight": 0.5
+ },
+ "brujula": {
+  "cat": "tool",
+  "desc": {
+   "en": "Shows your heading while you carry it.",
+   "es": "Mientras la lleves verás el rumbo en pantalla."
+  },
+  "id": "brujula",
+  "name": {
+   "en": "Compass",
+   "es": "Brújula"
+  },
+  "rarity": 1,
+  "stack": 1,
+  "weight": 0.08
+ },
+ "chaqueta_campo": {
+  "cat": "clothing",
+  "desc": {
+   "en": "A sturdy coat.",
+   "es": "Abrigo resistente."
+  },
+  "dur": 300,
+  "equip": {
+   "slot": "torso",
+   "warmth": 9,
+   "wet": 0.2
+  },
+  "id": "chaqueta_campo",
+  "name": {
+   "en": "Field jacket",
+   "es": "Chaqueta de campo"
+  },
+  "rarity": 1,
+  "stack": 1,
+  "weight": 0.9
+ },
+ "chatarra": {
+  "cat": "material",
+  "desc": {
+   "en": "Sheet metal and loose parts.",
+   "es": "Chapa y piezas sueltas."
+  },
+  "id": "chatarra",
+  "name": {
+   "en": "Scrap metal",
+   "es": "Chatarra"
+  },
+  "rarity": 0,
+  "stack": 15,
+  "weight": 0.5
+ },
+ "cinta": {
+  "cat": "material",
+  "desc": {
+   "en": "Fixes almost anything.",
+   "es": "Arregla casi cualquier cosa."
+  },
+  "id": "cinta",
+  "name": {
+   "en": "Duct tape",
+   "es": "Cinta americana"
+  },
+  "rarity": 1,
+  "stack": 5,
+  "weight": 0.15
+ },
+ "clavos": {
+  "cat": "material",
+  "desc": {
+   "en": "A box of nails.",
+   "es": "Una caja de clavos."
+  },
+  "id": "clavos",
+  "name": {
+   "en": "Nails",
+   "es": "Clavos"
+  },
+  "rarity": 0,
+  "stack": 20,
+  "weight": 0.1
+ },
+ "conserva_pescado": {
+  "cat": "food",
+  "desc": {
+   "en": "A flat tin from Conservas Sotoalto.",
+   "es": "Lata plana de Conservas Sotoalto."
+  },
+  "id": "conserva_pescado",
+  "name": {
+   "en": "Tinned fish",
+   "es": "Conserva de pescado"
+  },
+  "rarity": 0,
+  "stack": 8,
+  "use": {
+   "food": 20
+  },
+  "weight": 0.15
+ },
+ "cuerda": {
+  "cat": "material",
+  "desc": {
+   "en": "Hand braided.",
+   "es": "Trenzada a mano."
+  },
+  "id": "cuerda",
+  "name": {
+   "en": "Rope",
+   "es": "Cuerda"
+  },
+  "rarity": 0,
+  "stack": 10,
+  "weight": 0.2
+ },
+ "espantador": {
+  "cat": "tool",
+  "desc": {
+   "en": "Tins and stones. The racket drives creatures off.",
+   "es": "Latas y piedras. El estruendo aleja a las criaturas."
+  },
+  "dur": 12,
+  "equip": {
+   "slot": "mano"
+  },
+  "id": "espantador",
+  "name": {
+   "en": "Rattle",
+   "es": "Espantador"
+  },
+  "rarity": 1,
+  "stack": 1,
+  "use": {
+   "deter": 26
+  },
+  "weight": 0.5
+ },
+ "farol": {
+  "cat": "tool",
+  "desc": {
+   "en": "Warm light all around.",
+   "es": "Luz cálida alrededor. Ahuyenta la oscuridad."
+  },
+  "dur": 100,
+  "equip": {
+   "light": "omni",
+   "slot": "mano"
+  },
+  "fuel": "liquen",
+  "id": "farol",
+  "name": {
+   "en": "Lantern",
+   "es": "Farol"
+  },
+  "rarity": 1,
+  "stack": 1,
+  "weight": 0.7
+ },
+ "fibra": {
+  "cat": "material",
+  "desc": {
+   "en": "Rushes and stems for braiding.",
+   "es": "Juncos y tallos para trenzar."
+  },
+  "id": "fibra",
+  "name": {
+   "en": "Plant fibre",
+   "es": "Fibra vegetal"
+  },
+  "rarity": 0,
+  "stack": 30,
+  "weight": 0.05
+ },
+ "filtro": {
+  "cat": "medical",
+  "desc": {
+   "en": "Spare filter. Wears out inside the mist.",
+   "es": "Recambio. Se gasta dentro de la bruma."
+  },
+  "id": "filtro",
+  "name": {
+   "en": "Mask filter",
+   "es": "Filtro de mascarilla"
+  },
+  "rarity": 1,
+  "stack": 6,
+  "weight": 0.1
+ },
+ "galletas": {
+  "cat": "food",
+  "desc": {
+   "en": "Dry. They make you thirsty.",
+   "es": "Secas. Dan sed."
+  },
+  "id": "galletas",
+  "name": {
+   "en": "Crackers",
+   "es": "Galletas saladas"
+  },
+  "rarity": 0,
+  "stack": 6,
+  "use": {
+   "food": 16,
+   "water": -5
+  },
+  "weight": 0.2
+ },
+ "gorro_lana": {
+  "cat": "clothing",
+  "desc": {
+   "en": "Keeps your head warm.",
+   "es": "Abriga la cabeza."
+  },
+  "dur": 200,
+  "equip": {
+   "slot": "cabeza",
+   "warmth": 4
+  },
+  "id": "gorro_lana",
+  "name": {
+   "en": "Wool hat",
+   "es": "Gorro de lana"
+  },
+  "rarity": 0,
+  "stack": 1,
+  "weight": 0.1
+ },
+ "guiso": {
+  "cat": "food",
+  "desc": {
+   "en": "Hot and hearty. Comforting.",
+   "es": "Caliente y contundente. Reconforta."
+  },
+  "id": "guiso",
+  "name": {
+   "en": "Field stew",
+   "es": "Guiso de campo"
+  },
+  "rarity": 1,
+  "stack": 3,
+  "use": {
+   "effect": [
+    "bien_alimentado",
+    600,
+    1.0
+   ],
+   "food": 46,
+   "temp": 18,
+   "water": 10
+  },
+  "weight": 0.45
+ },
+ "hachuela": {
+  "cat": "tool",
+  "desc": {
+   "en": "For firewood. Speeds up wood gathering.",
+   "es": "Para leña. Acelera la recogida de madera."
+  },
+  "dur": 120,
+  "equip": {
+   "slot": "mano"
+  },
+  "id": "hachuela",
+  "name": {
+   "en": "Hatchet",
+   "es": "Hachuela"
+  },
+  "rarity": 1,
+  "stack": 1,
+  "tool": "hachuela",
+  "weight": 0.8
+ },
+ "hierbas": {
+  "cat": "material",
+  "desc": {
+   "en": "Yarrow and other useful plants.",
+   "es": "Milenrama y otras plantas útiles."
+  },
+  "id": "hierbas",
+  "name": {
+   "en": "Valley herbs",
+   "es": "Hierbas del valle"
+  },
+  "rarity": 0,
+  "stack": 20,
+  "weight": 0.03
+ },
+ "impermeable": {
+  "cat": "clothing",
+  "desc": {
+   "en": "Not warm, but keeps you dry.",
+   "es": "Poca abriga, pero no cala."
+  },
+  "dur": 200,
+  "equip": {
+   "slot": "torso",
+   "warmth": 3,
+   "wet": 0.85
+  },
+  "id": "impermeable",
+  "name": {
+   "en": "Raincoat",
+   "es": "Impermeable"
+  },
+  "rarity": 1,
+  "stack": 1,
+  "weight": 0.5
+ },
+ "infusion": {
+  "cat": "drink",
+  "desc": {
+   "en": "Hot. Warms you up and settles the stomach.",
+   "es": "Caliente. Entona el cuerpo y calma el malestar."
+  },
+  "id": "infusion",
+  "name": {
+   "en": "Herbal infusion",
+   "es": "Infusión de hierbas"
+  },
+  "rarity": 1,
+  "stack": 3,
+  "use": {
+   "cure": [
+    "malestar"
+   ],
+   "effect": [
+    "abrigado",
+    240,
+    1.0
+   ],
+   "temp": 22,
+   "water": 26
+  },
+  "weight": 0.3
+ },
+ "lata_legumbres": {
+  "cat": "food",
+  "desc": {
+   "en": "Co-op preserve. Filling, eaten cold.",
+   "es": "Conserva de la cooperativa. Saciante y fría."
+  },
+  "id": "lata_legumbres",
+  "name": {
+   "en": "Canned beans",
+   "es": "Lata de legumbres"
+  },
+  "rarity": 0,
+  "stack": 6,
+  "use": {
+   "food": 34,
+   "water": 4
+  },
+  "weight": 0.42
+ },
+ "lata_melocoton": {
+  "cat": "food",
+  "desc": {
+   "en": "Sweet, with a little liquid.",
+   "es": "Dulce y con algo de líquido."
+  },
+  "id": "lata_melocoton",
+  "name": {
+   "en": "Peaches in syrup",
+   "es": "Melocotón en almíbar"
+  },
+  "rarity": 0,
+  "stack": 6,
+  "use": {
+   "food": 22,
+   "water": 12
+  },
+  "weight": 0.4
+ },
+ "linterna": {
+  "cat": "tool",
+  "desc": {
+   "en": "A focused beam. Uses batteries.",
+   "es": "Luz dirigida. Gasta pilas."
+  },
+  "dur": 100,
+  "equip": {
+   "light": "spot",
+   "slot": "mano"
+  },
+  "fuel": "pilas",
+  "id": "linterna",
+  "name": {
+   "en": "Flashlight",
+   "es": "Linterna"
+  },
+  "rarity": 1,
+  "stack": 1,
+  "weight": 0.3
+ },
+ "liquen": {
+  "cat": "material",
+  "desc": {
+   "en": "It glows faintly. The Institute studied it.",
+   "es": "Brilla débilmente. El Instituto lo estudiaba."
+  },
+  "id": "liquen",
+  "name": {
+   "en": "Mist lichen",
+   "es": "Liquen brumal"
+  },
+  "rarity": 2,
+  "stack": 10,
+  "weight": 0.1
+ },
+ "llave_archivo": {
+  "cat": "key",
+  "desc": {
+   "en": "For the Town Hall archive.",
+   "es": "Del archivo de la Casa Consistorial."
+  },
+  "id": "llave_archivo",
+  "name": {
+   "en": "Archive key",
+   "es": "Llave del archivo"
+  },
+  "rarity": 2,
+  "stack": 1,
+  "weight": 0.03
+ },
+ "llave_estacion": {
+  "cat": "key",
+  "desc": {
+   "en": "Opens the doors of Lichen Station.",
+   "es": "Abre las puertas de la Estación Liquen."
+  },
+  "id": "llave_estacion",
+  "name": {
+   "en": "Station keycard",
+   "es": "Tarjeta de la Estación"
+  },
+  "rarity": 3,
+  "stack": 1,
+  "weight": 0.02
+ },
+ "lona": {
+  "cat": "material",
+  "desc": {
+   "en": "Waterproof and tough.",
+   "es": "Impermeable y resistente."
+  },
+  "id": "lona",
+  "name": {
+   "en": "Tarp",
+   "es": "Lona"
+  },
+  "rarity": 1,
+  "stack": 3,
+  "weight": 1.0
+ },
+ "manzana": {
+  "cat": "food",
+  "desc": {
+   "en": "From the Las Eras orchard.",
+   "es": "Del huerto de Las Eras."
+  },
+  "id": "manzana",
+  "name": {
+   "en": "Apple",
+   "es": "Manzana"
+  },
+  "rarity": 0,
+  "stack": 10,
+  "use": {
+   "food": 9,
+   "water": 6
+  },
+  "weight": 0.15
+ },
+ "martillo": {
+  "cat": "tool",
+  "desc": {
+   "en": "Essential for solid building.",
+   "es": "Imprescindible para construir en firme."
+  },
+  "dur": 160,
+  "equip": {
+   "slot": "mano"
+  },
+  "id": "martillo",
+  "name": {
+   "en": "Hammer",
+   "es": "Martillo"
+  },
+  "rarity": 1,
+  "stack": 1,
+  "tool": "martillo",
+  "weight": 0.6
+ },
+ "mascarilla": {
+  "cat": "clothing",
+  "desc": {
+   "en": "Protects from spores while the filter lasts.",
+   "es": "Protege de las esporas mientras tenga filtro."
+  },
+  "dur": 100,
+  "equip": {
+   "filter": true,
+   "slot": "cara"
+  },
+  "fuel": "filtro",
+  "id": "mascarilla",
+  "name": {
+   "en": "Filter mask",
+   "es": "Mascarilla con filtros"
+  },
+  "rarity": 2,
+  "stack": 1,
+  "weight": 0.4
+ },
+ "mochila_grande": {
+  "cat": "clothing",
+  "desc": {
+   "en": "Twelve more slots and better load.",
+   "es": "Doce huecos más y mejor reparto del peso."
+  },
+  "equip": {
+   "carry": 16,
+   "slot": "espalda",
+   "slots": 12
+  },
+  "id": "mochila_grande",
+  "name": {
+   "en": "Trekking pack",
+   "es": "Mochila de travesía"
+  },
+  "rarity": 2,
+  "stack": 1,
+  "weight": 1.2
+ },
+ "mochila_pequena": {
+  "cat": "clothing",
+  "desc": {
+   "en": "Six more slots.",
+   "es": "Seis huecos más."
+  },
+  "equip": {
+   "carry": 8,
+   "slot": "espalda",
+   "slots": 6
+  },
+  "id": "mochila_pequena",
+  "name": {
+   "en": "Small backpack",
+   "es": "Mochila pequeña"
+  },
+  "rarity": 0,
+  "stack": 1,
+  "weight": 0.5
+ },
+ "palanca": {
+  "cat": "tool",
+  "desc": {
+   "en": "Opens stuck doors and crates.",
+   "es": "Abre puertas y cajas atascadas."
+  },
+  "dur": 60,
+  "equip": {
+   "slot": "mano"
+  },
+  "id": "palanca",
+  "name": {
+   "en": "Crowbar",
+   "es": "Palanca"
+  },
+  "rarity": 2,
+  "stack": 1,
+  "tool": "palanca",
+  "weight": 1.4
+ },
+ "palo": {
+  "cat": "material",
+  "desc": {
+   "en": "Dry branches. The basis of nearly everything.",
+   "es": "Ramas secas. Base de casi todo."
+  },
+  "id": "palo",
+  "name": {
+   "en": "Sticks",
+   "es": "Palos"
+  },
+  "rarity": 0,
+  "stack": 20,
+  "weight": 0.25
+ },
+ "pantalon_monte": {
+  "cat": "clothing",
+  "desc": {
+   "en": "Thick fabric.",
+   "es": "Tejido grueso."
+  },
+  "dur": 300,
+  "equip": {
+   "slot": "piernas",
+   "warmth": 5,
+   "wet": 0.15
+  },
+  "id": "pantalon_monte",
+  "name": {
+   "en": "Hiking trousers",
+   "es": "Pantalón de monte"
+  },
+  "rarity": 0,
+  "stack": 1,
+  "weight": 0.6
+ },
+ "pastillas": {
+  "cat": "medical",
+  "desc": {
+   "en": "Treats water without boiling.",
+   "es": "Para tratar agua sin hervirla."
+  },
+  "id": "pastillas",
+  "name": {
+   "en": "Purification tablets",
+   "es": "Pastillas potabilizadoras"
+  },
+  "rarity": 1,
+  "stack": 10,
+  "weight": 0.03
+ },
+ "piedra": {
+  "cat": "material",
+  "desc": {
+   "en": "A manageable rock.",
+   "es": "Canto manejable."
+  },
+  "id": "piedra",
+  "name": {
+   "en": "Stone",
+   "es": "Piedra"
+  },
+  "rarity": 0,
+  "stack": 15,
+  "weight": 0.6
+ },
+ "pilas": {
+  "cat": "material",
+  "desc": {
+   "en": "They power the flashlight.",
+   "es": "Alimentan la linterna."
+  },
+  "id": "pilas",
+  "name": {
+   "en": "Batteries",
+   "es": "Pilas"
+  },
+  "rarity": 1,
+  "stack": 10,
+  "weight": 0.06
+ },
+ "refresco": {
+  "cat": "drink",
+  "desc": {
+   "en": "Local fizzy drink. Sweet.",
+   "es": "Gaseosa local. Dulce."
+  },
+  "id": "refresco",
+  "name": {
+   "en": "Burbuja soda",
+   "es": "Refresco Burbuja"
+  },
+  "rarity": 0,
+  "stack": 6,
+  "use": {
+   "food": 3,
+   "stamina": 10,
+   "water": 22
+  },
+  "weight": 0.36
+ },
+ "setas": {
+  "cat": "food",
+  "desc": {
+   "en": "Unpleasant raw. Better roasted.",
+   "es": "Crudas sientan regular. Mejor asadas."
+  },
+  "id": "setas",
+  "name": {
+   "en": "Oakwood mushrooms",
+   "es": "Setas de robledal"
+  },
+  "rarity": 0,
+  "stack": 10,
+  "use": {
+   "effect": [
+    "malestar",
+    90,
+    0.4
+   ],
+   "food": 5
+  },
+  "weight": 0.1
+ },
+ "setas_asadas": {
+  "cat": "food",
+  "desc": {
+   "en": "A skewer cooked over the fire.",
+   "es": "Brocheta hecha a la lumbre."
+  },
+  "id": "setas_asadas",
+  "name": {
+   "en": "Roasted mushrooms",
+   "es": "Setas asadas"
+  },
+  "rarity": 0,
+  "stack": 10,
+  "use": {
+   "food": 15,
+   "temp": 6
+  },
+  "weight": 0.1
+ },
+ "tablon": {
+  "cat": "material",
+  "desc": {
+   "en": "Usable timber.",
+   "es": "Madera aprovechable."
+  },
+  "id": "tablon",
+  "name": {
+   "en": "Plank",
+   "es": "Tablón"
+  },
+  "rarity": 0,
+  "stack": 10,
+  "weight": 0.9
+ },
+ "tela": {
+  "cat": "material",
+  "desc": {
+   "en": "Clean scraps.",
+   "es": "Retales limpios."
+  },
+  "id": "tela",
+  "name": {
+   "en": "Cloth",
+   "es": "Tela"
+  },
+  "rarity": 0,
+  "stack": 20,
+  "weight": 0.1
+ },
+ "unguento": {
+  "cat": "medical",
+  "desc": {
+   "en": "Soothes and heals over time.",
+   "es": "Alivia y recupera poco a poco."
+  },
+  "id": "unguento",
+  "name": {
+   "en": "Herbal salve",
+   "es": "Ungüento de hierbas"
+  },
+  "rarity": 1,
+  "stack": 5,
+  "use": {
+   "effect": [
+    "alivio",
+    180,
+    1.0
+   ],
+   "health": 8
+  },
+  "weight": 0.12
+ },
+ "venda": {
+  "cat": "medical",
+  "desc": {
+   "en": "Restores some health.",
+   "es": "Recupera algo de salud."
+  },
+  "id": "venda",
+  "name": {
+   "en": "Bandage",
+   "es": "Venda"
+  },
+  "rarity": 0,
+  "stack": 10,
+  "use": {
+   "health": 14
+  },
+  "weight": 0.05
+ }
+}
