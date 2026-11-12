@@ -8,7 +8,16 @@ config_version=5
 config/name="Valdebruma"
 config/description="Supervivencia cooperativa en primera persona en un valle abandonado."
 config/version="0.1.0"
+run/main_scene="res://scenes/boot/boot.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
+
+[autoload]
+
+GameData="*res://autoload/game_data.gd"
+Config="*res://autoload/config.gd"
+Profile="*res://autoload/profile.gd"
+Net="*res://autoload/net.gd"
+Session="*res://autoload/session.gd"
 
 [display]
 

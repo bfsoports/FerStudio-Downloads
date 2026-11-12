@@ -11,6 +11,7 @@ extends Node
 
 const SAVE_PLAYER_EVERY_MS := 60000
 const SAVE_WORLD_EVERY_MS := 120000
+const SAVE_WORLD_DIRTY_MS := 15000       # si hubo cambios en objetos, se guarda antes
 
 var world: WorldMap
 var players: Dictionary = {}
@@ -36,6 +37,7 @@ var _creature_acc := 0.0
 var _world_save_ms := 0
 var _stat_tick := 0
 var stats_msgs := 0
+var world_dirty := false
 
 func start(world_name: String, opts: Dictionary) -> void:
 	world = GameData.world
@@ -54,6 +56,8 @@ func start(world_name: String, opts: Dictionary) -> void:
 	var saved := store.load_world()
 	ws.load_state(saved.get("objects", {}))
 	env.load_state(saved.get("env", {}))
+	if options.has("start_hour"):
+		env.hour = clampf(float(options.start_hour), 0.0, 23.9)
 	social.load_state(saved.get("social", {}))
 	creatures.spawn_all()
 	_world_save_ms = now_ms + SAVE_WORLD_EVERY_MS
@@ -71,6 +75,7 @@ func shutdown() -> void:
 	print("[servidor] estado guardado y servidor detenido")
 
 func save_world() -> void:
+	world_dirty = false
 	store.save_world({"objects": ws.save_state(), "env": env.save_state(), "social": social.save_state()})
 
 func _notification(what: int) -> void:
@@ -94,6 +99,8 @@ func _remove_player(p: ServerPlayer, why: String) -> void:
 	players.erase(p.peer)
 	by_account.erase(p.account)
 	broadcast(Protocol.S.PLAYER_LEAVE, {"id": p.peer, "why": why})
+	if players.is_empty() and world_dirty:
+		save_world()
 	print("[servidor] sale %s (%s). Conectados: %d" % [p.name, why, players.size()])
 
 # ---- bucle ---------------------------------------------------------------------------------------------
@@ -143,9 +150,15 @@ func _slow_tick(dt: float) -> void:
 		if now_ms - int(pending[id]) > 10000:
 			pending.erase(id)
 			Net.kick(id)
-	if now_ms >= _world_save_ms:
+	if now_ms >= _world_save_ms or (world_dirty and now_ms >= _world_save_ms - SAVE_WORLD_EVERY_MS + SAVE_WORLD_DIRTY_MS):
 		_world_save_ms = now_ms + SAVE_WORLD_EVERY_MS
 		save_world()
+	# parada ordenada del servidor dedicado: crear el archivo <datos>/<mundo>/stop
+	if Net.is_dedicated and FileAccess.file_exists(store.root + "/stop"):
+		DirAccess.remove_absolute(store.root + "/stop")
+		print("[servidor] archivo 'stop' detectado: parada ordenada")
+		shutdown()
+		get_tree().quit(0)
 
 # ---- envío -----------------------------------------------------------------------------------------------
 func send(p: ServerPlayer, id: int, data: Variant = null, reliable := true) -> void:
@@ -172,6 +185,7 @@ func send_sector(sector: int, id: int, data: Variant) -> void:
 			send(p, id, data)
 
 func obj_event(pos: Vector3, kind: int, oid: int, state: Variant) -> void:
+	world_dirty = true
 	send_sector(WorldMap.sector_key(pos.x, pos.z), Protocol.S.OBJ_EVENT, [kind, oid, state])
 
 func log_anomaly(p: ServerPlayer, what: String) -> void:
@@ -246,7 +260,9 @@ func handle_message(peer: int, id: int, data: Variant) -> void:
 		Protocol.C.REPORT: social.on_report(p, Guard.arr(data, 2))
 		Protocol.C.TRADE: social.on_trade(p, Guard.arr(data, 2))
 		Protocol.C.CONTRACT: progress.on_contract(p, Guard.arr(data, 2))
-		Protocol.C.PRIVACY: p.hidden = bool(Guard.i(data, 0, 1, 0))
+		Protocol.C.PRIVACY:
+			p.hidden = bool(Guard.i(data, 0, 1, 0))
+			broadcast(Protocol.S.PLAYER_UPDATE, p.public_info())
 		Protocol.C.COSMETIC: progress.on_cosmetic(p, Guard.arr(data, 2))
 		Protocol.C.RESPAWN: survival.on_respawn(p)
 		_: p.strikes += 1
@@ -337,6 +353,9 @@ func _new_character(p: ServerPlayer) -> void:
 	p.inv.add("agua_potable", 1)
 	p.inv.add("galletas", 1)
 	p.inv.add("venda", 1)
+	if bool(options.get("test_kit", false)):          # solo pruebas automáticas (--test-kit)
+		for e: Array in [["piedra", 8], ["palo", 12], ["tablon", 8], ["clavos", 12], ["fibra", 10], ["tela", 6], ["martillo", 1], ["botella_vacia", 1]]:
+			p.inv.add(String(e[0]), int(e[1]))
 
 func _spawn_point(p: ServerPlayer) -> Vector3:
 	var spawns: Array = world.info.get("spawns", [[256, 1000]])

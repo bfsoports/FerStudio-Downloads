@@ -149,7 +149,7 @@ func visible_equipment() -> Dictionary:
 	return {"hat": equipped_id("cabeza") != "", "pack": pack, "mask": equipped_id("cara") != "", "held": equipped_id("mano"), "rain": equipped_id("torso") == "impermeable"}
 
 func public_info() -> Dictionary:
-	return {"id": peer, "name": name, "cos": cosmetics, "eq": visible_equipment(), "group": group, "level": level()}
+	return {"id": peer, "name": name, "cos": cosmetics, "eq": visible_equipment(), "group": group, "level": level(), "hide": hidden}
 
 func stats_packet() -> Dictionary:
 	var eff: Array = []

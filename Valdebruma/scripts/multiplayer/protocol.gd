@@ -29,6 +29,11 @@ enum S {
 # ---- tipos de interacción (C.INTERACT) ----
 enum I { DOOR = 1, PICKUP, HARVEST, CONTAINER, STATION, DOC, REST, WATER_DRINK, WATER_FILL, STRUCT_USE, CONTRACT_BOARD }
 
+# ---- animaciones visibles para otros jugadores (campo 'anim' de la foto de estado) ----
+enum A { NONE, INTERACT, PICKUP, CONSUME, DOOR, SEARCH, BUILD, WAVE, POINT, SIT, COLD, TIRED, REST }
+# ---- acciones con duración (S.ACTION): [código, id, segundos] ; 0 = terminada o cancelada ----
+enum T { NONE, HARVEST, CRAFT, BUILD, DISMANTLE, REST, FILL }
+
 # ---- banderas de movimiento ----
 const F_CROUCH := 1
 const F_SPRINT := 2
