@@ -172,8 +172,8 @@ CREATURES = {
     "brumal": {"name": T("Brumal", "Brumal"), "desc": T("Acechador del robledal. Le molestan el ruido y la luz.", "A stalker of the oakwood. Noise and light bother it."), "model": "creatures/brumal",
                "walk": 1.5, "run": 6.0, "sight": 34, "fov": 110, "hear": 1.0, "leash": 85, "contact": 1.7, "hit": {"health": 14, "stamina": 30, "effect": ["aturdido", 8, 1.0]},
                "float": 0.0, "radius": 0.7, "behavior": "stalker", "fear_light": True},
-    "zarzo": {"name": T("Zarzo", "Zarzo"), "desc": T("Pequeño recolector asustadizo. Se hace una bola si lo acorralan.", "A small, skittish forager. Curls up when cornered."), "model": "creatures/zarzo",
-              "walk": 0.9, "run": 4.6, "sight": 14, "fov": 200, "hear": 1.4, "leash": 60, "contact": 0.0, "float": 0.0, "radius": 0.3, "behavior": "skittish"},
+    "zarzo": {"name": T("Zarzo", "Zarzo"), "desc": T("Pequeño recolector asustadizo. Se entierra a toda prisa si lo acorralan.", "A small, skittish forager. Digs itself in fast when cornered."), "model": "creatures/zarzo",
+              "walk": 0.7, "run": 3.2, "sight": 14, "fov": 200, "hear": 1.4, "leash": 60, "contact": 0.0, "float": 0.0, "radius": 0.3, "behavior": "skittish"},
     "farol": {"name": T("Farol", "Wisp"), "desc": T("Flota sobre el marjal y suelta esporas si te acercas.", "Drifts over the marsh and puffs spores when you get close."), "model": "creatures/farol",
               "walk": 0.7, "run": 1.5, "sight": 22, "fov": 360, "hear": 0.2, "leash": 70, "contact": 3.6, "hit": {"effect": ["esporas", 60, 1.0]}, "float": 1.9, "radius": 0.5, "behavior": "drifter", "likes_light": True},
 }

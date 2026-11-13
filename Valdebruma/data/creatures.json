@@ -63,8 +63,8 @@
   "behavior": "skittish",
   "contact": 0.0,
   "desc": {
-   "en": "A small, skittish forager. Curls up when cornered.",
-   "es": "Pequeño recolector asustadizo. Se hace una bola si lo acorralan."
+   "en": "A small, skittish forager. Digs itself in fast when cornered.",
+   "es": "Pequeño recolector asustadizo. Se entierra a toda prisa si lo acorralan."
   },
   "float": 0.0,
   "fov": 200,
@@ -76,8 +76,8 @@
    "es": "Zarzo"
   },
   "radius": 0.3,
-  "run": 4.6,
+  "run": 3.2,
   "sight": 14,
-  "walk": 0.9
+  "walk": 0.7
  }
 }

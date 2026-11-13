@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/character.gdshader" id="1_qea67"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/rd_survivor_albedo.jpg" id="2_plcbv"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/rd_survivor_normal.png" id="3_iyitq"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/rd_survivor_orm.jpg" id="4_mdh8l"]
+
+[resource]
+resource_name = "ch_survivor"
+render_priority = 0
+shader = ExtResource("1_qea67")
+shader_parameter/albedo_tex = ExtResource("2_plcbv")
+shader_parameter/orm_tex = ExtResource("4_mdh8l")
+shader_parameter/normal_tex = ExtResource("3_iyitq")
+shader_parameter/normal_strength = null
+shader_parameter/tint_gain = null

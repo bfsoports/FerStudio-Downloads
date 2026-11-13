@@ -2,23 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cie826g1sred2"
-path="res://.godot/imported/rodin_preview_texture_normal.png-9bcc3bfd047e1534689d582c2c70c7be.ctex"
+uid="uid://b0voh87s70860"
+path.s3tc="res://.godot/imported/rd_zarzo_orm.jpg-43f1ca300a522a4a28a20e5d09a1957d.s3tc.ctex"
+path.etc2="res://.godot/imported/rd_zarzo_orm.jpg-43f1ca300a522a4a28a20e5d09a1957d.etc2.ctex"
 metadata={
-"vram_texture": false
-}
-generator_parameters={
-"md5": "0366fec979313bb397e082a85601f490"
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/models/characters/rodin_preview_texture_normal.png"
-dest_files=["res://.godot/imported/rodin_preview_texture_normal.png-9bcc3bfd047e1534689d582c2c70c7be.ctex"]
+source_file="res://assets/textures/pbr/rd_zarzo_orm.jpg"
+dest_files=["res://.godot/imported/rd_zarzo_orm.jpg-43f1ca300a522a4a28a20e5d09a1957d.s3tc.ctex", "res://.godot/imported/rd_zarzo_orm.jpg-43f1ca300a522a4a28a20e5d09a1957d.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +39,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

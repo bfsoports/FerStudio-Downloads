@@ -2,29 +2,28 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3u4euy8fylyg"
-path="res://.godot/imported/rodin_brumal_preview_texture_diffuse.png-f57945d8c719b72eb9329bd6a6fa3ec2.ctex"
+uid="uid://vh6y440pacyv"
+path.s3tc="res://.godot/imported/rd_van_normal.png-115945875900a567dc16dea82719e22f.s3tc.ctex"
+path.etc2="res://.godot/imported/rd_van_normal.png-115945875900a567dc16dea82719e22f.etc2.ctex"
 metadata={
-"vram_texture": false
-}
-generator_parameters={
-"md5": "f05183eb399550ae572c130b36670af1"
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/models/creatures/rodin_brumal_preview_texture_diffuse.png"
-dest_files=["res://.godot/imported/rodin_brumal_preview_texture_diffuse.png-f57945d8c719b72eb9329bd6a6fa3ec2.ctex"]
+source_file="res://assets/textures/pbr/rd_van_normal.png"
+dest_files=["res://.godot/imported/rd_van_normal.png-115945875900a567dc16dea82719e22f.s3tc.ctex", "res://.godot/imported/rd_van_normal.png-115945875900a567dc16dea82719e22f.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
@@ -40,4 +39,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

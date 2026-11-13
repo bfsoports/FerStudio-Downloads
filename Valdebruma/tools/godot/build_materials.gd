@@ -38,12 +38,17 @@ func _build(d: Dictionary) -> Material:
 		"pbr":
 			var m := ORMMaterial3D.new()
 			var base: String = TEX + "pbr/" + String(d.set)
+			var nbase: String = TEX + "pbr/" + String(d.get("normal_set", d.set))
 			m.albedo_texture = load(base + "_albedo.jpg")
-			m.orm_texture = load(base + "_orm.jpg")
-			if ResourceLoader.exists(base + "_normal.png"):
+			m.orm_texture = load(TEX + "pbr/" + String(d.get("orm_set", d.set)) + "_orm.jpg")
+			if ResourceLoader.exists(nbase + "_normal.png"):
 				m.normal_enabled = true
-				m.normal_texture = load(base + "_normal.png")
+				m.normal_texture = load(nbase + "_normal.png")
 				m.normal_scale = d.get("normal", 1.0)
+			if d.has("emission_set"):
+				m.emission_enabled = true
+				m.emission_texture = load(TEX + "pbr/" + String(d.emission_set) + "_emission.jpg")
+				m.emission_energy_multiplier = d.get("emission_energy", 1.0)
 			m.uv1_scale = _uv(d)
 			m.vertex_color_use_as_albedo = true
 			m.albedo_color = _col(d.get("tint", [1, 1, 1]))

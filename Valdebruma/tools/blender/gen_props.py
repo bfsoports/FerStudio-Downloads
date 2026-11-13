@@ -681,8 +681,10 @@ def run():
         fn()
     path = os.path.join(vb.DATA, "models", "props.json")
     old = {}
-    if ONLY and os.path.exists(path):
+    if os.path.exists(path):
         old = json.load(open(path))
+        if not ONLY:      # regeneración completa: solo se conservan los modelos importados de Rodin
+            old = {k: v for k, v in old.items() if v.get("source") == "rodin"}
     old.update(REG)
     vb.write_json("models/props.json", old)
     for k, v in sorted(REG.items()):

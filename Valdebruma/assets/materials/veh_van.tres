@@ -1,0 +1,13 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/rd_van_albedo.jpg" id="1_wkbqu"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/rd_van_normal.png" id="2_j36eg"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/rd_van_orm.jpg" id="3_ejjxx"]
+
+[resource]
+resource_name = "veh_van"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_wkbqu")
+orm_texture = ExtResource("3_ejjxx")
+normal_enabled = true
+normal_texture = ExtResource("2_j36eg")

@@ -20,6 +20,7 @@ var _clip := ""
 var _held: Node3D
 var _held_id := "-"
 var _light: OmniLight3D
+var _clips: Dictionary = {}   # metadatos de los clips (duración, bucle, velocidad de marcha)
 
 func setup(d: Dictionary) -> void:
 	peer = int(d.id)
@@ -28,6 +29,7 @@ func setup(d: Dictionary) -> void:
 	add_child(model)
 	anim = model.find_child("AnimationPlayer", true, false)
 	CharacterLook.fix_loops(anim, "res://data/models/survivor.json")
+	_clips = DataFiles.dict("res://data/models/survivor.json").get("clips", {})
 	label = Label3D.new()
 	label.position.y = 2.05
 	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
@@ -62,13 +64,11 @@ func apply_info(d: Dictionary) -> void:
 			_held.queue_free()
 			_held = null
 		var sk: Skeleton3D = model.find_child("Skeleton3D", true, false)
-		if held_id != "" and sk != null and sk.find_bone("hand.R") >= 0:
+		if held_id != "" and sk != null and sk.find_bone("item.R") >= 0 and AssetLib.has_model("items/" + held_id):
 			var att := BoneAttachment3D.new()
-			att.bone_name = "hand.R"
+			att.bone_name = "item.R"       # palma: Y = eje del puño, Z = hacia los dedos
 			sk.add_child(att)
-			var m := AssetLib.model("items/" + held_id)
-			m.position = Vector3(0, 0.08, 0)
-			att.add_child(m)
+			att.add_child(AssetLib.model("items/" + held_id))
 			_held = att
 
 func push(pos: Vector3, yaw: float, flags: int, a: int) -> void:
@@ -101,6 +101,11 @@ func _process(delta: float) -> void:
 	_light.visible = (fl & Protocol.F_LIGHT) != 0
 	_animate(fl, int(b[4]))
 
+## Ritmo de un clip de marcha para que los pies no patinen: velocidad real / velocidad del clip.
+func _pace(clip: String, lo: float, hi: float) -> float:
+	var v := float((_clips.get(clip, {}) as Dictionary).get("speed", 0.0))
+	return clampf(_speed / v, lo, hi) if v > 0.05 else 1.0
+
 func _animate(fl: int, code: int) -> void:
 	if anim == null:
 		return
@@ -108,22 +113,25 @@ func _animate(fl: int, code: int) -> void:
 	var rate := 1.0
 	if (fl & Protocol.F_DOWN) != 0:
 		clip = "faint"
+	elif (fl & Protocol.F_SWIM) != 0:
+		clip = "swim"
+		rate = clampf(0.6 + _speed * 0.35, 0.6, 1.4)
 	elif code != Protocol.A.NONE and _speed < 1.0:
 		clip = ["idle", "interact", "pickup", "consume", "open_door", "search", "build", "wave", "point", "sit", "cold", "tired", "sit"][clampi(code, 0, 12)]
-	elif (fl & Protocol.F_ON_FLOOR) == 0 and (fl & Protocol.F_SWIM) == 0 and _speed > 1.0:
+	elif (fl & Protocol.F_ON_FLOOR) == 0 and _speed > 1.0:
 		clip = "fall"
 	elif (fl & Protocol.F_CROUCH) != 0:
 		clip = "crouch_walk" if _speed > 0.4 else "crouch_idle"
-		rate = clampf(_speed / 1.2, 0.6, 1.6) if _speed > 0.4 else 1.0
-	elif _speed > 4.8:
+		rate = _pace(clip, 0.6, 1.7) if _speed > 0.4 else 1.0
+	elif _speed > 4.9:
 		clip = "sprint"
-		rate = clampf(_speed / 5.6, 0.8, 1.3)
-	elif _speed > 2.4:
+		rate = _pace(clip, 0.8, 1.3)
+	elif _speed > 2.1:
 		clip = "jog"
-		rate = clampf(_speed / 3.3, 0.75, 1.35)
+		rate = _pace(clip, 0.7, 1.5)
 	elif _speed > 0.35:
 		clip = "walk"
-		rate = clampf(_speed / 1.6, 0.6, 1.5)
+		rate = _pace(clip, 0.6, 1.5)
 	if clip != _clip and anim.has_animation(clip):
 		_clip = clip
 		anim.play(clip, 0.25)

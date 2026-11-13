@@ -287,13 +287,6 @@ def camp():
     reg("campfire_ring", fin(p, "campfire_ring", bevel=0.0, smooth=60), solid=False)
 
 
-def car_body(p, body, cabin, width, mat, cab_inset=0.1):
-    p.push(rot=(90, 0, 90))
-    p.prism(body, -width / 2, width / 2, mat)
-    p.prism(cabin, -width / 2 + cab_inset, width / 2 - cab_inset, "glass_dark", cap_mat="glass_dark")
-    p.pop()
-
-
 def wheel(p, x, y, r, w=0.2, flat=False):
     p.push((x, y, r * (0.86 if flat else 1.0)), (0, 90, 0), (0.86 if flat else 1.0, 1, 1))
     p.lathe([(r * 0.55, -w / 2), (r, -w / 2 + 0.03), (r, w / 2 - 0.03), (r * 0.55, w / 2)], "rubber", seg=12, close=False)
@@ -303,59 +296,8 @@ def wheel(p, x, y, r, w=0.2, flat=False):
 
 @prop
 def vehicles():
-    for nm, mat in (("car_sedan", "metal_blue"), ("car_sedan_red", "metal_red")):
-        p = P()
-        body = [(-2.12, 0.34), (2.1, 0.34), (2.16, 0.6), (2.08, 0.8), (1.15, 0.9), (-1.25, 0.92), (-2.08, 0.86), (-2.18, 0.62)]
-        cabin = [(-1.2, 0.9), (1.1, 0.88), (0.62, 1.38), (-0.6, 1.4)]
-        car_body(p, body, cabin, 1.66, mat)
-        p.box((0, 0, 1.4), (1.42, 1.26, 0.04), mat)
-        for y in (-1.2, 0.0, 1.1):
-            for sx in (-1, 1):
-                top = 1.39
-                p.box((sx * 0.72, y * 0.52 if y else 0.0, 1.15), (0.05, 0.07, 0.5), mat)
-        for sx in (-1, 1):
-            for y in (-1.32, 1.3):
-                wheel(p, sx * 0.76, y, 0.31, flat=(sx > 0 and y > 0))
-            p.box((sx * 0.6, -2.15, 0.68), (0.3, 0.05, 0.12), "lamp_glass")
-            p.box((sx * 0.62, 2.14, 0.72), (0.28, 0.05, 0.1), "paint_red")
-        p.box((0, -2.2, 0.42), (1.7, 0.1, 0.16), "plastic_black")
-        p.box((0, 2.2, 0.44), (1.7, 0.1, 0.16), "plastic_black")
-        p.box((0, 0, 0.3), (1.5, 3.9, 0.1), "plastic_black")
-        ob = fin(p, nm, bevel=0.02, ao_dist=0.5, smooth=40)
-        ob.rotation_euler = (0, math.radians(1.2), 0)
-        reg(nm, ob, collider=[1.7, 1.4, 4.3], container={"slots": 6, "lid": {"type": "none"}})
-    p = P()                                                      # furgoneta
-    body = [(-2.3, 0.36), (2.35, 0.36), (2.4, 0.7), (2.36, 1.95), (-1.35, 1.98), (-1.75, 1.2), (-2.34, 1.05), (-2.4, 0.6)]
-    p.push(rot=(90, 0, 90)); p.prism(body, -0.9, 0.9, "metal_white"); p.pop()
-    p.box((0, -1.56, 1.52), (1.6, 0.5, 0.6), "glass_dark", rot=(-28, 0, 0))
-    for sx in (-1, 1):
-        p.box((sx * 0.905, -0.95, 1.45), (0.01, 0.7, 0.5), "glass_dark")
-        for y in (-1.5, 1.45):
-            wheel(p, sx * 0.82, y, 0.34, flat=(sx < 0 and y > 0))
-        p.box((sx * 0.65, -2.38, 0.8), (0.3, 0.05, 0.14), "lamp_glass")
-        p.box((sx * 0.8, 2.4, 1.0), (0.12, 0.04, 0.3), "paint_red")
-    p.box((0, -2.42, 0.45), (1.84, 0.1, 0.18), "plastic_black")
-    p.box((0, 2.42, 0.45), (1.84, 0.1, 0.18), "plastic_black")
-    sign_quad(p, "st_coop", 1.5, 0.5, c=(0.906, 0.6, 1.25), rot=(0, 0, 90))
-    reg("car_van", fin(p, "car_van", bevel=0.03, ao_dist=0.5, smooth=40), collider=[1.85, 2.0, 4.8], container={"slots": 10, "lid": {"type": "none"}})
-    p = P()                                                      # tractor
-    p.box((0, -0.8, 1.05), (0.7, 1.6, 0.6), "metal_red")
-    p.box((0, -0.8, 0.7), (0.5, 1.9, 0.3), "metal_dark")
-    p.box((0, -1.62, 1.05), (0.6, 0.06, 0.5), "metal_dark")
-    p.box((0, 0.6, 0.95), (1.0, 1.2, 0.5), "metal_red")
-    for sx in (-1, 1):
-        wheel(p, sx * 0.78, 0.7, 0.75, w=0.38)
-        wheel(p, sx * 0.62, -1.3, 0.4, w=0.2, flat=(sx > 0))
-        p.box((sx * 0.78, 0.7, 1.58), (0.42, 1.1, 0.05), "metal_red")
-        for y in (0.15, 1.2):
-            p.box((sx * 0.5, y, 2.0), (0.05, 0.05, 1.3), "metal_dark")
-    p.box((0, 0.67, 2.66), (1.15, 1.25, 0.06), "metal_red")
-    p.box((0, 0.75, 1.3), (0.5, 0.5, 0.12), "leather_brown")
-    p.box((0, 1.0, 1.6), (0.5, 0.08, 0.5), "leather_brown")
-    p.tube([(0, 0.2, 1.3), (0, 0.05, 1.75)], 0.02, "metal_dark", seg=5)
-    p.lathe([(0.2, 0), (0.2, 0.03)], "plastic_black", seg=10, c=(0, 0.05, 1.75), rot=(-65, 0, 0), close=True)
-    p.tube([(0.28, -1.1, 1.35), (0.28, -1.1, 2.3)], 0.035, "metal_rust", seg=6)
-    reg("tractor", fin(p, "tractor", bevel=0.012, ao_dist=0.5), collider=[1.9, 2.4, 3.6])
+    # Turismo, furgoneta y tractor ya no se modelan aquí: son modelos de Hyper3D Rodin
+    # integrados por tools/blender/import_rodin.py (entradas "source": "rodin" de props.json).
     p = P()                                                      # remolque agrícola
     p.box((0, 0, 0.85), (1.9, 3.4, 0.1), "wood_grey")
     for sx in (-1, 1):

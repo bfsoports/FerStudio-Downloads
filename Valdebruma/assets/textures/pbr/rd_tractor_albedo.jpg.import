@@ -2,23 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://323jxpnjydu2"
-path="res://.godot/imported/rodin_preview_texture_metallic-texture_roughness.png-cb4a28014d2d13ab16b0e4390802f882.ctex"
+uid="uid://c6v571qvy4j5l"
+path.s3tc="res://.godot/imported/rd_tractor_albedo.jpg-d136a42d18460aab413c58b502c839e3.s3tc.ctex"
+path.etc2="res://.godot/imported/rd_tractor_albedo.jpg-d136a42d18460aab413c58b502c839e3.etc2.ctex"
 metadata={
-"vram_texture": false
-}
-generator_parameters={
-"md5": "9ed3825a27fe79092e8e94c97ce894f3"
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/models/characters/rodin_preview_texture_metallic-texture_roughness.png"
-dest_files=["res://.godot/imported/rodin_preview_texture_metallic-texture_roughness.png-cb4a28014d2d13ab16b0e4390802f882.ctex"]
+source_file="res://assets/textures/pbr/rd_tractor_albedo.jpg"
+dest_files=["res://.godot/imported/rd_tractor_albedo.jpg-d136a42d18460aab413c58b502c839e3.s3tc.ctex", "res://.godot/imported/rd_tractor_albedo.jpg-d136a42d18460aab413c58b502c839e3.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +39,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

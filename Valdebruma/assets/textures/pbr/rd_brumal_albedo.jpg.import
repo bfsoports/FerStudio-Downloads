@@ -2,23 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bysd2lt3r6136"
-path="res://.godot/imported/rodin_zarzo_preview_texture_metallic-texture_roughness.png-6147f5bb88db859ba2702ac8fc88626c.ctex"
+uid="uid://op6x4mrln5uv"
+path.s3tc="res://.godot/imported/rd_brumal_albedo.jpg-d20c3c55364153ff9a5e1d01bfd7a1bb.s3tc.ctex"
+path.etc2="res://.godot/imported/rd_brumal_albedo.jpg-d20c3c55364153ff9a5e1d01bfd7a1bb.etc2.ctex"
 metadata={
-"vram_texture": false
-}
-generator_parameters={
-"md5": "69c95c2ee9d14291e360c02345d14486"
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/models/creatures/rodin_zarzo_preview_texture_metallic-texture_roughness.png"
-dest_files=["res://.godot/imported/rodin_zarzo_preview_texture_metallic-texture_roughness.png-6147f5bb88db859ba2702ac8fc88626c.ctex"]
+source_file="res://assets/textures/pbr/rd_brumal_albedo.jpg"
+dest_files=["res://.godot/imported/rd_brumal_albedo.jpg-d20c3c55364153ff9a5e1d01bfd7a1bb.s3tc.ctex", "res://.godot/imported/rd_brumal_albedo.jpg-d20c3c55364153ff9a5e1d01bfd7a1bb.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +39,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

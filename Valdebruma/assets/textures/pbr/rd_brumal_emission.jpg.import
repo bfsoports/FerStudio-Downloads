@@ -2,23 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1w7jnox7agwf"
-path="res://.godot/imported/rodin_brumal_preview_texture_metallic-texture_roughness.png-19282cecc2fb02ad788640a11c374213.ctex"
+uid="uid://dcwjgh8e7aahc"
+path.s3tc="res://.godot/imported/rd_brumal_emission.jpg-3bcde7d008a2ede5e3f2c8b62624b979.s3tc.ctex"
+path.etc2="res://.godot/imported/rd_brumal_emission.jpg-3bcde7d008a2ede5e3f2c8b62624b979.etc2.ctex"
 metadata={
-"vram_texture": false
-}
-generator_parameters={
-"md5": "7f4f4d0945389dcaad6983181ada838d"
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/models/creatures/rodin_brumal_preview_texture_metallic-texture_roughness.png"
-dest_files=["res://.godot/imported/rodin_brumal_preview_texture_metallic-texture_roughness.png-19282cecc2fb02ad788640a11c374213.ctex"]
+source_file="res://assets/textures/pbr/rd_brumal_emission.jpg"
+dest_files=["res://.godot/imported/rd_brumal_emission.jpg-3bcde7d008a2ede5e3f2c8b62624b979.s3tc.ctex", "res://.godot/imported/rd_brumal_emission.jpg-3bcde7d008a2ede5e3f2c8b62624b979.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +39,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

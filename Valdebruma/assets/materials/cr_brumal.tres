@@ -1,0 +1,17 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/rd_brumal_albedo.jpg" id="1_kpshn"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/rd_brumal_emission.jpg" id="2_d0xwg"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/rd_brumal_normal.png" id="3_y7c01"]
+[ext_resource type="Texture2D" path="res://assets/textures/pbr/rd_brumal_orm.jpg" id="4_pci2r"]
+
+[resource]
+resource_name = "cr_brumal"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_kpshn")
+orm_texture = ExtResource("4_pci2r")
+emission_enabled = true
+emission_energy_multiplier = 2.2
+emission_texture = ExtResource("2_d0xwg")
+normal_enabled = true
+normal_texture = ExtResource("3_y7c01")

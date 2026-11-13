@@ -2,23 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi2oq7fnun6pc"
-path="res://.godot/imported/rodin_brumal_preview_texture_normal.png-b9e2032748131fef7209ef59ca2939b3.ctex"
+uid="uid://b0mhilyrs4c6e"
+path.s3tc="res://.godot/imported/rd_tractor_orm.jpg-245918ec42e48bc33ab51da4f6b0d3e0.s3tc.ctex"
+path.etc2="res://.godot/imported/rd_tractor_orm.jpg-245918ec42e48bc33ab51da4f6b0d3e0.etc2.ctex"
 metadata={
-"vram_texture": false
-}
-generator_parameters={
-"md5": "3750af12e01b7462fce4b3e4f953cb7c"
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/models/creatures/rodin_brumal_preview_texture_normal.png"
-dest_files=["res://.godot/imported/rodin_brumal_preview_texture_normal.png-b9e2032748131fef7209ef59ca2939b3.ctex"]
+source_file="res://assets/textures/pbr/rd_tractor_orm.jpg"
+dest_files=["res://.godot/imported/rd_tractor_orm.jpg-245918ec42e48bc33ab51da4f6b0d3e0.s3tc.ctex", "res://.godot/imported/rd_tractor_orm.jpg-245918ec42e48bc33ab51da4f6b0d3e0.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +39,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
