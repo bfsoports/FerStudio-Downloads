@@ -63,13 +63,7 @@ func apply_info(d: Dictionary) -> void:
 		if _held != null:
 			_held.queue_free()
 			_held = null
-		var sk: Skeleton3D = model.find_child("Skeleton3D", true, false)
-		if held_id != "" and sk != null and sk.find_bone("item.R") >= 0 and AssetLib.has_model("items/" + held_id):
-			var att := BoneAttachment3D.new()
-			att.bone_name = "item.R"       # palma: Y = eje del puño, Z = hacia los dedos
-			sk.add_child(att)
-			att.add_child(AssetLib.model("items/" + held_id))
-			_held = att
+		_held = HeldItems.attach(model.find_child("Skeleton3D", true, false), held_id)
 
 func push(pos: Vector3, yaw: float, flags: int, a: int) -> void:
 	_buf.append([Time.get_ticks_msec(), pos, yaw, flags, a])

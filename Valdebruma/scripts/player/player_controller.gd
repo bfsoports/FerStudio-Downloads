@@ -199,16 +199,10 @@ func _refresh_held() -> void:
 		held.queue_free()
 		held = null
 	if id != "":
-		var sk: Skeleton3D = arms.find_child("Skeleton3D", true, false)
-		if sk != null:
-			var att := BoneAttachment3D.new()
-			att.bone_name = "item.R"
-			sk.add_child(att)
-			var m := AssetLib.model("items/" + id)
-			m.rotation_degrees = Vector3(0, 90, 0) if id in ["linterna", "hachuela", "martillo", "palanca", "espantador"] else Vector3.ZERO
-			m.position = Vector3(0, -0.02, 0)
-			att.add_child(m)
-			held = att
+		held = HeldItems.attach(arms.find_child("Skeleton3D", true, false), id)
+		if held != null:
+			for mi: Node in held.find_children("*", "MeshInstance3D", true, false):
+				(mi as MeshInstance3D).cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	if id != "linterna":
 		light_on = false
 
@@ -342,7 +336,7 @@ func _update_arms(flat_speed: float, speed: float) -> void:
 		clip = _one_shot
 	elif Session.container_key >= 0:
 		clip = "fp_search"
-	elif _held_id in ["linterna", "farol"]:
+	elif _held_id != "":
 		clip = "fp_hold"
 	elif flat_speed > 4.6 and speed >= SPRINT:
 		clip = "fp_sprint"

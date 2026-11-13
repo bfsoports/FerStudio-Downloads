@@ -150,9 +150,11 @@ class Animator:
             pb.scale = (1, 1, 1)
 
 
-def arm_ik(pose, names, rest, target, pole, hand_dir):
+def arm_ik(pose, names, rest, target, pole, hand_dir, roll=0.0, twist=0.0):
     """Cadena de dos huesos + mano hacia 'target' (posición de la muñeca).
-    names = (brazo, antebrazo, mano); rest = {hueso: (cabeza, cola)} en reposo."""
+    names = (brazo, antebrazo, mano); rest = {hueso: (cabeza, cola)} en reposo.
+    roll gira el brazo entero sobre su eje y twist el antebrazo (grados): orientan la palma
+    sin mover la muñeca."""
     up, fo, ha = names
     S = Vector(rest[up][0])
     l1 = (Vector(rest[up][1]) - S).length
@@ -172,7 +174,11 @@ def arm_ik(pose, names, rest, target, pole, hand_dir):
     r_fo = (Vector(rest[fo][1]) - Vector(rest[fo][0])).normalized()
     r_ha = (Vector(rest[ha][1]) - Vector(rest[ha][0])).normalized()
     q_up = r_up.rotation_difference((elbow - S).normalized())
+    if roll:
+        q_up = q_up @ Quaternion(r_up, math.radians(roll))
     q_fo = r_fo.rotation_difference(q_up.inverted() @ (wrist - elbow).normalized())
+    if twist:
+        q_fo = q_fo @ Quaternion(r_fo, math.radians(twist))
     acc = q_up @ q_fo
     q_ha = r_ha.rotation_difference(acc.inverted() @ Vector(hand_dir).normalized())
     pose[up], pose[fo], pose[ha] = q_up, q_fo, q_ha

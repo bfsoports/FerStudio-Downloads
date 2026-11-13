@@ -24,7 +24,7 @@ from mathutils import Vector, Matrix, Quaternion, Euler
 import vb, rig
 
 ARGS = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else ["all"]
-SRC = ARGS[1] if len(ARGS) > 1 else "/root/tools/rodin"
+SRC = ARGS[1] if len(ARGS) > 1 else os.environ.get("VB_RODIN_SRC", "/root/tools/rodin")
 FPS = 24
 
 
@@ -256,6 +256,28 @@ for _r in ("Left", "Right"):
     CHILD.update({_r + "Arm": _r + "ForeArm", _r + "ForeArm": _r + "Hand", _r + "UpLeg": _r + "Leg", _r + "Leg": _r + "Foot", _r + "Foot": _r + "ToeBase"})
 
 
+FINGERS = (("Index", (22, 30, 20)), ("Middle", (26, 34, 22)), ("Ring", (30, 36, 24)), ("Pinky", (34, 38, 24)), ("Thumb", (6, 12, 10)))
+
+
+def finger_axes(B):
+    """Eje de flexión (ejes del esqueleto, reposo en A) y ángulo relajado de cada falange."""
+    out = {}
+    for r in ("Left", "Right"):
+        hand = B[r + "Hand"].head_local
+        n = (B[r + "HandIndex1"].head_local - hand).cross(B[r + "HandPinky1"].head_local - hand).normalized()
+        inward = -1.0 if hand.x > 0 else 1.0
+        if n.dot(Vector((inward, 0, -1))) < 0:      # normal de la palma: hacia dentro y abajo
+            n = -n
+        for finger, angs in FINGERS:
+            for i, ang in enumerate(angs):
+                b = B[r + "Hand" + finger + str(i + 1)]
+                d = ((b.children[0].head_local if b.children else b.tail_local) - b.head_local).normalized()
+                axis = d.cross(n)
+                if axis.length > 1e-4:
+                    out[b.name] = (axis.normalized(), ang)
+    return out
+
+
 class Retarget:
     """Convierte las poses del esqueleto procedimental (gen_character) al de Rodin.
 
@@ -291,19 +313,7 @@ class Retarget:
         self.k = (l1 + l2) / (gc.L1 + gc.L2)
         self.dz0 = B["LeftFoot"].head_local.z - B["LeftUpLeg"].head_local.z + self.k * (gc.HIP_Z - gc.ANKLE_Z)
         # dedos: flexión suave constante (mano relajada)
-        self.curl = {}
-        for r, sg in (("Left", 1), ("Right", -1)):
-            hand = B[r + "Hand"].head_local
-            n = (B[r + "HandIndex1"].head_local - hand).cross(B[r + "HandPinky1"].head_local - hand).normalized()
-            if n.dot(Vector((-sg, 0, -1))) < 0:
-                n = -n
-            for finger, angs in (("Index", (22, 30, 20)), ("Middle", (26, 34, 22)), ("Ring", (30, 36, 24)), ("Pinky", (34, 38, 24)), ("Thumb", (6, 12, 10))):
-                for i, ang in enumerate(angs):
-                    b = B[r + "Hand" + finger + str(i + 1)]
-                    d = ((b.children[0].head_local if b.children else b.tail_local) - b.head_local).normalized()
-                    axis = d.cross(n)
-                    if axis.length > 1e-4:
-                        self.curl[b.name] = Quaternion(axis.normalized(), math.radians(ang))
+        self.curl = {b: Quaternion(axis, math.radians(ang)) for b, (axis, ang) in finger_axes(B).items()}
 
     def __call__(self, fn, grip=1.0):
         def wrapped(t):
