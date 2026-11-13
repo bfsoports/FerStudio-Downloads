@@ -21,6 +21,7 @@ var _held: Node3D
 var _held_id := "-"
 var _light: OmniLight3D
 var _clips: Dictionary = {}   # metadatos de los clips (duración, bucle, velocidad de marcha)
+var _was_down := false
 
 func setup(d: Dictionary) -> void:
 	peer = int(d.id)
@@ -92,6 +93,9 @@ func _process(delta: float) -> void:
 	_last_pos = global_position
 	_speed = lerpf(_speed, v, clampf(delta * 8.0, 0.0, 1.0))
 	var fl := int(b[3])
+	if _was_down and (fl & Protocol.F_DOWN) == 0:       # se ha levantado: aura de recuperación
+		Vfx.aura(self, 2.0, Color(0.7, 1.0, 0.86), Color(0.25, 0.62, 0.55))
+	_was_down = (fl & Protocol.F_DOWN) != 0
 	_light.visible = (fl & Protocol.F_LIGHT) != 0
 	_animate(fl, int(b[4]))
 

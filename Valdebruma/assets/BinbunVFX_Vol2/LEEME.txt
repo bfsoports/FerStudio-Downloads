@@ -1,0 +1,2 @@
+Efectos de Binbun3D (BinbunVFX Vol. 2), licencia CC0. Copia recortada y adaptada por
+tools/vfx/import_binbun.py (ver la cabecera de ese guion y docs/ASSET_LICENSES.md).

@@ -59,7 +59,10 @@ func event(code: int) -> void:
 	match code:
 		1: AudioDirector.play_at("brumal_alert", global_position, 3.0)
 		2: AudioDirector.play_at("brumal_call", global_position, 2.0)
-		3: AudioDirector.play_at("farol_puff", global_position, 2.0)
+		3:
+			AudioDirector.play_at("farol_puff", global_position, 2.0)
+			var ground := GameData.world.ground(global_position.x, global_position.z)
+			Vfx.cloud(Vector3(global_position.x, ground + 0.05, global_position.z), 3.2, 2.4, Color(0.45, 1.0, 0.82), Color(0.1, 0.42, 0.36))
 
 func _process(delta: float) -> void:
 	if _buf.is_empty():

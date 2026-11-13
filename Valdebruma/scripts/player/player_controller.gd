@@ -53,6 +53,7 @@ var _fall_speed := 0.0
 var _one_shot := ""
 var _one_shot_until := 0
 var _held_id := "-"
+var _fx_acc := 0.0
 var _probe_acc := 0.0
 var _border_note := 0
 
@@ -110,7 +111,8 @@ func _ready() -> void:
 	Session.went_down.connect(func(_w: float) -> void: down = true)
 	Session.respawned.connect(func(p: Vector3) -> void:
 		down = false
-		global_position = p)
+		global_position = p
+		Vfx.aura(self, 2.0, Color(0.7, 1.0, 0.86), Color(0.25, 0.62, 0.55)))
 	_refresh_held()
 
 func place(pos: Vector3, facing: float) -> void:
@@ -155,6 +157,7 @@ func _do_interact(secondary: bool) -> void:
 func _on_notify(code: String, _params: Dictionary) -> void:
 	match code:
 		"used": play_arms("fp_consume", 1.6)
+		"level_up": Vfx.aura(self, 2.4, Color(1.0, 0.86, 0.45), Color(0.9, 0.55, 0.2))
 		"creature_hit":
 			_land = 0.25
 			AudioDirector.play_ui("hit")
@@ -328,7 +331,24 @@ func _step_up(delta: float) -> void:
 		if n.y > 0.72:
 			global_position = over.origin + hit.get_travel()
 
+## Chispas de herramienta mientras dura una acción de recolectar, construir o desmontar.
+func _action_fx(delta: float) -> void:
+	var code := int(Session.action.get("code", 0))
+	if not (code in [Protocol.T.HARVEST, Protocol.T.BUILD, Protocol.T.DISMANTLE]) or Time.get_ticks_msec() > int(Session.action.get("end_ms", 0)):
+		_fx_acc = 0.35
+		return
+	_fx_acc -= delta
+	if _fx_acc > 0.0:
+		return
+	_fx_acc = 0.8
+	var at := cam.global_position - cam.global_transform.basis.z * 1.2 + Vector3(0, -0.35, 0)
+	if target != null and is_instance_valid(target):
+		at = target.focus_point()
+	Vfx.burst("hit" if code != Protocol.T.HARVEST else "spark", at, 0.45, Color(1.0, 0.9, 0.7))
+	AudioDirector.play_at("tool_hit", at, -4.0)
+
 func _update_arms(flat_speed: float, speed: float) -> void:
+	_action_fx(get_process_delta_time())
 	if arms_anim == null:
 		return
 	var clip := "fp_idle"

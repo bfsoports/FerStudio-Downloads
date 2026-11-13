@@ -225,7 +225,10 @@ func _on_object_event(kind: int, id: int, state: Variant) -> void:
 					_ensure_pickup(id, p)
 		Protocol.O_HARVEST:
 			if harvest_nodes.has(id):
-				(harvest_nodes[id] as Interactables.Harvest).set_ready(bool(state))
+				var hn := harvest_nodes[id] as Interactables.Harvest
+				if not bool(state) and hn.has_yield:
+					Vfx.burst("spark", hn.global_position + Vector3(0, 0.45, 0), 0.7, Color(1.0, 0.9, 0.65))
+				hn.set_ready(bool(state))
 		Protocol.O_STRUCT:
 			if state == null:
 				if struct_nodes.has(id):
@@ -234,7 +237,11 @@ func _on_object_event(kind: int, id: int, state: Variant) -> void:
 			elif Session.structs.has(id):
 				var s: Dictionary = Session.structs[id]
 				if detail.has(WorldMap.sector_key(s.pos.x, s.pos.z)):
+					var before: Node = struct_nodes.get(id)
+					var old_stage := int(before.get("shown_stage")) if before != null else -1
 					_ensure_struct(s)
+					if int(s.stage) >= 1 and old_stage == 0:      # obra terminada
+						Vfx.burst("impact", (s.pos as Vector3) + Vector3(0, 0.8, 0), 0.8, Color(1.0, 0.88, 0.6))
 
 # ---- otros jugadores y criaturas ---------------------------------------------------------------------------
 func _on_snapshot(_ms: int, players: Array, crs: Array) -> void:

@@ -32,6 +32,8 @@ var wind := 0.3
 var wind_dir := 0.9
 var mist := 0.0                  # bruma local (zona de riesgo) alrededor del jugador
 var indoor := 0.0
+var _bolt_in := 9.0              # segundos hasta el próximo rayo (solo en tormenta)
+var _flash := 0.0                # resplandor del último rayo (decae solo)
 var _we: WorldEnvironment
 
 func _ready() -> void:
@@ -164,6 +166,15 @@ func update(delta: float, cam_pos: Vector3, in_building: bool) -> void:
 	moon.light_energy = (0.3 + 0.25 * Config.f("access", "night_boost")) * night * (1.0 - overcast * 0.45)
 	moon.visible = night > 0.02
 	env.ambient_light_energy = (float(s[4]) + 0.3 * Config.f("access", "night_boost") * night) * (1.0 - 0.26 * indoor)
+	# tormenta: rayos lejanos con resplandor y trueno retardado por la distancia
+	if String(e.get("w", "")) == "tormenta":
+		_bolt_in -= delta
+		if _bolt_in <= 0.0:
+			_bolt_in = randf_range(7.0, 20.0)
+			_strike(cam_pos)
+	_flash = maxf(0.0, _flash - delta * 4.0)
+	env.ambient_light_energy += _flash * 1.3
+	env.background_energy_multiplier = 1.0 + _flash * 2.2
 	# niebla: clima + bruma local; color según la luz del momento
 	var dens := 0.0016 + fog * 0.021 + rain_amount * 0.004 + mist * 0.045
 	env.fog_density = dens * (1.0 - 0.5 * indoor)
@@ -176,3 +187,16 @@ func update(delta: float, cam_pos: Vector3, in_building: bool) -> void:
 	rain.emitting = rain_amount > 0.08 and indoor < 0.6
 	rain.amount_ratio = clampf(rain_amount, 0.15, 1.0)
 	rain.global_position = cam_pos + Vector3(0, 9.0, 0)
+
+func _strike(cam_pos: Vector3) -> void:
+	var ang := randf() * TAU
+	var dist := randf_range(140.0, 380.0)
+	var x := clampf(cam_pos.x + cos(ang) * dist, 4.0, WorldMap.SIZE - 4.0)
+	var z := clampf(cam_pos.z + sin(ang) * dist, 4.0, WorldMap.SIZE - 4.0)
+	Vfx.lightning(Vector3(x, GameData.world.height(x, z), z), randf_range(150.0, 230.0))
+	# sin destellos bruscos si el jugador pidió reducir movimiento (fotosensibilidad)
+	if not Config.b("access", "reduce_motion"):
+		_flash = clampf(1.25 - dist / 420.0, 0.3, 1.0) * (1.0 - 0.6 * indoor)
+	var vol := lerpf(-2.0, -14.0, clampf(dist / 400.0, 0.0, 1.0)) - 6.0 * indoor
+	get_tree().create_timer(dist / 340.0).timeout.connect(func() -> void: AudioDirector.play_ui("thunder", vol))
+
