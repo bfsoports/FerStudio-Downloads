@@ -59,6 +59,6 @@ los registros de la sesión de red).
 | Nº | Descripción | Gravedad | Estado |
 |---|---|---|---|
 | 1 | Leves deformaciones en el hombro del superviviente en algunas poses de acción | Baja | Abierto |
-| 2 | Aviso del empaquetado Android por icono monocromo vacío (`themed_icon`) | Muy baja | Abierto (añadir icono monocromo) |
+| 2 | `aapt2` avisa de `themed_icon.xml` ausente en el APK | Muy baja | Abierto: procede de la plantilla APK precompilada de Godot 4.7.2 (no del proyecto). Inofensivo. Se añadió un icono monocromo propio, que se usa en la compilación Gradle/AAB |
 | 3 | Las animaciones de acción del jugador remoto sustituyen a las de andar (sin mezcla superior/inferior) | Baja | Abierto |
 | 4 | Tamaño del APK (111 MB) por texturas ETC2 sin comprimir en el paquete | Media | Mitigado en parte (−4 MB); ver `PERFORMANCE_REPORT.md` |

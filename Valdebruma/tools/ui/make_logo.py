@@ -143,6 +143,29 @@ def run():
     fg.alpha_composite(e, (66, 66))
     fg.save(os.path.join(ROOT, "export", "android", "icon_fg_432.png"))
     Image.new("RGB", (432, 432), (22, 38, 44)).save(os.path.join(ROOT, "export", "android", "icon_bg_432.png"))
+    # monocromo (iconos temáticos de Android 13+): silueta blanca del emblema sobre transparente
+    n = 432 * SS
+    mono = Image.new("L", (n, n), 0)
+    md = ImageDraw.Draw(mono)
+    c = n / 2
+    r = n * 0.3
+    md.ellipse([c - r, c - r, c + r, c + r], outline=255, width=int(n * 0.022))
+    md.ellipse([c + r * 0.12, c - r * 0.42, c + r * 0.5, c - r * 0.04], fill=255)               # sol
+    pts = [(c - r * 0.95, c + r * 0.35)]
+    for i in range(41):
+        u = i / 40
+        pts.append((c - r * 0.95 + u * r * 1.9, c + r * (0.18 - 0.16 * math.sin(u * 7.0 + 0.6))))
+    pts.append((c + r * 0.95, c + r * 0.35))
+    md.polygon(pts, fill=255)                                                                   # montes
+    px, base = c - r * 0.35, c + r * 0.62
+    for i in range(4):
+        w = r * (0.28 - 0.06 * i)
+        y0 = base - r * (0.25 + 0.2 * i)
+        md.polygon([(px - w, y0), (px + w, y0), (px, y0 - r * 0.32)], fill=255)                # pino
+    md.rectangle([px - r * 0.03, base - r * 0.25, px + r * 0.03, base], fill=255)
+    out = Image.new("RGBA", (432, 432), (255, 255, 255, 0))
+    out.putalpha(mono.resize((432, 432), Image.LANCZOS))
+    out.save(os.path.join(ROOT, "export", "android", "icon_mono_432.png"))
     print("logo e iconos generados")
 
 

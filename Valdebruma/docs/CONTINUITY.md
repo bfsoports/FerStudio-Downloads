@@ -40,4 +40,4 @@ Ver `docs/PROJECT_STATUS.md` (tabla Sistema | Estado | Evidencia | Pendiente).
 - Probar el APK en un teléfono real y medir FPS (ver `docs/PERFORMANCE_REPORT.md`).
 - Reducir el APK por debajo de 80 MB (normales a 512 en vehículos y criaturas, atlas de carteles).
 - Mezcla parcial superior/inferior para jugadores remotos (acción + andar).
-- Icono monocromo de Android; DTLS para el transporte.
+- DTLS para el transporte.

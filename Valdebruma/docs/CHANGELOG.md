@@ -22,12 +22,21 @@
 - Servidor autoritativo (dedicado o en el dispositivo anfitrión), protocolo versionado (v3), validación de todas las acciones, interés por sectores, grupos, chat por canales, intercambio, señales, gestos, denuncias, reconexión.
 - Persistencia atómica con suma SHA-256, copias rotatorias y recuperación; orden `--admin` para bloquear cuentas.
 
+### Sonido
+- 51 sonidos sintetizados: 8 ambientes en bucle, hoguera, música del menú, pasos en 7 superficies, puertas, interfaz, criaturas y trueno.
+
 ### Interfaz
 - Menú con escena 3D, crear/unirse, perfil y cosméticos, ajustes (control, sonido, gráficos, juego, accesibilidad), créditos y legal.
 - HUD, controles táctiles multitáctiles, chat, inventario, fabricación, construcción con vista previa, mapa con señales, grupo, diario, pausa, carga, colapso y tutorial.
 - Español e inglés (456 claves de interfaz).
 
+### Correcciones encontradas por las pruebas en vivo
+- El jugador ya no puede quedar bajo el terreno tras reaparecer lejos o ser corregido por el servidor.
+- HUD táctil: hora y lugar sin solapes con la barra de menús, texto con contorno.
+- Pruebas unitarias lanzadas con los autoloads ya cargados; cada sección debe terminar para contar.
+- APK 115 → 111 MB (normales de criaturas y vehículos a 512 px); icono monocromo de Android (iconos temáticos).
+
 ### Herramientas y entrega
 - Exportación Android (APK arm64 y AAB), servidor Linux, lanzador, unidad systemd y Dockerfile.
-- Pruebas: 781 comprobaciones unitarias, sesión multijugador real (40/40), prueba en vivo con capturas.
+- Pruebas: 843 comprobaciones unitarias, sesión multijugador real (40/40), prueba en vivo con capturas (21/21).
 - GitHub Actions: pruebas, APK, AAB, servidor y capturas como artefactos.
