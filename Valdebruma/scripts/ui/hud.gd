@@ -169,6 +169,9 @@ func _build_stats() -> void:
 func _build_top() -> void:
 	var m := _corner(Control.PRESET_CENTER_TOP, 0, 10)
 	m.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	if use_touch:
+		# la barra de menús táctil ocupa la derecha: la brújula y la hora se centran en el hueco libre
+		m.add_theme_constant_override("margin_right", int(_safe.size.x) + 440)
 	var v := UiKit.vbox(4)
 	v.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	v.alignment = BoxContainer.ALIGNMENT_BEGIN
@@ -187,6 +190,9 @@ func _build_top() -> void:
 	h.add_child(_clock)
 	_region = UiKit.label("", 16, UiKit.C_DIM, UiKit.f_medium)
 	h.add_child(_region)
+	for l: Label in [_clock, _region]:      # legibles sobre cielo claro o niebla
+		l.add_theme_constant_override("outline_size", 6)
+		l.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.55))
 	v.add_child(h)
 	# estado de la conexión: arriba a la derecha, bajo la barra de menús táctil
 	var n := _corner(Control.PRESET_TOP_RIGHT, 16, 76 if use_touch else 12)

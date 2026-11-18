@@ -271,6 +271,13 @@ func _physics_process(delta: float) -> void:
 	_fall_speed = velocity.y if not is_on_floor() else _fall_speed
 	_step_up(delta)
 	move_and_slide()
+	# Red de seguridad: tras un salto largo (reaparecer, corrección del servidor) la colisión del sector
+	# nuevo puede tardar unos fotogramas en construirse. El terreno es analítico, así que nunca se
+	# permite quedar por debajo de él (no hay cuevas); evita «caer bajo el mapa».
+	var floor_y := world.ground(global_position.x, global_position.z)
+	if global_position.y < floor_y - 0.35:
+		global_position.y = floor_y + 0.05
+		velocity.y = maxf(velocity.y, 0.0)
 	if is_on_floor() and not _was_floor:
 		_land = clampf(-_fall_speed * 0.03, 0.05, 0.3)
 		AudioDirector.footstep(_surface(), global_position, 4.0)

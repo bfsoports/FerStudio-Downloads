@@ -67,6 +67,9 @@ func run(a: Dictionary) -> void:
 		await get_tree().create_timer(float(a.get("settle", 1.2))).timeout
 		var img := get_viewport().get_texture().get_image()
 		img.save_png("%s/%s.png" % [out, nm])
+		var here: Sector = wr.streamer.sectors.get(WorldMap.sector_key(wr.player.global_position.x, wr.player.global_position.z))
+		print("DEMO   posición=%s  sector_centro=%s  nivel_sector=%d  trabajos=%d" % [str(wr.player.global_position.snapped(Vector3.ONE * 0.1)), str(wr.streamer.center),
+			-9 if here == null else here.level, wr.streamer.pending()])
 		print("DEMO captura %s  sectores=%d  nodos=%d  dibujados=%d  primitivas=%d  fps=%d" % [nm, wr.streamer.sectors.size(), int(Performance.get_monitor(Performance.OBJECT_NODE_COUNT)),
 			int(Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME)), int(Performance.get_monitor(Performance.RENDER_TOTAL_PRIMITIVES_IN_FRAME)), int(Engine.get_frames_per_second())])
 	# recorrido opcional por las pantallas de partida: --ui=inventory,craft,build,map,social,journal,pause

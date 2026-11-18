@@ -17,7 +17,7 @@ Solo se marca como superado lo que se ha ejecutado. Fecha de las ejecuciones: 18
 | Unitarias (`-- --unit-tests`) | Inventario (apilar, quitar, transferir sin duplicar, dividir, reducir), persistencia (escritura atómica, suma de control, corrupción, truncado, copias), saneado de red, mapa del mundo, referencias cruzadas de todos los datos, existencia de modelos/iconos/materiales/efectos, animaciones, textos es/en de cada clave usada, compilación de todos los guiones y escenas, sonidos (desde el commit siguiente) | **843/843** | **781/781** (antes de añadir la sección de sonido) |
 | Sesión multijugador real (`tests/net_session.sh`) | Servidor dedicado + clientes ENet: sincronización, movimiento validado, teletransporte corregido, peticiones inválidas sin efecto, fabricación, construcción, permisos de arcón (privado/ocupado), desmontaje ajeno rechazado, intercambio sin duplicar, carrera por un objeto, reconexión, persistencia tras parada ordenada y tras `kill -KILL` | **40/40** | **40/40** |
 | Prueba en vivo (`tools/ci/live_test.sh`) | Juego real con ventana: menú y 6 pantallas, crear partida como anfitrión, entrar al valle, 4 vistas (El Collado de día, Sotoalto al atardecer, La Fragua, tormenta de noche) con HUD táctil, 9 pantallas de partida | **21/21 capturas, 0 errores** | **21/21 capturas, 0 errores** |
-| Exportación APK | Exportar, firmar (depuración), verificar firma y manifiesto | Correcto (109 MB) | Correcto (109 MB, artefacto `valdebruma-android-apk`) |
+| Exportación APK | Exportar, firmar (depuración), verificar firma y manifiesto | Correcto (115 MB con audio) | Correcto (109 MB, artefacto `valdebruma-android-apk`) |
 | Exportación AAB (Gradle) | Plantilla Gradle, compilación con AGP | Correcto (117 MB) | Correcto (artefacto `valdebruma-android-aab`) |
 | Servidor dedicado | Exportar, arrancar, escuchar, guardar y cerrar | Correcto | Correcto (artefacto `valdebruma-servidor-linux`) |
 | Administración de cuentas | `--admin=list/ban/unban` sobre datos reales | Correcto | — |
@@ -45,6 +45,14 @@ los registros de la sesión de red).
 - Escucha humana del audio y mezcla final.
 - Pruebas de accesibilidad con usuarios (tamaño de texto, alto contraste, zurdos).
 - Larga duración (servidor varios días; crecimiento de archivos de registro).
+
+## Defectos encontrados por las pruebas y corregidos
+
+| Defecto | Cómo se encontró | Corrección |
+|---|---|---|
+| Tras un salto largo (reaparecer lejos, corrección del servidor) el jugador podía caer bajo el terreno antes de que existiera la colisión del sector nuevo | Capturas de la prueba en vivo en GitHub Actions (Sotoalto y La Fragua mostraban la cara inferior del terreno); diagnóstico con la posición y el nivel del sector en la captura | `PlayerController`: nunca por debajo de la altura analítica del terreno |
+| La hora y el lugar del HUD quedaban bajo la barra de menús táctil | Revisión de capturas con `--touch` | Bloque desplazado al hueco libre y texto con contorno |
+| Falsos «correcto» en pruebas unitarias lanzadas con `-s` (guiones compilados antes de los autoloads) | Revisión del registro | Pruebas lanzadas desde `Boot` y cada sección debe terminar para contar |
 
 ## Defectos conocidos
 

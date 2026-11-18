@@ -53,13 +53,13 @@ En Android se aplica el perfil medio la primera vez.
 
 | Elemento | Tamaño |
 |---|---|
-| APK de depuración (arm64) | 109 MB |
+| APK de depuración (arm64, con audio) | 115 MB |
 | — texturas importadas (ETC2/ASTC) | 69 MB |
 | — modelos importados | 7,7 MB |
 | — bibliotecas nativas (motor) | 26 MB |
 | — datos del mundo | 1,9 MB |
 | AAB (armv7 + arm64) | 117 MB |
-| Audio (51 archivos Vorbis) | ≈ 6 MB |
+| — audio (51 archivos Vorbis) | ≈ 6 MB |
 
 Mejoras previstas para bajar de 80 MB: normales de 1024 → 512 en vehículos y criaturas (−7 MB),
 reutilizar ORM en tonos planos, comprimir el atlas de carteles, y en Play usar el AAB (cada
