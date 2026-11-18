@@ -3,6 +3,9 @@ extends Node
 ##   (sin argumentos)                 cliente normal: logotipo, carga y menú principal
 ##   -- --server [--port=N] [--world=nombre] [--data=dir] [--difficulty=x] [--day-length=s]
 ##                                    servidor dedicado sin ventana (usar con --headless)
+##   -- --unit-tests                  pruebas unitarias (tests/unit_tests.gd)
+##   -- --admin=list|ban|unban [--account=prefijo] [--world=nombre] [--data=dir]
+##                                    administración de cuentas del servidor (con el servidor parado)
 ##   -- --bot=escenario --connect=host:puerto --name=Nombre
 ##                                    cliente automático de pruebas (tests/bot_client.gd)
 ## Los argumentos de usuario van después de "--" en la línea de órdenes de Godot.
@@ -25,7 +28,11 @@ func _ready() -> void:
 	if a.has("server") or a.has("bot"):
 		Ui.enabled = false          # sin interfaz: servidor dedicado y clientes automáticos de prueba
 		Ui.visible = false
-	if a.has("server"):
+	if a.has("admin"):
+		Ui.enabled = false
+		Ui.visible = false
+		_run_admin(a)
+	elif a.has("server"):
 		_run_server(a)
 	elif a.has("demo"):
 		var demo_script: GDScript = load("res://tests/demo_shots.gd")
@@ -37,6 +44,13 @@ func _ready() -> void:
 		demo.name = "Demo"
 		get_tree().root.add_child.call_deferred(demo)
 		demo.call_deferred("run", a)
+	elif a.has("unit-tests"):
+		Ui.enabled = false
+		Ui.visible = false
+		var tests: Node = (load("res://tests/unit_tests.gd") as GDScript).new()
+		tests.name = "UnitTests"
+		get_tree().root.add_child.call_deferred(tests)
+		tests.call_deferred("run")
 	elif a.has("bot"):
 		var bot: Node = (load("res://tests/bot_client.gd") as GDScript).new()
 		bot.name = "Bot"
@@ -67,3 +81,29 @@ func _run_server(a: Dictionary) -> void:
 		await get_tree().create_timer(float(a["exit-after"])).timeout
 		Net.leave()
 		get_tree().quit(0)
+
+## Administración de cuentas sin editar archivos a mano (mantiene suma de control y copias).
+func _run_admin(a: Dictionary) -> void:
+	var store := ServerPersistence.new(String(a.get("world", "valle")))
+	var op := String(a.get("admin", "list"))
+	var prefix := String(a.get("account", ""))
+	var hits: Array = []
+	for acc: String in store.accounts.keys():
+		if prefix == "" or acc.begins_with(prefix):
+			hits.append(acc)
+	if op == "list":
+		for acc: String in hits:
+			var e: Dictionary = store.accounts[acc]
+			print("%s  %-16s  %s" % [acc.left(8), String(e.get("name", "?")), "BLOQUEADA" if bool(e.get("banned", false)) else "activa"])
+		print("%d cuentas" % hits.size())
+		get_tree().quit(0)
+		return
+	if prefix.length() < 6 or hits.size() != 1:
+		printerr("Indica --account con al menos 6 caracteres que identifiquen una sola cuenta (coincidencias: %d)" % hits.size())
+		get_tree().quit(2)
+		return
+	store.accounts[hits[0]]["banned"] = op == "ban"
+	var ok := ServerPersistence.write_atomic(store.root + "/accounts.json", store.accounts)
+	print("%s: %s %s" % [hits[0].left(8), "bloqueada" if op == "ban" else "desbloqueada", "(guardado)" if ok else "(ERROR al guardar)"])
+	get_tree().quit(0 if ok else 1)
+

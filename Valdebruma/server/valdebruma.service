@@ -1,0 +1,28 @@
+# Unidad systemd de ejemplo para el servidor dedicado de Valdebruma.
+# Copiar a /etc/systemd/system/valdebruma.service, ajustar rutas y usuario, y ejecutar:
+#   sudo systemctl daemon-reload && sudo systemctl enable --now valdebruma
+[Unit]
+Description=Valdebruma - servidor dedicado
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=valdebruma
+WorkingDirectory=/opt/valdebruma
+Environment=VB_PORT=24680
+Environment=VB_WORLD=valle
+Environment=VB_DATA=/var/lib/valdebruma
+Environment=VB_DIFFICULTY=normal
+ExecStart=/opt/valdebruma/run_server.sh
+# parada ordenada: el servidor detecta el archivo «stop», guarda y termina
+ExecStop=/bin/sh -c 'touch /var/lib/valdebruma/valle/stop; sleep 3'
+TimeoutStopSec=20
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=full
+ReadWritePaths=/var/lib/valdebruma
+
+[Install]
+WantedBy=multi-user.target

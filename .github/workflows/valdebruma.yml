@@ -1,0 +1,246 @@
+# Valdebruma — integración continua: pruebas reales del juego y exportación Android.
+#
+#   pruebas   pruebas unitarias, sesión multijugador real (servidor dedicado + clientes ENet)
+#             y prueba EN VIVO del cliente con render por software (capturas como artefacto)
+#   android   APK de depuración (arm64) firmado con una clave de depuración creada en el momento;
+#             APK de publicación solo si existen los secretos de firma (VALDEBRUMA_KEYSTORE_*)
+#   aab       Android App Bundle con la plantilla Gradle (experimental: no bloquea)
+#   servidor  servidor dedicado Linux exportado y arrancado como prueba de humo
+#
+# Ningún secreto vive en el repositorio. Los artefactos se descargan desde la pestaña Actions.
+
+name: Valdebruma CI
+
+on:
+  push:
+    branches: [main, master, "claude/**"]
+    paths: ["Valdebruma/**", ".github/workflows/valdebruma.yml"]
+  pull_request:
+    paths: ["Valdebruma/**", ".github/workflows/valdebruma.yml"]
+  workflow_dispatch:
+
+concurrency:
+  group: valdebruma-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  GODOT_DL: ${{ github.workspace }}/../godot-dl
+
+jobs:
+  pruebas:
+    name: Pruebas (unitarias, red y en vivo)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: Valdebruma
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Caché de Godot
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.GODOT_DL }}
+          key: godot-4.7.2-linux
+
+      - name: Caché de importación
+        uses: actions/cache@v4
+        with:
+          path: Valdebruma/.godot
+          key: import-${{ runner.os }}-${{ hashFiles('Valdebruma/**/*.import', 'Valdebruma/project.godot') }}
+          restore-keys: import-${{ runner.os }}-
+
+      - name: Dependencias de render por software
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb mesa-vulkan-drivers libvulkan1 libgl1 libglu1-mesa > /dev/null
+
+      - name: Instalar Godot 4.7.2
+        run: tools/ci/setup_godot.sh
+
+      - name: Importar el proyecto
+        run: timeout 2400 godot --headless --path . --import 2>&1 | tail -5
+
+      - name: Pruebas unitarias
+        run: godot --headless --path . -- --unit-tests 2>&1 | grep -E "^—|FALLO|RESULTADO"; test ${PIPESTATUS[0]} -eq 0
+
+      - name: Sesión multijugador real
+        run: tests/net_session.sh "$RUNNER_TEMP/net"
+
+      - name: Prueba en vivo del cliente (capturas)
+        run: tools/ci/live_test.sh "$RUNNER_TEMP/live"
+
+      - name: Subir capturas y registros
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: valdebruma-prueba-en-vivo
+          path: |
+            ${{ runner.temp }}/live/*.png
+            ${{ runner.temp }}/live/live.log
+            ${{ runner.temp }}/net/*.log
+          retention-days: 14
+          if-no-files-found: warn
+
+  android:
+    name: Exportación Android (APK)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: Valdebruma
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Caché de Godot y plantillas
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.GODOT_DL }}
+          key: godot-4.7.2-linux-templates
+
+      - name: Caché de importación
+        uses: actions/cache@v4
+        with:
+          path: Valdebruma/.godot
+          key: import-android-${{ hashFiles('Valdebruma/**/*.import', 'Valdebruma/project.godot') }}
+          restore-keys: import-android-
+
+      - name: Instalar Godot 4.7.2 y plantillas
+        run: tools/ci/setup_godot.sh --templates
+
+      - name: Preparar SDK, JDK y firma
+        env:
+          VALDEBRUMA_KEYSTORE_B64: ${{ secrets.VALDEBRUMA_KEYSTORE_B64 }}
+          VALDEBRUMA_KEYSTORE_ALIAS: ${{ secrets.VALDEBRUMA_KEYSTORE_ALIAS }}
+          VALDEBRUMA_KEYSTORE_PASSWORD: ${{ secrets.VALDEBRUMA_KEYSTORE_PASSWORD }}
+        run: tools/ci/android_setup.sh
+
+      - name: Importar el proyecto
+        run: timeout 2400 godot --headless --path . --import 2>&1 | tail -5
+
+      - name: Exportar APK de depuración
+        run: |
+          mkdir -p ../builds/android
+          godot --headless --path . --export-debug "Android" ../builds/android/Valdebruma-debug.apk 2>&1 | grep -vE "^ADDING|^\s*$" | tail -20
+          test -s ../builds/android/Valdebruma-debug.apk
+
+      - name: Verificar APK
+        run: |
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          "$BT/apksigner" verify --print-certs ../builds/android/Valdebruma-debug.apk | head -3
+          "$BT/aapt2" dump badging ../builds/android/Valdebruma-debug.apk | grep -E "^package:|sdkVersion|uses-permission|native-code"
+          ls -la ../builds/android/
+
+      - name: Exportar APK de publicación (solo con secretos de firma)
+        if: env.HAS_RELEASE_KEY == 'true'
+        run: |
+          godot --headless --path . --export-release "Android" ../builds/android/Valdebruma-release.apk 2>&1 | grep -vE "^ADDING|^\s*$" | tail -20
+          test -s ../builds/android/Valdebruma-release.apk
+
+      - name: Subir APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: valdebruma-android-apk
+          path: builds/android/*.apk
+          retention-days: 14
+
+  aab:
+    name: Android App Bundle (Gradle, experimental)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    continue-on-error: true
+    defaults:
+      run:
+        working-directory: Valdebruma
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Caché de Godot y plantillas
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.GODOT_DL }}
+          key: godot-4.7.2-linux-templates
+
+      - name: Instalar Godot 4.7.2 y plantillas
+        run: tools/ci/setup_godot.sh --templates
+
+      - name: Preparar SDK, JDK y firma
+        env:
+          VALDEBRUMA_KEYSTORE_B64: ${{ secrets.VALDEBRUMA_KEYSTORE_B64 }}
+          VALDEBRUMA_KEYSTORE_ALIAS: ${{ secrets.VALDEBRUMA_KEYSTORE_ALIAS }}
+          VALDEBRUMA_KEYSTORE_PASSWORD: ${{ secrets.VALDEBRUMA_KEYSTORE_PASSWORD }}
+        run: tools/ci/android_setup.sh
+
+      - name: Importar el proyecto
+        run: timeout 2400 godot --headless --path . --import 2>&1 | tail -5
+
+      - name: Exportar AAB
+        run: |
+          mkdir -p ../builds/android
+          godot --headless --path . --install-android-build-template --export-debug "Android AAB" ../builds/android/Valdebruma-debug.aab 2>&1 | grep -vE "^\s*$" | tail -40
+          ls -la ../builds/android/
+          test -s ../builds/android/Valdebruma-debug.aab
+
+      - name: Subir AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: valdebruma-android-aab
+          path: builds/android/*.aab
+          retention-days: 14
+
+  servidor:
+    name: Servidor dedicado Linux
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: Valdebruma
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Caché de Godot y plantillas
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.GODOT_DL }}
+          key: godot-4.7.2-linux-templates
+
+      - name: Instalar Godot 4.7.2 y plantillas
+        run: tools/ci/setup_godot.sh --templates
+
+      - name: Importar el proyecto
+        run: timeout 2400 godot --headless --path . --import 2>&1 | tail -5
+
+      - name: Exportar servidor
+        run: |
+          mkdir -p ../builds/server
+          godot --headless --path . --export-release "Linux Server" ../builds/server/valdebruma_server.x86_64 2>&1 | tail -5
+          test -x ../builds/server/valdebruma_server.x86_64
+
+      - name: Prueba de humo del servidor
+        run: |
+          ../builds/server/valdebruma_server.x86_64 --headless -- --server --port=24680 --data="$RUNNER_TEMP/srv" --world=valle --exit-after=15 | tee "$RUNNER_TEMP/server.log"
+          grep -q "escuchando en el puerto 24680" "$RUNNER_TEMP/server.log"
+          grep -q "estado guardado" "$RUNNER_TEMP/server.log"
+          test -f "$RUNNER_TEMP/srv/valle/world.json"
+
+      - name: Subir servidor
+        uses: actions/upload-artifact@v4
+        with:
+          name: valdebruma-servidor-linux
+          path: |
+            builds/server/valdebruma_server.x86_64
+            Valdebruma/server/*
+          retention-days: 14

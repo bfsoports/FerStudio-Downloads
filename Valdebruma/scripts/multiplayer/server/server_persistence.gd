@@ -8,7 +8,7 @@ extends RefCounted
 ## renombra. Lectura: si el archivo principal está dañado se prueban las copias y el
 ## dañado se aparta como .corrupt-<fecha> (nunca se borra progreso).
 ## Archivos (user://server/<mundo>/): accounts.json, world.json, players/<cuenta>.json, *.log
-## Prueba: tests/test_persistence.gd (corte de escritura, corrupción y restauración).
+## Prueba: tests/unit_tests.gd (sección persistencia) y tests/net_session.sh (kill -KILL).
 
 const WORLD_VERSION := 1
 static var base_dir := "user://server"
