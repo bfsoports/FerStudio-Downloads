@@ -1,0 +1,1454 @@
+{
+ "boot.loading": {
+  "es": "Cargando...",
+  "en": "Loading..."
+ },
+ "credits.version": {
+  "es": "Versión %s",
+  "en": "Version %s"
+ },
+ "credits.engine": {
+  "es": "Hecho con Godot Engine 4.7.2 y GDScript.",
+  "en": "Made with Godot Engine 4.7.2 and GDScript."
+ },
+ "credits.models": {
+  "es": "Modelos 3D: KayKit Restaurant Bits, Skeletons y Character Animations (Kay Lousberg) y Kenney Food Kit, todos CC0. Freidora, dispensador, bandeja, campanita, papelera, lámparas y plantas: modelos propios de FerStudio creados con Tripo AI.",
+  "en": "3D models: KayKit Restaurant Bits, Skeletons and Character Animations (Kay Lousberg) and Kenney Food Kit, all CC0. Fryer, dispenser, tray, bell, bin, lamps and plants: FerStudio's own models made with Tripo AI."
+ },
+ "credits.icons": {
+  "es": "Iconos, logotipo y fondo del menú: arte propio de FerStudio creado con Canva.",
+  "en": "Icons, logo and menu background: FerStudio's own art made with Canva."
+ },
+ "credits.art": {
+  "es": "Estructura del restaurante, texturas, interfaz y clientes creados por código para este proyecto.",
+  "en": "Restaurant structure, textures, interface and customers created in code for this project."
+ },
+ "credits.audio": {
+  "es": "Efectos de sonido y música del menú sintetizados para este proyecto.",
+  "en": "Sound effects and menu music synthesized for this project."
+ },
+ "credits.music": {
+  "es": "Música de las partidas: «Smooth Instrumental Jazz Music» de Tunetank.",
+  "en": "In-game music: \"Smooth Instrumental Jazz Music\" by Tunetank."
+ },
+ "credits.studio": {
+  "es": "Un juego de FerStudio · rincondigitaloficial.com",
+  "en": "A FerStudio game · rincondigitaloficial.com"
+ },
+ "credits.font": {
+  "es": "Tipografías Poppins y Fredoka (SIL Open Font License 1.1).",
+  "en": "Poppins and Fredoka typefaces (SIL Open Font License 1.1)."
+ },
+ "credits.licenses": {
+  "es": "Ver licencias",
+  "en": "View licenses"
+ },
+ "credits.hide_licenses": {
+  "es": "Ocultar licencias",
+  "en": "Hide licenses"
+ },
+ "credits.third_party": {
+  "es": "Componentes de terceros de Godot",
+  "en": "Godot third-party components"
+ },
+ "credits.thanks": {
+  "es": "¡Gracias por jugar!",
+  "en": "Thanks for playing!"
+ },
+ "cust.bought": {
+  "es": "¡Artículo comprado y equipado!",
+  "en": "Item bought and equipped!"
+ },
+ "cust.equip": {
+  "es": "Equipar",
+  "en": "Equip"
+ },
+ "cust.equipped": {
+  "es": "Equipado",
+  "en": "Equipped"
+ },
+ "cust.free": {
+  "es": "Gratis",
+  "en": "Free"
+ },
+ "cust.note": {
+  "es": "Los cambios se ven en el restaurante al empezar un turno.",
+  "en": "Changes show in the restaurant when a shift starts."
+ },
+ "cust.price": {
+  "es": "Precio: %d monedas",
+  "en": "Price: %d coins"
+ },
+ "deliver.missing": {
+  "es": "Falta en la bandeja: %s",
+  "en": "Missing on the tray: %s"
+ },
+ "deliver.open_burger": {
+  "es": "hamburguesa cerrada (falta el pan superior)",
+  "en": "closed burger (top bun missing)"
+ },
+ "deliver.raw_fries": {
+  "es": "patatas bien fritas",
+  "en": "cooked fries"
+ },
+ "err.no_coins": {
+  "es": "No tienes monedas suficientes.",
+  "en": "Not enough coins."
+ },
+ "err.unknown": {
+  "es": "Elemento desconocido.",
+  "en": "Unknown item."
+ },
+ "free.desc": {
+  "es": "Sirve clientes sin límite de tiempo ni objetivos. Gana la mitad de monedas y experiencia que en la campaña y bate tus récords.",
+  "en": "Serve customers with no time limit or goals. You earn half the coins and experience of the campaign. Beat your records!"
+ },
+ "free.difficulty": {
+  "es": "Dificultad",
+  "en": "Difficulty"
+ },
+ "free.play": {
+  "es": "EMPEZAR SESIÓN",
+  "en": "START SESSION"
+ },
+ "free.recipes": {
+  "es": "Recetas disponibles: %d",
+  "en": "Available recipes: %d"
+ },
+ "goal.orders": {
+  "es": "Entrega %d pedidos correctos",
+  "en": "Deliver %d correct orders"
+ },
+ "goal.customers": {
+  "es": "Atiende a %d clientes",
+  "en": "Serve %d customers"
+ },
+ "goal.income": {
+  "es": "Gana %d monedas netas",
+  "en": "Earn %d net coins"
+ },
+ "goal.recipe": {
+  "es": "Sirve %d × %s",
+  "en": "Serve %d × %s"
+ },
+ "goal.satisfaction": {
+  "es": "Satisfacción media de %d%% o más",
+  "en": "Average satisfaction of %d%% or more"
+ },
+ "obj.orders": {
+  "es": "Pedidos %d/%d",
+  "en": "Orders %d/%d"
+ },
+ "obj.customers": {
+  "es": "Clientes %d/%d",
+  "en": "Customers %d/%d"
+ },
+ "obj.income": {
+  "es": "Ingresos %d/%d",
+  "en": "Income %d/%d"
+ },
+ "obj.satisfaction": {
+  "es": "Satisfacción %d%%/%d%%",
+  "en": "Satisfaction %d%%/%d%%"
+ },
+ "obj.no_burnt": {
+  "es": "Sin quemar nada",
+  "en": "Burn nothing"
+ },
+ "obj.no_burnt_failed": {
+  "es": "Has quemado comida",
+  "en": "You burnt food"
+ },
+ "obj.recipe": {
+  "es": "%s %d/%d",
+  "en": "%s %d/%d"
+ },
+ "obj.free": {
+  "es": "Pedidos %d  ·  Ingresos %d",
+  "en": "Orders %d  ·  Income %d"
+ },
+ "hud.go": {
+  "es": "¡YA!",
+  "en": "GO!"
+ },
+ "hud.holding": {
+  "es": "En la mano: %s",
+  "en": "Holding: %s"
+ },
+ "hud.level": {
+  "es": "Nv. %d",
+  "en": "Lv. %d"
+ },
+ "item.burger": {
+  "es": "Hamburguesa (%d capas)",
+  "en": "Burger (%d layers)"
+ },
+ "item.burger_open": {
+  "es": "Hamburguesa abierta (%d capas)",
+  "en": "Open burger (%d layers)"
+ },
+ "label.closed": {
+  "es": "CERRADO",
+  "en": "CLOSED"
+ },
+ "label.menu": {
+  "es": "MENÚ",
+  "en": "MENU"
+ },
+ "label.open": {
+  "es": "ABIERTO",
+  "en": "OPEN"
+ },
+ "label.trash": {
+  "es": "BASURA",
+  "en": "TRASH"
+ },
+ "loading.text": {
+  "es": "Cargando",
+  "en": "Loading"
+ },
+ "menu.play": {
+  "es": "JUGAR",
+  "en": "PLAY"
+ },
+ "menu.continue": {
+  "es": "CONTINUAR · NIVEL %d",
+  "en": "CONTINUE · LEVEL %d"
+ },
+ "menu.play_sub": {
+  "es": "Comenzar una partida",
+  "en": "Start a new game"
+ },
+ "menu.restaurant": {
+  "es": "RESTAURANTE",
+  "en": "RESTAURANT"
+ },
+ "menu.upgrades": {
+  "es": "MEJORAS",
+  "en": "UPGRADES"
+ },
+ "menu.recipes": {
+  "es": "RECETAS",
+  "en": "RECIPES"
+ },
+ "menu.missions": {
+  "es": "MISIONES",
+  "en": "MISSIONS"
+ },
+ "menu.customize": {
+  "es": "PERSONALIZAR",
+  "en": "CUSTOMIZE"
+ },
+ "menu.settings": {
+  "es": "AJUSTES",
+  "en": "SETTINGS"
+ },
+ "menu.credits": {
+  "es": "CRÉDITOS",
+  "en": "CREDITS"
+ },
+ "menu.quit": {
+  "es": "SALIR",
+  "en": "QUIT"
+ },
+ "menu.confirm_quit": {
+  "es": "¿Quieres salir del juego?",
+  "en": "Do you want to quit the game?"
+ },
+ "mis.claim": {
+  "es": "Reclamar",
+  "en": "Claim"
+ },
+ "mis.claimed": {
+  "es": "Reclamada",
+  "en": "Claimed"
+ },
+ "mis.reward_given": {
+  "es": "¡Recompensa recibida!",
+  "en": "Reward received!"
+ },
+ "mis.tab_mission": {
+  "es": "Misiones",
+  "en": "Missions"
+ },
+ "mis.tab_challenge": {
+  "es": "Desafíos",
+  "en": "Challenges"
+ },
+ "mis.tab_achievement": {
+  "es": "Logros",
+  "en": "Achievements"
+ },
+ "order.created": {
+  "es": "Nuevo",
+  "en": "New"
+ },
+ "order.waiting": {
+  "es": "Esperando",
+  "en": "Waiting"
+ },
+ "order.preparing": {
+  "es": "En preparación",
+  "en": "Preparing"
+ },
+ "order.ready": {
+  "es": "¡Listo para entregar!",
+  "en": "Ready to deliver!"
+ },
+ "order.delivered": {
+  "es": "Entregado",
+  "en": "Delivered"
+ },
+ "order.cancelled": {
+  "es": "Cancelado",
+  "en": "Cancelled"
+ },
+ "pause.title": {
+  "es": "PAUSA",
+  "en": "PAUSED"
+ },
+ "pause.resume": {
+  "es": "Continuar",
+  "en": "Resume"
+ },
+ "pause.restart": {
+  "es": "Reiniciar nivel",
+  "en": "Restart level"
+ },
+ "pause.settings": {
+  "es": "Ajustes",
+  "en": "Settings"
+ },
+ "pause.exit": {
+  "es": "Salir al menú",
+  "en": "Exit to menu"
+ },
+ "pause.finish": {
+  "es": "Terminar sesión",
+  "en": "End session"
+ },
+ "pause.confirm_exit": {
+  "es": "¿Salir al menú? Perderás el progreso de este turno.",
+  "en": "Exit to the menu? You will lose this shift's progress."
+ },
+ "play.campaign": {
+  "es": "Campaña",
+  "en": "Campaign"
+ },
+ "play.free": {
+  "es": "Modo libre",
+  "en": "Free mode"
+ },
+ "play.difficulty": {
+  "es": "Dificultad %d",
+  "en": "Difficulty %d"
+ },
+ "play.duration": {
+  "es": "Duración %s",
+  "en": "Duration %s"
+ },
+ "play.goals": {
+  "es": "Objetivos",
+  "en": "Goals"
+ },
+ "play.locked": {
+  "es": "Completa el nivel anterior para desbloquearlo.",
+  "en": "Complete the previous level to unlock it."
+ },
+ "play.max_failed": {
+  "es": "Pierdes si fallas más de %d pedidos.",
+  "en": "You lose if you fail more than %d orders."
+ },
+ "play.reward": {
+  "es": "Recompensa: %d monedas y %d XP (la primera vez)",
+  "en": "Reward: %d coins and %d XP (first time)"
+ },
+ "play.start": {
+  "es": "¡A COCINAR!",
+  "en": "LET'S COOK!"
+ },
+ "prompt.add_layer": {
+  "es": "Añadir a la hamburguesa",
+  "en": "Add to the burger"
+ },
+ "prompt.deliver": {
+  "es": "Entregar pedido",
+  "en": "Deliver order"
+ },
+ "prompt.discard": {
+  "es": "Tirar a la basura",
+  "en": "Throw away"
+ },
+ "prompt.no_customer": {
+  "es": "No hay ningún cliente esperando",
+  "en": "No customer is waiting"
+ },
+ "prompt.place": {
+  "es": "Colocar",
+  "en": "Place"
+ },
+ "prompt.restock": {
+  "es": "Reponer (%d monedas)",
+  "en": "Restock (%d coins)"
+ },
+ "prompt.return": {
+  "es": "Devolver %s",
+  "en": "Return %s"
+ },
+ "prompt.take": {
+  "es": "Coger %s",
+  "en": "Take %s"
+ },
+ "reject.not_cookable": {
+  "es": "Eso no se puede cocinar",
+  "en": "That can't be cooked"
+ },
+ "reject.wrong_station": {
+  "es": "Ese alimento se cocina en otra estación",
+  "en": "That food cooks on another station"
+ },
+ "reject.burnt": {
+  "es": "Está quemado: tíralo",
+  "en": "It's burnt: throw it away"
+ },
+ "reject.no_space": {
+  "es": "No hay espacio libre",
+  "en": "No free space"
+ },
+ "reject.board_locked": {
+  "es": "Tabla bloqueada: mejora el espacio de montaje",
+  "en": "Board locked: upgrade prep space"
+ },
+ "reject.board_busy": {
+  "es": "La tabla ya está ocupada",
+  "en": "The board is already in use"
+ },
+ "reject.not_stackable": {
+  "es": "Eso no va en la hamburguesa",
+  "en": "That doesn't go in a burger"
+ },
+ "reject.not_cooked": {
+  "es": "Cocina la carne primero",
+  "en": "Cook the patty first"
+ },
+ "reject.start_bun": {
+  "es": "Empieza con el pan inferior",
+  "en": "Start with the bottom bun"
+ },
+ "reject.burger_closed": {
+  "es": "La hamburguesa ya está cerrada",
+  "en": "The burger is already closed"
+ },
+ "reject.too_tall": {
+  "es": "La hamburguesa es demasiado alta",
+  "en": "The burger is too tall"
+ },
+ "reject.closed": {
+  "es": "Puesto cerrado",
+  "en": "Counter spot closed"
+ },
+ "reject.not_servable": {
+  "es": "Eso no se sirve en la bandeja",
+  "en": "That isn't served on the tray"
+ },
+ "reject.slot_busy": {
+  "es": "Ya hay algo en esa posición de la bandeja",
+  "en": "That tray position is taken"
+ },
+ "reject.hands_full": {
+  "es": "Tienes las manos ocupadas",
+  "en": "Your hands are full"
+ },
+ "react.great": {
+  "es": "¡Genial!",
+  "en": "Great!"
+ },
+ "react.ok": {
+  "es": "Gracias",
+  "en": "Thanks"
+ },
+ "react.bad": {
+  "es": "¿Qué es esto?",
+  "en": "What is this?"
+ },
+ "react.expired": {
+  "es": "¡Muy lento!",
+  "en": "Too slow!"
+ },
+ "recipe.combo_desc": {
+  "es": "%s + Patatas fritas + Bebida",
+  "en": "%s + Fries + Drink"
+ },
+ "recipe.extras": {
+  "es": "Extras (máx. %d): %s",
+  "en": "Extras (max %d): %s"
+ },
+ "recipe.how": {
+  "es": "Cómo se monta (de abajo arriba)",
+  "en": "How to build it (bottom to top)"
+ },
+ "recipe.cook_grill": {
+  "es": "se cocina en la plancha",
+  "en": "cook it on the grill"
+ },
+ "recipe.cook_fryer": {
+  "es": "se fríe en la freidora",
+  "en": "fry it in the fryer"
+ },
+ "recipe.from_dispenser": {
+  "es": "del dispensador",
+  "en": "from the dispenser"
+ },
+ "recipe.on_tray": {
+  "es": "aparte, en la bandeja",
+  "en": "separately, on the tray"
+ },
+ "recipe.locked": {
+  "es": "Se desbloquea al llegar al nivel %d",
+  "en": "Unlocks when you reach level %d"
+ },
+ "recipe.order_flexible": {
+  "es": "Orden libre entre los panes",
+  "en": "Any order between the buns"
+ },
+ "recipe.order_strict": {
+  "es": "Orden estricto",
+  "en": "Strict order"
+ },
+ "recipe.xp": {
+  "es": "+%d XP",
+  "en": "+%d XP"
+ },
+ "recipe.status.correct": {
+  "es": "perfecto",
+  "en": "perfect"
+ },
+ "recipe.status.variation": {
+  "es": "con extras permitidos",
+  "en": "with allowed extras"
+ },
+ "recipe.status.incomplete": {
+  "es": "incompleta",
+  "en": "incomplete"
+ },
+ "recipe.status.wrong": {
+  "es": "ingredientes incorrectos",
+  "en": "wrong ingredients"
+ },
+ "recipe.status.duplicates": {
+  "es": "ingredientes repetidos",
+  "en": "duplicated ingredients"
+ },
+ "recipe.status.bad_order": {
+  "es": "orden incorrecto",
+  "en": "wrong order"
+ },
+ "recipe.status.bad_cooking": {
+  "es": "mal cocinada",
+  "en": "badly cooked"
+ },
+ "recipe.status.burnt": {
+  "es": "quemada",
+  "en": "burnt"
+ },
+ "recipes.title": {
+  "es": "Recetas de este turno",
+  "en": "This shift's recipes"
+ },
+ "rest.chef_level": {
+  "es": "Chef nivel %d",
+  "en": "Chef level %d"
+ },
+ "rest.stars": {
+  "es": "Estrellas: %d / %d",
+  "en": "Stars: %d / %d"
+ },
+ "rest.records": {
+  "es": "Récords del modo libre",
+  "en": "Free mode records"
+ },
+ "rest.records_line": {
+  "es": "Mejor: %d pedidos  ·  %d monedas  ·  %s de sesión",
+  "en": "Best: %d orders  ·  %d coins  ·  %s session"
+ },
+ "rest.stat_burgers_made": {
+  "es": "Hamburguesas preparadas",
+  "en": "Burgers made"
+ },
+ "rest.stat_customers_served": {
+  "es": "Clientes atendidos",
+  "en": "Customers served"
+ },
+ "rest.stat_coins_earned": {
+  "es": "Monedas ganadas",
+  "en": "Coins earned"
+ },
+ "rest.stat_perfect_burgers": {
+  "es": "Hamburguesas perfectas",
+  "en": "Perfect burgers"
+ },
+ "rest.stat_best_streak": {
+  "es": "Mejor racha",
+  "en": "Best streak"
+ },
+ "rest.stat_levels_completed": {
+  "es": "Niveles superados",
+  "en": "Levels cleared"
+ },
+ "rest.stat_upgrades_bought": {
+  "es": "Mejoras compradas",
+  "en": "Upgrades bought"
+ },
+ "rest.stat_shifts_played": {
+  "es": "Turnos jugados",
+  "en": "Shifts played"
+ },
+ "result.win": {
+  "es": "¡TURNO SUPERADO!",
+  "en": "SHIFT CLEARED!"
+ },
+ "result.lose": {
+  "es": "TURNO FALLIDO",
+  "en": "SHIFT FAILED"
+ },
+ "result.free": {
+  "es": "RESUMEN DE LA SESIÓN",
+  "en": "SESSION SUMMARY"
+ },
+ "result.level": {
+  "es": "Nivel %d: %s",
+  "en": "Level %d: %s"
+ },
+ "result.reason_time": {
+  "es": "No cumpliste todos los objetivos a tiempo.",
+  "en": "You didn't meet every goal in time."
+ },
+ "result.reason_failed": {
+  "es": "Demasiados pedidos fallidos.",
+  "en": "Too many failed orders."
+ },
+ "result.reason_quit": {
+  "es": "Turno abandonado.",
+  "en": "Shift abandoned."
+ },
+ "result.new_recipe": {
+  "es": "¡Nueva receta: %s!",
+  "en": "New recipe: %s!"
+ },
+ "result.record_best_orders": {
+  "es": "¡Récord de pedidos!",
+  "en": "Order record!"
+ },
+ "result.record_best_income": {
+  "es": "¡Récord de ingresos!",
+  "en": "Income record!"
+ },
+ "result.record_longest_session": {
+  "es": "¡Sesión más larga!",
+  "en": "Longest session!"
+ },
+ "result.next": {
+  "es": "Siguiente nivel",
+  "en": "Next level"
+ },
+ "result.retry": {
+  "es": "Reintentar",
+  "en": "Retry"
+ },
+ "result.menu": {
+  "es": "Menú",
+  "en": "Menu"
+ },
+ "result.orders_ok": {
+  "es": "Pedidos correctos",
+  "en": "Correct orders"
+ },
+ "result.orders_wrong": {
+  "es": "Pedidos incorrectos",
+  "en": "Wrong orders"
+ },
+ "result.orders_expired": {
+  "es": "Pedidos caducados",
+  "en": "Expired orders"
+ },
+ "result.customers": {
+  "es": "Clientes atendidos",
+  "en": "Customers served"
+ },
+ "result.income": {
+  "es": "Ingresos",
+  "en": "Income"
+ },
+ "result.penalties": {
+  "es": "Penalizaciones",
+  "en": "Penalties"
+ },
+ "result.net_income": {
+  "es": "Ingresos netos",
+  "en": "Net income"
+ },
+ "result.satisfaction": {
+  "es": "Satisfacción media",
+  "en": "Average satisfaction"
+ },
+ "result.burnt": {
+  "es": "Alimentos quemados",
+  "en": "Burnt food"
+ },
+ "result.xp": {
+  "es": "Experiencia",
+  "en": "Experience"
+ },
+ "result.coins_bonus": {
+  "es": "Premio del nivel",
+  "en": "Level reward"
+ },
+ "result.time": {
+  "es": "Tiempo",
+  "en": "Time"
+ },
+ "set.ui_size": {
+  "es": "Tamaño de la interfaz",
+  "en": "Interface size"
+ },
+ "set.ui_small": {
+  "es": "Pequeña",
+  "en": "Small"
+ },
+ "set.ui_normal": {
+  "es": "Normal",
+  "en": "Normal"
+ },
+ "set.ui_large": {
+  "es": "Grande",
+  "en": "Large"
+ },
+ "set.group_audio": {
+  "es": "Sonido",
+  "en": "Sound"
+ },
+ "set.group_controls": {
+  "es": "Controles",
+  "en": "Controls"
+ },
+ "set.group_graphics": {
+  "es": "Gráficos",
+  "en": "Graphics"
+ },
+ "set.group_general": {
+  "es": "General",
+  "en": "General"
+ },
+ "set.music": {
+  "es": "Música",
+  "en": "Music"
+ },
+ "set.sfx": {
+  "es": "Efectos",
+  "en": "Effects"
+ },
+ "set.sensitivity": {
+  "es": "Sensibilidad de cámara",
+  "en": "Camera sensitivity"
+ },
+ "set.invert_y": {
+  "es": "Invertir eje vertical",
+  "en": "Invert vertical axis"
+ },
+ "set.control_scale": {
+  "es": "Tamaño de controles",
+  "en": "Control size"
+ },
+ "set.quality": {
+  "es": "Calidad gráfica",
+  "en": "Graphics quality"
+ },
+ "set.q_low": {
+  "es": "Baja",
+  "en": "Low"
+ },
+ "set.q_med": {
+  "es": "Media",
+  "en": "Medium"
+ },
+ "set.q_high": {
+  "es": "Alta",
+  "en": "High"
+ },
+ "set.shadows": {
+  "es": "Sombras",
+  "en": "Shadows"
+ },
+ "set.language": {
+  "es": "Idioma",
+  "en": "Language"
+ },
+ "set.show_fps": {
+  "es": "Mostrar FPS",
+  "en": "Show FPS"
+ },
+ "set.touch_ui": {
+  "es": "Controles táctiles",
+  "en": "Touch controls"
+ },
+ "set.reset": {
+  "es": "Borrar partida",
+  "en": "Delete save"
+ },
+ "set.reset_confirm": {
+  "es": "¿Borrar todo tu progreso? Esta acción no se puede deshacer.",
+  "en": "Delete all your progress? This cannot be undone."
+ },
+ "set.reset_yes": {
+  "es": "Borrar",
+  "en": "Delete"
+ },
+ "set.reset_done": {
+  "es": "Partida borrada.",
+  "en": "Save deleted."
+ },
+ "shop.owned": {
+  "es": "Ya lo tienes.",
+  "en": "You already own it."
+ },
+ "state.raw": {
+  "es": "cruda",
+  "en": "raw"
+ },
+ "state.cooking": {
+  "es": "cocinándose",
+  "en": "cooking"
+ },
+ "state.cooked": {
+  "es": "cocinada",
+  "en": "cooked"
+ },
+ "state.burnt": {
+  "es": "quemada",
+  "en": "burnt"
+ },
+ "state.cooking_bar": {
+  "es": "COCINANDO",
+  "en": "COOKING"
+ },
+ "state.cooked_bar": {
+  "es": "¡LISTA!",
+  "en": "READY!"
+ },
+ "state.burnt_bar": {
+  "es": "¡QUEMADA!",
+  "en": "BURNT!"
+ },
+ "toast.burnt": {
+  "es": "¡%s quemada!",
+  "en": "%s burnt!"
+ },
+ "toast.delivered": {
+  "es": "Pedido entregado: +%d monedas",
+  "en": "Order delivered: +%d coins"
+ },
+ "toast.delivered_wrong": {
+  "es": "Pedido incorrecto (%s)",
+  "en": "Wrong order (%s)"
+ },
+ "toast.emergency_restock": {
+  "es": "Reposición de emergencia gratuita (3 unidades)",
+  "en": "Free emergency restock (3 units)"
+ },
+ "toast.mission_done": {
+  "es": "Misión completada: %s",
+  "en": "Mission complete: %s"
+ },
+ "toast.order_expired": {
+  "es": "¡Un cliente se ha ido sin su pedido!",
+  "en": "A customer left without their order!"
+ },
+ "toast.restocked": {
+  "es": "%s repuesto (-%d monedas)",
+  "en": "%s restocked (-%d coins)"
+ },
+ "ui.back": {
+  "es": "Atrás",
+  "en": "Back"
+ },
+ "ui.cancel": {
+  "es": "Cancelar",
+  "en": "Cancel"
+ },
+ "ui.close": {
+  "es": "Cerrar",
+  "en": "Close"
+ },
+ "ui.on": {
+  "es": "SÍ",
+  "en": "ON"
+ },
+ "ui.off": {
+  "es": "NO",
+  "en": "OFF"
+ },
+ "upg.buy": {
+  "es": "Comprar (%d)",
+  "en": "Buy (%d)"
+ },
+ "upg.bought": {
+  "es": "Mejora comprada: %s",
+  "en": "Upgrade bought: %s"
+ },
+ "upg.level": {
+  "es": "nivel %d/%d",
+  "en": "level %d/%d"
+ },
+ "upg.maxed": {
+  "es": "MÁXIMO",
+  "en": "MAX"
+ },
+ "upg.need_level": {
+  "es": "Requiere nivel %d",
+  "en": "Requires level %d"
+ },
+ "upgstat.grill_slots": {
+  "es": "Plazas de plancha",
+  "en": "Grill slots"
+ },
+ "upgstat.fryer_slots": {
+  "es": "Cestas de freidora",
+  "en": "Fryer baskets"
+ },
+ "upgstat.cook_speed": {
+  "es": "Velocidad de cocción",
+  "en": "Cooking speed"
+ },
+ "upgstat.prep_boards": {
+  "es": "Tablas de montaje",
+  "en": "Assembly boards"
+ },
+ "upgstat.crate_stock": {
+  "es": "Existencias por caja",
+  "en": "Stock per crate"
+ },
+ "upgstat.patience_mult": {
+  "es": "Paciencia de clientes",
+  "en": "Customer patience"
+ },
+ "upgstat.service_points": {
+  "es": "Puestos de servicio",
+  "en": "Service spots"
+ },
+ "upgstat.coin_mult": {
+  "es": "Bonificación de monedas",
+  "en": "Coin bonus"
+ },
+ "upgstat.look_level": {
+  "es": "Nivel de reforma",
+  "en": "Makeover level"
+ },
+ "cat.wall": {
+  "es": "Paredes",
+  "en": "Walls"
+ },
+ "cat.floor": {
+  "es": "Suelos",
+  "en": "Floors"
+ },
+ "cat.counter": {
+  "es": "Mostrador",
+  "en": "Counter"
+ },
+ "cat.tables": {
+  "es": "Mesas",
+  "en": "Tables"
+ },
+ "cat.chairs": {
+  "es": "Sillas",
+  "en": "Chairs"
+ },
+ "cat.lamps": {
+  "es": "Lámparas",
+  "en": "Lamps"
+ },
+ "cat.sign": {
+  "es": "Carteles",
+  "en": "Signs"
+ },
+ "cat.decor": {
+  "es": "Decoración",
+  "en": "Decor"
+ },
+ "stat.burgers_made": {
+  "es": "Prepara %d hamburguesas",
+  "en": "Make %d burgers"
+ },
+ "stat.customers_served": {
+  "es": "Atiende a %d clientes",
+  "en": "Serve %d customers"
+ },
+ "stat.orders_correct": {
+  "es": "Entrega %d pedidos correctos",
+  "en": "Deliver %d correct orders"
+ },
+ "stat.coins_earned": {
+  "es": "Consigue %d monedas en total",
+  "en": "Earn %d coins in total"
+ },
+ "stat.no_burn_shifts": {
+  "es": "Completa %d turnos sin quemar nada",
+  "en": "Finish %d shifts without burning anything"
+ },
+ "stat.perfect_burgers": {
+  "es": "Prepara %d hamburguesas perfectas",
+  "en": "Make %d perfect burgers"
+ },
+ "stat.recipes_unlocked": {
+  "es": "Desbloquea %d recetas",
+  "en": "Unlock %d recipes"
+ },
+ "stat.upgrades_bought": {
+  "es": "Compra %d mejoras",
+  "en": "Buy %d upgrades"
+ },
+ "stat.levels_completed": {
+  "es": "Supera %d niveles",
+  "en": "Clear %d levels"
+ },
+ "stat.best_streak": {
+  "es": "Consigue una racha de %d pedidos correctos",
+  "en": "Get a streak of %d correct orders"
+ },
+ "stat.patties_cooked": {
+  "es": "Cocina %d carnes en la plancha",
+  "en": "Cook %d patties on the grill"
+ },
+ "stat.combos_served": {
+  "es": "Sirve %d menús completos",
+  "en": "Serve %d full meals"
+ },
+ "stat.stars_total": {
+  "es": "Consigue %d estrellas",
+  "en": "Collect %d stars"
+ },
+ "stat.items_bought": {
+  "es": "Compra %d artículos de decoración",
+  "en": "Buy %d decoration items"
+ },
+ "stat.player_level": {
+  "es": "Alcanza el nivel %d de chef",
+  "en": "Reach chef level %d"
+ },
+ "stat.shifts_played": {
+  "es": "Juega %d turnos",
+  "en": "Play %d shifts"
+ },
+ "stat.three_star_levels": {
+  "es": "Consigue 3 estrellas en %d niveles",
+  "en": "Get 3 stars on %d levels"
+ },
+ "item.dirty_tray": {
+  "es": "Bandeja sucia",
+  "en": "Dirty tray"
+ },
+ "label.sink": {
+  "es": "FREGADERO",
+  "en": "SINK"
+ },
+ "prompt.wash": {
+  "es": "Lavar la bandeja",
+  "en": "Wash the tray"
+ },
+ "prompt.washing": {
+  "es": "Lavando... vuelve sola a su puesto",
+  "en": "Washing... it returns to its spot by itself"
+ },
+ "prompt.sink_idle": {
+  "es": "Fregadero: trae aquí las bandejas sucias",
+  "en": "Sink: bring dirty trays here"
+ },
+ "reject.no_tray": {
+  "es": "La bandeja está sucia: lávala en el fregadero",
+  "en": "The tray is dirty: wash it at the sink"
+ },
+ "reject.sink_trays_only": {
+  "es": "En el fregadero solo se lavan bandejas sucias",
+  "en": "Only dirty trays go in the sink"
+ },
+ "reject.trash_tray": {
+  "es": "Las bandejas no se tiran: lávalas en el fregadero",
+  "en": "Don't throw trays away: wash them at the sink"
+ },
+ "state.washing": {
+  "es": "LAVANDO",
+  "en": "WASHING"
+ },
+ "toast.tray_clean": {
+  "es": "Bandeja limpia: ya está en su puesto",
+  "en": "Tray clean: back at its spot"
+ },
+ "free.dirty_trays": {
+  "es": "Desde la dificultad 3 las bandejas se ensucian y hay que lavarlas.",
+  "en": "From difficulty 3 trays get dirty and must be washed."
+ },
+ "play.dirty_trays": {
+  "es": "Bandejas sucias",
+  "en": "Dirty trays"
+ },
+ "toast.dirty_trays": {
+  "es": "¡Novedad! Las bandejas se ensucian: lávalas en el fregadero",
+  "en": "New! Trays get dirty: wash them at the sink"
+ },
+ "shop.need_upgrade": {
+  "es": "Requiere la mejora «Catálogo de decoración»",
+  "en": "Requires the \"Decor catalog\" upgrade"
+ },
+ "recipe.locked_upgrade": {
+  "es": "Requiere la mejora «%s» (nivel %d)",
+  "en": "Requires the \"%s\" upgrade (level %d)"
+ },
+ "ui.new": {
+  "es": "NUEVO",
+  "en": "NEW"
+ },
+ "upgstat.recipe_pack": {
+  "es": "Paquetes de recetas",
+  "en": "Recipe packs"
+ },
+ "upgstat.decor_options": {
+  "es": "Catálogo desbloqueado",
+  "en": "Catalog unlocked"
+ },
+ "upgstat.wash_speed": {
+  "es": "Velocidad de lavado",
+  "en": "Washing speed"
+ },
+ "stat.trays_washed": {
+  "es": "Lava %d bandejas",
+  "en": "Wash %d trays"
+ },
+ "set.vibration": {
+  "es": "Vibración",
+  "en": "Vibration"
+ },
+ "tut.title": {
+  "es": "Tutorial",
+  "en": "Tutorial"
+ },
+ "tut.step": {
+  "es": "Paso %d de %d",
+  "en": "Step %d of %d"
+ },
+ "tut.continue": {
+  "es": "Continuar",
+  "en": "Continue"
+ },
+ "tut.continue_key": {
+  "es": "Continuar (Intro)",
+  "en": "Continue (Enter)"
+ },
+ "tut.objective": {
+  "es": "Tutorial: sigue las instrucciones",
+  "en": "Tutorial: follow the instructions"
+ },
+ "tut.great": {
+  "es": "¡BIEN!",
+  "en": "GREAT!"
+ },
+ "tut.act_touch": {
+  "es": "apunta con la mira y pulsa el botón de la mano (abajo a la derecha)",
+  "en": "aim with the crosshair and press the hand button (bottom right)"
+ },
+ "tut.act_desktop": {
+  "es": "apunta con la mira y pulsa E o haz clic",
+  "en": "aim with the crosshair and press E or click"
+ },
+ "tut.welcome": {
+  "es": "¡Bienvenido! Vas a preparar y servir tu primera hamburguesa paso a paso. Sigue la flecha amarilla: te señala adónde ir.",
+  "en": "Welcome! You're going to make and serve your first burger step by step. Follow the yellow arrow: it shows you where to go."
+ },
+ "tut.move_touch": {
+  "es": "Muévete con el joystick: arrastra el pulgar por la parte izquierda de la pantalla.",
+  "en": "Move with the joystick: drag your thumb on the left side of the screen."
+ },
+ "tut.move_desktop": {
+  "es": "Muévete con las teclas W, A, S y D.",
+  "en": "Move with the W, A, S and D keys."
+ },
+ "tut.look_touch": {
+  "es": "Mira a tu alrededor deslizando el dedo por la parte derecha de la pantalla.",
+  "en": "Look around by sliding your finger on the right side of the screen."
+ },
+ "tut.look_desktop": {
+  "es": "Mira a tu alrededor moviendo el ratón.",
+  "en": "Look around by moving the mouse."
+ },
+ "tut.customer": {
+  "es": "¡Viene un cliente! Espera a que llegue al mostrador y haga su pedido.",
+  "en": "A customer is coming! Wait for them to reach the counter and order."
+ },
+ "tut.book": {
+  "es": "Su pedido aparece en la comanda de la derecha: una Hamburguesa con queso. Pulsa el botón del libro (arriba a la derecha) para ver qué lleva.",
+  "en": "Their order shows on the ticket on the right: a Cheeseburger. Press the book button (top right) to see what goes in it."
+ },
+ "tut.book_desktop": {
+  "es": "Su pedido aparece en la comanda de la derecha: una Hamburguesa con queso. Pulsa R (o el botón del libro) para ver qué lleva.",
+  "en": "Their order shows on the ticket on the right: a Cheeseburger. Press R (or the book button) to see what goes in it."
+ },
+ "tut.patty_take": {
+  "es": "Empezamos por la carne. Ve a la tabla de la carne cruda, en la pared izquierda, y cógela: %s.",
+  "en": "Let's start with the patty. Go to the raw meat board on the left wall and take it: %s."
+ },
+ "tut.patty_grill": {
+  "es": "Lleva la carne a la plancha y colócala encima. Empezará a cocinarse sola.",
+  "en": "Take the patty to the grill and put it on top. It will start cooking by itself."
+ },
+ "tut.bun_take": {
+  "es": "Mientras se cocina, coge un pan inferior de las cajas del fondo.",
+  "en": "While it cooks, take a bottom bun from the crates at the back."
+ },
+ "tut.bun_board": {
+  "es": "Pon el pan inferior en la tabla de montaje de la isla. Ahí se monta la hamburguesa, capa a capa.",
+  "en": "Put the bottom bun on the assembly board on the island. That's where the burger is built, layer by layer."
+ },
+ "tut.patty_cooked": {
+  "es": "Cuando en la barra de la carne ponga «¡LISTA!» (en verde), recógela y ponla sobre el pan. Ojo: en las partidas normales, si tardas, se quema.",
+  "en": "When the patty's bar says \"READY!\" (in green), pick it up and put it on the bun. Careful: in normal shifts it burns if you wait too long."
+ },
+ "tut.cheese": {
+  "es": "Ahora el queso: cógelo de su tabla en la pared izquierda y ponlo encima de la carne. En esta receta el orden importa.",
+  "en": "Now the cheese: take it from its board on the left wall and put it on the patty. In this recipe the order matters."
+ },
+ "tut.bun_top": {
+  "es": "Cierra la hamburguesa con un pan superior de las cajas del fondo.",
+  "en": "Close the burger with a top bun from the crates at the back."
+ },
+ "tut.to_tray": {
+  "es": "¡Hamburguesa lista! Cógela de la tabla y ponla en la bandeja del puesto 1, delante del cliente.",
+  "en": "Burger ready! Take it from the board and put it on the tray at spot 1, in front of the customer."
+ },
+ "tut.bell": {
+  "es": "Pulsa la campanita que hay junto a la bandeja para entregar el pedido.",
+  "en": "Press the bell next to the tray to deliver the order."
+ },
+ "tut.dirty": {
+  "es": "¡Pedido entregado! La bandeja se ha quedado sucia: llévala al fregadero de la pared derecha. Se lava sola y vuelve limpia a su puesto.",
+  "en": "Order delivered! The tray is dirty now: take it to the sink on the right wall. It washes by itself and goes back to its spot clean."
+ },
+ "tut.trash": {
+  "es": "Si te equivocas, tira lo que lleves a la basura. Prueba: coge una lechuga y tírala al bote de basura de la pared derecha.",
+  "en": "If you make a mistake, throw what you're holding in the bin. Try it: take a lettuce and throw it in the bin on the right wall."
+ },
+ "tut.tips": {
+  "es": "¡Ya sabes lo básico! En la campaña cada turno tiene tiempo y objetivos. Gana estrellas y monedas, compra mejoras y desbloquea recetas.",
+  "en": "You know the basics! In the campaign each shift has a timer and goals. Earn stars and coins, buy upgrades and unlock recipes."
+ },
+ "tut.hint_wait_grill": {
+  "es": "La carne todavía se está cocinando: espera a que la barra se ponga verde.",
+  "en": "The patty is still cooking: wait for the bar to turn green."
+ },
+ "tut.hint_drop": {
+  "es": "Tienes las manos ocupadas: deja lo que llevas en un mostrador libre o tíralo a la basura.",
+  "en": "Your hands are full: put what you're holding on a free counter or throw it away."
+ },
+ "tut.retry": {
+  "es": "El pedido no coincidía con la receta. Lava la bandeja y lo intentamos con otro cliente.",
+  "en": "The order didn't match the recipe. Wash the tray and we'll try again with another customer."
+ },
+ "tut.done_title": {
+  "es": "¡Tutorial completado!",
+  "en": "Tutorial complete!"
+ },
+ "tut.done_body": {
+  "es": "Ya estás listo para tu primer turno de verdad. ¿Empezamos el nivel 1?",
+  "en": "You're ready for your first real shift. Shall we start level 1?"
+ },
+ "tut.play_level_1": {
+  "es": "Jugar nivel 1",
+  "en": "Play level 1"
+ },
+ "tut.to_menu": {
+  "es": "Menú",
+  "en": "Menu"
+ },
+ "tut.skip": {
+  "es": "Saltar tutorial",
+  "en": "Skip tutorial"
+ },
+ "tut.skip_confirm": {
+  "es": "¿Saltar el tutorial? Puedes repetirlo cuando quieras desde JUGAR > Tutorial.",
+  "en": "Skip the tutorial? You can replay it any time from PLAY > Tutorial."
+ },
+ "tut.offer": {
+  "es": "¿Es tu primera vez? Aprende a jugar en un par de minutos con el tutorial.",
+  "en": "First time here? Learn to play in a couple of minutes with the tutorial."
+ },
+ "tut.offer_yes": {
+  "es": "Tutorial",
+  "en": "Tutorial"
+ },
+ "tut.offer_no": {
+  "es": "Saltar",
+  "en": "Skip"
+ },
+ "tut.desc": {
+  "es": "Un turno guiado, sin prisa y sin fallos, en el que preparas y sirves una hamburguesa de verdad.",
+  "en": "A guided shift, with no rush and no failures, where you make and serve a real burger."
+ },
+ "tut.learn_1": {
+  "es": "Moverte, mirar y coger o colocar cosas",
+  "en": "Move, look around and pick up or place things"
+ },
+ "tut.learn_2": {
+  "es": "Cocinar en la plancha y montar la hamburguesa capa a capa",
+  "en": "Cook on the grill and build the burger layer by layer"
+ },
+ "tut.learn_3": {
+  "es": "Servir en la bandeja y entregar con la campanita",
+  "en": "Serve on the tray and deliver with the bell"
+ },
+ "tut.learn_4": {
+  "es": "Lavar bandejas en el fregadero y usar la basura",
+  "en": "Wash trays at the sink and use the bin"
+ },
+ "tut.reward": {
+  "es": "Regalo: %d monedas",
+  "en": "Gift: %d coins"
+ },
+ "tut.completed": {
+  "es": "Completado",
+  "en": "Completed"
+ },
+ "tut.duration": {
+  "es": "~3 min",
+  "en": "~3 min"
+ },
+ "tut.start": {
+  "es": "EMPEZAR TUTORIAL",
+  "en": "START TUTORIAL"
+ },
+ "ads.watch": {
+  "es": "Ver anuncio",
+  "en": "Watch ad"
+ },
+ "ads.no_thanks": {
+  "es": "No, gracias",
+  "en": "No, thanks"
+ },
+ "ads.revive_title": {
+  "es": "¿Segunda oportunidad?",
+  "en": "Second chance?"
+ },
+ "ads.revive_time": {
+  "es": "Se acabó el tiempo. Mira un anuncio y consigue %d segundos más para cumplir los objetivos.",
+  "en": "Time's up. Watch an ad to get %d more seconds to reach the goals."
+ },
+ "ads.revive_failed": {
+  "es": "Demasiados fallos. Mira un anuncio y se te perdonan para seguir con el turno.",
+  "en": "Too many mistakes. Watch an ad to have them forgiven and keep going."
+ },
+ "ads.revived": {
+  "es": "¡Segunda oportunidad! Sigue cocinando",
+  "en": "Second chance! Keep cooking"
+ },
+ "ads.double": {
+  "es": "x2: +%d monedas (ver anuncio)",
+  "en": "x2: +%d coins (watch ad)"
+ },
+ "ads.double_done": {
+  "es": "Monedas extra cobradas",
+  "en": "Extra coins collected"
+ },
+ "ads.doubled": {
+  "es": "+%d monedas extra",
+  "en": "+%d extra coins"
+ },
+ "ads.free_coins": {
+  "es": "+%d",
+  "en": "+%d"
+ },
+ "ads.free_coins_title": {
+  "es": "Monedas gratis",
+  "en": "Free coins"
+ },
+ "ads.free_coins_body": {
+  "es": "Mira un anuncio y llévate %d monedas.",
+  "en": "Watch an ad and get %d coins."
+ },
+ "ads.free_coins_got": {
+  "es": "¡+%d monedas!",
+  "en": "+%d coins!"
+ },
+ "ads.free_coins_wait": {
+  "es": "Vuelve en %s para más monedas gratis",
+  "en": "Come back in %s for more free coins"
+ },
+ "ads.not_ready": {
+  "es": "No hay anuncios disponibles ahora. Prueba en un momento.",
+  "en": "No ads available right now. Try again in a moment."
+ },
+ "ads.sim_title": {
+  "es": "ANUNCIO DE PRUEBA (simulado)",
+  "en": "TEST AD (simulated)"
+ },
+ "ads.sim_body": {
+  "es": "El plugin de AdMob no está activo en esta ejecución (editor u ordenador). En el móvil, con el plugin instalado, aquí aparece el anuncio de prueba real de Google.",
+  "en": "The AdMob plugin isn't active in this run (editor or desktop). On a phone with the plugin installed, Google's real test ad appears here."
+ },
+ "ads.sim_claim": {
+  "es": "Cerrar y recibir",
+  "en": "Close and claim"
+ },
+ "ads.sim_close": {
+  "es": "Cerrar",
+  "en": "Close"
+ },
+ "ads.sim_skip": {
+  "es": "Saltar (sin premio)",
+  "en": "Skip (no reward)"
+ },
+ "ads.sim_ready": {
+  "es": "¡Listo!",
+  "en": "Done!"
+ },
+ "studio.by": {
+  "es": "Un juego de FerStudio, creado por %s.",
+  "en": "A FerStudio game, made by %s."
+ },
+ "studio.desc": {
+  "es": "FerStudio es una marca independiente que desarrolla videojuegos, aplicaciones y productos digitales.",
+  "en": "FerStudio is an independent brand that makes video games, apps and digital products."
+ },
+ "studio.contact": {
+  "es": "Soporte: %s",
+  "en": "Support: %s"
+ },
+ "studio.web": {
+  "es": "Web",
+  "en": "Website"
+ },
+ "studio.privacy": {
+  "es": "Privacidad",
+  "en": "Privacy"
+ },
+ "studio.terms": {
+  "es": "Términos",
+  "en": "Terms"
+ },
+ "studio.support": {
+  "es": "Ayuda",
+  "en": "Help"
+ },
+ "studio.email": {
+  "es": "Escríbenos",
+  "en": "Email us"
+ },
+ "studio.open_failed": {
+  "es": "No se pudo abrir %s",
+  "en": "Couldn't open %s"
+ },
+ "set.group_help": {
+  "es": "Privacidad y ayuda",
+  "en": "Privacy and help"
+ },
+ "set.ads_note": {
+  "es": "El juego es gratis y muestra anuncios de Google AdMob: algunos los eliges tú a cambio de premios y otros aparecen a veces al perder un nivel. Más detalles en la política de privacidad.",
+  "en": "The game is free and shows Google AdMob ads: some you choose to watch for rewards and others sometimes appear after losing a level. More details in the privacy policy."
+ }
+}

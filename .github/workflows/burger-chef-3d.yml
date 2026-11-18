@@ -1,0 +1,159 @@
+# Burger Chef 3D: importa el proyecto con Godot 4.7.2, ejecuta las pruebas, saca capturas del menú en varios
+# tamaños de pantalla y compila el APK para Android. Los resultados se descargan en «Artifacts» de cada ejecución.
+name: Burger Chef 3D
+
+on:
+  push:
+    paths:
+      - "BurgerChef3D/**"
+      - ".github/workflows/burger-chef-3d.yml"
+  pull_request:
+    paths:
+      - "BurgerChef3D/**"
+  workflow_dispatch:
+
+concurrency:
+  group: bc3d-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GODOT_VERSION: "4.7.2"
+  PROJECT: BurgerChef3D
+
+jobs:
+  test:
+    name: Pruebas y capturas
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: BurgerChef3D
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar Godot
+        run: |
+          curl -fsSL -o /tmp/godot.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          sudo unzip -q /tmp/godot.zip -d /opt/godot
+          sudo ln -sf "/opt/godot/Godot_v${GODOT_VERSION}-stable_linux.x86_64" /usr/local/bin/godot
+          godot --version
+          sudo apt-get update -qq && sudo apt-get install -y -qq xvfb mesa-utils libgl1-mesa-dri > /dev/null
+
+      - name: Comprobaciones sin motor (datos, scripts, interfaz)
+        run: |
+          python3 tools/validate_data.py
+          python3 tools/static_check.py
+
+      - name: Importar el proyecto
+        # dos pasadas: en la primera algunos modelos .gltf se importan antes que su textura
+        run: |
+          godot --headless --path . --import || true
+          godot --headless --path . --import
+
+      - name: Pruebas automáticas
+        run: |
+          set -o pipefail
+          godot --headless --path . res://tests/test_runner.tscn 2>&1 | tee test_output.txt
+          grep -q "Resultado: .* 0 fallidas" test_output.txt
+
+      - name: Capturas en distintos tamaños de pantalla
+        run: tools/screenshots.sh "$GITHUB_WORKSPACE/screenshots"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: capturas-y-pruebas
+          path: |
+            screenshots/*.png
+            BurgerChef3D/test_output.txt
+          if-no-files-found: warn
+
+  android:
+    name: Compilar APK Android
+    needs: test
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: BurgerChef3D
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Instalar Godot
+        run: |
+          curl -fsSL -o /tmp/godot.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          sudo unzip -q /tmp/godot.zip -d /opt/godot
+          sudo ln -sf "/opt/godot/Godot_v${GODOT_VERSION}-stable_linux.x86_64" /usr/local/bin/godot
+
+      - name: Caché de las plantillas de exportación de Android
+        id: tpl
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.stable
+          key: godot-android-templates-${{ env.GODOT_VERSION }}
+
+      - name: Descargar las plantillas de Android (solo las necesarias)
+        if: steps.tpl.outputs.cache-hit != 'true'
+        working-directory: /tmp
+        run: |
+          curl -fsSL -o tpl.tpz "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+          unzip -q tpl.tpz "templates/android_*" "templates/version.txt"
+          rm tpl.tpz
+          T="$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable"
+          mkdir -p "$T" && mv templates/* "$T/" && ls -la "$T"
+
+      - name: Configurar Android SDK y clave de depuración
+        run: |
+          echo "SDK: $ANDROID_HOME"
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "platform-tools" "build-tools;35.0.0" "platforms;android-35" > /dev/null
+          mkdir -p ~/.config/godot
+          cat > ~/.config/godot/editor_settings-4.7.tres <<TRES
+          [gd_resource type="EditorSettings" format=3]
+
+          [resource]
+          export/android/android_sdk_path = "$ANDROID_HOME"
+          export/android/java_sdk_path = "$JAVA_HOME"
+          TRES
+          sed -i 's/^ *//' ~/.config/godot/editor_settings-4.7.tres
+          keytool -genkeypair -v -keystore /tmp/debug.keystore -storepass android -alias androiddebugkey -keypass android \
+            -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US" > /dev/null 2>&1
+          echo "GODOT_ANDROID_KEYSTORE_DEBUG_PATH=/tmp/debug.keystore" >> "$GITHUB_ENV"
+          echo "GODOT_ANDROID_KEYSTORE_DEBUG_USER=androiddebugkey" >> "$GITHUB_ENV"
+          echo "GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD=android" >> "$GITHUB_ENV"
+
+      - name: Importar el proyecto
+        run: |
+          godot --headless --path . --import || true
+          godot --headless --path . --import
+
+      - name: Exportar APK de prueba (arm64 + armeabi-v7a, sin Gradle)
+        # El plugin de AdMob aún no está instalado, así que se exporta sin Gradle con las plantillas oficiales:
+        # el juego funciona completo (sin anuncios reales). Se copia el preset de Amazon con Gradle desactivado.
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/build"
+          cp export_presets.cfg /tmp/export_presets.orig
+          sed -i '/^\[preset.1.options\]/,/^\[preset/ s/^gradle_build\/use_gradle_build=true/gradle_build\/use_gradle_build=false/' export_presets.cfg
+          set -o pipefail
+          godot --headless --path . --export-debug "Amazon Appstore (Fire, APK)" "$GITHUB_WORKSPACE/build/BurgerChef3D-debug.apk" 2>&1 | tee export_log.txt
+          cp /tmp/export_presets.orig export_presets.cfg
+          test -s "$GITHUB_WORKSPACE/build/BurgerChef3D-debug.apk"
+          ls -la "$GITHUB_WORKSPACE/build"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt2" dump badging "$GITHUB_WORKSPACE/build/BurgerChef3D-debug.apk" | head -5
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs "$GITHUB_WORKSPACE/build/BurgerChef3D-debug.apk" | head -3
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BurgerChef3D-apk
+          path: build/*.apk
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: registro-exportacion
+          path: BurgerChef3D/export_log.txt
+          if-no-files-found: ignore

@@ -1,0 +1,21 @@
+{
+ "_info": "Configuración de anuncios AdMob. Mientras use_test_ids sea true se usan los IDs de PRUEBA oficiales de Google (nunca generan ingresos ni riesgo de bloqueo). Cuando tengas tus IDs de AdMob, pégalos en los campos *_id y pon use_test_ids en false. El ID de la APP (con ~) va además en Proyecto > Configuración del proyecto > AdMob > Android > App Id.",
+ "enabled": true,
+ "use_test_ids": true,
+ "android_app_id": "",
+ "rewarded_id": "",
+ "interstitial_id": "",
+ "test_android_app_id": "ca-app-pub-3940256099942544~3347511713",
+ "test_rewarded_id": "ca-app-pub-3940256099942544/5224354917",
+ "test_interstitial_id": "ca-app-pub-3940256099942544/1033173712",
+ "simulate_in_debug": true,
+ "interstitial_every_losses": 2,
+ "interstitial_cooldown_s": 120,
+ "min_shifts_before_interstitial": 3,
+ "free_coins_base": 40,
+ "free_coins_per_level": 5,
+ "free_coins_cooldown_min": 10,
+ "revive_seconds": 45,
+ "double_min_coins": 20,
+ "double_max_coins": 400
+}

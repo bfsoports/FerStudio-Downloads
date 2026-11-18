@@ -1,0 +1,426 @@
+[
+ {
+  "id": "classic",
+  "name": {
+   "es": "Hamburguesa clásica",
+   "en": "Classic burger"
+  },
+  "kind": "burger",
+  "ingredients": [
+   "bun_bottom",
+   "patty",
+   "lettuce",
+   "tomato",
+   "bun_top"
+  ],
+  "order": "flexible",
+  "extras": [
+   "onion"
+  ],
+  "max_extras": 1,
+  "price": 10,
+  "xp": 8,
+  "difficulty": 1,
+  "unlock_level": 1,
+  "prep_time": 25,
+  "stations": [
+   "grill",
+   "assembly"
+  ]
+ },
+ {
+  "id": "cheese",
+  "name": {
+   "es": "Hamburguesa con queso",
+   "en": "Cheeseburger"
+  },
+  "kind": "burger",
+  "ingredients": [
+   "bun_bottom",
+   "patty",
+   "cheese",
+   "bun_top"
+  ],
+  "order": "strict",
+  "extras": [
+   "onion"
+  ],
+  "max_extras": 1,
+  "price": 13,
+  "xp": 10,
+  "difficulty": 1,
+  "unlock_level": 2,
+  "prep_time": 28,
+  "stations": [
+   "grill",
+   "assembly"
+  ]
+ },
+ {
+  "id": "double",
+  "name": {
+   "es": "Hamburguesa doble",
+   "en": "Double burger"
+  },
+  "kind": "burger",
+  "ingredients": [
+   "bun_bottom",
+   "patty",
+   "patty",
+   "cheese",
+   "bun_top"
+  ],
+  "order": "strict",
+  "extras": [
+   "onion"
+  ],
+  "max_extras": 1,
+  "price": 18,
+  "xp": 14,
+  "difficulty": 2,
+  "unlock_level": 4,
+  "prep_time": 38,
+  "stations": [
+   "grill",
+   "assembly"
+  ]
+ },
+ {
+  "id": "veggie",
+  "name": {
+   "es": "Hamburguesa vegetal",
+   "en": "Veggie burger"
+  },
+  "kind": "burger",
+  "ingredients": [
+   "bun_bottom",
+   "veggie_patty",
+   "lettuce",
+   "tomato",
+   "bun_top"
+  ],
+  "order": "flexible",
+  "extras": [
+   "onion"
+  ],
+  "max_extras": 1,
+  "price": 14,
+  "xp": 11,
+  "difficulty": 2,
+  "unlock_level": 5,
+  "prep_time": 32,
+  "stations": [
+   "grill",
+   "assembly"
+  ]
+ },
+ {
+  "id": "house",
+  "name": {
+   "es": "Especial de la casa",
+   "en": "House special"
+  },
+  "kind": "burger",
+  "ingredients": [
+   "bun_bottom",
+   "patty",
+   "cheese",
+   "onion",
+   "bun_top"
+  ],
+  "order": "strict",
+  "extras": [],
+  "max_extras": 1,
+  "price": 17,
+  "xp": 13,
+  "difficulty": 2,
+  "unlock_level": 8,
+  "prep_time": 36,
+  "stations": [
+   "grill",
+   "assembly"
+  ]
+ },
+ {
+  "id": "bacon",
+  "name": {
+   "es": "Hamburguesa con bacon",
+   "en": "Bacon burger"
+  },
+  "kind": "burger",
+  "ingredients": [
+   "bun_bottom",
+   "patty",
+   "bacon",
+   "cheese",
+   "bun_top"
+  ],
+  "order": "strict",
+  "extras": [
+   "onion"
+  ],
+  "max_extras": 1,
+  "price": 19,
+  "xp": 15,
+  "difficulty": 3,
+  "unlock_level": 10,
+  "prep_time": 40,
+  "stations": [
+   "grill",
+   "assembly"
+  ]
+ },
+ {
+  "id": "blt",
+  "name": {
+   "es": "Hamburguesa BLT",
+   "en": "BLT burger"
+  },
+  "kind": "burger",
+  "ingredients": [
+   "bun_bottom",
+   "patty",
+   "bacon",
+   "lettuce",
+   "tomato",
+   "bun_top"
+  ],
+  "order": "strict",
+  "extras": [
+   "onion"
+  ],
+  "max_extras": 1,
+  "price": 18,
+  "xp": 14,
+  "difficulty": 3,
+  "unlock_level": 13,
+  "prep_time": 40,
+  "stations": [
+   "grill",
+   "assembly"
+  ]
+ },
+ {
+  "id": "complete",
+  "name": {
+   "es": "Hamburguesa completa",
+   "en": "Full-stack burger"
+  },
+  "kind": "burger",
+  "ingredients": [
+   "bun_bottom",
+   "patty",
+   "cheese",
+   "lettuce",
+   "tomato",
+   "onion",
+   "bun_top"
+  ],
+  "order": "flexible",
+  "extras": [],
+  "max_extras": 1,
+  "price": 24,
+  "xp": 19,
+  "difficulty": 4,
+  "unlock_level": 16,
+  "prep_time": 46,
+  "stations": [
+   "grill",
+   "assembly"
+  ]
+ },
+ {
+  "id": "premium",
+  "name": {
+   "es": "Hamburguesa premium",
+   "en": "Premium burger"
+  },
+  "kind": "burger",
+  "ingredients": [
+   "bun_bottom",
+   "patty",
+   "patty",
+   "bacon",
+   "cheese",
+   "tomato",
+   "bun_top"
+  ],
+  "order": "strict",
+  "extras": [
+   "onion"
+  ],
+  "max_extras": 1,
+  "price": 32,
+  "xp": 26,
+  "difficulty": 5,
+  "unlock_level": 20,
+  "prep_time": 52,
+  "stations": [
+   "grill",
+   "assembly"
+  ]
+ },
+ {
+  "id": "combo",
+  "name": {
+   "es": "Menú con patatas y bebida",
+   "en": "Burger meal"
+  },
+  "kind": "combo",
+  "components": [
+   {
+    "type": "recipe",
+    "id": "cheese"
+   },
+   {
+    "type": "item",
+    "id": "fries"
+   },
+   {
+    "type": "item",
+    "id": "drink"
+   }
+  ],
+  "price": 30,
+  "xp": 22,
+  "difficulty": 4,
+  "unlock_level": 24,
+  "prep_time": 60,
+  "stations": [
+   "grill",
+   "assembly",
+   "fryer"
+  ]
+ },
+ {
+  "id": "veggie_cheese",
+  "name": {
+   "es": "Vegetal con queso",
+   "en": "Cheesy veggie burger"
+  },
+  "kind": "burger",
+  "ingredients": [
+   "bun_bottom",
+   "veggie_patty",
+   "cheese",
+   "lettuce",
+   "bun_top"
+  ],
+  "order": "flexible",
+  "extras": [
+   "tomato"
+  ],
+  "max_extras": 1,
+  "price": 16,
+  "xp": 12,
+  "difficulty": 2,
+  "unlock_level": 5,
+  "prep_time": 32,
+  "stations": [
+   "grill",
+   "assembly"
+  ],
+  "requires_upgrade": {
+   "id": "recipe_book",
+   "level": 1
+  }
+ },
+ {
+  "id": "classic_meal",
+  "name": {
+   "es": "Menú clásico con patatas",
+   "en": "Classic burger with fries"
+  },
+  "kind": "combo",
+  "components": [
+   {
+    "type": "recipe",
+    "id": "classic"
+   },
+   {
+    "type": "item",
+    "id": "fries"
+   }
+  ],
+  "price": 18,
+  "xp": 14,
+  "difficulty": 3,
+  "unlock_level": 6,
+  "prep_time": 45,
+  "stations": [
+   "grill",
+   "assembly",
+   "fryer"
+  ],
+  "requires_upgrade": {
+   "id": "recipe_book",
+   "level": 1
+  }
+ },
+ {
+  "id": "veggie_meal",
+  "name": {
+   "es": "Menú vegetal con bebida",
+   "en": "Veggie burger with a drink"
+  },
+  "kind": "combo",
+  "components": [
+   {
+    "type": "recipe",
+    "id": "veggie"
+   },
+   {
+    "type": "item",
+    "id": "drink"
+   }
+  ],
+  "price": 22,
+  "xp": 17,
+  "difficulty": 3,
+  "unlock_level": 8,
+  "prep_time": 45,
+  "stations": [
+   "grill",
+   "assembly"
+  ],
+  "requires_upgrade": {
+   "id": "recipe_book",
+   "level": 2
+  }
+ },
+ {
+  "id": "double_bacon",
+  "name": {
+   "es": "Doble bacon",
+   "en": "Double bacon burger"
+  },
+  "kind": "burger",
+  "ingredients": [
+   "bun_bottom",
+   "patty",
+   "bacon",
+   "cheese",
+   "patty",
+   "bacon",
+   "bun_top"
+  ],
+  "order": "strict",
+  "extras": [
+   "onion"
+  ],
+  "max_extras": 1,
+  "price": 30,
+  "xp": 24,
+  "difficulty": 4,
+  "unlock_level": 12,
+  "prep_time": 52,
+  "stations": [
+   "grill",
+   "assembly"
+  ],
+  "requires_upgrade": {
+   "id": "recipe_book",
+   "level": 2
+  }
+ }
+]

@@ -1,0 +1,139 @@
+[
+ {
+  "id": "bun_bottom",
+  "name": {
+   "es": "Pan inferior",
+   "en": "Bottom bun"
+  },
+  "color": "#d9964f",
+  "stackable": true,
+  "cook": null,
+  "unit_price": 2
+ },
+ {
+  "id": "bun_top",
+  "name": {
+   "es": "Pan superior",
+   "en": "Top bun"
+  },
+  "color": "#e0a15a",
+  "stackable": true,
+  "cook": null,
+  "unit_price": 2
+ },
+ {
+  "id": "patty",
+  "name": {
+   "es": "Carne",
+   "en": "Beef patty"
+  },
+  "color": "#7a4a2c",
+  "stackable": true,
+  "cook": {
+   "station": "grill",
+   "cook_time": 8.0,
+   "burn_time": 8.0
+  },
+  "unit_price": 4
+ },
+ {
+  "id": "veggie_patty",
+  "name": {
+   "es": "Medallón vegetal",
+   "en": "Veggie patty"
+  },
+  "color": "#6f7d3a",
+  "stackable": true,
+  "cook": {
+   "station": "grill",
+   "cook_time": 7.0,
+   "burn_time": 8.0
+  },
+  "unit_price": 4
+ },
+ {
+  "id": "bacon",
+  "name": {
+   "es": "Bacon",
+   "en": "Bacon"
+  },
+  "color": "#b24a3a",
+  "stackable": true,
+  "cook": {
+   "station": "grill",
+   "cook_time": 5.0,
+   "burn_time": 6.0
+  },
+  "unit_price": 3
+ },
+ {
+  "id": "cheese",
+  "name": {
+   "es": "Queso",
+   "en": "Cheese"
+  },
+  "color": "#f2b92e",
+  "stackable": true,
+  "cook": null,
+  "unit_price": 2
+ },
+ {
+  "id": "lettuce",
+  "name": {
+   "es": "Lechuga",
+   "en": "Lettuce"
+  },
+  "color": "#6fb43f",
+  "stackable": true,
+  "cook": null,
+  "unit_price": 1
+ },
+ {
+  "id": "tomato",
+  "name": {
+   "es": "Tomate",
+   "en": "Tomato"
+  },
+  "color": "#d8392b",
+  "stackable": true,
+  "cook": null,
+  "unit_price": 1
+ },
+ {
+  "id": "onion",
+  "name": {
+   "es": "Cebolla",
+   "en": "Onion"
+  },
+  "color": "#c8a2d6",
+  "stackable": true,
+  "cook": null,
+  "unit_price": 1
+ },
+ {
+  "id": "fries",
+  "name": {
+   "es": "Patatas fritas",
+   "en": "Fries"
+  },
+  "color": "#f3b72f",
+  "stackable": false,
+  "cook": {
+   "station": "fryer",
+   "cook_time": 7.0,
+   "burn_time": 8.0
+  },
+  "unit_price": 2
+ },
+ {
+  "id": "drink",
+  "name": {
+   "es": "Bebida",
+   "en": "Drink"
+  },
+  "color": "#4a90d9",
+  "stackable": false,
+  "cook": null,
+  "unit_price": 1
+ }
+]

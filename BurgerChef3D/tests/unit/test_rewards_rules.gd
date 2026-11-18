@@ -1,0 +1,32 @@
+extends RefCounted
+## Recompensas, satisfacción, penalizaciones y reglas de victoria/derrota/estrellas.
+
+func run(t) -> void:
+	var p := RewardCalc.payout(10, 1.0, true, 1.0, 1.0, 1.0)
+	t.eq(int(p["coins"]), 14, "pedido perfecto y rápido: 10 + 4 de propina")
+	t.eq(int(RewardCalc.payout(10, 1.0, true, 1.0, 1.0, 0.5)["coins"]), 7, "el modo libre paga la mitad")
+	t.eq(int(RewardCalc.payout(10, 0.2, false, 1.0, 1.0, 1.0)["coins"]), 2, "un pedido incorrecto no da la recompensa completa")
+	t.eq(int(RewardCalc.payout(10, 1.0, true, 0.0, 1.0, 1.0)["tip"]), 0, "sin propina si el cliente casi se va")
+	t.eq(int(RewardCalc.payout(10, 1.0, true, 1.0, 1.5, 1.0)["coins"]), 21, "la mejora de caja aumenta las monedas")
+	t.eq(RewardCalc.xp_for(10, 0.5, 1.0), 5, "experiencia proporcional a la calidad")
+	t.eq(RewardCalc.xp_for(1, 0.1, 0.5), 1, "mínimo 1 de experiencia")
+	t.ok(is_equal_approx(RewardCalc.satisfaction(1.0, 1.0), 1.0), "satisfacción máxima")
+	t.ok(is_equal_approx(RewardCalc.satisfaction(1.0, 0.0), 0.55), "satisfacción con paciencia agotada")
+	t.eq(RewardCalc.expire_penalty(10), 3, "penalización por pedido caducado")
+	t.eq(RewardCalc.wrong_penalty(10), 2, "penalización por pedido incorrecto")
+	var stats := {"orders_ok": 3, "customers": 4, "income": 60, "penalties": 10, "burnt": 0, "sat_sum": 3.0, "sat_count": 4, "recipe_counts": {"cheese": 2}, "failed": 1}
+	t.eq(ShiftRules.net_income(stats), 50, "ingresos netos = ingresos - penalizaciones")
+	t.eq(int(ShiftRules.avg_satisfaction(stats)), 75, "satisfacción media")
+	t.eq(ShiftRules.avg_satisfaction({}), 100.0, "sin clientes la satisfacción es 100")
+	t.ok(ShiftRules.is_won({"orders": 3}, stats), "objetivo de pedidos cumplido")
+	t.ok(not ShiftRules.is_won({"orders": 4}, stats), "objetivo de pedidos no cumplido")
+	t.ok(ShiftRules.is_won({"orders": 3, "no_burnt": true, "satisfaction": 70}, stats), "varios objetivos cumplidos")
+	t.ok(not ShiftRules.is_won({"orders": 3, "satisfaction": 80}, stats), "satisfacción insuficiente")
+	t.ok(ShiftRules.is_won({"recipe": {"id": "cheese", "count": 2}}, stats), "objetivo de receta")
+	t.ok(not ShiftRules.is_won({}, stats), "sin objetivos no se gana")
+	t.ok(not ShiftRules.has_lost({"max_failed": 3}, stats), "un fallo no pierde con límite 3")
+	t.ok(ShiftRules.has_lost({"max_failed": 0 + 0}, stats) == false, "sin límite no se pierde por fallos")
+	t.ok(ShiftRules.has_lost({"max_failed": 1}, {"failed": 2}), "se pierde al superar el máximo de fallos")
+	t.eq(ShiftRules.stars({"star_income": [40, 80]}, stats, true), 2, "2 estrellas con ingresos netos 50")
+	t.eq(ShiftRules.stars({"star_income": [40, 80]}, {"income": 100, "penalties": 0}, true), 3, "3 estrellas")
+	t.eq(ShiftRules.stars({"star_income": [40, 80]}, stats, false), 0, "0 estrellas si se pierde")

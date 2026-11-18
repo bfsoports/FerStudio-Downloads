@@ -1,0 +1,268 @@
+[
+ {
+  "id": "grill_capacity",
+  "name": {
+   "es": "Plancha grande",
+   "en": "Bigger grill"
+  },
+  "desc": {
+   "es": "Más espacio para cocinar carne a la vez.",
+   "en": "More room to cook patties at once."
+  },
+  "max_level": 2,
+  "costs": [
+   150,
+   400
+  ],
+  "effect": {
+   "stat": "grill_slots",
+   "base": 2,
+   "per_level": 1
+  },
+  "requires_player_level": 2
+ },
+ {
+  "id": "fryer_capacity",
+  "name": {
+   "es": "Freidora doble",
+   "en": "Double fryer"
+  },
+  "desc": {
+   "es": "Dos cestas de patatas a la vez.",
+   "en": "Two fry baskets at once."
+  },
+  "max_level": 1,
+  "costs": [
+   200
+  ],
+  "effect": {
+   "stat": "fryer_slots",
+   "base": 1,
+   "per_level": 1
+  },
+  "requires_player_level": 3
+ },
+ {
+  "id": "cook_speed",
+  "name": {
+   "es": "Cocción rápida",
+   "en": "Fast cooking"
+  },
+  "desc": {
+   "es": "La plancha y la freidora cocinan más rápido.",
+   "en": "The grill and fryer cook faster."
+  },
+  "max_level": 3,
+  "costs": [
+   120,
+   260,
+   520
+  ],
+  "effect": {
+   "stat": "cook_speed",
+   "base": 1.0,
+   "per_level": 0.15
+  },
+  "requires_player_level": 2
+ },
+ {
+  "id": "prep_space",
+  "name": {
+   "es": "Más espacio de montaje",
+   "en": "More prep space"
+  },
+  "desc": {
+   "es": "Desbloquea tablas de montaje extra.",
+   "en": "Unlocks extra assembly boards."
+  },
+  "max_level": 2,
+  "costs": [
+   180,
+   450
+  ],
+  "effect": {
+   "stat": "prep_boards",
+   "base": 1,
+   "per_level": 1
+  },
+  "requires_player_level": 3
+ },
+ {
+  "id": "storage",
+  "name": {
+   "es": "Mayor almacenamiento",
+   "en": "Bigger storage"
+  },
+  "desc": {
+   "es": "Cada caja guarda más ingredientes.",
+   "en": "Every crate holds more ingredients."
+  },
+  "max_level": 3,
+  "costs": [
+   100,
+   220,
+   400
+  ],
+  "effect": {
+   "stat": "crate_stock",
+   "base": 8,
+   "per_level": 4
+  },
+  "requires_player_level": 2
+ },
+ {
+  "id": "patience",
+  "name": {
+   "es": "Clientes pacientes",
+   "en": "Patient customers"
+  },
+  "desc": {
+   "es": "Los clientes esperan más tiempo.",
+   "en": "Customers wait longer."
+  },
+  "max_level": 3,
+  "costs": [
+   140,
+   300,
+   600
+  ],
+  "effect": {
+   "stat": "patience_mult",
+   "base": 1.0,
+   "per_level": 0.12
+  },
+  "requires_player_level": 4
+ },
+ {
+  "id": "service_points",
+  "name": {
+   "es": "Tercer puesto de servicio",
+   "en": "Third service point"
+  },
+  "desc": {
+   "es": "Abre otro puesto en el mostrador.",
+   "en": "Opens another counter spot."
+  },
+  "max_level": 1,
+  "costs": [
+   350
+  ],
+  "effect": {
+   "stat": "service_points",
+   "base": 2,
+   "per_level": 1
+  },
+  "requires_player_level": 5
+ },
+ {
+  "id": "coin_bonus",
+  "name": {
+   "es": "Caja registradora",
+   "en": "Cash register"
+  },
+  "desc": {
+   "es": "Ganas más monedas por pedido.",
+   "en": "Earn more coins per order."
+  },
+  "max_level": 3,
+  "costs": [
+   200,
+   450,
+   900
+  ],
+  "effect": {
+   "stat": "coin_mult",
+   "base": 1.0,
+   "per_level": 0.1
+  },
+  "requires_player_level": 3
+ },
+ {
+  "id": "restaurant_look",
+  "name": {
+   "es": "Reforma del local",
+   "en": "Restaurant makeover"
+  },
+  "desc": {
+   "es": "Mejoras visuales: carteles, plantas y luces.",
+   "en": "Visual upgrades: signs, plants and lights."
+  },
+  "max_level": 3,
+  "costs": [
+   250,
+   600,
+   1200
+  ],
+  "effect": {
+   "stat": "look_level",
+   "base": 0,
+   "per_level": 1
+  },
+  "requires_player_level": 4
+ },
+ {
+  "id": "recipe_book",
+  "name": {
+   "es": "Recetas nuevas",
+   "en": "New recipes"
+  },
+  "desc": {
+   "es": "Añade recetas nuevas a la carta, en la campaña y en el modo libre.",
+   "en": "Adds new recipes to the menu, in the campaign and in free mode."
+  },
+  "max_level": 2,
+  "costs": [
+   260,
+   620
+  ],
+  "effect": {
+   "stat": "recipe_pack",
+   "base": 0,
+   "per_level": 1
+  },
+  "requires_player_level": 4
+ },
+ {
+  "id": "decor_options",
+  "name": {
+   "es": "Catálogo de decoración",
+   "en": "Decor catalog"
+  },
+  "desc": {
+   "es": "Desbloquea colores y decoraciones nuevas en la tienda de personalización.",
+   "en": "Unlocks new colours and decorations in the customization shop."
+  },
+  "max_level": 1,
+  "costs": [
+   300
+  ],
+  "effect": {
+   "stat": "decor_options",
+   "base": 0,
+   "per_level": 1
+  },
+  "requires_player_level": 5
+ },
+ {
+  "id": "dishwasher",
+  "name": {
+   "es": "Fregadero rápido",
+   "en": "Fast sink"
+  },
+  "desc": {
+   "es": "Las bandejas sucias se lavan más rápido.",
+   "en": "Dirty trays get washed faster."
+  },
+  "max_level": 2,
+  "costs": [
+   150,
+   350
+  ],
+  "effect": {
+   "stat": "wash_speed",
+   "base": 1.0,
+   "per_level": 0.5
+  },
+  "requires_player_level": 6
+ }
+]

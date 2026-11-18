@@ -1,0 +1,206 @@
+{
+ "room": {
+  "x_min": -9.0,
+  "x_max": 9.0,
+  "z_min": -9.0,
+  "z_max": 9.0,
+  "height": 3.4,
+  "split_z": 0.5,
+  "door_x_min": 7.0,
+  "door_x_max": 9.0
+ },
+ "player_spawn": {
+  "x": 0.0,
+  "z": 6.0
+ },
+ "service_counter": {
+  "x": 0.0,
+  "z": 1.0,
+  "w": 15.2,
+  "d": 1.1
+ },
+ "gates": [
+  {
+   "x": -8.3,
+   "z": 1.0,
+   "w": 1.4,
+   "d": 1.1
+  },
+  {
+   "x": 8.3,
+   "z": 1.0,
+   "w": 1.4,
+   "d": 1.1
+  }
+ ],
+ "service_points": [
+  {
+   "x": -3.2,
+   "front_z": -0.8,
+   "back_z": -2.4
+  },
+  {
+   "x": 0.0,
+   "front_z": -0.8,
+   "back_z": -2.4
+  },
+  {
+   "x": 3.2,
+   "front_z": -0.8,
+   "back_z": -2.4
+  }
+ ],
+ "grill": {
+  "x": -5.3,
+  "z": 4.5,
+  "w": 2.0,
+  "d": 2.0
+ },
+ "stage_a": {
+  "x": -3.5,
+  "z": 4.5,
+  "w": 1.6,
+  "d": 1.0
+ },
+ "island": {
+  "x": -0.6,
+  "z": 4.5,
+  "w": 4.2,
+  "d": 1.0
+ },
+ "assembly": [
+  {
+   "x": -1.9,
+   "z": 4.5
+  },
+  {
+   "x": -0.6,
+   "z": 4.5
+  },
+  {
+   "x": 0.7,
+   "z": 4.5
+  }
+ ],
+ "fryer": {
+  "x": 4.3,
+  "z": 4.5,
+  "w": 2.0,
+  "d": 1.0
+ },
+ "stage_b": {
+  "x": 5.8,
+  "z": 4.5,
+  "w": 1.0,
+  "d": 1.0
+ },
+ "bins": [
+  {
+   "ingredient": "bun_bottom",
+   "x": -2.8,
+   "z": 8.5,
+   "group": "shelf"
+  },
+  {
+   "ingredient": "bun_top",
+   "x": -1.4,
+   "z": 8.5,
+   "group": "shelf"
+  },
+  {
+   "ingredient": "lettuce",
+   "x": 0.0,
+   "z": 8.5,
+   "group": "shelf"
+  },
+  {
+   "ingredient": "tomato",
+   "x": 1.4,
+   "z": 8.5,
+   "group": "shelf"
+  },
+  {
+   "ingredient": "onion",
+   "x": 2.8,
+   "z": 8.5,
+   "group": "shelf"
+  },
+  {
+   "ingredient": "patty",
+   "x": -8.45,
+   "z": 2.6,
+   "group": "fridge"
+  },
+  {
+   "ingredient": "veggie_patty",
+   "x": -8.45,
+   "z": 4.0,
+   "group": "fridge"
+  },
+  {
+   "ingredient": "bacon",
+   "x": -8.45,
+   "z": 5.4,
+   "group": "fridge"
+  },
+  {
+   "ingredient": "cheese",
+   "x": -8.45,
+   "z": 6.8,
+   "group": "fridge"
+  },
+  {
+   "ingredient": "fries",
+   "x": 8.5,
+   "z": 3.6,
+   "group": "shelf"
+  },
+  {
+   "ingredient": "drink",
+   "x": 8.45,
+   "z": 5.0,
+   "group": "dispenser"
+  }
+ ],
+ "trash": {
+  "x": 8.6,
+  "z": 6.4
+ },
+ "sink": {
+  "x": 8.5,
+  "z": 2.3
+ },
+ "tables": [
+  {
+   "x": -7.0,
+   "z": -3.0
+  },
+  {
+   "x": -7.0,
+   "z": -6.0
+  },
+  {
+   "x": -2.0,
+   "z": -7.0
+  },
+  {
+   "x": 2.0,
+   "z": -7.0
+  },
+  {
+   "x": 6.0,
+   "z": -7.0
+  }
+ ],
+ "customer_route": {
+  "spawn": {
+   "x": 8.0,
+   "z": -12.5
+  },
+  "door": {
+   "x": 8.0,
+   "z": -8.2
+  },
+  "turn_z": -4.8
+ }
+}

@@ -1,0 +1,494 @@
+[
+ {
+  "id": "m_burgers_10",
+  "kind": "mission",
+  "name": {
+   "es": "Aprendiz de la plancha",
+   "en": "Grill apprentice"
+  },
+  "stat": "burgers_made",
+  "target": 10,
+  "reward_coins": 30,
+  "reward_xp": 20
+ },
+ {
+  "id": "m_burgers_50",
+  "kind": "mission",
+  "name": {
+   "es": "Mano rápida",
+   "en": "Quick hands"
+  },
+  "stat": "burgers_made",
+  "target": 50,
+  "reward_coins": 80,
+  "reward_xp": 50
+ },
+ {
+  "id": "m_clients_20",
+  "kind": "mission",
+  "name": {
+   "es": "Atención al cliente",
+   "en": "Customer care"
+  },
+  "stat": "customers_served",
+  "target": 20,
+  "reward_coins": 40,
+  "reward_xp": 25
+ },
+ {
+  "id": "m_clients_60",
+  "kind": "mission",
+  "name": {
+   "es": "Local lleno",
+   "en": "Full house"
+  },
+  "stat": "customers_served",
+  "target": 60,
+  "reward_coins": 100,
+  "reward_xp": 60
+ },
+ {
+  "id": "m_coins_500",
+  "kind": "mission",
+  "name": {
+   "es": "Primeras ganancias",
+   "en": "First earnings"
+  },
+  "stat": "coins_earned",
+  "target": 500,
+  "reward_coins": 50,
+  "reward_xp": 30
+ },
+ {
+  "id": "m_coins_2000",
+  "kind": "mission",
+  "name": {
+   "es": "Negocio en marcha",
+   "en": "Business running"
+  },
+  "stat": "coins_earned",
+  "target": 2000,
+  "reward_coins": 120,
+  "reward_xp": 70
+ },
+ {
+  "id": "m_noburn_1",
+  "kind": "mission",
+  "name": {
+   "es": "Cocina limpia",
+   "en": "Clean cooking"
+  },
+  "stat": "no_burn_shifts",
+  "target": 1,
+  "reward_coins": 40,
+  "reward_xp": 25
+ },
+ {
+  "id": "m_noburn_3",
+  "kind": "mission",
+  "name": {
+   "es": "Sin humo",
+   "en": "Smoke-free"
+  },
+  "stat": "no_burn_shifts",
+  "target": 3,
+  "reward_coins": 90,
+  "reward_xp": 55
+ },
+ {
+  "id": "m_perfect_5",
+  "kind": "mission",
+  "name": {
+   "es": "Cinco perfectas",
+   "en": "Five perfect"
+  },
+  "stat": "perfect_burgers",
+  "target": 5,
+  "reward_coins": 50,
+  "reward_xp": 35
+ },
+ {
+  "id": "m_perfect_20",
+  "kind": "mission",
+  "name": {
+   "es": "Perfeccionista",
+   "en": "Perfectionist"
+  },
+  "stat": "perfect_burgers",
+  "target": 20,
+  "reward_coins": 130,
+  "reward_xp": 80
+ },
+ {
+  "id": "m_recipes_5",
+  "kind": "mission",
+  "name": {
+   "es": "Libro de recetas",
+   "en": "Recipe book"
+  },
+  "stat": "recipes_unlocked",
+  "target": 5,
+  "reward_coins": 70,
+  "reward_xp": 45
+ },
+ {
+  "id": "m_upgrade_1",
+  "kind": "mission",
+  "name": {
+   "es": "Primera mejora",
+   "en": "First upgrade"
+  },
+  "stat": "upgrades_bought",
+  "target": 1,
+  "reward_coins": 30,
+  "reward_xp": 20
+ },
+ {
+  "id": "m_upgrade_4",
+  "kind": "mission",
+  "name": {
+   "es": "Cocina equipada",
+   "en": "Equipped kitchen"
+  },
+  "stat": "upgrades_bought",
+  "target": 4,
+  "reward_coins": 90,
+  "reward_xp": 55
+ },
+ {
+  "id": "m_levels_5",
+  "kind": "mission",
+  "name": {
+   "es": "Cinco turnos",
+   "en": "Five shifts"
+  },
+  "stat": "levels_completed",
+  "target": 5,
+  "reward_coins": 60,
+  "reward_xp": 40
+ },
+ {
+  "id": "m_levels_10",
+  "kind": "mission",
+  "name": {
+   "es": "Diez turnos",
+   "en": "Ten shifts"
+  },
+  "stat": "levels_completed",
+  "target": 10,
+  "reward_coins": 120,
+  "reward_xp": 70
+ },
+ {
+  "id": "m_streak_5",
+  "kind": "mission",
+  "name": {
+   "es": "Racha de cinco",
+   "en": "Five in a row"
+  },
+  "stat": "best_streak",
+  "target": 5,
+  "reward_coins": 50,
+  "reward_xp": 30
+ },
+ {
+  "id": "m_streak_10",
+  "kind": "mission",
+  "name": {
+   "es": "Racha de diez",
+   "en": "Ten in a row"
+  },
+  "stat": "best_streak",
+  "target": 10,
+  "reward_coins": 110,
+  "reward_xp": 65
+ },
+ {
+  "id": "m_patties_20",
+  "kind": "mission",
+  "name": {
+   "es": "Maestro de la plancha",
+   "en": "Grill master"
+  },
+  "stat": "patties_cooked",
+  "target": 20,
+  "reward_coins": 45,
+  "reward_xp": 30
+ },
+ {
+  "id": "m_correct_30",
+  "kind": "mission",
+  "name": {
+   "es": "Pedidos correctos",
+   "en": "Correct orders"
+  },
+  "stat": "orders_correct",
+  "target": 30,
+  "reward_coins": 80,
+  "reward_xp": 50
+ },
+ {
+  "id": "m_shop_1",
+  "kind": "mission",
+  "name": {
+   "es": "Primera decoración",
+   "en": "First decoration"
+  },
+  "stat": "items_bought",
+  "target": 1,
+  "reward_coins": 30,
+  "reward_xp": 20
+ },
+ {
+  "id": "m_trays_20",
+  "kind": "mission",
+  "name": {
+   "es": "Bandejas relucientes",
+   "en": "Spotless trays"
+  },
+  "stat": "trays_washed",
+  "target": 20,
+  "reward_coins": 50,
+  "reward_xp": 30
+ },
+ {
+  "id": "c_levels_20",
+  "kind": "challenge",
+  "name": {
+   "es": "Veinte turnos",
+   "en": "Twenty shifts"
+  },
+  "stat": "levels_completed",
+  "target": 20,
+  "reward_coins": 250,
+  "reward_xp": 150
+ },
+ {
+  "id": "c_stars_30",
+  "kind": "challenge",
+  "name": {
+   "es": "Treinta estrellas",
+   "en": "Thirty stars"
+  },
+  "stat": "stars_total",
+  "target": 30,
+  "reward_coins": 200,
+  "reward_xp": 120
+ },
+ {
+  "id": "c_stars_60",
+  "kind": "challenge",
+  "name": {
+   "es": "Sesenta estrellas",
+   "en": "Sixty stars"
+  },
+  "stat": "stars_total",
+  "target": 60,
+  "reward_coins": 400,
+  "reward_xp": 250
+ },
+ {
+  "id": "c_three_5",
+  "kind": "challenge",
+  "name": {
+   "es": "Cinco turnos de tres estrellas",
+   "en": "Five three-star shifts"
+  },
+  "stat": "three_star_levels",
+  "target": 5,
+  "reward_coins": 220,
+  "reward_xp": 130
+ },
+ {
+  "id": "c_combo_10",
+  "kind": "challenge",
+  "name": {
+   "es": "Diez menús",
+   "en": "Ten meals"
+  },
+  "stat": "combos_served",
+  "target": 10,
+  "reward_coins": 180,
+  "reward_xp": 110
+ },
+ {
+  "id": "c_player_5",
+  "kind": "challenge",
+  "name": {
+   "es": "Chef nivel 5",
+   "en": "Chef level 5"
+  },
+  "stat": "player_level",
+  "target": 5,
+  "reward_coins": 150,
+  "reward_xp": 90
+ },
+ {
+  "id": "c_player_10",
+  "kind": "challenge",
+  "name": {
+   "es": "Chef nivel 10",
+   "en": "Chef level 10"
+  },
+  "stat": "player_level",
+  "target": 10,
+  "reward_coins": 350,
+  "reward_xp": 200
+ },
+ {
+  "id": "c_coins_10000",
+  "kind": "challenge",
+  "name": {
+   "es": "Diez mil monedas",
+   "en": "Ten thousand coins"
+  },
+  "stat": "coins_earned",
+  "target": 10000,
+  "reward_coins": 500,
+  "reward_xp": 300
+ },
+ {
+  "id": "c_noburn_10",
+  "kind": "challenge",
+  "name": {
+   "es": "Diez turnos sin humo",
+   "en": "Ten smoke-free shifts"
+  },
+  "stat": "no_burn_shifts",
+  "target": 10,
+  "reward_coins": 300,
+  "reward_xp": 180
+ },
+ {
+  "id": "c_streak_20",
+  "kind": "challenge",
+  "name": {
+   "es": "Racha de veinte",
+   "en": "Twenty in a row"
+  },
+  "stat": "best_streak",
+  "target": 20,
+  "reward_coins": 280,
+  "reward_xp": 170
+ },
+ {
+  "id": "a_first_burger",
+  "kind": "achievement",
+  "name": {
+   "es": "Mi primera hamburguesa",
+   "en": "My first burger"
+  },
+  "stat": "burgers_made",
+  "target": 1,
+  "reward_coins": 10,
+  "reward_xp": 10
+ },
+ {
+  "id": "a_first_client",
+  "kind": "achievement",
+  "name": {
+   "es": "Primer cliente",
+   "en": "First customer"
+  },
+  "stat": "customers_served",
+  "target": 1,
+  "reward_coins": 10,
+  "reward_xp": 10
+ },
+ {
+  "id": "a_first_level",
+  "kind": "achievement",
+  "name": {
+   "es": "Primer turno superado",
+   "en": "First shift cleared"
+  },
+  "stat": "levels_completed",
+  "target": 1,
+  "reward_coins": 20,
+  "reward_xp": 15
+ },
+ {
+  "id": "a_first_perfect",
+  "kind": "achievement",
+  "name": {
+   "es": "Sabor perfecto",
+   "en": "Perfect taste"
+  },
+  "stat": "perfect_burgers",
+  "target": 1,
+  "reward_coins": 15,
+  "reward_xp": 10
+ },
+ {
+  "id": "a_burgers_200",
+  "kind": "achievement",
+  "name": {
+   "es": "Doscientas hamburguesas",
+   "en": "Two hundred burgers"
+  },
+  "stat": "burgers_made",
+  "target": 200,
+  "reward_coins": 200,
+  "reward_xp": 120
+ },
+ {
+  "id": "a_clients_200",
+  "kind": "achievement",
+  "name": {
+   "es": "Doscientos clientes",
+   "en": "Two hundred customers"
+  },
+  "stat": "customers_served",
+  "target": 200,
+  "reward_coins": 200,
+  "reward_xp": 120
+ },
+ {
+  "id": "a_levels_30",
+  "kind": "achievement",
+  "name": {
+   "es": "Maestro hamburguesero",
+   "en": "Burger master"
+  },
+  "stat": "levels_completed",
+  "target": 30,
+  "reward_coins": 600,
+  "reward_xp": 400
+ },
+ {
+  "id": "a_stars_90",
+  "kind": "achievement",
+  "name": {
+   "es": "Todas las estrellas",
+   "en": "All the stars"
+  },
+  "stat": "stars_total",
+  "target": 90,
+  "reward_coins": 800,
+  "reward_xp": 500
+ },
+ {
+  "id": "a_recipes_10",
+  "kind": "achievement",
+  "name": {
+   "es": "Carta completa",
+   "en": "Full menu card"
+  },
+  "stat": "recipes_unlocked",
+  "target": 10,
+  "reward_coins": 300,
+  "reward_xp": 200
+ },
+ {
+  "id": "a_upgrades_20",
+  "kind": "achievement",
+  "name": {
+   "es": "Restaurante de lujo",
+   "en": "Luxury restaurant"
+  },
+  "stat": "upgrades_bought",
+  "target": 20,
+  "reward_coins": 400,
+  "reward_xp": 250
+ }
+]

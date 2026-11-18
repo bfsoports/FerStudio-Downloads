@@ -1,0 +1,65 @@
+extends RefCounted
+## Bandejas sucias y fregadero: la bandeja se ensucia, bloquea el puesto, no se puede tirar, se lava y vuelve sola.
+
+func run(t) -> void:
+	GameState.reset_to_defaults()
+	var sp := ServicePoint.new()
+	sp.configure(0, 1.09, Vector3(0, 0, -1), Vector3(0, 0, -2))
+	t.add_child(sp)
+	var model := Node3D.new()
+	sp.add_child(model)
+	sp.set_tray_model(model)
+	t.ok(sp.has_tray, "el puesto empieza con bandeja")
+	sp.make_dirty()
+	t.ok(not sp.has_tray, "tras ensuciarse el puesto no tiene bandeja limpia")
+	t.ok(not model.visible, "la bandeja limpia se oculta")
+	t.ok(sp.dirty_tray != null and sp.dirty_tray.home == sp, "queda una bandeja sucia que recuerda su puesto")
+	var fries := FoodItem.new().setup("fries")
+	t.eq(sp.reject_reason(fries), "reject.no_tray", "sin bandeja no se puede servir nada")
+	fries.free()
+	sp.make_dirty()
+	t.eq(sp.get_children().filter(func(c: Node) -> bool: return c is DirtyTray).size(), 1, "ensuciar dos veces no crea otra bandeja")
+
+	var sink := SinkStation.new()
+	t.add_child(sink)
+	sink.configure(1.06)
+	var tray := sp.dirty_tray
+	t.eq(sink.reject_reason(tray), "", "el fregadero acepta bandejas sucias")
+	var lettuce := FoodItem.new().setup("lettuce")
+	t.eq(sink.reject_reason(lettuce), "reject.sink_trays_only", "el fregadero rechaza la comida")
+	lettuce.free()
+	t.eq(sink.free_slot_index(tray), 0, "la primera bandeja va a la ranura de abajo")
+	sp.remove_child(tray)
+	t.add_child(tray)
+	sink.place(tray, 0)
+	t.eq(sink.wash_ratio(0), 0.0, "el lavado empieza en 0")
+	t.eq(sink.free_slot_index(tray), 1, "la segunda bandeja iría encima")
+	sink._process(1.0)
+	t.ok(sink.wash_ratio(0) > 0.3 and sink.wash_ratio(0) < 0.4, "a 1 s de 3 s va por un tercio")
+	t.ok(not sp.has_tray, "a medio lavar la bandeja aún no ha vuelto")
+	sink._process(SinkStation.WASH_TIME)
+	t.ok(sp.has_tray, "lavada, la bandeja vuelve sola a su puesto")
+	t.ok(model.visible, "la bandeja limpia se vuelve a ver")
+	t.ok(sink.slot_items[0] == null, "el fregadero queda libre")
+	t.ok(sp.dirty_tray == null, "el puesto ya no tiene bandeja sucia pendiente")
+	var drink := FoodItem.new().setup("drink")
+	t.eq(sp.reject_reason(drink), "", "con la bandeja limpia se puede servir otra vez")
+	drink.free()
+
+	# la bandeja sucia se lleva más pequeña en la mano y no se puede tirar
+	var dt := DirtyTray.new().setup(sp)
+	t.ok(dt.carry_scale() < Const.CARRY_SCALE, "la bandeja sucia se ve más pequeña en la mano")
+	var player := PlayerController.new()
+	player.held = dt
+	var bin := TrashBin.new()
+	t.eq(str(bin.get_prompt(player).get("text", "")), "reject.trash_tray", "la papelera no acepta bandejas")
+	player.held = null
+	player.free()
+	bin.free()
+	dt.free()
+
+	# los turnos de nivel 6 en adelante tienen bandejas sucias
+	t.ok(not bool(Catalog.level_def(5).get("dirty_trays", true)), "el nivel 5 no tiene bandejas sucias")
+	t.ok(bool(Catalog.level_def(6).get("dirty_trays", false)), "el nivel 6 tiene bandejas sucias")
+	sink.queue_free()
+	sp.queue_free()

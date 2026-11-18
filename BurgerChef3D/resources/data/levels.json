@@ -1,0 +1,1023 @@
+[
+ {
+  "id": 1,
+  "name": {
+   "es": "Primer día",
+   "en": "First Day"
+  },
+  "duration": 124,
+  "target_orders": 3,
+  "recipes": [
+   "classic"
+  ],
+  "difficulty": 1,
+  "spawn_interval": 26.0,
+  "max_active": 1,
+  "patience": 100,
+  "reward_coins": 52,
+  "reward_xp": 36,
+  "win": {
+   "orders": 3
+  },
+  "lose": {
+   "max_failed": 4
+  },
+  "star_income": [
+   25,
+   40
+  ],
+  "dirty_trays": false
+ },
+ {
+  "id": 2,
+  "name": {
+   "es": "Hora del queso",
+   "en": "Cheese Time"
+  },
+  "duration": 128,
+  "target_orders": 5,
+  "recipes": [
+   "classic",
+   "cheese"
+  ],
+  "difficulty": 1,
+  "spawn_interval": 25.5,
+  "max_active": 1,
+  "patience": 99,
+  "reward_coins": 64,
+  "reward_xp": 42,
+  "win": {
+   "recipe": {
+    "id": "cheese",
+    "count": 2
+   }
+  },
+  "lose": {
+   "max_failed": 4
+  },
+  "star_income": [
+   30,
+   45
+  ],
+  "dirty_trays": false
+ },
+ {
+  "id": 3,
+  "name": {
+   "es": "Calentando la plancha",
+   "en": "Warming the Grill"
+  },
+  "duration": 132,
+  "target_orders": 3,
+  "recipes": [
+   "classic",
+   "cheese"
+  ],
+  "difficulty": 1,
+  "spawn_interval": 25.0,
+  "max_active": 1,
+  "patience": 97,
+  "reward_coins": 76,
+  "reward_xp": 48,
+  "win": {
+   "orders": 3,
+   "no_burnt": true
+  },
+  "lose": {
+   "max_failed": 4
+  },
+  "star_income": [
+   30,
+   45
+  ],
+  "dirty_trays": false
+ },
+ {
+  "id": 4,
+  "name": {
+   "es": "Doble ración",
+   "en": "Double Trouble"
+  },
+  "duration": 136,
+  "target_orders": 3,
+  "recipes": [
+   "classic",
+   "cheese",
+   "double"
+  ],
+  "difficulty": 1,
+  "spawn_interval": 24.6,
+  "max_active": 2,
+  "patience": 96,
+  "reward_coins": 88,
+  "reward_xp": 54,
+  "win": {
+   "orders": 3,
+   "satisfaction": 57
+  },
+  "lose": {
+   "max_failed": 4
+  },
+  "star_income": [
+   40,
+   60
+  ],
+  "dirty_trays": false
+ },
+ {
+  "id": 5,
+  "name": {
+   "es": "Opción verde",
+   "en": "Green Choice"
+  },
+  "duration": 140,
+  "target_orders": 4,
+  "recipes": [
+   "classic",
+   "cheese",
+   "double",
+   "veggie"
+  ],
+  "difficulty": 1,
+  "spawn_interval": 24.1,
+  "max_active": 2,
+  "patience": 94,
+  "reward_coins": 100,
+  "reward_xp": 60,
+  "win": {
+   "customers": 4
+  },
+  "lose": {
+   "max_failed": 4
+  },
+  "star_income": [
+   40,
+   60
+  ],
+  "dirty_trays": false
+ },
+ {
+  "id": 6,
+  "name": {
+   "es": "Almuerzo tranquilo",
+   "en": "Quiet Lunch"
+  },
+  "duration": 144,
+  "target_orders": 4,
+  "recipes": [
+   "classic",
+   "cheese",
+   "double",
+   "veggie"
+  ],
+  "difficulty": 1,
+  "spawn_interval": 23.6,
+  "max_active": 2,
+  "patience": 93,
+  "reward_coins": 112,
+  "reward_xp": 66,
+  "win": {
+   "orders": 4
+  },
+  "lose": {
+   "max_failed": 4
+  },
+  "star_income": [
+   50,
+   70
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 7,
+  "name": {
+   "es": "Cola creciente",
+   "en": "Growing Line"
+  },
+  "duration": 148,
+  "target_orders": 7,
+  "recipes": [
+   "classic",
+   "cheese",
+   "double",
+   "veggie"
+  ],
+  "difficulty": 2,
+  "spawn_interval": 23.1,
+  "max_active": 2,
+  "patience": 91,
+  "reward_coins": 124,
+  "reward_xp": 72,
+  "win": {
+   "income": 40
+  },
+  "lose": {
+   "max_failed": 4
+  },
+  "star_income": [
+   50,
+   70
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 8,
+  "name": {
+   "es": "Especial de la casa",
+   "en": "House Special"
+  },
+  "duration": 152,
+  "target_orders": 7,
+  "recipes": [
+   "classic",
+   "cheese",
+   "double",
+   "veggie",
+   "house"
+  ],
+  "difficulty": 2,
+  "spawn_interval": 22.6,
+  "max_active": 2,
+  "patience": 90,
+  "reward_coins": 136,
+  "reward_xp": 78,
+  "win": {
+   "recipe": {
+    "id": "house",
+    "count": 2
+   }
+  },
+  "lose": {
+   "max_failed": 4
+  },
+  "star_income": [
+   50,
+   75
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 9,
+  "name": {
+   "es": "Sin quemar nada",
+   "en": "No Burnt Bites"
+  },
+  "duration": 156,
+  "target_orders": 4,
+  "recipes": [
+   "classic",
+   "cheese",
+   "double",
+   "veggie",
+   "house"
+  ],
+  "difficulty": 2,
+  "spawn_interval": 22.2,
+  "max_active": 2,
+  "patience": 88,
+  "reward_coins": 148,
+  "reward_xp": 84,
+  "win": {
+   "orders": 4,
+   "no_burnt": true
+  },
+  "lose": {
+   "max_failed": 4
+  },
+  "star_income": [
+   50,
+   75
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 10,
+  "name": {
+   "es": "Bacon crujiente",
+   "en": "Crispy Bacon"
+  },
+  "duration": 160,
+  "target_orders": 3,
+  "recipes": [
+   "classic",
+   "cheese",
+   "double",
+   "veggie",
+   "house",
+   "bacon"
+  ],
+  "difficulty": 2,
+  "spawn_interval": 21.7,
+  "max_active": 2,
+  "patience": 87,
+  "reward_coins": 160,
+  "reward_xp": 90,
+  "win": {
+   "orders": 3,
+   "satisfaction": 60
+  },
+  "lose": {
+   "max_failed": 4
+  },
+  "star_income": [
+   55,
+   80
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 11,
+  "name": {
+   "es": "Mediodía",
+   "en": "Midday Rush"
+  },
+  "duration": 164,
+  "target_orders": 5,
+  "recipes": [
+   "classic",
+   "cheese",
+   "double",
+   "veggie",
+   "house",
+   "bacon"
+  ],
+  "difficulty": 2,
+  "spawn_interval": 21.2,
+  "max_active": 2,
+  "patience": 86,
+  "reward_coins": 172,
+  "reward_xp": 96,
+  "win": {
+   "customers": 5
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   55,
+   80
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 12,
+  "name": {
+   "es": "Clientes exigentes",
+   "en": "Picky Customers"
+  },
+  "duration": 168,
+  "target_orders": 4,
+  "recipes": [
+   "classic",
+   "cheese",
+   "double",
+   "veggie",
+   "house",
+   "bacon"
+  ],
+  "difficulty": 2,
+  "spawn_interval": 20.7,
+  "max_active": 2,
+  "patience": 84,
+  "reward_coins": 184,
+  "reward_xp": 102,
+  "win": {
+   "orders": 4
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   60,
+   90
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 13,
+  "name": {
+   "es": "Fiebre del BLT",
+   "en": "BLT Fever"
+  },
+  "duration": 172,
+  "target_orders": 9,
+  "recipes": [
+   "cheese",
+   "double",
+   "veggie",
+   "house",
+   "bacon",
+   "blt"
+  ],
+  "difficulty": 3,
+  "spawn_interval": 20.2,
+  "max_active": 3,
+  "patience": 83,
+  "reward_coins": 196,
+  "reward_xp": 108,
+  "win": {
+   "income": 60
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   75,
+   110
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 14,
+  "name": {
+   "es": "Turno doble",
+   "en": "Double Shift"
+  },
+  "duration": 176,
+  "target_orders": 9,
+  "recipes": [
+   "cheese",
+   "double",
+   "veggie",
+   "house",
+   "bacon",
+   "blt"
+  ],
+  "difficulty": 3,
+  "spawn_interval": 19.8,
+  "max_active": 3,
+  "patience": 81,
+  "reward_coins": 208,
+  "reward_xp": 114,
+  "win": {
+   "recipe": {
+    "id": "blt",
+    "count": 3
+   }
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   75,
+   110
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 15,
+  "name": {
+   "es": "Mitad del camino",
+   "en": "Halfway There"
+  },
+  "duration": 180,
+  "target_orders": 5,
+  "recipes": [
+   "cheese",
+   "double",
+   "veggie",
+   "house",
+   "bacon",
+   "blt"
+  ],
+  "difficulty": 3,
+  "spawn_interval": 19.3,
+  "max_active": 3,
+  "patience": 80,
+  "reward_coins": 220,
+  "reward_xp": 120,
+  "win": {
+   "orders": 5,
+   "no_burnt": true
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   80,
+   125
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 16,
+  "name": {
+   "es": "Todo en uno",
+   "en": "The Works"
+  },
+  "duration": 184,
+  "target_orders": 4,
+  "recipes": [
+   "double",
+   "veggie",
+   "house",
+   "bacon",
+   "blt",
+   "complete"
+  ],
+  "difficulty": 3,
+  "spawn_interval": 18.8,
+  "max_active": 3,
+  "patience": 78,
+  "reward_coins": 232,
+  "reward_xp": 126,
+  "win": {
+   "orders": 4,
+   "satisfaction": 63
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   80,
+   125
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 17,
+  "name": {
+   "es": "Contra el reloj",
+   "en": "Racing the Clock"
+  },
+  "duration": 188,
+  "target_orders": 6,
+  "recipes": [
+   "double",
+   "veggie",
+   "house",
+   "bacon",
+   "blt",
+   "complete"
+  ],
+  "difficulty": 3,
+  "spawn_interval": 18.3,
+  "max_active": 3,
+  "patience": 77,
+  "reward_coins": 244,
+  "reward_xp": 132,
+  "win": {
+   "customers": 6
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   80,
+   125
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 18,
+  "name": {
+   "es": "Cocina impecable",
+   "en": "Spotless Kitchen"
+  },
+  "duration": 192,
+  "target_orders": 5,
+  "recipes": [
+   "double",
+   "veggie",
+   "house",
+   "bacon",
+   "blt",
+   "complete"
+  ],
+  "difficulty": 3,
+  "spawn_interval": 17.8,
+  "max_active": 3,
+  "patience": 75,
+  "reward_coins": 256,
+  "reward_xp": 138,
+  "win": {
+   "orders": 5
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   80,
+   125
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 19,
+  "name": {
+   "es": "Fin de semana",
+   "en": "Weekend Crowd"
+  },
+  "duration": 196,
+  "target_orders": 10,
+  "recipes": [
+   "double",
+   "veggie",
+   "house",
+   "bacon",
+   "blt",
+   "complete"
+  ],
+  "difficulty": 4,
+  "spawn_interval": 17.4,
+  "max_active": 3,
+  "patience": 74,
+  "reward_coins": 268,
+  "reward_xp": 144,
+  "win": {
+   "income": 75
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   90,
+   140
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 20,
+  "name": {
+   "es": "Sabor premium",
+   "en": "Premium Taste"
+  },
+  "duration": 200,
+  "target_orders": 9,
+  "recipes": [
+   "veggie",
+   "house",
+   "bacon",
+   "blt",
+   "complete",
+   "premium"
+  ],
+  "difficulty": 4,
+  "spawn_interval": 16.9,
+  "max_active": 3,
+  "patience": 72,
+  "reward_coins": 280,
+  "reward_xp": 150,
+  "win": {
+   "recipe": {
+    "id": "premium",
+    "count": 3
+   }
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   95,
+   140
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 21,
+  "name": {
+   "es": "Chef bajo presión",
+   "en": "Chef Under Pressure"
+  },
+  "duration": 204,
+  "target_orders": 4,
+  "recipes": [
+   "veggie",
+   "house",
+   "bacon",
+   "blt",
+   "complete",
+   "premium"
+  ],
+  "difficulty": 4,
+  "spawn_interval": 16.4,
+  "max_active": 3,
+  "patience": 71,
+  "reward_coins": 292,
+  "reward_xp": 156,
+  "win": {
+   "orders": 4,
+   "no_burnt": true
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   95,
+   140
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 22,
+  "name": {
+   "es": "Noche de gala",
+   "en": "Gala Night"
+  },
+  "duration": 208,
+  "target_orders": 4,
+  "recipes": [
+   "veggie",
+   "house",
+   "bacon",
+   "blt",
+   "complete",
+   "premium"
+  ],
+  "difficulty": 4,
+  "spawn_interval": 15.9,
+  "max_active": 3,
+  "patience": 70,
+  "reward_coins": 304,
+  "reward_xp": 162,
+  "win": {
+   "orders": 4,
+   "satisfaction": 66
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   105,
+   155
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 23,
+  "name": {
+   "es": "Récord de ventas",
+   "en": "Sales Record"
+  },
+  "duration": 212,
+  "target_orders": 6,
+  "recipes": [
+   "veggie",
+   "house",
+   "bacon",
+   "blt",
+   "complete",
+   "premium"
+  ],
+  "difficulty": 4,
+  "spawn_interval": 15.4,
+  "max_active": 3,
+  "patience": 68,
+  "reward_coins": 316,
+  "reward_xp": 168,
+  "win": {
+   "customers": 6
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   105,
+   155
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 24,
+  "name": {
+   "es": "Menú completo",
+   "en": "Full Menu"
+  },
+  "duration": 216,
+  "target_orders": 5,
+  "recipes": [
+   "house",
+   "bacon",
+   "blt",
+   "complete",
+   "premium",
+   "combo"
+  ],
+  "difficulty": 4,
+  "spawn_interval": 15.0,
+  "max_active": 3,
+  "patience": 67,
+  "reward_coins": 328,
+  "reward_xp": 174,
+  "win": {
+   "orders": 5
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   105,
+   160
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 25,
+  "name": {
+   "es": "Triple amenaza",
+   "en": "Triple Threat"
+  },
+  "duration": 220,
+  "target_orders": 9,
+  "recipes": [
+   "house",
+   "bacon",
+   "blt",
+   "complete",
+   "premium",
+   "combo"
+  ],
+  "difficulty": 5,
+  "spawn_interval": 14.5,
+  "max_active": 3,
+  "patience": 65,
+  "reward_coins": 340,
+  "reward_xp": 180,
+  "win": {
+   "income": 85
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   105,
+   160
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 26,
+  "name": {
+   "es": "Maratón de pedidos",
+   "en": "Order Marathon"
+  },
+  "duration": 224,
+  "target_orders": 9,
+  "recipes": [
+   "house",
+   "bacon",
+   "blt",
+   "complete",
+   "premium",
+   "combo"
+  ],
+  "difficulty": 5,
+  "spawn_interval": 14.0,
+  "max_active": 3,
+  "patience": 64,
+  "reward_coins": 352,
+  "reward_xp": 186,
+  "win": {
+   "recipe": {
+    "id": "combo",
+    "count": 3
+   }
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   105,
+   160
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 27,
+  "name": {
+   "es": "Perfección",
+   "en": "Perfection"
+  },
+  "duration": 228,
+  "target_orders": 4,
+  "recipes": [
+   "house",
+   "bacon",
+   "blt",
+   "complete",
+   "premium",
+   "combo"
+  ],
+  "difficulty": 5,
+  "spawn_interval": 13.5,
+  "max_active": 3,
+  "patience": 62,
+  "reward_coins": 364,
+  "reward_xp": 192,
+  "win": {
+   "orders": 4,
+   "no_burnt": true
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   105,
+   160
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 28,
+  "name": {
+   "es": "Hora punta",
+   "en": "Rush Hour"
+  },
+  "duration": 232,
+  "target_orders": 4,
+  "recipes": [
+   "house",
+   "bacon",
+   "blt",
+   "complete",
+   "premium",
+   "combo"
+  ],
+  "difficulty": 5,
+  "spawn_interval": 13.0,
+  "max_active": 3,
+  "patience": 61,
+  "reward_coins": 376,
+  "reward_xp": 198,
+  "win": {
+   "orders": 4,
+   "satisfaction": 69
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   115,
+   175
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 29,
+  "name": {
+   "es": "Casi maestro",
+   "en": "Almost a Master"
+  },
+  "duration": 236,
+  "target_orders": 6,
+  "recipes": [
+   "house",
+   "bacon",
+   "blt",
+   "complete",
+   "premium",
+   "combo"
+  ],
+  "difficulty": 5,
+  "spawn_interval": 12.6,
+  "max_active": 3,
+  "patience": 59,
+  "reward_coins": 388,
+  "reward_xp": 204,
+  "win": {
+   "customers": 6
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   115,
+   175
+  ],
+  "dirty_trays": true
+ },
+ {
+  "id": 30,
+  "name": {
+   "es": "Maestro hamburguesero",
+   "en": "Burger Master"
+  },
+  "duration": 240,
+  "target_orders": 6,
+  "recipes": [
+   "house",
+   "bacon",
+   "blt",
+   "complete",
+   "premium",
+   "combo"
+  ],
+  "difficulty": 5,
+  "spawn_interval": 12.1,
+  "max_active": 3,
+  "patience": 58,
+  "reward_coins": 400,
+  "reward_xp": 210,
+  "win": {
+   "orders": 6
+  },
+  "lose": {
+   "max_failed": 3
+  },
+  "star_income": [
+   115,
+   175
+  ],
+  "dirty_trays": true
+ }
+]

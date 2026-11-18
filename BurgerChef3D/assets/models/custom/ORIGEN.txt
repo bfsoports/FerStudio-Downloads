@@ -1,0 +1,22 @@
+Modelos propios del proyecto (aportados por el usuario, generados con Tripo AI)
+================================================================================
+
+fryer.glb            <- Freidora_de_patatas.glb      (freidora de sobremesa con cesta)
+drink_dispenser.glb  <- dispensador_de_bebidas.glb   (dispensador de bebidas de tres grifos)
+pendant_lamp.glb     <- l_mpara_colgante.glb         (lámpara colgante)
+potted_plant.glb     <- planta_en_maceta.glb         (planta en maceta)
+service_bell.glb     <- campanita_de_servicio.glb    (campanita de servicio)
+trash_can.glb        <- bote_de_basura.glb           (bote de basura)
+serving_tray.glb     <- bandeja_de_servicio.glb      (bandeja de servicio)
+
+Los archivos de esta carpeta NO son los originales: tools/optimize_models.py los simplifica (de 17.000-104.000 a
+1.500-10.000 triángulos) conservando la textura original de 512 px (solo se rellena el fondo entre islas UV).
+Para regenerarlos: python3 tools/optimize_models.py <carpeta con los GLB originales>
+
+Licencia: depende del plan de Tripo con el que se generaron. Según el blog de Tripo, los del plan gratuito son
+públicos bajo CC BY 4.0 (uso comercial permitido con atribución a Tripo), aunque algunas guías externas lo describen
+como no comercial; los planes de pago (Professional o superior) dan modelos privados con uso comercial sin
+atribución. CONFIRMAR en tripo3d.ai antes de publicar el juego (ver docs/licenses.md).
+
+
+Licencia: el usuario (FerStudio) confirmó el 7-11-2026 que estos modelos son de uso libre para el juego.

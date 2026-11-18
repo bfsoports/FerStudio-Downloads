@@ -1,0 +1,11 @@
+.godot/
+.import/
+export_presets.cfg.bak
+*.keystore
+*.jks
+*.apk
+*.aab
+*.idsig
+android/build/
+test_output.txt
+export_log.txt

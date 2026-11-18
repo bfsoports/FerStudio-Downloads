@@ -1,0 +1,48 @@
+extends RefCounted
+## Transacciones de monedas, compras de mejoras con efectos reales y tienda de personalización.
+
+func run(t) -> void:
+	GameState.reset_to_defaults()
+	t.eq(GameState.coins, 0, "empieza con 0 monedas")
+	EconomyManager.earn(100, "test")
+	t.eq(GameState.coins, 100, "ganar monedas")
+	t.ok(not EconomyManager.spend(150, "test"), "saldo insuficiente: no se puede gastar")
+	t.eq(GameState.coins, 100, "el saldo no cambia tras un gasto rechazado")
+	t.ok(EconomyManager.spend(40, "test"), "gastar con saldo suficiente")
+	t.eq(GameState.coins, 60, "saldo tras gastar")
+	t.ok(not EconomyManager.spend(-5, "test"), "no se aceptan importes negativos")
+	t.eq(EconomyManager.penalize(500, "test"), 60, "la penalización no deja saldo negativo")
+	t.eq(GameState.coins, 0, "saldo a cero")
+	# mejoras: efectos reales
+	GameState.level = 2
+	EconomyManager.earn(1000, "test")
+	t.eq(EconomyManager.grill_slots(), 2, "plancha base de 2 plazas")
+	var r := EconomyManager.buy_upgrade("grill_capacity")
+	t.ok(bool(r["ok"]), "compra de la plancha grande")
+	t.eq(EconomyManager.grill_slots(), 3, "la mejora aumenta las plazas")
+	t.eq(GameState.coins, 850, "se descuenta el precio exacto")
+	t.ok(bool(EconomyManager.buy_upgrade("grill_capacity")["ok"]), "segundo nivel")
+	t.eq(EconomyManager.grill_slots(), 4, "plancha con 4 plazas")
+	t.eq(GameState.coins, 450, "precio del segundo nivel")
+	var maxed := EconomyManager.buy_upgrade("grill_capacity")
+	t.ok(not bool(maxed["ok"]) and str(maxed["reason"]) == "upg.maxed", "no se compra por encima del máximo")
+	t.eq(GameState.coins, 450, "una compra rechazada no cobra")
+	var lvl := EconomyManager.buy_upgrade("service_points")
+	t.ok(not bool(lvl["ok"]) and str(lvl["reason"]) == "upg.need_level", "requisito de nivel de jugador")
+	t.ok(bool(EconomyManager.buy_upgrade("cook_speed")["ok"]), "velocidad de cocción")
+	t.ok(is_equal_approx(EconomyManager.cook_speed(), 1.15), "la velocidad de cocción sube 15 %")
+	t.ok(bool(EconomyManager.buy_upgrade("storage")["ok"]), "almacenamiento")
+	t.eq(EconomyManager.crate_stock(), 12, "las cajas guardan 4 unidades más")
+	t.eq(GameState.stat("upgrades_bought"), 4, "las compras se registran en las estadísticas")
+	# tienda
+	var before := GameState.coins
+	var rb := EconomyManager.buy_item("wall_mint")
+	t.ok(bool(rb["ok"]), "compra de un artículo de personalización")
+	t.eq(GameState.coins, before - 80, "precio del artículo")
+	t.ok(not bool(EconomyManager.buy_item("wall_mint")["ok"]), "no se compra dos veces")
+	t.ok(EconomyManager.equip("wall_mint"), "equipar un artículo comprado")
+	t.eq(str(GameState.equipped["wall"]), "wall_mint", "queda equipado")
+	t.ok(not EconomyManager.equip("wall_pink"), "no se equipa algo sin comprar")
+	t.ok(not bool(EconomyManager.buy_item("wall_butter")["ok"]), "nivel insuficiente para el artículo")
+	t.eq(str(EconomyManager.equipped_param("wall", "color", "")), "#bfe3c8", "el color equipado es el real")
+	GameState.reset_to_defaults()

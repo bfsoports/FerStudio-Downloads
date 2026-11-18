@@ -1,0 +1,589 @@
+{
+ "categories": [
+  "wall",
+  "floor",
+  "counter",
+  "tables",
+  "chairs",
+  "lamps",
+  "sign",
+  "decor"
+ ],
+ "items": [
+  {
+   "id": "wall_cream",
+   "category": "wall",
+   "name": {
+    "es": "Crema",
+    "en": "Cream"
+   },
+   "price": 0,
+   "unlock_level": 1,
+   "params": {
+    "color": "#f3e3c3"
+   }
+  },
+  {
+   "id": "wall_mint",
+   "category": "wall",
+   "name": {
+    "es": "Menta",
+    "en": "Mint"
+   },
+   "price": 80,
+   "unlock_level": 2,
+   "params": {
+    "color": "#bfe3c8"
+   }
+  },
+  {
+   "id": "wall_sky",
+   "category": "wall",
+   "name": {
+    "es": "Cielo",
+    "en": "Sky"
+   },
+   "price": 80,
+   "unlock_level": 3,
+   "params": {
+    "color": "#bcd8f0"
+   }
+  },
+  {
+   "id": "wall_pink",
+   "category": "wall",
+   "name": {
+    "es": "Rosa",
+    "en": "Pink"
+   },
+   "price": 120,
+   "unlock_level": 5,
+   "params": {
+    "color": "#f2c4cf"
+   }
+  },
+  {
+   "id": "wall_butter",
+   "category": "wall",
+   "name": {
+    "es": "Mantequilla",
+    "en": "Butter"
+   },
+   "price": 120,
+   "unlock_level": 7,
+   "params": {
+    "color": "#fbe29a"
+   }
+  },
+  {
+   "id": "floor_red",
+   "category": "floor",
+   "name": {
+    "es": "Damero rojo",
+    "en": "Red checker"
+   },
+   "price": 0,
+   "unlock_level": 1,
+   "params": {
+    "tex": "floor_red"
+   }
+  },
+  {
+   "id": "floor_blue",
+   "category": "floor",
+   "name": {
+    "es": "Damero azul",
+    "en": "Blue checker"
+   },
+   "price": 150,
+   "unlock_level": 3,
+   "params": {
+    "tex": "floor_blue"
+   }
+  },
+  {
+   "id": "floor_green",
+   "category": "floor",
+   "name": {
+    "es": "Damero verde",
+    "en": "Green checker"
+   },
+   "price": 150,
+   "unlock_level": 4,
+   "params": {
+    "tex": "floor_green"
+   }
+  },
+  {
+   "id": "floor_wood",
+   "category": "floor",
+   "name": {
+    "es": "Madera",
+    "en": "Wood"
+   },
+   "price": 220,
+   "unlock_level": 6,
+   "params": {
+    "tex": "floor_wood"
+   }
+  },
+  {
+   "id": "counter_white",
+   "category": "counter",
+   "name": {
+    "es": "Blanco",
+    "en": "White"
+   },
+   "price": 0,
+   "unlock_level": 1,
+   "params": {
+    "color": "#e9e4d8"
+   }
+  },
+  {
+   "id": "counter_red",
+   "category": "counter",
+   "name": {
+    "es": "Rojo",
+    "en": "Red"
+   },
+   "price": 100,
+   "unlock_level": 2,
+   "params": {
+    "color": "#c9453a"
+   }
+  },
+  {
+   "id": "counter_teal",
+   "category": "counter",
+   "name": {
+    "es": "Turquesa",
+    "en": "Teal"
+   },
+   "price": 100,
+   "unlock_level": 4,
+   "params": {
+    "color": "#3f9a95"
+   }
+  },
+  {
+   "id": "counter_dark",
+   "category": "counter",
+   "name": {
+    "es": "Chocolate",
+    "en": "Chocolate"
+   },
+   "price": 160,
+   "unlock_level": 6,
+   "params": {
+    "color": "#4a3a36"
+   }
+  },
+  {
+   "id": "tables_wood",
+   "category": "tables",
+   "name": {
+    "es": "Madera",
+    "en": "Wood"
+   },
+   "price": 0,
+   "unlock_level": 1,
+   "params": {
+    "color": "#b57b45"
+   }
+  },
+  {
+   "id": "tables_red",
+   "category": "tables",
+   "name": {
+    "es": "Rojas",
+    "en": "Red"
+   },
+   "price": 90,
+   "unlock_level": 2,
+   "params": {
+    "color": "#c9453a"
+   }
+  },
+  {
+   "id": "tables_blue",
+   "category": "tables",
+   "name": {
+    "es": "Azules",
+    "en": "Blue"
+   },
+   "price": 90,
+   "unlock_level": 3,
+   "params": {
+    "color": "#3f78b8"
+   }
+  },
+  {
+   "id": "tables_white",
+   "category": "tables",
+   "name": {
+    "es": "Blancas",
+    "en": "White"
+   },
+   "price": 90,
+   "unlock_level": 5,
+   "params": {
+    "color": "#f4f1ea"
+   }
+  },
+  {
+   "id": "chairs_red",
+   "category": "chairs",
+   "name": {
+    "es": "Rojas",
+    "en": "Red"
+   },
+   "price": 0,
+   "unlock_level": 1,
+   "params": {
+    "color": "#d8392b"
+   }
+  },
+  {
+   "id": "chairs_yellow",
+   "category": "chairs",
+   "name": {
+    "es": "Amarillas",
+    "en": "Yellow"
+   },
+   "price": 60,
+   "unlock_level": 2,
+   "params": {
+    "color": "#f2b134"
+   }
+  },
+  {
+   "id": "chairs_teal",
+   "category": "chairs",
+   "name": {
+    "es": "Turquesa",
+    "en": "Teal"
+   },
+   "price": 60,
+   "unlock_level": 4,
+   "params": {
+    "color": "#3f9a95"
+   }
+  },
+  {
+   "id": "chairs_dark",
+   "category": "chairs",
+   "name": {
+    "es": "Oscuras",
+    "en": "Dark"
+   },
+   "price": 60,
+   "unlock_level": 6,
+   "params": {
+    "color": "#4a3a36"
+   }
+  },
+  {
+   "id": "lamps_warm",
+   "category": "lamps",
+   "name": {
+    "es": "Cálida",
+    "en": "Warm"
+   },
+   "price": 0,
+   "unlock_level": 1,
+   "params": {
+    "color": "#ffd9a0"
+   }
+  },
+  {
+   "id": "lamps_white",
+   "category": "lamps",
+   "name": {
+    "es": "Blanca",
+    "en": "White"
+   },
+   "price": 70,
+   "unlock_level": 2,
+   "params": {
+    "color": "#fff4e0"
+   }
+  },
+  {
+   "id": "lamps_pink",
+   "category": "lamps",
+   "name": {
+    "es": "Rosada",
+    "en": "Pink"
+   },
+   "price": 100,
+   "unlock_level": 4,
+   "params": {
+    "color": "#ffc2d4"
+   }
+  },
+  {
+   "id": "lamps_blue",
+   "category": "lamps",
+   "name": {
+    "es": "Azulada",
+    "en": "Blue"
+   },
+   "price": 100,
+   "unlock_level": 6,
+   "params": {
+    "color": "#bfe0ff"
+   }
+  },
+  {
+   "id": "sign_red",
+   "category": "sign",
+   "name": {
+    "es": "Rojo",
+    "en": "Red"
+   },
+   "price": 0,
+   "unlock_level": 1,
+   "params": {
+    "color": "#d8392b"
+   }
+  },
+  {
+   "id": "sign_gold",
+   "category": "sign",
+   "name": {
+    "es": "Dorado",
+    "en": "Gold"
+   },
+   "price": 120,
+   "unlock_level": 3,
+   "params": {
+    "color": "#f2b134"
+   }
+  },
+  {
+   "id": "sign_green",
+   "category": "sign",
+   "name": {
+    "es": "Verde",
+    "en": "Green"
+   },
+   "price": 120,
+   "unlock_level": 5,
+   "params": {
+    "color": "#6fb43f"
+   }
+  },
+  {
+   "id": "sign_blue",
+   "category": "sign",
+   "name": {
+    "es": "Azul",
+    "en": "Blue"
+   },
+   "price": 120,
+   "unlock_level": 7,
+   "params": {
+    "color": "#4a90d9"
+   }
+  },
+  {
+   "id": "decor_none",
+   "category": "decor",
+   "name": {
+    "es": "Sencilla",
+    "en": "Simple"
+   },
+   "price": 0,
+   "unlock_level": 1,
+   "params": {
+    "plants": false,
+    "posters": false
+   }
+  },
+  {
+   "id": "decor_plants",
+   "category": "decor",
+   "name": {
+    "es": "Plantas",
+    "en": "Plants"
+   },
+   "price": 180,
+   "unlock_level": 3,
+   "params": {
+    "plants": true,
+    "posters": false
+   }
+  },
+  {
+   "id": "decor_posters",
+   "category": "decor",
+   "name": {
+    "es": "Pósters",
+    "en": "Posters"
+   },
+   "price": 180,
+   "unlock_level": 5,
+   "params": {
+    "plants": false,
+    "posters": true
+   }
+  },
+  {
+   "id": "decor_both",
+   "category": "decor",
+   "name": {
+    "es": "Plantas y pósters",
+    "en": "Plants and posters"
+   },
+   "price": 320,
+   "unlock_level": 8,
+   "params": {
+    "plants": true,
+    "posters": true
+   }
+  },
+  {
+   "id": "wall_coral",
+   "category": "wall",
+   "name": {
+    "es": "Coral",
+    "en": "Coral"
+   },
+   "price": 160,
+   "unlock_level": 6,
+   "params": {
+    "color": "#f4b7a0"
+   },
+   "requires_upgrade": "decor_options"
+  },
+  {
+   "id": "wall_lavender",
+   "category": "wall",
+   "name": {
+    "es": "Lavanda",
+    "en": "Lavender"
+   },
+   "price": 160,
+   "unlock_level": 8,
+   "params": {
+    "color": "#d6c8ef"
+   },
+   "requires_upgrade": "decor_options"
+  },
+  {
+   "id": "floor_tiles",
+   "category": "floor",
+   "name": {
+    "es": "Azulejo blanco",
+    "en": "White tiles"
+   },
+   "price": 260,
+   "unlock_level": 7,
+   "params": {
+    "tex": "tiles"
+   },
+   "requires_upgrade": "decor_options"
+  },
+  {
+   "id": "counter_mustard",
+   "category": "counter",
+   "name": {
+    "es": "Mostaza",
+    "en": "Mustard"
+   },
+   "price": 180,
+   "unlock_level": 6,
+   "params": {
+    "color": "#e0a72e"
+   },
+   "requires_upgrade": "decor_options"
+  },
+  {
+   "id": "counter_navy",
+   "category": "counter",
+   "name": {
+    "es": "Azul marino",
+    "en": "Navy"
+   },
+   "price": 180,
+   "unlock_level": 9,
+   "params": {
+    "color": "#2f4a6b"
+   },
+   "requires_upgrade": "decor_options"
+  },
+  {
+   "id": "tables_black",
+   "category": "tables",
+   "name": {
+    "es": "Negras",
+    "en": "Black"
+   },
+   "price": 150,
+   "unlock_level": 7,
+   "params": {
+    "color": "#2e2a2a"
+   },
+   "requires_upgrade": "decor_options"
+  },
+  {
+   "id": "chairs_pink",
+   "category": "chairs",
+   "name": {
+    "es": "Rosas",
+    "en": "Pink"
+   },
+   "price": 120,
+   "unlock_level": 6,
+   "params": {
+    "color": "#e88aa8"
+   },
+   "requires_upgrade": "decor_options"
+  },
+  {
+   "id": "lamps_green",
+   "category": "lamps",
+   "name": {
+    "es": "Verde suave",
+    "en": "Soft green"
+   },
+   "price": 150,
+   "unlock_level": 8,
+   "params": {
+    "color": "#d6ffd0"
+   },
+   "requires_upgrade": "decor_options"
+  },
+  {
+   "id": "sign_purple",
+   "category": "sign",
+   "name": {
+    "es": "Morado",
+    "en": "Purple"
+   },
+   "price": 180,
+   "unlock_level": 9,
+   "params": {
+    "color": "#8e5bd0"
+   },
+   "requires_upgrade": "decor_options"
+  },
+  {
+   "id": "decor_garden",
+   "category": "decor",
+   "name": {
+    "es": "Jardín completo",
+    "en": "Full garden"
+   },
+   "price": 420,
+   "unlock_level": 10,
+   "params": {
+    "plants": true,
+    "posters": true,
+    "kitchen_plants": true
+   },
+   "requires_upgrade": "decor_options"
+  }
+ ]
+}
