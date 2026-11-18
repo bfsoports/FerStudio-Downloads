@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "sniper"
+display_name = "HALCÓN .50"
+upgraded_name = "OJO DEL JUICIO"
+category = 4
+icon_name = "w_sniper"
+model_path = "res://assets/weapons/sniper.glb"
+description = "Rifle de cerrojo. Atraviesa filas enteras."
+damage = 260.0
+headshot_multiplier = 3.0
+fire_rate = 48.0
+automatic = false
+mag_size = 5
+reserve_max = 40
+reload_time = 2.8
+spread_hip = 6.0
+spread_ads = 0.0
+recoil_pitch = 6.0
+recoil_yaw = 0.8
+ads_fov = 24.0
+max_range = 150.0
+falloff_start = 150.0
+penetration = 4
+fire_sound = "shot_sniper"
+reload_sound = "reload_rifle"
+wall_cost = 1500
+ammo_cost = 750
+box_weight = 0.8
+view_offset = Vector3(0.17, -0.2, -0.46)
+ads_offset = Vector3(0.0, -0.13, -0.24)
+pap_damage_mult = 2.5
+pap_effect = "explosive"
+pap_tint = Color(1.0, 0.35, 0.2, 1.0)
+kick_back = 0.14
+kick_up = 9.0
+move_speed_mult = 0.92
+tracer_chance = 1.0

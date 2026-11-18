@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="ZombieData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/zombies/zombie_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "runner"
+display_name = "Corredor"
+model_path = "res://assets/zombies/zombie_runner.glb"
+base_health = 110.0
+health_per_round = 70.0
+health_mult_after_10 = 1.08
+walk_speed = 3.4
+run_speed = 5.2
+run_from_round = 1
+sprint_chance_per_round = 1.0
+damage = 18.0
+attack_range = 1.25
+attack_cooldown = 0.7
+points_hit = 10
+points_kill = 80
+points_headshot_bonus = 40
+scale = 0.98
+armor = 0.0
+head_height = 1.5
+radius = 0.32
+height = 1.7
+anim_walk = "run"
+anim_walk_alt = "run"
+anim_run = "run"
+anim_attack = "attack_jab"
+anim_attack_alt = "attack2"
+anim_hit = "hit2"
+anim_death = "death2"
+anim_death_alt = "death"
+anim_idle = "idle"
+anim_spawn = "rise"
+groan_sound = "zombie_screech"
+tint = Color(1, 1, 1, 1.0)
+min_round = 3
+spawn_weight = 0.18
+spawn_weight_per_round = 0.02
+max_weight = 0.35

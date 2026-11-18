@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "lmg"
+display_name = "TRITURADORA M60X"
+upgraded_name = "APOCALIPSIS"
+category = 5
+icon_name = "w_lmg"
+model_path = "res://assets/weapons/lmg.glb"
+description = "Ametralladora pesada con cargador enorme."
+damage = 40.0
+headshot_multiplier = 2.0
+fire_rate = 700.0
+automatic = true
+mag_size = 100
+reserve_max = 400
+reload_time = 3.6
+spread_hip = 3.6
+spread_ads = 1.2
+recoil_pitch = 0.8
+recoil_yaw = 0.6
+ads_fov = 55.0
+max_range = 75.0
+falloff_start = 30.0
+penetration = 2
+fire_sound = "shot_lmg"
+reload_sound = "reload_lmg"
+wall_cost = 0
+ammo_cost = 0
+box_weight = 0.7
+view_offset = Vector3(0.17, -0.22, -0.4)
+ads_offset = Vector3(0.0, -0.12, -0.3)
+pap_damage_mult = 1.9
+pap_mag_mult = 1.25
+pap_effect = "incendiary"
+pap_tint = Color(1.0, 0.6, 0.15, 1.0)
+kick_back = 0.04
+kick_up = 2.0
+move_speed_mult = 0.85
+tracer_chance = 0.5

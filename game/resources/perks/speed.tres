@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PerkData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/economy/perk_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "speed"
+display_name = "PASO LIGERO"
+description = "Movimiento +18% y cambio de arma veloz."
+price = 2000
+icon_name = "perk_speed"
+color = Color(0.25, 0.65, 1.0, 1.0)

@@ -1,0 +1,62 @@
+[
+ {
+  "id": "vitality",
+  "display_name": "CORAZA",
+  "description": "Vida máxima +100%. Aguanta más golpes.",
+  "price": 2500,
+  "icon_name": "perk_vitality",
+  "color": [
+   0.85,
+   0.15,
+   0.12
+  ]
+ },
+ {
+  "id": "quick_reload",
+  "display_name": "MANO RÁPIDA",
+  "description": "Recarga un 50% más rápido.",
+  "price": 3000,
+  "icon_name": "perk_reload",
+  "color": [
+   0.2,
+   0.85,
+   0.35
+  ]
+ },
+ {
+  "id": "speed",
+  "display_name": "PASO LIGERO",
+  "description": "Movimiento +18% y cambio de arma veloz.",
+  "price": 2000,
+  "icon_name": "perk_speed",
+  "color": [
+   0.25,
+   0.65,
+   1.0
+  ]
+ },
+ {
+  "id": "damage",
+  "display_name": "BALA HUECA",
+  "description": "Todo tu daño +30%.",
+  "price": 3500,
+  "icon_name": "perk_damage",
+  "color": [
+   1.0,
+   0.55,
+   0.1
+  ]
+ },
+ {
+  "id": "regen",
+  "display_name": "SEGUNDO ALIENTO",
+  "description": "Regeneras antes y el doble de rápido.",
+  "price": 2000,
+  "icon_name": "perk_regen",
+  "color": [
+   0.85,
+   0.35,
+   0.95
+  ]
+ }
+]

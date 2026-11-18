@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "smg"
+display_name = "AVISPA MK2"
+upgraded_name = "ENJAMBRE"
+category = 2
+icon_name = "w_smg"
+model_path = "res://assets/weapons/smg.glb"
+description = "Subfusil de alta cadencia, ideal para pasillos."
+damage = 24.0
+headshot_multiplier = 2.2
+fire_rate = 820.0
+automatic = true
+mag_size = 30
+reserve_max = 180
+reload_time = 1.9
+spread_hip = 2.6
+spread_ads = 0.9
+recoil_pitch = 0.65
+recoil_yaw = 0.45
+ads_fov = 60.0
+max_range = 40.0
+falloff_start = 14.0
+fire_sound = "shot_smg"
+reload_sound = "reload_smg"
+wall_cost = 1000
+ammo_cost = 500
+box_weight = 1.0
+view_offset = Vector3(0.16, -0.19, -0.36)
+ads_offset = Vector3(0.0, -0.1, -0.28)
+pap_damage_mult = 2.0
+pap_effect = "shock"
+pap_tint = Color(0.35, 0.8, 1.0, 1.0)
+kick_back = 0.025
+kick_up = 1.6
+tracer_chance = 0.3

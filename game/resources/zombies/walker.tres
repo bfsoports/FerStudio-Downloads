@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ZombieData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/zombies/zombie_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "walker"
+display_name = "Errante"
+model_path = "res://assets/zombies/zombie_walker.glb"
+base_health = 150.0
+health_per_round = 100.0
+health_mult_after_10 = 1.1
+walk_speed = 1.15
+run_speed = 2.6
+run_from_round = 4
+sprint_chance_per_round = 0.07
+damage = 28.0
+attack_range = 1.35
+attack_cooldown = 1.25
+points_hit = 10
+points_kill = 60
+points_headshot_bonus = 40
+scale = 1.0
+armor = 0.0
+head_height = 1.55
+radius = 0.34
+height = 1.75
+anim_walk = "walk"
+anim_walk_alt = "walk2"
+anim_run = "run"
+anim_attack = "attack"
+anim_attack_alt = "attack2"
+anim_hit = "hit"
+anim_death = "death"
+anim_death_alt = "death2"
+anim_idle = "idle"
+anim_spawn = "rise"
+groan_sound = "zombie_groan"
+tint = Color(1, 1, 1, 1.0)

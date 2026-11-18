@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "pistol"
+display_name = "P-9 VIGÍA"
+upgraded_name = "P-9 ÚLTIMO ALIENTO"
+category = 0
+icon_name = "w_pistol"
+model_path = "res://assets/weapons/pistol.glb"
+description = "Pistola semiautomática fiable."
+damage = 34.0
+headshot_multiplier = 3.0
+fire_rate = 380.0
+automatic = false
+mag_size = 10
+reserve_max = 80
+reload_time = 1.35
+spread_hip = 1.6
+spread_ads = 0.25
+recoil_pitch = 1.6
+recoil_yaw = 0.5
+ads_fov = 58.0
+max_range = 55.0
+falloff_start = 18.0
+fire_sound = "shot_pistol"
+reload_sound = "reload_pistol"
+wall_cost = 0
+ammo_cost = 200
+box_weight = 0.0
+in_box = false
+view_offset = Vector3(0.16, -0.17, -0.34)
+ads_offset = Vector3(0.0, -0.075, -0.26)
+pap_damage_mult = 3.2
+pap_mag_mult = 1.6
+pap_reserve_mult = 1.6
+pap_fire_rate_mult = 1.2
+pap_effect = "explosive"
+pap_tint = Color(1.0, 0.45, 0.15, 1.0)
+kick_back = 0.045
+kick_up = 7.0
+switch_time = 0.35
+tracer_chance = 0.0

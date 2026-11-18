@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "shotgun"
+display_name = "ROMPEPUERTAS 12"
+upgraded_name = "ESCUPEFUEGO 12"
+category = 1
+icon_name = "w_shotgun"
+model_path = "res://assets/weapons/shotgun.glb"
+description = "Escopeta de corredera. Devastadora a corta distancia."
+damage = 26.0
+headshot_multiplier = 1.6
+pellets = 8
+fire_rate = 72.0
+automatic = false
+mag_size = 6
+reserve_max = 42
+reload_time = 0.5
+reload_per_shell = true
+spread_hip = 7.0
+spread_ads = 4.5
+recoil_pitch = 5.5
+recoil_yaw = 1.2
+ads_fov = 60.0
+max_range = 22.0
+falloff_start = 7.0
+min_damage_factor = 0.25
+fire_sound = "shot_shotgun"
+reload_sound = "reload_shell"
+wall_cost = 750
+ammo_cost = 300
+box_weight = 1.0
+view_offset = Vector3(0.17, -0.2, -0.42)
+ads_offset = Vector3(0.0, -0.11, -0.34)
+pap_damage_mult = 2.2
+pap_mag_mult = 1.35
+pap_effect = "incendiary"
+pap_tint = Color(1.0, 0.5, 0.1, 1.0)
+kick_back = 0.12
+kick_up = 10.0
+move_speed_mult = 0.95
+tracer_chance = 0.15

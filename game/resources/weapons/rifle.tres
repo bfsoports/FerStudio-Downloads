@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "rifle"
+display_name = "CENTINELA AR"
+upgraded_name = "GUARDIÁN ETERNO"
+category = 3
+icon_name = "w_rifle"
+model_path = "res://assets/weapons/rifle.glb"
+description = "Fusil de asalto equilibrado. Preciso y contundente."
+damage = 42.0
+headshot_multiplier = 2.5
+fire_rate = 600.0
+automatic = true
+mag_size = 30
+reserve_max = 210
+reload_time = 2.2
+spread_hip = 2.2
+spread_ads = 0.35
+recoil_pitch = 0.95
+recoil_yaw = 0.4
+ads_fov = 50.0
+max_range = 80.0
+falloff_start = 35.0
+penetration = 1
+fire_sound = "shot_rifle"
+reload_sound = "reload_rifle"
+wall_cost = 1400
+ammo_cost = 700
+box_weight = 1.0
+view_offset = Vector3(0.16, -0.2, -0.36)
+ads_offset = Vector3(0.0, -0.105, -0.27)
+pap_damage_mult = 2.1
+pap_effect = "piercing"
+pap_tint = Color(0.55, 1.0, 0.3, 1.0)
+kick_back = 0.035
+kick_up = 2.2
+tracer_chance = 0.4

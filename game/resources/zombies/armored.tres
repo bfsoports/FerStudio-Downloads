@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="ZombieData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/zombies/zombie_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "armored"
+display_name = "Blindado"
+model_path = "res://assets/zombies/zombie_armored.glb"
+base_health = 420.0
+health_per_round = 180.0
+health_mult_after_10 = 1.1
+walk_speed = 0.95
+run_speed = 1.6
+run_from_round = 8
+sprint_chance_per_round = 0.05
+damage = 34.0
+attack_range = 1.4
+attack_cooldown = 1.4
+points_hit = 10
+points_kill = 130
+points_headshot_bonus = 60
+scale = 1.05
+armor = 0.45
+head_height = 1.6
+radius = 0.38
+height = 1.85
+anim_walk = "walk2"
+anim_walk_alt = "walk"
+anim_run = "walk"
+anim_attack = "attack2"
+anim_attack_alt = "attack"
+anim_hit = "hit"
+anim_death = "death"
+anim_death_alt = "death2"
+anim_idle = "idle"
+anim_spawn = "rise"
+groan_sound = "zombie_groan"
+tint = Color(1, 1, 1, 1.0)
+min_round = 6
+spawn_weight = 0.08
+spawn_weight_per_round = 0.012
+max_weight = 0.2
