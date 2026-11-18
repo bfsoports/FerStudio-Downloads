@@ -138,6 +138,9 @@ jobs:
           mkdir -p "$GITHUB_WORKSPACE/build"
           cp export_presets.cfg /tmp/export_presets.orig
           sed -i '/^\[preset.1.options\]/,/^\[preset/ s/^gradle_build\/use_gradle_build=true/gradle_build\/use_gradle_build=false/' export_presets.cfg
+          # sin Gradle, Godot no permite fijar el SDK mínimo (usa el de las plantillas oficiales, Android 7 / API 24)
+          sed -i '/^\[preset.1.options\]/,/^\[preset/ s/^gradle_build\/min_sdk=.*/gradle_build\/min_sdk=""/' export_presets.cfg
+          grep -A4 '^\[preset.1.options\]' export_presets.cfg
           set -o pipefail
           godot --headless --path . --export-debug "Amazon Appstore (Fire, APK)" "$GITHUB_WORKSPACE/build/BurgerChef3D-debug.apk" 2>&1 | tee export_log.txt
           cp /tmp/export_presets.orig export_presets.cfg
