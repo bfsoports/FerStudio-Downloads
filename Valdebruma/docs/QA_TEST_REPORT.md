@@ -7,17 +7,17 @@ Solo se marca como superado lo que se ha ejecutado. Fecha de las ejecuciones: 18
 | Entorno | Detalle |
 |---|---|
 | Local | Contenedor Linux x86_64, 4 núcleos, sin GPU; Godot 4.7.2 estable oficial; cliente con Vulkan por software (lavapipe) en Xvfb |
-| CI | GitHub Actions `ubuntu-24.04`, ejecución nº 1 del flujo «Valdebruma CI» (commit `75285e4`): https://github.com/bfsoports/FerStudio-Downloads/actions/runs/44307271230 |
+| CI | GitHub Actions `ubuntu-24.04`, flujo «Valdebruma CI». Referencia: ejecución nº 6 (commit `818f104`): https://github.com/bfsoports/FerStudio-Downloads/actions/runs/44313410033. Primera: nº 1 (`75285e4`) |
 | Android | **No disponible** (sin dispositivo ni emulador con aceleración) |
 
 ## Resultados automáticos
 
 | Prueba | Qué comprueba | Local | CI |
 |---|---|---|---|
-| Unitarias (`-- --unit-tests`) | Inventario (apilar, quitar, transferir sin duplicar, dividir, reducir), persistencia (escritura atómica, suma de control, corrupción, truncado, copias), saneado de red, mapa del mundo, referencias cruzadas de todos los datos, existencia de modelos/iconos/materiales/efectos, animaciones, textos es/en de cada clave usada, compilación de todos los guiones y escenas, sonidos (desde el commit siguiente) | **843/843** | **781/781** (antes de añadir la sección de sonido) |
+| Unitarias (`-- --unit-tests`) | Inventario (apilar, quitar, transferir sin duplicar, dividir, reducir), persistencia (escritura atómica, suma de control, corrupción, truncado, copias), saneado de red, mapa del mundo, referencias cruzadas de todos los datos, existencia de modelos/iconos/materiales/efectos, animaciones, sonidos, textos es/en de cada clave usada, compilación de todos los guiones y escenas | **843/843** | **843/843** (nº 6) |
 | Sesión multijugador real (`tests/net_session.sh`) | Servidor dedicado + clientes ENet: sincronización, movimiento validado, teletransporte corregido, peticiones inválidas sin efecto, fabricación, construcción, permisos de arcón (privado/ocupado), desmontaje ajeno rechazado, intercambio sin duplicar, carrera por un objeto, reconexión, persistencia tras parada ordenada y tras `kill -KILL` | **40/40** | **40/40** |
 | Prueba en vivo (`tools/ci/live_test.sh`) | Juego real con ventana: menú y 6 pantallas, crear partida como anfitrión, entrar al valle, 4 vistas (El Collado de día, Sotoalto al atardecer, La Fragua, tormenta de noche) con HUD táctil, 9 pantallas de partida | **21/21 capturas, 0 errores** | **21/21 capturas, 0 errores** |
-| Exportación APK | Exportar, firmar (depuración), verificar firma y manifiesto | Correcto (111 MB con audio) | Correcto (109 MB, artefacto `valdebruma-android-apk`) |
+| Exportación APK | Exportar, firmar (depuración), verificar firma y manifiesto | Correcto (111 MB con audio) | Correcto (artefacto `valdebruma-android-apk`) |
 | Exportación AAB (Gradle) | Plantilla Gradle, compilación con AGP | Correcto (117 MB) | Correcto (artefacto `valdebruma-android-aab`) |
 | Servidor dedicado | Exportar, arrancar, escuchar, guardar y cerrar | Correcto | Correcto (artefacto `valdebruma-servidor-linux`) |
 | Administración de cuentas | `--admin=list/ban/unban` sobre datos reales | Correcto | — |
