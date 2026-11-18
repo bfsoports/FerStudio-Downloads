@@ -8,7 +8,7 @@ __pycache__/
 *.keystore
 *.jks
 export/credentials/
-android/build/
+android/
 # Temporales
 *.tmp
 *.log
