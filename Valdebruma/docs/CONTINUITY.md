@@ -11,6 +11,12 @@ Se actualiza a medida que avanza la construcción.
 - Render por software: `xvfb-run` + lavapipe (Vulkan, renderer Mobile) y llvmpipe (OpenGL, Compatibility). Ambos probados.
 - Sin `/dev/kvm` → no hay emulador Android utilizable. Sin dispositivo físico. Sin tarjeta de sonido (driver dummy).
 
+- 18-11-2026: la subida a GitHub funciona (rama `claude/android-godot-game-dev-xa4lto`). GitHub Actions
+  (`.github/workflows/valdebruma.yml`) ejecuta pruebas unitarias, red, prueba en vivo, APK, AAB y servidor.
+- Modelos de Hyper3D Rodin descargados en `/root/tools/rodin/<modelo>/rigged.glb` (fuera del repositorio;
+  regenerables desde la cuenta con los identificadores de `docs/ASSET_LICENSES.md`).
+- Efectos CC0 de Binbun3D extraídos en `/root/tools/efectos_zip` (ZIP aportado por el titular).
+
 ## Decisiones técnicas
 - Proyecto en `Valdebruma/` (raíz con `project.godot`). Herramientas reproducibles en `Valdebruma/tools/`.
 - Arte: geometría propia generada por scripts de Blender (`tools/blender`), texturas PBR CC0 de Poly Haven
@@ -26,5 +32,12 @@ Se actualiza a medida que avanza la construcción.
 ## Estado
 Ver `docs/PROJECT_STATUS.md` (tabla Sistema | Estado | Evidencia | Pendiente).
 
+## Comandos de verificación
+- `godot --headless --path . -- --unit-tests` · `tests/net_session.sh` · `tools/ci/live_test.sh`
+- Exportar: ver `docs/ANDROID_BUILD_GUIDE.md`. Servidor: `server/run_server.sh`.
+
 ## Siguiente acción técnica
-(se actualiza al final de cada bloque de trabajo)
+- Probar el APK en un teléfono real y medir FPS (ver `docs/PERFORMANCE_REPORT.md`).
+- Reducir el APK por debajo de 80 MB (normales a 512 en vehículos y criaturas, atlas de carteles).
+- Mezcla parcial superior/inferior para jugadores remotos (acción + andar).
+- Icono monocromo de Android; DTLS para el transporte.

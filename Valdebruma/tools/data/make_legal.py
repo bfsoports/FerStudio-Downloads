@@ -30,7 +30,7 @@ Binbun3D, BinbunVFX Vol. 2 (bun3d.com) — CC0. Llama, impactos, rayo, nube y au
 Barlow y Barlow Condensed, de Jeremy Tribby — SIL Open Font License 1.1.
 
 [b]Sonido[/b]
-Efectos, ambientes y música sintetizados por el propio proyecto (tools/audio).
+Efectos, ambientes y música sintetizados por código en el propio proyecto (tools/audio/synth.py).
 
 La lista completa, con origen, licencia y modificaciones de cada recurso, está en docs/ASSET_LICENSES.md."""
 
@@ -55,7 +55,7 @@ Binbun3D, BinbunVFX Vol. 2 (bun3d.com) — CC0. Flame, impacts, lightning, cloud
 Barlow and Barlow Condensed, by Jeremy Tribby — SIL Open Font License 1.1.
 
 [b]Sound[/b]
-Effects, ambiences and music synthesised by the project itself (tools/audio).
+Effects, ambiences and music synthesised in code by the project itself (tools/audio/synth.py).
 
 The full list, with source, licence and modifications of every asset, is in docs/ASSET_LICENSES.md."""
 

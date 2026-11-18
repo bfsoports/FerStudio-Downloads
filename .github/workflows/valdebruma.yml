@@ -26,9 +26,6 @@ concurrency:
 permissions:
   contents: read
 
-env:
-  GODOT_DL: ${{ github.workspace }}/../godot-dl
-
 jobs:
   pruebas:
     name: Pruebas (unitarias, red y en vivo)
@@ -43,7 +40,7 @@ jobs:
       - name: Caché de Godot
         uses: actions/cache@v4
         with:
-          path: ${{ env.GODOT_DL }}
+          path: ~/godot-dl
           key: godot-4.7.2-linux
 
       - name: Caché de importación
@@ -103,7 +100,7 @@ jobs:
       - name: Caché de Godot y plantillas
         uses: actions/cache@v4
         with:
-          path: ${{ env.GODOT_DL }}
+          path: ~/godot-dl
           key: godot-4.7.2-linux-templates
 
       - name: Caché de importación
@@ -171,7 +168,7 @@ jobs:
       - name: Caché de Godot y plantillas
         uses: actions/cache@v4
         with:
-          path: ${{ env.GODOT_DL }}
+          path: ~/godot-dl
           key: godot-4.7.2-linux-templates
 
       - name: Instalar Godot 4.7.2 y plantillas
@@ -214,7 +211,7 @@ jobs:
       - name: Caché de Godot y plantillas
         uses: actions/cache@v4
         with:
-          path: ${{ env.GODOT_DL }}
+          path: ~/godot-dl
           key: godot-4.7.2-linux-templates
 
       - name: Instalar Godot 4.7.2 y plantillas

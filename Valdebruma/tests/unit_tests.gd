@@ -29,13 +29,14 @@ func done() -> void:
 func run() -> void:
 	await get_tree().process_frame
 	var gd: Node = get_node("/root/GameData")
-	var sections := ["inventario", "persistencia", "saneado de red", "mundo", "referencias de datos", "recursos de arte", "traducciones", "guiones y escenas"]
+	var sections := ["inventario", "persistencia", "saneado de red", "mundo", "referencias de datos", "recursos de arte", "sonido", "traducciones", "guiones y escenas"]
 	test_inventory(gd)
 	test_persistence()
 	test_guard()
 	test_world(gd)
 	test_data(gd)
 	test_assets(gd)
+	test_audio()
 	test_translations()
 	test_scripts()
 	for sec: String in sections:
@@ -233,6 +234,30 @@ func test_assets(gd: Node) -> void:
 			check(ResourceLoader.exists("res://assets/materials/%s.tres" % k), "material %s generado" % k)
 	for s: String in Vfx.SCENES.values():
 		check(ResourceLoader.exists(s), "efecto " + s.get_file())
+	done()
+
+# ---- sonido ---------------------------------------------------------------------------------------------
+func test_audio() -> void:
+	section("sonido")
+	var names := {}
+	var re := RegEx.create_from_string("(?:play_ui|play_at|stream|play_music)\\(\"([a-z0-9_]+)\"")
+	for path in _files("res://scripts", ".gd") + _files("res://autoload", ".gd"):
+		for m in re.search_all(FileAccess.get_file_as_string(path)):
+			names[m.get_string(1)] = true
+	for b: String in AudioDirector.BEDS:
+		names[b] = true
+	for surf: String in ["dirt", "grass", "leaves", "road", "rock", "water", "wood"]:
+		for i in 3:
+			names["step_%s_%d" % [surf, i + 1]] = true
+	for n: String in ["door_close", "container_close"]:
+		names[n] = true
+	check(names.size() >= 40, "sonidos referenciados (%d)" % names.size())
+	for n: String in names.keys():
+		var path := "res://assets/audio/%s.ogg" % n
+		check(ResourceLoader.exists(path), "existe el sonido " + n)
+	for b: String in AudioDirector.BEDS + ["fire_loop", "music_menu"]:
+		var st: AudioStreamOggVorbis = load("res://assets/audio/%s.ogg" % b)
+		check(st != null and st.loop, "%s se reproduce en bucle" % b)
 	done()
 
 # ---- traducciones ----------------------------------------------------------------------------------------

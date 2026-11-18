@@ -10,7 +10,7 @@ oficial; render por software (Vulkan lavapipe en Xvfb) para el cliente; GitHub A
 
 | Sistema | Estado | Evidencia | Pendiente |
 |---|---|---|---|
-| Proyecto Godot 4.7.2 + GDScript tipado | PROBADO | Las pruebas unitarias compilan los 70+ guiones del juego (`tests/unit_tests.gd`, sección «guiones y escenas») | — |
+| Proyecto Godot 4.7.2 + GDScript tipado | PROBADO | Las pruebas unitarias (843 comprobaciones) compilan los guiones del juego y cargan las escenas; también en GitHub Actions | — |
 | Mundo abierto por sectores (1,28 km², 400 sectores, LOD 0/1/2, MultiMesh) | PROBADO | Capturas del juego real en 4 zonas (`tools/ci/live_test.sh`); `tools/world/build_world.py` | Oclusión por portales en interiores |
 | Terreno, agua, río, carreteras, puentes | EJECUTADO | Capturas en El Collado, Sotoalto y La Fragua | — |
 | 39 edificios (26 modelos) con interiores, puertas y contenedores | EJECUTADO | `data/buildings/*.json`, recorrido en el juego; prueba de red abre puertas y contenedores | — |
@@ -35,12 +35,12 @@ oficial; render por software (Vulkan lavapipe en Xvfb) para el cliente; GitHub A
 | Textos en español e inglés (456 claves de interfaz + datos bilingües) | PROBADO | Prueba unitaria: ninguna clave usada sin texto en es/en | Revisión de estilo del inglés por nativo |
 | Ajustes y perfiles gráficos bajo/medio/alto, accesibilidad | IMPLEMENTADO | `autoload/config.gd`, pantalla de ajustes capturada | Medir el efecto en hardware real |
 | Efectos visuales (llama, chispas, rayo, esporas, auras) | EJECUTADO | Efectos CC0 de Binbun3D adaptados; capturas | — |
-| Audio (buses, ambientes por zona, pasos por superficie, interfaz) | PARCIAL | `autoload/audio_director.gd` funciona con los nombres de sonido | PENDIENTE: generar los archivos `.ogg` (el juego funciona en silencio si faltan) |
-| Exportación Android APK (arm64, firmada con clave de depuración) | EJECUTADO | APK de 109 MB verificado con `apksigner` y `aapt2`; flujo de Actions | PENDIENTE: instalar en un dispositivo real |
-| Android App Bundle (Gradle) | EJECUTADO | AAB de 117 MB generado en local con Gradle 8.11.1 / AGP 8.6.1; trabajo `aab` en Actions | Firma de publicación |
+| Audio: 8 ambientes en bucle por zona, hoguera, música del menú, pasos en 7 superficies, puertas, interfaz, criaturas, trueno | EJECUTADO | 51 archivos Vorbis sintetizados por `tools/audio/synth.py`; prueba unitaria «sonido» (todo sonido usado existe y los bucles lo son); espectrogramas revisados | Escucha humana y mezcla final (el entorno no tiene salida de audio) |
+| Exportación Android APK (arm64, firmada con clave de depuración) | PROBADO | APK de 109 MB verificado con `apksigner` y `aapt2`, en local y en Actions (artefacto `valdebruma-android-apk`) | PENDIENTE: instalar en un dispositivo real |
+| Android App Bundle (Gradle) | PROBADO | AAB de 117 MB generado con Gradle 8.11.1 / AGP 8.6.1 en local y en Actions (artefacto `valdebruma-android-aab`) | Firma de publicación |
 | Firma de publicación y Google Play | PENDIENTE | Pasos en `ANDROID_BUILD_GUIDE.md`; secretos `VALDEBRUMA_KEYSTORE_*` soportados en CI | Requiere almacén de claves y cuenta del titular |
 | Servidor dedicado Linux exportado, lanzador, systemd, Docker, administración de cuentas | EJECUTADO | Binario exportado arrancado; `run_server.sh` con parada ordenada; `--admin=list/ban/unban` probado | Servidor público (no existe) |
-| Integración continua (GitHub Actions) | IMPLEMENTADO | `.github/workflows/valdebruma.yml` | Ver resultado de la primera ejecución en la pestaña Actions |
+| Integración continua (GitHub Actions) | PROBADO | Ejecución nº 1 en verde: https://github.com/bfsoports/FerStudio-Downloads/actions/runs/44307271230 — unitarias 781/781, red 40/40, prueba en vivo 21/21 capturas sin errores, APK, AAB y servidor publicados como artefactos | Firma de publicación con secretos del titular |
 | Publicidad | PENDIENTE (deliberado) | No hay SDK ni cuenta: no se simula ningún anuncio | Decidir modelo; integrar SDK real si procede |
 | Privacidad y términos | PARCIAL | Borradores en el juego (`data/legal.json`) | Revisión legal y datos del titular |
 | Rendimiento en móvil | PENDIENTE | Métricas de primitivas y llamadas en `PERFORMANCE_REPORT.md` | Medir FPS, temperatura y batería en teléfonos reales |
