@@ -46,13 +46,13 @@ func _ready() -> void:
 	add_child(pause_menu)
 	game_over = GameOverScreen.new()
 	add_child(game_over)
+	if OS.has_feature("mobile"):
+		add_child(PerfGovernor.new())
 	touch.pause_pressed.connect(toggle_pause)
 	player.died.connect(_on_player_died)
 	map.zone_opened.connect(_on_zone_opened)
 	Audio.play_ambience("ambience_city", -14.0)
 	Audio.play_music("ambient_game", 2.0, -10.0)
-	if not OS.has_feature("mobile") and not OS.has_feature("editor_hint"):
-		pass
 	hud.show_banner("SECTOR ABANDONADO", "Sobrevive todo lo que puedas.", UIStyle.ACCENT)
 
 

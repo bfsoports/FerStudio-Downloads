@@ -54,7 +54,7 @@ var _reload_dur := 0.0
 func _ready() -> void:
 	layer = 4
 	_root = Control.new()
-	_root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_root.theme = UIStyle.theme()
 	add_child(_root)
@@ -387,7 +387,7 @@ func _build_boss_bar() -> void:
 
 func _build_damage_layer() -> void:
 	_vignette = ColorRect.new()
-	_vignette.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_vignette.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_vignette.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var sh := Shader.new()
 	sh.code = """

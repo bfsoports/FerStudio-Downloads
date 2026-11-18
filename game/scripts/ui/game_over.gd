@@ -12,7 +12,7 @@ func _ready() -> void:
 	layer = 25
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_root = Control.new()
-	_root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_root.theme = UIStyle.theme()
 	add_child(_root)
 	_root.visible = false
@@ -22,7 +22,7 @@ func show_stats(stats: Dictionary) -> void:
 	_root.visible = true
 	var bg := TextureRect.new()
 	bg.texture = load("res://assets/ui/backgrounds/screen_bg.jpg")
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	bg.modulate = Color(0.75, 0.45, 0.42)

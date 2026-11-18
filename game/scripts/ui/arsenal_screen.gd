@@ -15,11 +15,11 @@ var _tab := "weapons"
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	theme = UIStyle.theme()
 	var dim := ColorRect.new()
 	dim.color = Color(0.03, 0.035, 0.03, 0.88)
-	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(dim)
 	var root := HBoxContainer.new()
 	root.anchor_left = 0.03
