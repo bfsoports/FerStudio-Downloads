@@ -52,6 +52,7 @@ los registros de la sesión de red).
 |---|---|---|
 | Tras un salto largo (reaparecer lejos, corrección del servidor) el jugador podía caer bajo el terreno antes de que existiera la colisión del sector nuevo | Capturas de la prueba en vivo en GitHub Actions (Sotoalto y La Fragua mostraban la cara inferior del terreno); diagnóstico con la posición y el nivel del sector en la captura | `PlayerController`: nunca por debajo de la altura analítica del terreno |
 | La hora y el lugar del HUD quedaban bajo la barra de menús táctil | Revisión de capturas con `--touch` | Bloque desplazado al hueco libre y texto con contorno |
+| La prueba de red falló una vez en CI (ejecución nº 5): el segundo servidor no pudo abrir el puerto porque el primero aún se estaba cerrando | Registro de GitHub Actions («Couldn't create an ENet host», 30/33) | `tests/net_session.sh` espera de verdad a que cada servidor arranque (mensaje «escuchando») y termine, en vez de pausas fijas y `wait` sobre un proceso que no era hijo. Fallo del guion de prueba, no del juego |
 | Falsos «correcto» en pruebas unitarias lanzadas con `-s` (guiones compilados antes de los autoloads) | Revisión del registro | Pruebas lanzadas desde `Boot` y cada sección debe terminar para contar |
 
 ## Defectos conocidos

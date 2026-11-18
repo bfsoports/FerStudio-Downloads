@@ -8,24 +8,41 @@ OUT=${1:-/tmp/vb_net_session}
 PORT=${PORT:-24711}
 rm -rf "$OUT"; mkdir -p "$OUT"
 G="godot --headless --path ."
-start_server() { $G -- --server --port=$PORT --data="$OUT/data" --world=prueba --test-kit --hour=10 > "$OUT/server_$1.log" 2>&1 & echo $!; }
+# El servidor se lanza en ESTA shell (no en una subshell) para poder esperarlo de verdad, y se
+# considera listo cuando anuncia que escucha; antes se usaban esperas fijas y `wait` sobre un
+# proceso que no era hijo, lo que provocaba carreras al reutilizar el puerto en máquinas rápidas.
+start_server() {
+  $G -- --server --port=$PORT --data="$OUT/data" --world=prueba --test-kit --hour=10 > "$OUT/server_$1.log" 2>&1 &
+  SRV=$!
+  for _ in $(seq 1 200); do
+    grep -q "escuchando en el puerto" "$OUT/server_$1.log" 2>/dev/null && return 0
+    kill -0 $SRV 2>/dev/null || { echo "el servidor $1 terminó al arrancar"; return 1; }
+    sleep 0.2
+  done
+  echo "el servidor $1 no arrancó a tiempo"
+}
+wait_gone() {
+  for _ in $(seq 1 200); do kill -0 $1 2>/dev/null || { wait $1 2>/dev/null; return 0; }; sleep 0.2; done
+  echo "el servidor no terminó a tiempo: se fuerza"; kill -KILL $1 2>/dev/null; wait $1 2>/dev/null
+}
+stop_server() { touch "$OUT/data/prueba/stop"; wait_gone $SRV; }
 bot() { timeout 120 $G -- --bot=$1 --connect=127.0.0.1:$PORT --name=$2 ${3:+--pos=$3} > "$OUT/$4.log" 2>&1; }
 
-SRV=$(start_server 1); sleep 4
+start_server 1
 bot duo_a Ana "" a1 & PA=$!
 sleep 1.5
 bot duo_b Blas "" b1 & PB=$!
 wait $PA; wait $PB
 bot reconnect Carla "" c1
-touch "$OUT/data/prueba/stop"; wait $SRV 2>/dev/null     # parada ordenada (archivo stop)
+stop_server                                               # parada ordenada (archivo stop)
 POS_A=$(grep "BOT|Ana|FINAL" "$OUT/a1.log" | python3 -c "import sys,json; print(','.join(str(v) for v in json.loads(sys.stdin.readline().split('|',3)[3])['pos']))")
-SRV=$(start_server 2); sleep 4
+start_server 2
 bot verify Ana "$POS_A" a2
 bot verify Blas "" b2
-kill -KILL $SRV; wait $SRV 2>/dev/null                   # corte brusco: no debe dañar los datos
-SRV=$(start_server 3); sleep 4
+kill -KILL $SRV; wait_gone $SRV                           # corte brusco: no debe dañar los datos
+start_server 3
 bot verify Ana "$POS_A" a3
-touch "$OUT/data/prueba/stop"; wait $SRV 2>/dev/null
+stop_server
 
 python3 - "$OUT" <<'PY'
 import json, sys, os, re
