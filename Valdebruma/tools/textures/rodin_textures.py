@@ -21,9 +21,10 @@ ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", ".."))
 OUT = os.path.join(ROOT, "assets", "textures", "pbr")
 SRC = sys.argv[1] if len(sys.argv) > 1 else "/root/tools/rodin"
 
-# modelo de origen → (nombre del juego, lado del albedo/normal, lado del ORM)
-SETS = {"survivor": ("rd_survivor", 1024, 1024), "brumal": ("rd_brumal", 1024, 512), "zarzo": ("rd_zarzo", 512, 256),
-        "car_sedan": ("rd_sedan", 1024, 512), "car_van": ("rd_van", 1024, 512), "tractor": ("rd_tractor", 1024, 512)}
+# modelo de origen → (nombre del juego, lado del albedo, lado del ORM, lado de la normal)
+# Las normales solo van a 1024 en el personaje (se ve de cerca); el resto a 512 ahorra ~4 MB de APK.
+SETS = {"survivor": ("rd_survivor", 1024, 1024, 1024), "brumal": ("rd_brumal", 1024, 512, 512), "zarzo": ("rd_zarzo", 512, 256, 512),
+        "car_sedan": ("rd_sedan", 1024, 512, 512), "car_van": ("rd_van", 1024, 512, 512), "tractor": ("rd_tractor", 1024, 512, 512)}
 
 PARAMS = """[remap]
 
@@ -92,7 +93,7 @@ def hsv_to_rgb(h, s, v):
 
 def run():
     os.makedirs(OUT, exist_ok=True)
-    for src, (name, side, oside) in SETS.items():
+    for src, (name, side, oside, nside) in SETS.items():
         d = os.path.join(SRC, src, "tex")
         if not os.path.isdir(d):
             print("falta", d); continue
@@ -100,7 +101,7 @@ def run():
         orm = Image.open(os.path.join(d, "texture_metallic-texture_roughness.png")).convert("RGB")
         nrm = Image.open(os.path.join(d, "texture_normal.png")).convert("RGB")
         alb_s = alb.resize((side, side), Image.LANCZOS)
-        nrm_s = nrm.resize((side, side), Image.LANCZOS)
+        nrm_s = nrm.resize((nside, nside), Image.LANCZOS)
         o = np.asarray(orm.resize((oside, oside), Image.LANCZOS)).astype(np.float32) / 255.0
         o[..., 0] = 1.0                               # sin oclusión horneada
         if src == "survivor":
