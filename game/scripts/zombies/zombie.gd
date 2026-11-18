@@ -81,7 +81,8 @@ func setup(d: ZombieData) -> void:
 				if d.emissive != Color.BLACK:
 					mat.emission_enabled = true
 					mat.emission = d.emissive
-					mat.emission_energy_multiplier = 0.35
+					mat.emission_energy_multiplier = 0.6
+					mat.emission_operator = BaseMaterial3D.EMISSION_OP_ADD
 				m.set_surface_override_material(0, mat)
 	_skeleton = _model.find_child("Skeleton3D", true, false) as Skeleton3D
 	if _skeleton:

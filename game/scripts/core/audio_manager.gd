@@ -128,7 +128,7 @@ func play_music(track: String, fade: float = 2.0, volume_db: float = -6.0) -> vo
 	if not ResourceLoader.exists(path):
 		return
 	var next := _music_b if _music_current == _music_a else _music_a
-	next.stream = load(path)
+	next.stream = _looped(load(path))
 	next.volume_db = -60.0
 	next.play()
 	var tw := create_tween().set_parallel(true)
@@ -137,6 +137,16 @@ func play_music(track: String, fade: float = 2.0, volume_db: float = -6.0) -> vo
 	var old := _music_current
 	tw.chain().tween_callback(old.stop)
 	_music_current = next
+
+
+func _looped(s: AudioStream) -> AudioStream:
+	if s is AudioStreamOggVorbis:
+		(s as AudioStreamOggVorbis).loop = true
+	elif s is AudioStreamWAV:
+		var w := s as AudioStreamWAV
+		w.loop_mode = AudioStreamWAV.LOOP_FORWARD
+		w.loop_end = int(w.get_length() * w.mix_rate)
+	return s
 
 
 func stop_music(fade: float = 1.5) -> void:
@@ -152,7 +162,7 @@ func play_ambience(track: String, volume_db: float = -10.0) -> void:
 		path = MUSIC_DIR + track + ".wav"
 	if not ResourceLoader.exists(path):
 		return
-	_ambience.stream = load(path)
+	_ambience.stream = _looped(load(path))
 	_ambience.volume_db = volume_db
 	_ambience.play()
 

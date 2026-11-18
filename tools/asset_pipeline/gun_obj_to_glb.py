@@ -110,7 +110,7 @@ def main():
         accessors.append({'bufferView': pv, 'componentType': 5126, 'count': len(pos), 'type': 'VEC3',
                           'min': pos.min(0).tolist(), 'max': pos.max(0).tolist()})
         accessors.append({'bufferView': nv, 'componentType': 5126, 'count': len(nor), 'type': 'VEC3'})
-        kd = mat_colors[mname]
+        kd = [min(1.0, max(c, 0.05) * 1.5) for c in mat_colors[mname]]
         lname = mname.lower()
         metal = 0.55 if ('metal' in lname or 'black' in lname or 'grey' in lname or 'gray' in lname) else 0.0
         rough = 0.55 if metal > 0 else 0.8

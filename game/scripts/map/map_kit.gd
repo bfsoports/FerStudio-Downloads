@@ -7,7 +7,7 @@ extends RefCounted
 ## Boxes get world-space planar UVs (textures tile seamlessly without triplanar
 ## cost) and vertex-colour ambient occlusion baked from height.
 
-const CELL := 16.0
+const CELL := 24.0
 
 static var _mats := {}
 
@@ -38,7 +38,7 @@ static func mat(key: String) -> Material:
 		"roof": tex = "roof"
 		"plaster": tex = "plaster"
 		"wallbuy":
-			tex = "concrete"; col = Color(0.35, 0.36, 0.33)
+			tex = "concrete"; col = Color(0.85, 0.82, 0.72)
 		"dark_metal": col = Color(0.16, 0.17, 0.17); m.roughness = 0.55; m.metallic = 0.4
 		"steel": col = Color(0.42, 0.44, 0.45); m.roughness = 0.45; m.metallic = 0.5
 		"rust": col = Color(0.42, 0.24, 0.14)
@@ -500,8 +500,8 @@ static func sign(parent: Node3D, text: String, xf: Transform3D, color: Color, si
 	var l := Label3D.new()
 	l.text = text
 	l.font = UIStyle.title_font()
-	l.font_size = size
-	l.pixel_size = 0.01
+	l.font_size = size * 2
+	l.pixel_size = 0.005
 	l.modulate = color
 	l.outline_size = 12
 	l.outline_modulate = Color(0, 0, 0, 0.9)

@@ -12,6 +12,9 @@ signal reload_finished
 
 const MAX_SLOTS := 2
 const VIEW_SCALE := 0.42
+## Data offsets are authored for a full-size weapon; the viewmodel is scaled
+## down (less wall clipping) so offsets are scaled to keep the same framing.
+const OFFSET_SCALE := 0.5
 const ZOMBIE_MASK := 4
 const WORLD_MASK := 1
 
@@ -330,37 +333,61 @@ func _apply_pap_look(s: WeaponSlot) -> void:
 
 
 func _build_arms() -> void:
+	## Low-poly gloved hands + sleeves, modelled in real-world metres in the
+	## weapon's space and scaled with it (VIEW_SCALE) so proportions match.
 	_arms = Node3D.new()
 	_arms.name = "Arms"
+	_arms.scale = Vector3.ONE * VIEW_SCALE
 	_pivot.add_child(_arms)
 	var sleeve := StandardMaterial3D.new()
-	sleeve.albedo_color = Color(0.27, 0.32, 0.2)
+	sleeve.albedo_color = Color(0.25, 0.3, 0.18)
 	sleeve.roughness = 0.9
+	var cuff := StandardMaterial3D.new()
+	cuff.albedo_color = Color(0.55, 0.42, 0.25)
+	cuff.roughness = 0.9
 	var glove := StandardMaterial3D.new()
-	glove.albedo_color = Color(0.16, 0.13, 0.1)
-	glove.roughness = 0.8
-	for side in [1, -1]:
+	glove.albedo_color = Color(0.13, 0.11, 0.09)
+	glove.roughness = 0.75
+	for side in ["Right", "Left"]:
 		var arm := Node3D.new()
-		arm.name = "Right" if side == 1 else "Left"
+		arm.name = side
 		_arms.add_child(arm)
-		var fore := MeshInstance3D.new()
-		var cm := CapsuleMesh.new()
-		cm.radius = 0.045
-		cm.height = 0.42
-		cm.radial_segments = 8
-		cm.rings = 2
-		fore.mesh = cm
-		fore.material_override = sleeve
-		fore.rotation_degrees = Vector3(80, 0, 0)
-		fore.position = Vector3(0, -0.04, 0.2)
-		arm.add_child(fore)
 		var hand := MeshInstance3D.new()
 		var bm := BoxMesh.new()
-		bm.size = Vector3(0.07, 0.06, 0.09)
+		bm.size = Vector3(0.085, 0.095, 0.11)
 		hand.mesh = bm
 		hand.material_override = glove
 		arm.add_child(hand)
-		for mi in [fore, hand]:
+		var fingers := MeshInstance3D.new()
+		var fm := BoxMesh.new()
+		fm.size = Vector3(0.09, 0.04, 0.05)
+		fingers.mesh = fm
+		fingers.material_override = glove
+		fingers.position = Vector3(0, 0.03, -0.06)
+		arm.add_child(fingers)
+		var wrist := MeshInstance3D.new()
+		var wm := CylinderMesh.new()
+		wm.top_radius = 0.052
+		wm.bottom_radius = 0.052
+		wm.height = 0.06
+		wm.radial_segments = 8
+		wrist.mesh = wm
+		wrist.material_override = cuff
+		wrist.rotation_degrees = Vector3(90, 0, 0)
+		wrist.position = Vector3(0, -0.01, 0.08)
+		arm.add_child(wrist)
+		var fore := MeshInstance3D.new()
+		var cm := CylinderMesh.new()
+		cm.top_radius = 0.05
+		cm.bottom_radius = 0.065
+		cm.height = 0.36
+		cm.radial_segments = 8
+		fore.mesh = cm
+		fore.material_override = sleeve
+		fore.rotation_degrees = Vector3(90, 0, 0)
+		fore.position = Vector3(0, -0.01, 0.29)
+		arm.add_child(fore)
+		for mi in [hand, fingers, wrist, fore]:
 			mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 			mi.layers = 2
 
@@ -371,23 +398,23 @@ func _update_arms() -> void:
 		return
 	var right := _arms.get_node("Right") as Node3D
 	var left := _arms.get_node("Left") as Node3D
-	# grip is at the weapon origin; fore-grip along the barrel
-	var length := 0.22
+	# weapon origin = pistol grip; left hand on the fore-end along -Z
+	var fore := 0.3
 	match s.data.category:
-		WeaponData.Category.PISTOL:
-			length = 0.05
-		WeaponData.Category.SMG:
-			length = 0.18
-		WeaponData.Category.SHOTGUN:
-			length = 0.38
-		WeaponData.Category.SNIPER:
-			length = 0.34
-		_:
-			length = 0.3
-	right.position = Vector3(0.0, -0.035, 0.03) * VIEW_SCALE * 2.2
-	left.position = Vector3(-0.01, -0.03, -length) * VIEW_SCALE * 2.2
-	left.rotation_degrees = Vector3(0, -25, 0)
-	right.rotation_degrees = Vector3(0, 8, 0)
+		WeaponData.Category.PISTOL: fore = 0.0
+		WeaponData.Category.SMG: fore = 0.17
+		WeaponData.Category.SHOTGUN: fore = 0.42
+		WeaponData.Category.SNIPER: fore = 0.38
+		WeaponData.Category.LMG: fore = 0.3
+		_: fore = 0.3
+	right.position = Vector3(0.0, -0.06, 0.02)
+	right.rotation_degrees = Vector3(-18, 10, 0)
+	if s.data.category == WeaponData.Category.PISTOL:
+		left.position = Vector3(-0.045, -0.085, 0.01)
+		left.rotation_degrees = Vector3(-12, -28, 25)
+	else:
+		left.position = Vector3(-0.01, -0.06, -fore)
+		left.rotation_degrees = Vector3(-10, -32, 30)
 
 
 # --------------------------------------------------------------------------------
@@ -406,7 +433,7 @@ func _process(delta: float) -> void:
 	_update_reload(delta, s)
 	# ADS blend
 	_ads_t = move_toward(_ads_t, 1.0 if aiming else 0.0, delta * 6.5)
-	var base := s.data.view_offset.lerp(s.data.ads_offset, _smooth(_ads_t))
+	var base := s.data.view_offset.lerp(s.data.ads_offset, _smooth(_ads_t)) * OFFSET_SCALE
 	# sway from camera rotation
 	var cam_basis := get_parent().global_basis as Basis
 	if _last_cam_basis != Basis():

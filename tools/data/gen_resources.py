@@ -77,8 +77,8 @@ ZOMBIES = [
       health_mult_after_10=1.0, walk_speed=1.7, run_speed=4.2, run_from_round=1, sprint_chance_per_round=0.0, damage=55.0, attack_range=2.4,
       attack_cooldown=1.6, points_hit=15, points_kill=2500, points_headshot_bonus=0, scale=1.85, armor=0.3, head_height=1.5, radius=0.8,
       height=2.0, anim_walk='walk', anim_walk_alt='walk', anim_run='run', anim_attack='attack_slam', anim_attack_alt='attack2', anim_hit='hit',
-      anim_death='death', anim_death_alt='death', anim_idle='idle', anim_spawn='roar', groan_sound='tank_roar', tint=(0.55, 0.62, 0.5),
-      is_boss=True, stagger_resist=1.0, attack_shockwave=True, emissive=(0.35, 1.0, 0.2)),
+      anim_death='death', anim_death_alt='death', anim_idle='idle', anim_spawn='roar', groan_sound='tank_roar', tint=(0.62, 0.7, 0.58),
+      is_boss=True, stagger_resist=1.0, attack_shockwave=True, emissive=(0.12, 0.35, 0.06)),
 ]
 
 PERKS = [

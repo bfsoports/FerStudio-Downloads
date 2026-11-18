@@ -71,30 +71,30 @@ func _environment() -> void:
 	var sky := Sky.new()
 	var sm := ProceduralSkyMaterial.new()
 	sm.sky_top_color = Color(0.11, 0.13, 0.2)
-	sm.sky_horizon_color = Color(0.62, 0.38, 0.22)
+	sm.sky_horizon_color = Color(0.72, 0.4, 0.2)
 	sm.ground_horizon_color = Color(0.2, 0.18, 0.15)
 	sm.ground_bottom_color = Color(0.05, 0.05, 0.05)
-	sm.sun_angle_max = 12.0
+	sm.sun_angle_max = 4.0
 	sm.sky_curve = 0.12
 	sky.sky_material = sm
 	sky.radiance_size = Sky.RADIANCE_SIZE_32
 	env.background_mode = Environment.BG_SKY
 	env.sky = sky
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
-	env.ambient_light_energy = 0.75
+	env.ambient_light_energy = 0.7
 	env.ambient_light_sky_contribution = 0.85
 	env.reflected_light_source = Environment.REFLECTION_SOURCE_DISABLED
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
 	env.tonemap_exposure = 1.05
 	env.fog_enabled = true
-	env.fog_light_color = Color(0.36, 0.33, 0.3)
-	env.fog_density = 0.016
-	env.fog_sky_affect = 0.35
+	env.fog_light_color = Color(0.2, 0.21, 0.22)
+	env.fog_density = 0.0085
+	env.fog_sky_affect = 0.15
 	env.fog_height = 6.0
 	env.fog_height_density = 0.04
 	env.adjustment_enabled = true
 	env.adjustment_saturation = 1.08
-	env.adjustment_contrast = 1.06
+	env.adjustment_contrast = 1.12
 	env.glow_enabled = Settings.quality >= Settings.Quality.MEDIUM
 	env.glow_intensity = 0.6
 	env.glow_bloom = 0.05
@@ -104,7 +104,7 @@ func _environment() -> void:
 	sun = DirectionalLight3D.new()
 	sun.name = "Sun"
 	sun.light_color = Color(1.0, 0.72, 0.48)
-	sun.light_energy = 1.25
+	sun.light_energy = 1.05
 	sun.rotation_degrees = Vector3(-24, -128, 0)
 	sun.shadow_enabled = Settings.shadows_enabled()
 	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_ORTHOGONAL if Settings.quality == Settings.Quality.MEDIUM else DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS
@@ -483,7 +483,7 @@ static func make_navmesh() -> NavigationMesh:
 	var nm := NavigationMesh.new()
 	nm.cell_size = 0.25
 	nm.cell_height = 0.25
-	nm.agent_radius = 0.45
+	nm.agent_radius = 0.5
 	nm.agent_height = 1.75
 	nm.agent_max_climb = 0.5
 	nm.agent_max_slope = 40.0
