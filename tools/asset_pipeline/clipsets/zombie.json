@@ -1,0 +1,20 @@
+{
+  "material_name": "zombie",
+  "textures": {"base": 1024, "normal": 512, "mr": 256},
+  "clips": [
+    {"name": "idle", "clip": "m2m-base-zombie-idle"},
+    {"name": "walk", "clip": "m2m-base-zombie-walk"},
+    {"name": "walk2", "clip": "m2m-addon-zombie-walk-2"},
+    {"name": "run", "clip": "m2m-base-sprint"},
+    {"name": "attack", "clip": "m2m-base-zombie-scratch"},
+    {"name": "attack2", "clip": "m2m-base-melee-hook"},
+    {"name": "attack_jab", "clip": "m2m-addon-fighting-right-jab"},
+    {"name": "attack_slam", "clip": "m2m-addon-attack-ground-pound"},
+    {"name": "hit", "clip": "m2m-base-hit-chest"},
+    {"name": "hit2", "clip": "m2m-base-hit-head"},
+    {"name": "death", "clip": "m2m-addon-death-a", "in_place": false},
+    {"name": "death2", "clip": "m2m-addon-death-b", "in_place": false},
+    {"name": "rise", "clip": "m2m-addon-zombie-rise", "in_place": false},
+    {"name": "roar", "clip": "m2m-addon-zombie-yell"}
+  ]
+}

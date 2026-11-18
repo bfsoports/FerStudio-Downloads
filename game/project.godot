@@ -1,0 +1,76 @@
+; Engine configuration file.
+; SECTOR ABANDONADO - Godot 4.7.2, Mobile renderer, Android landscape.
+
+config_version=5
+
+[application]
+
+config/name="Sector Abandonado"
+config/description="Supervivencia zombie por rondas, low poly, para Android."
+config/version="1.0.0"
+run/main_scene="res://scenes/main_menu/boot.tscn"
+config/features=PackedStringArray("4.7", "Mobile")
+boot_splash/bg_color=Color(0.055, 0.06, 0.055, 1)
+boot_splash/show_image=false
+config/icon="res://assets/ui/logo/app_icon.png"
+
+[audio]
+
+buses/default_bus_layout="res://resources/configuration/default_bus_layout.tres"
+driver/mix_rate.mobile=44100
+
+[autoload]
+
+Settings="*res://scripts/core/settings.gd"
+GameState="*res://scripts/core/game_state.gd"
+Audio="*res://scripts/core/audio_manager.gd"
+SceneLoader="*res://scripts/core/scene_loader.gd"
+FX="*res://scripts/effects/fx_manager.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=3
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=4
+window/vsync/vsync_mode=1
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
+
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="player"
+3d_physics/layer_3="zombies"
+3d_physics/layer_4="hitbox"
+3d_physics/layer_5="interact"
+3d_physics/layer_6="barricade"
+
+[physics]
+
+common/physics_ticks_per_second=60
+3d/physics_engine="Jolt Physics"
+common/max_physics_steps_per_frame=4
+
+[rendering]
+
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="mobile"
+rendering_device/fallback_to_opengl3=true
+textures/vram_compression/import_etc2_astc=true
+textures/canvas_textures/default_texture_filter=1
+anti_aliasing/quality/msaa_3d=1
+lights_and_shadows/directional_shadow/size=2048
+lights_and_shadows/directional_shadow/size.mobile=1024
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=1
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality.mobile=0
+lights_and_shadows/positional_shadow/atlas_size.mobile=1024
+global_illumination/gi/use_half_resolution=true
+occlusion_culling/use_occlusion_culling=true
+environment/defaults/default_clear_color=Color(0.05, 0.055, 0.05, 1)
+anti_aliasing/screen_space_roughness_limiter/enabled=false

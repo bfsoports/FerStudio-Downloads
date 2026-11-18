@@ -1,0 +1,13 @@
+{
+  "material_name": "survivor",
+  "textures": {"base": 1024, "normal": 512, "mr": 256},
+  "clips": [
+    {"name": "idle", "clip": "m2m-base-idle-a"},
+    {"name": "idle_hurt", "clip": "m2m-addon-idle-hurt"},
+    {"name": "walk", "clip": "m2m-base-walk"},
+    {"name": "jog", "clip": "m2m-base-jog"},
+    {"name": "run", "clip": "m2m-base-sprint"},
+    {"name": "hit", "clip": "m2m-base-hit-chest"},
+    {"name": "death", "clip": "m2m-base-death-d", "in_place": false}
+  ]
+}
