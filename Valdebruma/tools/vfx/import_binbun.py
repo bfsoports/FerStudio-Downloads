@@ -66,6 +66,10 @@ def copy(src, dst):
         if "/ElectricFX/" in src.replace(os.sep, "/"):      # el rayo lejano debe verse a través de la niebla
             text = re.sub(r"render_mode\s+", "render_mode fog_disabled, ", text, count=1)
         open(dst, "w").write(text)
+    elif src.endswith(".tscn"):
+        # sin los UID de origen: los recursos se resuelven por ruta y no hay avisos de UID desconocido
+        text = re.sub(r'(\[ext_resource[^\]]*?) uid="uid://[a-z0-9]+"', r"\1", open(src).read())
+        open(dst, "w").write(text)
     else:
         shutil.copyfile(src, dst)
 

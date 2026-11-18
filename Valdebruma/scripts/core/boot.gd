@@ -22,6 +22,9 @@ func _ready() -> void:
 	var a := args()
 	if a.has("data"):
 		ServerPersistence.base_dir = String(a.data)
+	if a.has("server") or a.has("bot"):
+		Ui.enabled = false          # sin interfaz: servidor dedicado y clientes automáticos de prueba
+		Ui.visible = false
 	if a.has("server"):
 		_run_server(a)
 	elif a.has("demo"):

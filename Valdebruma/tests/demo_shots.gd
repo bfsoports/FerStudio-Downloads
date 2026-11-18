@@ -1,6 +1,7 @@
 extends Node
 ## Capturas reales del juego en ejecución (anfitrión local con servidor en el mismo proceso).
 ## Uso: xvfb-run -a godot --path . -- --demo --out=<dir> --views="nombre:x,z,giro,cabeceo,hora[,clima];…"
+##      [--hud] [--touch] [--menu=main,play,…] [--ui=inventory,craft,…]
 ## Coloca al jugador con el servidor (teleport autorizado en modo anfitrión), espera a que
 ## carguen los sectores cercanos y guarda cada captura como <dir>/<nombre>.png.
 
@@ -12,21 +13,34 @@ func run(a: Dictionary) -> void:
 	DirAccess.make_dir_recursive_absolute(out)
 	Profile.use_test_identity("demo", "Demo")
 	ServerPersistence.base_dir = String(a.get("data", "user://demo_server"))
-	var err := Net.host(int(a.get("port", 24699)), false, "demo", {"test_kit": true, "start_hour": 10.0})
-	if err != OK:
-		print("DEMO no se pudo abrir el servidor")
+	# recorrido opcional por las pantallas del menú principal: --menu=main,play,profile,settings,legal
+	if a.has("menu"):
+		Ui.goto_menu()
+		await get_tree().create_timer(float(a.get("settle", 1.2)) + 1.0).timeout
+		for screen: String in String(a.menu).split(",", false):
+			var parts := screen.split("@")
+			if parts[0] != "main":
+				Ui.open(parts[0], {"tab": parts[1]} if parts.size() > 1 else {})
+			for i in 10:
+				await get_tree().process_frame
+			get_viewport().get_texture().get_image().save_png("%s/menu_%s.png" % [out, screen.replace("@", "_")])
+			print("DEMO menú ", screen)
+			if parts[0] != "main":
+				Ui.close_top()
+		if not a.has("views") and not a.has("ui"):
+			get_tree().quit(0)
+			return
+	Ui.start_host("demo", int(a.get("port", 24699)), {"test_kit": true, "start_hour": 10.0})
+	var waited := 0.0
+	while not Ui.in_world and waited < 200.0:
+		await get_tree().process_frame
+		waited += get_process_delta_time()
+	if not Ui.in_world:
+		print("DEMO no se pudo entrar en el mundo")
 		get_tree().quit(1)
 		return
-	Net.send(Protocol.C.HELLO, {"v": Protocol.VERSION, "account": Profile.account, "token": Profile.token, "name": Profile.player_name, "cos": Profile.cosmetics})
-	await Session.welcomed
-	get_tree().change_scene_to_file("res://scenes/world/world.tscn")
-	await get_tree().process_frame
-	await get_tree().process_frame
 	var wr: WorldRoot = WorldRoot.current
-	if not wr.is_loaded:
-		await wr.loaded
-	if a.has("hud") and has_node("/root/Ui"):
-		get_node("/root/Ui").call("show_hud")
+	Ui.hud.visible = a.has("hud")
 	var srv: GameServer = Net.server
 	for view: String in String(a.get("views", "inicio:258,1000,0,0,10")).split(";", false):
 		var nm := view.split(":")[0]
@@ -55,5 +69,19 @@ func run(a: Dictionary) -> void:
 		img.save_png("%s/%s.png" % [out, nm])
 		print("DEMO captura %s  sectores=%d  nodos=%d  dibujados=%d  primitivas=%d  fps=%d" % [nm, wr.streamer.sectors.size(), int(Performance.get_monitor(Performance.OBJECT_NODE_COUNT)),
 			int(Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME)), int(Performance.get_monitor(Performance.RENDER_TOTAL_PRIMITIVES_IN_FRAME)), int(Engine.get_frames_per_second())])
+	# recorrido opcional por las pantallas de partida: --ui=inventory,craft,build,map,social,journal,pause
+	if a.has("ui"):
+		Ui.hud.visible = true
+		await get_tree().create_timer(0.6).timeout
+		get_viewport().get_texture().get_image().save_png("%s/ui_hud.png" % out)
+		for screen: String in String(a.ui).split(",", false):
+			var parts := screen.split("@")
+			Ui.close_all()
+			Ui.open(parts[0], {"tab": parts[1]} if parts.size() > 1 else {})
+			for i in 10:
+				await get_tree().process_frame
+			get_viewport().get_texture().get_image().save_png("%s/ui_%s.png" % [out, screen.replace("@", "_")])
+			print("DEMO pantalla ", screen)
+		Ui.close_all()
 	Net.leave()
 	get_tree().quit(0)

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bjdo1exfi4ycs"]
 
-[ext_resource type="Script" uid="uid://dh17my0rknpi5" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/script/VFXDarkAreaBB.gd" id="1_7qjya"]
-[ext_resource type="Shader" uid="uid://6h3euthnqjrf" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/shader/dark_lift.gdshader" id="1_uvgax"]
-[ext_resource type="Shader" uid="uid://btjeqyg3e5eqn" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/shader/dark_ring.gdshader" id="2_j041t"]
-[ext_resource type="Shader" uid="uid://cjb1tqvvsl8wx" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/shader/area_dark.gdshader" id="3_7qjya"]
-[ext_resource type="Script" uid="uid://bwmucxp58uvvt" path="res://assets/BinbunVFX_Vol2/shared/script/VFXOmniLightBB.gd" id="4_j041t"]
+[ext_resource type="Script" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/script/VFXDarkAreaBB.gd" id="1_7qjya"]
+[ext_resource type="Shader" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/shader/dark_lift.gdshader" id="1_uvgax"]
+[ext_resource type="Shader" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/shader/dark_ring.gdshader" id="2_j041t"]
+[ext_resource type="Shader" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/shader/area_dark.gdshader" id="3_7qjya"]
+[ext_resource type="Script" path="res://assets/BinbunVFX_Vol2/shared/script/VFXOmniLightBB.gd" id="4_j041t"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7qjya"]
 seed = 3

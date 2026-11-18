@@ -39,6 +39,7 @@ var _target: Dictionary = {}       # servidor al que nos unimos (para reconectar
 var _reconnect_left := 0
 var _entering := false
 var _quitting := false
+var enabled := true                # Boot lo desactiva en servidor dedicado y clientes de prueba sin ventana
 
 func _ready() -> void:
 	layer = 10
@@ -69,8 +70,16 @@ func _ready() -> void:
 	Session.group_invite.connect(_on_group_invite)
 	Session.trade_offer.connect(_on_trade_offer)
 	Session.went_down.connect(_on_down)
-	Session.respawned.connect(func(_p: Vector3) -> void: _close_down())
-	Session.document_opened.connect(func(id: String, _first: bool) -> void: open("doc", {"id": id}))
+	Session.respawned.connect(func(_p: Vector3) -> void:
+		if enabled:
+			_close_down())
+	Session.document_opened.connect(func(id: String, _first: bool) -> void:
+		if enabled:
+			open("doc", {"id": id}))
+	Session.container_opened.connect(func(_key: int) -> void:
+		if enabled and in_world and not is_open("inventory"):
+			close_all()
+			open("inventory"))
 	Net.failed.connect(_on_net_failed)
 	Net.dropped.connect(_on_net_dropped)
 
@@ -173,6 +182,25 @@ func _after_stack_change() -> void:
 func refresh_screens() -> void:
 	for s in stack:
 		s.refresh()
+
+## Reconstruye pantallas y HUD (tras cambiar de idioma).
+func reload_texts() -> void:
+	var open_now: Array = []
+	for s in stack:
+		open_now.append([s.screen_name, s.args])
+	close_all()
+	for e: Array in open_now:
+		var a: Dictionary = e[1]
+		if String(e[0]) == "settings":
+			a = {"tab": "game"}
+		open(String(e[0]), a)
+	if in_world and WorldRoot.current != null:
+		var bm := build_mode
+		_drop_hud()
+		if bm != null:
+			bm.queue_free()
+		_make_hud()
+		_after_stack_change()
 
 # ---- avisos emergentes --------------------------------------------------------------------------------
 ## kind: "info", "good", "bad", "item".
@@ -366,6 +394,8 @@ func leave_to_menu() -> void:
 	goto_menu()
 
 func _on_welcomed() -> void:
+	if not enabled:
+		return
 	_entering = false
 	_reconnect_left = 0
 	close_all()
@@ -419,6 +449,8 @@ func _drop_hud() -> void:
 	build_mode = null
 
 func _on_rejected(code: String) -> void:
+	if not enabled:
+		return
 	_entering = false
 	_reconnect_left = 0
 	Net.leave()
@@ -429,6 +461,8 @@ func _on_rejected(code: String) -> void:
 		message(tr("TITLE_REJECTED"), tr("REJECT_" + code.to_upper()), "warn")
 
 func _on_net_failed(reason: String) -> void:
+	if not enabled:
+		return
 	if _reconnect_left > 0:
 		_retry_reconnect()
 		return
@@ -439,6 +473,8 @@ func _on_net_failed(reason: String) -> void:
 	message(tr("TITLE_NO_CONNECTION"), tr("ERR_CONNECT_" + reason.to_upper()), "wifi_off")
 
 func _on_net_dropped(_reason: String) -> void:
+	if not enabled:
+		return
 	if _quitting:
 		return
 	if _target.is_empty() or not in_world:
@@ -468,6 +504,8 @@ func _retry_reconnect() -> void:
 
 # ---- avisos del servidor -------------------------------------------------------------------------------
 func _on_notified(code: String, p: Dictionary) -> void:
+	if not enabled:
+		return
 	match code:
 		"board":
 			if in_world and not is_open("journal"):
@@ -532,11 +570,15 @@ func _on_notified(code: String, p: Dictionary) -> void:
 				toast(text, "bad" if bad else "info", "warn" if bad else "info")
 
 func _on_group_invite(_gid: int, from: String) -> void:
+	if not enabled:
+		return
 	dialog(tr("TITLE_GROUP_INVITE"), tr("TEXT_GROUP_INVITE") % from, [
 		[tr("BTN_DECLINE"), "normal", func() -> void: Net.send(Protocol.C.GROUP, ["decline"])],
 		[tr("BTN_ACCEPT"), "primary", func() -> void: Net.send(Protocol.C.GROUP, ["accept"])]], "group")
 
 func _on_trade_offer(offer: Dictionary) -> void:
+	if not enabled:
+		return
 	if String(offer.get("op", "")) != "offer":
 		return
 	var oid := int(offer.get("id", 0))
@@ -546,6 +588,8 @@ func _on_trade_offer(offer: Dictionary) -> void:
 
 # ---- colapso y reaparición ----------------------------------------------------------------------------
 func _on_down(wait: float) -> void:
+	if not enabled:
+		return
 	close_all()
 	close_dialog()
 	_close_down()
@@ -591,6 +635,8 @@ func _close_down() -> void:
 
 # ---- entradas globales --------------------------------------------------------------------------------
 func _on_pressed(action: String) -> void:
+	if not enabled:
+		return
 	if _loading != null or _dialog != null:
 		return
 	if not in_world:
@@ -675,6 +721,11 @@ func quit_game() -> void:
 	get_tree().quit()
 
 func _notification(what: int) -> void:
+	if not enabled:
+		if what == NOTIFICATION_WM_CLOSE_REQUEST:
+			Net.leave()
+			get_tree().quit()
+		return
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		back()
 	elif what == NOTIFICATION_WM_CLOSE_REQUEST:

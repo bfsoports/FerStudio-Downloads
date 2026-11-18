@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://d24a2kluit1it"]
 
-[ext_resource type="Script" uid="uid://5f8v030u8mue" path="res://assets/BinbunVFX_Vol2/ElectricFX/script/VFXZapBB.gd" id="1_mytrj"]
-[ext_resource type="Shader" uid="uid://bmdn80rdevieo" path="res://assets/BinbunVFX_Vol2/ElectricFX/shader/zap.gdshader" id="2_060of"]
-[ext_resource type="Shader" uid="uid://dbtguc2evckg" path="res://assets/BinbunVFX_Vol2/ElectricFX/shader/ground_impact.gdshader" id="3_m52c3"]
-[ext_resource type="Shader" uid="uid://ctd428sue72d1" path="res://assets/BinbunVFX_Vol2/ElectricFX/shader/impact_sphere.gdshader" id="4_lvywu"]
-[ext_resource type="Shader" uid="uid://bt8ikxmlrtvep" path="res://assets/BinbunVFX_Vol2/ElectricFX/shader/glow.gdshader" id="5_dtg77"]
-[ext_resource type="Script" uid="uid://bwmucxp58uvvt" path="res://assets/BinbunVFX_Vol2/shared/script/VFXOmniLightBB.gd" id="6_060of"]
-[ext_resource type="Shader" uid="uid://8g4tkfpq3j02" path="res://assets/BinbunVFX_Vol2/ElectricFX/shader/ground_streaks.gdshader" id="6_m52c3"]
+[ext_resource type="Script" path="res://assets/BinbunVFX_Vol2/ElectricFX/script/VFXZapBB.gd" id="1_mytrj"]
+[ext_resource type="Shader" path="res://assets/BinbunVFX_Vol2/ElectricFX/shader/zap.gdshader" id="2_060of"]
+[ext_resource type="Shader" path="res://assets/BinbunVFX_Vol2/ElectricFX/shader/ground_impact.gdshader" id="3_m52c3"]
+[ext_resource type="Shader" path="res://assets/BinbunVFX_Vol2/ElectricFX/shader/impact_sphere.gdshader" id="4_lvywu"]
+[ext_resource type="Shader" path="res://assets/BinbunVFX_Vol2/ElectricFX/shader/glow.gdshader" id="5_dtg77"]
+[ext_resource type="Script" path="res://assets/BinbunVFX_Vol2/shared/script/VFXOmniLightBB.gd" id="6_060of"]
+[ext_resource type="Shader" path="res://assets/BinbunVFX_Vol2/ElectricFX/shader/ground_streaks.gdshader" id="6_m52c3"]
 
 [sub_resource type="Gradient" id="Gradient_trd8c"]
 

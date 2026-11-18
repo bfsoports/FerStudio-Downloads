@@ -1,6 +1,5 @@
 # Caché de importación de Godot (se regenera con: godot --headless --path . --import)
 .godot/
-*.translation
 # Python / Blender
 __pycache__/
 *.pyc
