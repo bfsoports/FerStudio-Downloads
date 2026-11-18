@@ -1,0 +1,333 @@
+======================================================================
+ SECTOR ABANDONADO — CONTEXTO COMPLETO DEL PROYECTO (para continuar en otro chat)
+ Fecha: 18-11-2026 · Estado: v1.0.0 jugable, APK debug generado
+======================================================================
+
+0. CÓMO USAR ESTE ARCHIVO
+-------------------------
+Pega este archivo (o su contenido) al empezar el nuevo chat y di:
+"Continúa el proyecto Sector Abandonado descrito aquí. El repositorio es
+bfsoports/FerStudio-Downloads, rama claude/hola-nrhspc."
+Todo el código, recursos, documentación y builds están en esa rama.
+
+1. ENLACES
+----------
+Repositorio:      https://github.com/bfsoports/FerStudio-Downloads
+Rama de trabajo:  claude/hola-nrhspc   (NO se ha creado pull request)
+Rama en GitHub:   https://github.com/bfsoports/FerStudio-Downloads/tree/claude/hola-nrhspc
+APK (descarga):   https://github.com/bfsoports/FerStudio-Downloads/raw/claude/hola-nrhspc/build/SectorAbandonado-debug.apk
+APK (página):     https://github.com/bfsoports/FerStudio-Downloads/blob/claude/hola-nrhspc/build/SectorAbandonado-debug.apk
+ZIP del proyecto: https://github.com/bfsoports/FerStudio-Downloads/raw/claude/hola-nrhspc/build/SectorAbandonado-proyecto.zip
+(Si el repositorio es privado, hay que estar conectado a GitHub con acceso al repo
+para descargar.)
+
+Commits (orden cronológico):
+  fe10960 Add official downloads section to README   (commit original del usuario)
+  31c8eff WIP: esqueleto, personajes horneados, texturas, arte Canva, pipeline
+  71c158e Sistemas núcleo: jugador, armas (Quaternius CC0), IA zombies, rondas, interactuables, MapKit
+  17cad8c UI/HUD, controles táctiles, menús, arsenal, audio procedural, navmesh, tests visuales
+  4a9b17f Optimizaciones (MultiMesh tablones, paleta, oclusores) + tests integración/estrés
+  9ef8044 v1.0.0: docs, PerfGovernor, APK debug y ZIP del proyecto
+
+2. PETICIÓN ORIGINAL (resumen fiel)
+-----------------------------------
+El usuario pidió actuar como estudio profesional y construir un juego COMPLETO de
+supervivencia zombie 3D low poly para Android, inspirado en el modo Zombies de
+Call of Duty pero con identidad, mapas, nombres y recursos originales:
+- Godot 4.7.2, GDScript, renderizador Mobile, Android, HORIZONTAL forzado,
+  PANTALLA COMPLETA INMERSIVA, controles táctiles, escalabilidad gráfica.
+- Low poly de calidad (no prototipo), paleta grises/verdes/marrones + luz cálida +
+  acentos intensos.
+- CANVA obligatorio para identidad visual e interfaz (logo, menú, fondos, HUD,
+  iconos, pantallas). Si no hay acceso, decirlo; nunca fingir.
+- HYPER3D RODIN obligatorio para modelos (jugador, zombie normal, corredor,
+  blindado, tanque, jefe; armas; props), con rigging y presets de animación
+  de Hyper3D. No inventar animaciones.
+- FPS por rondas infinitas, puntos, compras (armas de pared, munición, puertas,
+  ventajas, máquina de mejoras tipo Pack-a-Punch, caja misteriosa), mapa
+  compacto "SECTOR ABANDONADO" (zona inicial, calle, gasolinera, almacén,
+  vehículos, barricadas, zona especial con máquina de mejoras, sectores
+  bloqueados), barricadas rompibles/reparables, jefe, efectos con pooling,
+  HUD, menús (JUGAR/CONFIGURACIÓN/CRÉDITOS/SALIR), carga, pausa, derrota,
+  récords locales, sonido original, volúmenes separados, 3 perfiles gráficos
+  (BAJO/MEDIO/ALTO), objetivo 30/60 FPS, arquitectura ordenada, pruebas,
+  entregables: proyecto, scripts, escenas, modelos, rigs, animaciones, iconos,
+  texturas, sonidos, VFX, recursos, instrucciones Android, informe de pruebas,
+  ZIP y APK si es posible (sin afirmar nada no hecho).
+Mensajes posteriores del usuario:
+- "Ahí está un pack de armas para que no las hagas tú y también continúa" →
+  subió Ultimate_Gun_Pack_by_Quaternius.zip (CC0). Se usó para las 6 armas.
+- Este mensaje: pidió el link del APK y este archivo de contexto.
+
+3. ENTORNO / HERRAMIENTAS (lo que se descubrió)
+-----------------------------------------------
+- Sesión Claude Code en la nube (contenedor Linux x86_64, sin GPU, sin Vulkan,
+  sin dispositivo Android). Xvfb + Mesa llvmpipe permiten renderizar con OpenGL
+  (renderizador Compatibility) para capturas.
+- Godot 4.7.2 descargado del mirror oficial:
+  https://downloads.godotengine.org/?version=4.7.2&flavor=stable&slug=linux.x86_64.zip&platform=linux.64
+  (redirige a godot-releases.nbg1.your-objectstorage.com; github.com bloqueado
+  por proxy). Plantillas: .../4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz
+  Instalado en /opt/godot, enlace /usr/local/bin/godot. Plantillas en
+  ~/.local/share/godot/export_templates/4.7.2.stable/ (solo android*).
+- Android SDK en /opt/android-sdk (cmdline-tools, platform-tools,
+  build-tools;35.0.1, platforms;android-35). JDK 21 del sistema.
+  Editor settings: ~/.config/godot/editor_settings-4.7.tres con
+  export/android/android_sdk_path="/opt/android-sdk" y keystore debug de Godot.
+  (Todo esto vive en el contenedor, NO en el repo: en un contenedor nuevo hay
+  que reinstalarlo.)
+- Python: pygltflib, pillow, numpy, scipy, matplotlib (pip). ffmpeg disponible.
+- Conectores usados: Hyper3D (Rodin), Canva, Three3D (three.ws), GitHub.
+  Higgsfield requería autenticación (no usado). ElevenLabs no se usó.
+
+4. ESTADO REAL DE CADA HERRAMIENTA OBLIGATORIA (honesto)
+--------------------------------------------------------
+HYPER3D RODIN (Gen-2.5-Medium, mesh Raw, GLB):
+  Generados OK (5):
+    jugador/superviviente  b2accdcf-82e6-4223-a77e-dc5ac0a36bab  (8000 tris)
+    zombie normal/Errante  70dcbde7-174e-4603-aa95-8c4adfee32d2  (7000)
+    zombie corredor        bf0634e7-7fb8-4301-b5e6-ea83d1dcfcc2  (7000)
+    zombie blindado        549818c1-f2cb-4b6f-b463-237b04efa684  (8000)
+    zombie tanque          047b09de-8ef6-43ce-8d35-0f479f20c3d6  (8000)
+    (páginas: https://hyper3d.ai/workspace/rodin/<id>)
+  FALLÓ: jefe → INSUFFICIENT_BALANCE. Rigging de Hyper3D → "fund in wallet is
+  insufficient". Por tanto NO hay rig ni animaciones de Hyper3D.
+  Catálogo de animaciones de Hyper3D sí se consultó (human_000xxx: idle,
+  walking, zombie scratch idle, staggering walk, injured run, dying, etc.), no
+  se pudo aplicar por falta de saldo.
+RIG alternativo: three.ws rig_mesh (gratis) sobre los GLB de Hyper3D →
+  esqueleto tipo Mixamo (mixamorig:*, 52 huesos) para jugador, errante,
+  corredor y blindado. El tanque fue rechazado 3 veces → auto-rig PROPIO
+  (tools/asset_pipeline/autorig.py: colocación de articulaciones desde rig de
+  referencia + centroides de sección, pesos por difusión en superficie y
+  exclusión de torso para brazos).
+ANIMACIONES: clips CC0 de la biblioteca three.ws (m2m-*), retargeteados con
+  herramienta propia tools/asset_pipeline/bake_character.py (retargeting por
+  direcciones de hueso + ejes anatómicos; hornea en el GLB; reduce texturas;
+  pies en Y=0). Clips por zombie: idle, walk, walk2, run, attack, attack2,
+  attack_jab, attack_slam, hit, hit2, death, death2, rise, roar. Jugador:
+  idle, idle_hurt, walk, jog, run, hit, death. Verificados visualmente.
+JEFE "EL CAPATAZ": NO tiene modelo propio. Es el modelo del tanque ×1,85 con
+  tinte/emisión verdosa + IA y habilidades propias. Three3D forge_free/
+  forge_avatar fallaron repetidamente con prompts de personaje.
+ARMAS: Three3D se niega a generar armas de fuego ("cannot generate real
+  firearms"). Se usaron las del pack Quaternius del usuario (CC0):
+  Pistol_2→pistol, Shotgun_2→shotgun, SubmachineGun_3→smg,
+  AssaultRifle_3→rifle, SniperRifle_2→sniper, Bullpup_3→lmg. Convertidas con
+  tools/asset_pipeline/gun_obj_to_glb.py (cañón a -Z, escala real, nodo
+  Muzzle/Eject, colores aclarados ×1,5). Raw extraído en /opt/assets_raw/gunpack.
+CAJA MISTERIOSA: three.ws forge_free (modelo cofre, ~18k tris) →
+  assets/props/mystery_box.glb.
+RESTO DE PROPS/ESCENARIO/MÁQUINAS: procedural en Godot (MapKit).
+CANVA (uso real):
+  - Key art menú: generate-image → media MAHbRtcb3IY → diseño DAHbRj2l8LI
+    (https://canva.link/dz29ow6vswhgcaw) → export PNG 1920×1080 →
+    assets/ui/backgrounds/menu_keyart.jpg
+  - Logo: generate-image → MAHbRkeR5TU → remove-background → MAHbRsnDNfo →
+    diseño DAHbRhAkgL8 (https://canva.link/pqscdwf87s1x1oh) → export PNG.
+    El export llegó en RGB con tablero de ajedrez "pintado"; se recortó el fondo
+    con script (scipy) → assets/ui/logo/logo.png (quedan restos leves dentro de
+    algunas letras de "SECTOR").
+  - Derivados: screen_bg.jpg (desenfoque oscurecido), app_icon.png.
+  NO hechos en Canva: iconos HUD/controles/ventajas (SVG propios,
+  tools/asset_pipeline/gen_icons.py, 34 iconos + hazard_strip), siluetas de
+  armas (renderizadas desde los modelos), botones (StyleBox en código), y las
+  pantallas arsenal/tienda/caja/mejoras no se diseñaron en Canva (están hechas
+  en Godot). Pendiente si se quiere cumplir al 100% el requisito de Canva.
+TIPOGRAFÍAS: Russo One + Teko SemiBold (Google Fonts, OFL).
+AUDIO: 69 SFX + 5 músicas sintetizados por código (tools/audio/synth_audio.py),
+  originales. Música en OGG (ffmpeg), SFX WAV 22050 Hz mono.
+ILUMINACIÓN HORNEADA (LightmapGI): NO posible (requiere GPU). Sustituto: AO por
+  color de vértice en la geometría fusionada.
+
+5. ARQUITECTURA DEL PROYECTO (carpeta game/)
+--------------------------------------------
+project.godot: nombre "Sector Abandonado", main scene scenes/main_menu/boot.tscn,
+  viewport 1280×720, stretch canvas_items/expand, orientation=4 (sensor
+  landscape), window mode fullscreen, renderer mobile + fallback_to_opengl3,
+  ETC2/ASTC, Jolt Physics, occlusion culling on, emulate_touch_from_mouse=true,
+  emulate_mouse_from_touch=true. Capas físicas: 1 world, 2 player, 3 zombies
+  (valor 4), 4 hitbox, 5 interact, 6 barricade (valor 32).
+Autoloads: Settings, GameState, Audio, SceneLoader, FX.
+scripts/
+  core/settings.gd       ajustes persistentes user://settings.cfg, autodetección de
+                         calidad (RAM/GPU), perfiles y valores por perfil
+  core/game_state.gd     puntos, bajas, ronda, tiempo, récords user://records.cfg
+  core/audio_manager.gd  pools 2D(12)/3D(24), música con crossfade y loop, vibración
+  core/scene_loader.gd   carga en hilo con pantalla de carga, barra, consejos, fundidos
+  core/boot.gd           orientación sensor landscape + fullscreen exclusivo en móvil
+  player/player.gd       CharacterBody3D FPS: movimiento, sprint, salto, cámara,
+                         head-bob, shake, salud/regeneración, ventajas, escaneo de
+                         interactuables, granadas, teclado/ratón en PC
+  weapons/weapon_data.gd Resource de arma (todo el balance)
+  weapons/weapon_holder.gd inventario 2 armas, viewmodel (escala 0.42, offsets ×0.5),
+                         manos/antebrazos low poly, fogonazo + luz, hitscan con
+                         perdigones agregados, penetración, caída de daño,
+                         dispersión dinámica, retroceso, ADS, recarga (también
+                         cartucho a cartucho), efectos Forja (incendiary, shock,
+                         explosive, piercing), camo brillante
+  weapons/grenade.gd     RigidBody, mecha 2,2 s, daño escalado por ronda
+  zombies/zombie.gd      cuerpo, stats, navegación (NavigationAgent3D, repath
+                         escalonado, anti-atasco), daño, quemadura, headshot por
+                         hueso Head, muerte, sombra falsa, pooling activate/deactivate
+  zombies/zombie_data.gd Resource de arquetipo
+  zombies/zombie_animator.gd wrapper AnimationPlayer + LOD (avance manual cada
+                         1/2/3/6 frames según distancia/visibilidad)
+  zombies/zombie_pool.gd pools precalentados por tipo
+  zombies/boss_brain.gd  carga, golpe sísmico, invocación de 5 corredores al 50%
+  zombies/states/        zombie_state (base) + spawn, to_barrier, break_barrier,
+                         vault, chase, attack, stagger, dead (un script por estado)
+  rounds/round_manager.gd tamaño de horda, ritmo, tope simultáneo, especiales por
+                         peso, jefe cada 5 rondas, intermedio 9 s, +2 granadas
+  rounds/spawn_point.gd  Marker3D con zona y barricada opcional
+  interaction/interactable.gd base (prompt, precio, try_buy, etiquetas 3D)
+  interaction/door.gd    puertas compradas (escombros/portón), abren zonas + NavLink
+  interaction/wall_weapon.gd armas de pared y munición (×4 si mejorada)
+  interaction/mystery_box.gd caja 950: haz de luz, ciclo de armas 3,2 s, oferta 7 s,
+                         pesos por arma, se reubica (12% tras 4 usos) con reembolso
+  interaction/pack_a_punch.gd LA FORJA 5000: procesa 3,6 s, devuelve mejorada
+  interaction/perk_machine.gd máquinas de ventajas
+  interaction/barricade.gd 6 tablones (MultiMesh), slots de 2 zombies, reparar
+                         manteniendo (+10/tablón, máx 60/ronda), bloqueador capa 32
+  economy/perk_data.gd   Resource de ventaja
+  map/map_kit.gd         materiales (texturas propias + "paleta" por color de
+                         vértice), Batcher (fusión por material y celda 24 m, UV
+                         planares mundo, AO por altura), colisiones, props
+                         procedurales (coches, farolas, barriles, cajas, sacos,
+                         barreras, contenedores, estanterías, surtidores,
+                         escombros), visuales de puertas/ventajas/forja/caja, letreros
+  map/sector_map.gd      construcción del mapa, entorno (cielo procedural atardecer,
+                         niebla, glow, sol con sombras según perfil), muros con
+                         ventanas/puertas, spawns, contenido de cada zona,
+                         oclusores, navmesh precargado, zonas
+  effects/fx_manager.gd  efectos con pooling (chispas, polvo, sangre, muerte,
+                         explosión, humo, onda, energía, trazadoras, decals, luces)
+  ui/ui_style.gd         sistema visual (paleta, fuentes, Theme, placas inclinadas)
+  ui/touch_controls.gd   multitáctil por índice: joystick flotante (sprint en borde),
+                         cámara, botones fuego/apuntar/recarga/salto/granada/
+                         interactuar(mantener 0,35 s)/cambiar/pausa
+  ui/touch_button.gd     visual de botón con anillo de progreso
+  ui/hud.gd              ronda, zombis restantes, vida, ventajas, puntos + popups,
+                         arma/munición/granadas, retícula dinámica, hitmarkers,
+                         prompt de interacción, banners, barra del jefe, viñeta de
+                         daño + flechas direccionales, anillo de recarga, FPS
+  ui/main_menu.gd, arsenal_screen.gd, settings_panel.gd, pause_menu.gd, game_over.gd
+  gameplay/game.gd       orquestador de partida (mapa, jugador, pool, rondas, HUD,
+                         controles, pausa en foco perdido/botón atrás, derrota)
+  optimization/perf_governor.gd resolución dinámica en móvil
+scenes/: main_menu/boot.tscn, main_menu/main_menu.tscn, gameplay/game.tscn
+resources/: weapons/*.tres (6), zombies/*.tres (5), perks/*.tres (5),
+  configuration/sector_navmesh.res (484 polígonos), default_bus_layout.tres
+  (Master, Music, SFX)
+data/balance/*.json   copia en JSON del balance
+assets/: characters/survivor.glb, zombies/{walker,runner,armored,tank}.glb,
+  weapons/*.glb (+LICENSE Quaternius), props/mystery_box.glb, textures (10 png),
+  audio/sfx (69 wav), audio/music (5 ogg), ui/logo, ui/backgrounds, ui/icons, fonts
+tests/: check_scripts.gd (-s), gameplay_test.tscn, perf_test.tscn,
+  smoke_game.tscn, visual_check.tscn, ui_shots.tscn
+tools/bake_navmesh.gd (dentro de game/)
+docs/: DISENO_MAESTRO.md, GUIA_VISUAL.md, EXPORTACION_ANDROID.md,
+  INFORME_PRUEBAS.md, CREDITOS_Y_LICENCIAS.md
+export_presets.cfg: preset "Android", arm64-v8a, sin gradle, inmersivo,
+  edge_to_edge, vibración, paquete com.ferstudio.sectorabandonado, v1.0.0 (code 1)
+Raíz del repo: README.md, CONTEXTO_PROYECTO.txt (este archivo),
+  tools/asset_pipeline/{bake_character.py, autorig.py, gun_obj_to_glb.py,
+  gen_textures.py, gen_icons.py, clipsets/zombie.json, clipsets/player.json},
+  tools/audio/synth_audio.py, tools/data/gen_resources.py (fuente del balance),
+  build/SectorAbandonado-debug.apk, build/SectorAbandonado-proyecto.zip
+
+6. DISEÑO DE JUEGO (resumen)
+----------------------------
+Mapa (x este, z sur, metros):
+  start (Patio "Punto seguro") x-10..10 z18..34: 4 ventanas, pared AVISPA MK2 1000.
+    Jugador aparece en (0,0,28) mirando al norte. Puerta escombros 750 → street.
+  street x-10..30 z-6..18: coches, contenedor, farolas, ROMPEPUERTAS 12 (750),
+    CENTINELA AR (1400), ventaja CORAZA, caja misteriosa inicial (15,0,16.9),
+    3 ventanas. Portón 1250 → warehouse; escombros 1000 → gas.
+  gas x-34..-10 z-6..18: marquesina, surtidores, tienda, HALCÓN .50 (1500),
+    MANO RÁPIDA, posición de caja, 3 ventanas. Escombros 1000 → lab.
+  warehouse x-10..30 z-34..-6 (muros 7 m, techo roto): PASO LIGERO, BALA HUECA,
+    posición de caja, 3 ventanas. Compuerta 1500 → lab.
+  lab (Subestación 4) x-34..-10 z-34..-6: LA FORJA, SEGUNDO ALIENTO, 3 ventanas.
+  Total: 42 puntos de aparición, 16 barricadas, 5 puertas.
+Rondas: 6,9,13,17,22 y luego 22+5(r-5)+(r-5)^1.35 (máx 220); intervalo
+  max(0.3, 2.1-0.13r); tope simultáneo 14/20/24 por perfil; jefe cada 5.
+Zombies: Errante (150 vida +100/ronda), Corredor (desde r3), Blindado (r6, -45%
+  cuerpo), Tanque (r9, máx 2, golpe sísmico), EL CAPATAZ (9000 +1800/ronda).
+Armas: P-9 VIGÍA (pistola inicial), ROMPEPUERTAS 12, AVISPA MK2, CENTINELA AR,
+  HALCÓN .50, TRITURADORA M60X; nombres mejorados: ÚLTIMO ALIENTO, ESCUPEFUEGO,
+  ENJAMBRE, GUARDIÁN ETERNO, OJO DEL JUICIO, APOCALIPSIS.
+Ventajas: CORAZA 2500 (vida 200), MANO RÁPIDA 3000 (recarga ×0,5), PASO LIGERO
+  2000 (+18% velocidad), BALA HUECA 3500 (+30% daño), SEGUNDO ALIENTO 2000
+  (regeneración antes y ×2).
+Economía: inicio 500; +10 impacto; baja 60/80/130/400/2500; bonus cabeza.
+Perfiles: BAJO escala 0,7 sin sombras 14 zombies; MEDIO 0,85 sombras 22 m 20;
+  ALTO 1,0 sombras 40 m 24, MSAA 2x.
+Controles PC: WASD, ratón (clic central captura), clic izq dispara, der apunta,
+  R, E, Q, G, Espacio, Shift sprint, Esc pausa.
+
+7. PRUEBAS Y RESULTADOS (reales)
+--------------------------------
+- check_scripts: 53/53 compilan.
+- gameplay_test: 41/41 PASS (rondas, spawn por zona, rotura de barricadas,
+  zombies alcanzan al jugador, reparación, hitscan mata, puntos, munición,
+  puertas + NavLink, arma de pared, munición, compra denegada, caja, Forja,
+  5 ventajas, avance de ronda, escalado, jefe + recompensa, muerte, derrota,
+  récords).
+- perf_test ronda 15 (CPU sin render): proceso ~1,1-1,3 ms, física 1,8-3,7 ms
+  media (máx 10,7 ms en ALTO).
+- Draw calls (render por software): BAJO 163 (máx 192), MEDIO 261, ALTO 304.
+  Antes de optimizar BAJO era 229.
+- FPS en llvmpipe (4-17) NO representan un teléfono. NO hay medición en Android.
+- ZIP verificado: se importa desde cero sin errores, 53/53 scripts, el juego arranca.
+- APK verificado con apksigner; manifiesto: com.ferstudio.sectorabandonado,
+  v1.0.0, target SDK 36, arm64-v8a, screenOrientation userLandscape, VIBRATE.
+Problemas encontrados y corregidos: deriva de cadera en retargeting, pesos del
+  tanque, viewmodel lejano/antebrazos tapando, niebla excesiva, icono de arma
+  vacío al inicio, menús con tamaño 0 (usar set_anchors_and_offsets_preset),
+  emisión del jefe, exceso de draw calls.
+
+8. COMANDOS ÚTILES
+------------------
+godot --headless --path game --import
+godot --headless --path game -s tests/check_scripts.gd
+godot --headless --path game res://tests/gameplay_test.tscn
+godot --headless --path game -s tools/bake_navmesh.gd          (tras cambiar el mapa)
+xvfb-run -a godot --rendering-driver opengl3 --path game --resolution 1280x720 res://tests/perf_test.tscn -- 0|1|2
+xvfb-run -a godot --rendering-driver opengl3 --path game res://tests/visual_check.tscn -- <carpeta>
+xvfb-run -a godot --rendering-driver opengl3 --path game res://tests/ui_shots.tscn -- <carpeta> 16x9
+godot --headless --path game --export-debug "Android" ../build/SectorAbandonado-debug.apk
+python3 tools/data/gen_resources.py            (regenera .tres y JSON de balance)
+python3 tools/audio/synth_audio.py game/assets/audio/sfx game/assets/audio/music
+python3 tools/asset_pipeline/gen_icons.py game/assets/ui/icons
+python3 tools/asset_pipeline/gen_textures.py game/assets/textures
+python3 tools/asset_pipeline/bake_character.py <rigged.glb> <clips_dir> <out.glb> tools/asset_pipeline/clipsets/zombie.json
+python3 tools/asset_pipeline/autorig.py <static.glb> <reference_rigged.glb> <out.glb>
+python3 tools/asset_pipeline/gun_obj_to_glb.py <out.glb> <largo_m> <arma.obj>
+Clips CC0: https://pub-2534e921bf9c4314addcd4d8a6e98b7b.r2.dev/animations/library/clips/<nombre>.json
+
+Trampas técnicas descubiertas:
+- Scripts "-s" (SceneTree) que referencian clases del proyecto o autoloads por
+  nombre se cuelgan o no compilan → usar load() dinámico o escenas de test (.tscn).
+- En _initialize de un SceneTree hay que esperar process_frame antes de hornear navmesh.
+- La salida de godot por tubería se pierde si se mata el proceso con timeout.
+- set_anchors_preset sobre un Control ya en el árbol conserva el rect; usar
+  set_anchors_and_offsets_preset.
+- Los nombres de hueso importados pueden ser "mixamorig_Head" o "mixamorig:Head"
+  (el código prueba ambos).
+
+9. LIMITACIONES CONOCIDAS / PENDIENTES (prioridad)
+--------------------------------------------------
+1. Probar el APK en un Android real: FPS por perfil, táctil, modo inmersivo,
+   renderizador Mobile/Vulkan (no se pudo aquí).
+2. Jefe con modelo propio (necesita saldo en Hyper3D o otro generador) y rig/
+   animaciones de Hyper3D (requieren saldo).
+3. Más trabajo de Canva si se quiere cumplir al pie de la letra: iconos HUD,
+   pantallas de arsenal/tienda/caja/mejoras, fondos de botones.
+4. Logo: limpiar restos de tablero dentro de las letras de "SECTOR".
+5. Release firmado propio + AAB para Google Play (ver docs/EXPORTACION_ANDROID.md).
+6. Ideas no implementadas: power-ups (munición máxima, doble puntos, nuke), más
+   mapas, personaje jugador visible (solo se usa en derrota/menú-arsenal),
+   compresión QOA de los WAV, más variantes de efectos de impacto por superficie.
+7. Viewmodel: hay solo manos/antebrazos simples; animaciones de recarga son
+   procedurales (inclinaciones), no esqueléticas.
