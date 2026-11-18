@@ -17,8 +17,9 @@ const MAX_REPAIR_POINTS_PER_ROUND := 60
 @export var zone_id := "start"
 
 var planks := PLANKS
-var _plank_nodes: Array[MeshInstance3D] = []
+var _mm: MultiMeshInstance3D
 var _plank_rest: Array[Transform3D] = []
+var _plank_xf: Array[Transform3D] = []
 var _slots: Array = []
 var _repair_t := 0.0
 var _round_points := 0
@@ -31,21 +32,25 @@ func _ready() -> void:
 	continuous = true
 	interact_radius = 2.0
 	focus_offset = Vector3(0, sill + height * 0.5, 0.3)
-	var wood := MapKit.mat("plank")
+	var bm := BoxMesh.new()
+	bm.size = Vector3(width + 0.35, 0.17, 0.06)
+	bm.material = MapKit.mat("plank")
+	var mm := MultiMesh.new()
+	mm.transform_format = MultiMesh.TRANSFORM_3D
+	mm.mesh = bm
+	mm.instance_count = PLANKS
+	_mm = MultiMeshInstance3D.new()
+	_mm.multimesh = mm
+	_mm.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	_mm.visibility_range_end = 40.0
+	add_child(_mm)
 	for i in PLANKS:
-		var m := MeshInstance3D.new()
-		var bm := BoxMesh.new()
-		bm.size = Vector3(width + 0.35, 0.17, 0.06)
-		m.mesh = bm
-		m.material_override = wood
 		var y := sill + 0.15 + (height - 0.3) * (float(i) / float(PLANKS - 1))
 		var rot := deg_to_rad(randf_range(-14, 14)) if i % 2 == 0 else deg_to_rad(randf_range(-6, 6))
 		var xf := Transform3D(Basis(Vector3.BACK, rot), Vector3(randf_range(-0.05, 0.05), y, 0.05 + 0.02 * (i % 2)))
-		m.transform = xf
-		m.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-		add_child(m)
-		_plank_nodes.append(m)
 		_plank_rest.append(xf)
+		_plank_xf.append(xf)
+		mm.set_instance_transform(i, xf)
 	# collision that stops the player from walking through the opening
 	_blocker = StaticBody3D.new()
 	_blocker.collision_layer = 32   # blocks player + zombies, not bullets
@@ -88,12 +93,12 @@ func remove_plank() -> void:
 	if planks <= 0:
 		return
 	planks -= 1
-	var m := _plank_nodes[planks]
-	var tw := m.create_tween().set_parallel(true)
-	var out := -global_basis.z * 1.5 + Vector3(randf_range(-0.6, 0.6), -0.8, 0)
-	tw.tween_property(m, "global_position", m.global_position + out, 0.35).set_ease(Tween.EASE_OUT)
-	tw.tween_property(m, "rotation:z", randf_range(-1.5, 1.5), 0.35)
-	tw.chain().tween_callback(func(): m.visible = false)
+	var idx := planks
+	var from := _plank_xf[idx]
+	var to := Transform3D(from.basis.rotated(Vector3.BACK, randf_range(-1.5, 1.5)), from.origin + Vector3(randf_range(-0.6, 0.6), -0.8, -1.5))
+	var tw := create_tween()
+	tw.tween_method(func(k: float): _set_plank(idx, from.interpolate_with(to, k)), 0.0, 1.0, 0.35).set_ease(Tween.EASE_OUT)
+	tw.tween_callback(func(): if idx >= planks: _set_plank(idx, Transform3D(Basis().scaled(Vector3.ZERO), Vector3.ZERO)))
 	Audio.play_at("plank_break", global_position + Vector3.UP * 1.3, 0.0, 0.12, 30.0)
 	FX.impact(global_position + Vector3.UP * (sill + height * 0.5), global_basis.z, "wood")
 	planks_changed.emit(planks)
@@ -102,17 +107,21 @@ func remove_plank() -> void:
 func add_plank() -> bool:
 	if planks >= PLANKS:
 		return false
-	var m := _plank_nodes[planks]
-	var rest := _plank_rest[planks]
-	m.visible = true
-	m.transform = Transform3D(rest.basis.rotated(Vector3.UP, 0.4), rest.origin + Vector3(0, 0.25, 0.9))
-	var tw := m.create_tween()
-	tw.tween_property(m, "transform", rest, 0.18).set_ease(Tween.EASE_IN)
+	var idx := planks
+	var rest := _plank_rest[idx]
+	var start := Transform3D(rest.basis.rotated(Vector3.UP, 0.4), rest.origin + Vector3(0, 0.25, 0.9))
+	var tw := create_tween()
+	tw.tween_method(func(k: float): _set_plank(idx, start.interpolate_with(rest, k)), 0.0, 1.0, 0.18).set_ease(Tween.EASE_IN)
 	planks += 1
 	Audio.play_at("plank_repair", global_position + Vector3.UP * 1.3, -2.0, 0.1, 25.0)
 	FX.shake(0.08, 0.1)
 	planks_changed.emit(planks)
 	return true
+
+
+func _set_plank(i: int, xf: Transform3D) -> void:
+	_plank_xf[i] = xf
+	_mm.multimesh.set_instance_transform(i, xf)
 
 
 func is_available(_p: Player) -> bool:

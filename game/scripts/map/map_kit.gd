@@ -8,6 +8,15 @@ extends RefCounted
 ## cost) and vertex-colour ambient occlusion baked from height.
 
 const CELL := 24.0
+## Flat-coloured materials are folded into ONE vertex-coloured "palette"
+## material at batch time (fewer meshes, fewer draw calls, same look).
+const PALETTE := {
+	"dark_metal": Color(0.16, 0.17, 0.17), "steel": Color(0.42, 0.44, 0.45), "rust": Color(0.42, 0.24, 0.14),
+	"rubber": Color(0.07, 0.07, 0.07), "sandbag": Color(0.55, 0.49, 0.36), "car_teal": Color(0.22, 0.42, 0.42),
+	"car_red": Color(0.52, 0.16, 0.12), "car_cream": Color(0.72, 0.68, 0.55), "car_blue": Color(0.2, 0.26, 0.42),
+	"glass": Color(0.1, 0.13, 0.14), "sign_red": Color(0.65, 0.12, 0.08), "sign_yellow": Color(0.85, 0.65, 0.12),
+	"sign_green": Color(0.18, 0.4, 0.2), "olive": Color(0.3, 0.34, 0.22), "black": Color(0.03, 0.03, 0.03),
+}
 
 static var _mats := {}
 
@@ -27,6 +36,8 @@ static func mat(key: String) -> Material:
 	var col := Color.WHITE
 	var emissive := Color.BLACK
 	match key:
+		"palette":
+			col = Color.WHITE; m.roughness = 0.75
 		"concrete": tex = "concrete"
 		"asphalt": tex = "asphalt"
 		"brick": tex = "brick"
@@ -97,6 +108,10 @@ class Batcher:
 
 	## Oriented box with world planar UVs and height AO.
 	func box(xf: Transform3D, size: Vector3, mat_key: String, tex_scale: float = -1.0, ao: bool = true) -> void:
+		var tint := Color.WHITE
+		if MapKit.PALETTE.has(mat_key):
+			tint = MapKit.PALETTE[mat_key]
+			mat_key = "palette"
 		var st := _tool(mat_key, xf.origin)
 		var s := tex_scale if tex_scale > 0 else uv_scale
 		var h := size * 0.5
@@ -136,7 +151,7 @@ class Batcher:
 				var k := 1.0
 				if ao:
 					k = clampf(0.55 + wp.y * 0.3, 0.55, 1.0) if absf(wn.y) < 0.7 else (1.0 if wn.y > 0 else 0.5)
-				cols.append(Color(k, k, k))
+				cols.append(Color(k * tint.r, k * tint.g, k * tint.b))
 			for idx in [0, 1, 2, 0, 2, 3]:
 				st.set_normal(wn)
 				st.set_uv(uvs[idx])
@@ -145,6 +160,10 @@ class Batcher:
 
 	## Appends a primitive Mesh (cylinder, prism...) with a flat colour multiplier.
 	func mesh(m: Mesh, xf: Transform3D, mat_key: String, shade: float = 1.0) -> void:
+		var tint := Color(shade, shade, shade)
+		if MapKit.PALETTE.has(mat_key):
+			tint = MapKit.PALETTE[mat_key] * shade
+			mat_key = "palette"
 		var st := _tool(mat_key, xf.origin)
 		var arrays := m.surface_get_arrays(0)
 		var verts: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
@@ -156,7 +175,7 @@ class Batcher:
 			var vi: int = idx[i] if idx != null and idx.size() > 0 else i
 			st.set_normal((xf.basis * norms[vi]).normalized())
 			st.set_uv((uvs[vi] if uvs != null and uvs.size() > vi else Vector2.ZERO))
-			st.set_color(Color(shade, shade, shade))
+			st.set_color(Color(tint.r, tint.g, tint.b))
 			st.add_vertex(xf * verts[vi])
 
 	func build(parent: Node3D) -> int:
@@ -356,12 +375,14 @@ static func door_visual(style: String, size: Vector3) -> Node3D:
 	else:
 		var rng := RandomNumberGenerator.new()
 		rng.seed = int(size.x * 100)
+		var b := Batcher.new()
 		for i in 14:
 			var s := Vector3(rng.randf_range(0.5, 1.3), rng.randf_range(0.3, 0.9), rng.randf_range(0.3, 0.7))
 			var p := Vector3(rng.randf_range(-0.45, 0.45) * size.x, rng.randf_range(0.1, 0.85) * size.y, rng.randf_range(-0.3, 0.3))
-			var mi := _mi(_boxm(s), "concrete" if i % 3 else "wood", p, root, Vector3(rng.randf_range(-0.5, 0.5), rng.randf() * PI, rng.randf_range(-0.5, 0.5)))
-			mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-		_mi(_boxm(Vector3(size.x * 0.8, 0.14, 0.05)), "hazard", Vector3(0, size.y * 0.75, size.z * 0.5 + 0.1), root, Vector3(0, 0, 0.08))
+			var rot := Basis.from_euler(Vector3(rng.randf_range(-0.5, 0.5), rng.randf() * PI, rng.randf_range(-0.5, 0.5)))
+			b.box(Transform3D(rot, p), s, "concrete" if i % 3 else "wood", 0.5, false)
+		b.box(Transform3D(Basis(Vector3.BACK, 0.08), Vector3(0, size.y * 0.75, size.z * 0.5 + 0.1)), Vector3(size.x * 0.8, 0.14, 0.05), "hazard", 1.0, false)
+		b.build(root)
 	return root
 
 
@@ -508,5 +529,6 @@ static func sign(parent: Node3D, text: String, xf: Transform3D, color: Color, si
 	l.transform = xf
 	l.shaded = false
 	l.double_sided = false
+	l.visibility_range_end = 35.0
 	parent.add_child(l)
 	return l

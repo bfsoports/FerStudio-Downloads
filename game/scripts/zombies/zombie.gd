@@ -110,6 +110,7 @@ func setup(d: ZombieData) -> void:
 	_blob.position.y = 0.03
 	_blob.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(_blob)
+	_blob.visible = Settings.quality >= Settings.Quality.MEDIUM
 	# navigation
 	agent = NavigationAgent3D.new()
 	agent.path_desired_distance = 0.7

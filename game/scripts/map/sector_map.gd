@@ -208,6 +208,13 @@ func _wall_piece(a: Vector2, dir: Vector2, basis: Basis, s: float, e: float, y0:
 	var size := Vector3(e - s, y1 - y0, WALL_T)
 	_b.box(xf, size, mat_key, 0.35)
 	MapKit.collider(_geo, xf, size)
+	if size.x >= 4.0 and size.y >= 3.0:
+		var occ := OccluderInstance3D.new()
+		var bo := BoxOccluder3D.new()
+		bo.size = Vector3(size.x, size.y, WALL_T * 0.6)
+		occ.occluder = bo
+		occ.transform = xf
+		add_child(occ)
 	# top trim
 	if y1 >= WALL_H - 0.01:
 		_b.box(Transform3D(basis, Vector3(mid.x, y1 + 0.08, mid.y)), Vector3(e - s + 0.02, 0.16, WALL_T + 0.14), "concrete")
