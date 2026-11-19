@@ -7,4 +7,4 @@ func _init() -> void:
 	icon_name = "settings"
 
 func _build(body: VBoxContainer) -> void:
-	body.add_child(UIKit.scroll(UIKit.centered(SettingsPanel.new(minf(SettingsPanel.PANEL_W, _inner_w)))))
+	body.add_child(UIKit.scroll(UIKit.centered(SettingsPanel.new(_inner_w, true))))

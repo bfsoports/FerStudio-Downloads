@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Uso: python3 tools/slice_icons.py <carpeta con sheet1..4.png exportadas de Canva> assets/ui/icons
+# Uso: python3 tools/slice_icons.py <carpeta con las hojas sheetN.png exportadas de Canva> assets/ui/icons [5,6]
 # Recorta las 4 hojas de iconos exportadas de Canva (4 x 3 iconos cada una) en iconos sueltos cuadrados.
 import sys, os
 import numpy as np
@@ -11,13 +11,20 @@ SHEETS = [
     ["trophy", "star", "star_empty", "clock", "check", "close", "info", "warning", "lock", "gift", "burger", "fire"],
     ["trash", "cursor", "backpack", "downgrade", "rebirth", "stats", "skull", "lightning", "crown", "cash", "plus", "dice"],
     ["sound_on", "sound_off", "music_on", "music_off", "calendar", "player", "friend", "chat", "utensils", "cloche", "soda", "fries"],
+    ["ing_bun_bottom", "ing_bun_top", "ing_patty", "ing_veggie_patty", "ing_bacon", "ing_cheese", "ing_lettuce", "ing_tomato", "ing_onion", "grill", "fryer", "board"],
+    ["roller", "floor", "counter", "table", "chair", "lamp", "sign", "plant", "register", "sink", "crate", "hourglass"],
 ]
+# hojas a procesar: todas por defecto, o un subconjunto con --sheets 5,6 (las hojas sheetN.png de la carpeta de origen)
 SIZE = 160
 src, out = sys.argv[1], sys.argv[2]
+ONLY = [int(x) for x in sys.argv[3].split(",")] if len(sys.argv) > 3 else list(range(1, len(SHEETS) + 1))
+FILE_OF = {n: i + 1 for i, n in enumerate(ONLY)}   # hoja n -> archivo sheet<i>.png dentro de src
 os.makedirs(out, exist_ok=True)
 total = 0
 for si, names in enumerate(SHEETS):
-    im = Image.open(os.path.join(src, f"sheet{si+1}.png")).convert("RGBA")
+    if si + 1 not in ONLY:
+        continue
+    im = Image.open(os.path.join(src, f"sheet{FILE_OF[si+1]}.png")).convert("RGBA")
     a = np.array(im)
     alpha = a[..., 3]
     mask = alpha > 24

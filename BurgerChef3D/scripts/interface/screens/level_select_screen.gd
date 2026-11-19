@@ -4,6 +4,7 @@ extends MenuScreen
 
 const TILE_W := 138.0
 const TILE_H := 112.0
+var _tile_w := TILE_W
 
 var _tab := 0
 var _difficulty := 1
@@ -28,8 +29,9 @@ func _on_tab(i: int) -> void:
 
 # ------------------------------------------------------------------ campaña
 func _build_campaign(body: VBoxContainer) -> void:
-	var cols := UIKit.fit_columns(_inner_w, TILE_W, 12.0, 3, 6)
-	var grid := UIKit.grid(cols, 12, 12)
+	var fc := UIKit.fill_columns(_inner_w, TILE_W, 12.0, 8)
+	_tile_w = minf(float(fc[1]), TILE_W * 1.5)
+	var grid := UIKit.grid(int(fc[0]), 12, 12)
 	for lv in Catalog.levels:
 		grid.add_child(_tile(int(lv["id"])))
 	body.add_child(UIKit.scroll(UIKit.centered(grid)))
@@ -40,7 +42,7 @@ func _tile(id: int) -> Control:
 	var variant := "ButtonTileLocked"
 	if unlocked:
 		variant = "ButtonTileDone" if stars_n > 0 else "ButtonTile"
-	var tile := UIKit.button("", variant, TILE_H, TILE_W)
+	var tile := UIKit.button("", variant, TILE_H, _tile_w)
 	var v := VBoxContainer.new()
 	v.alignment = BoxContainer.ALIGNMENT_CENTER
 	v.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -117,7 +119,7 @@ func _show_detail(id: int) -> void:
 	flow.add_theme_constant_override("v_separation", 6)
 	for rid in GameState.campaign_recipes(id):
 		var item := UIKit.hbox(6)
-		item.add_child(UIKit.burger_icon(Catalog.recipe_layers(str(rid)), 28))
+		item.add_child(UIKit.burger_stack(Catalog.recipe_layers(str(rid)), 40))
 		var rn := UIKit.label(Catalog.name_of(Catalog.recipe(str(rid))), "LabelMuted", 17)
 		rn.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		item.add_child(rn)
@@ -144,7 +146,7 @@ func _show_detail(id: int) -> void:
 
 # ------------------------------------------------------------------ modo libre
 func _build_free(body: VBoxContainer) -> void:
-	var colw := minf(660.0, _inner_w)
+	var colw := minf(900.0, _inner_w)
 	var v := UIKit.column(colw, 14)
 	var desc_card := UIKit.card("PanelFlat")
 	var desc := UIKit.label(Loc.t("free.desc"), "LabelLight", 21)
@@ -175,7 +177,7 @@ func _build_free(body: VBoxContainer) -> void:
 
 # ------------------------------------------------------------------ tutorial
 func _build_tutorial(body: VBoxContainer) -> void:
-	var colw := minf(660.0, _inner_w)
+	var colw := minf(900.0, _inner_w)
 	var v := UIKit.column(colw, 14)
 	var desc_card := UIKit.card("PanelFlat")
 	var dv := UIKit.vbox(8)

@@ -38,6 +38,7 @@ var _held_label: Label
 var _toasts: VBoxContainer
 var _center_label: Label
 var _fps_label: Label
+var _timer_urgent := false
 var _pause_btn: Button
 var _recipes_btn: Button
 var _obj_timer := 0.0
@@ -247,9 +248,14 @@ func _process(delta: float) -> void:
 			secs = shift.time_left if shift.has_time_limit() else shift.elapsed
 		else:
 			secs = float(_cfg.get("duration", 0.0))
-		_timer_label.text = Util.fmt_time(secs)
+		# solo se toca la etiqueta cuando cambia: cambiar texto o color cada fotograma obliga a recolocar la interfaz
+		var txt := Util.fmt_time(secs)
+		if txt != _timer_label.text:
+			_timer_label.text = txt
 		var urgent := shift.running and shift.has_time_limit() and shift.time_left < 15.0
-		_timer_label.add_theme_color_override("font_color", Palette.KETCHUP.lightened(0.35) if urgent else Palette.CREAM)
+		if urgent != _timer_urgent:
+			_timer_urgent = urgent
+			_timer_label.add_theme_color_override("font_color", Palette.KETCHUP.lightened(0.35) if urgent else Palette.CREAM)
 	_obj_timer -= delta
 	if _obj_timer <= 0.0:
 		_obj_timer = 0.4
@@ -258,10 +264,18 @@ func _process(delta: float) -> void:
 		var e: Dictionary = _ticket_nodes[id]
 		var o := e["order"] as Order
 		var ratio := o.patience_ratio()
-		(e["bar"] as ProgressBar).value = ratio * 100.0
-		(e["fill"] as StyleBoxFlat).bg_color = Palette.KETCHUP if ratio < 0.3 else (Palette.MUSTARD if ratio < 0.6 else Palette.LETTUCE)
+		var bar := e["bar"] as ProgressBar
+		var v := snappedf(ratio * 100.0, 0.5)
+		if v != bar.value:
+			bar.value = v
+		var fill := e["fill"] as StyleBoxFlat
+		var col := Palette.KETCHUP if ratio < 0.3 else (Palette.MUSTARD if ratio < 0.6 else Palette.LETTUCE)
+		if fill.bg_color != col:
+			fill.bg_color = col
 	if _fps_label.visible:
-		_fps_label.text = "%d FPS" % Engine.get_frames_per_second()
+		var ft := "%d FPS" % Engine.get_frames_per_second()
+		if ft != _fps_label.text:
+			_fps_label.text = ft
 
 ## Oculta o muestra la pastilla de monedas y nivel (el tutorial pone ahí su tarjeta de instrucciones). Se deja su
 ## hueco con transparencia para que el resto de la fila superior no se desplace.
@@ -332,7 +346,7 @@ func _on_order_created(o: RefCounted) -> void:
 	nm.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	nm.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	head.add_child(nm)
-	var bi := UIKit.burger_icon(Catalog.recipe_layers(order.recipe_id), 22)
+	var bi := UIKit.burger_stack(Catalog.recipe_layers(order.recipe_id), 40)
 	bi.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	head.add_child(bi)
 	v.add_child(head)

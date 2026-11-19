@@ -9,7 +9,7 @@ func _init() -> void:
 	icon_name = "home"
 
 func _build(body: VBoxContainer) -> void:
-	var colw := minf(930.0, _inner_w)
+	var colw := _inner_w
 	var v := UIKit.column(colw, 14)
 	# nivel del chef y estrellas: en dos tarjetas si caben, una debajo de otra si no
 	var wide := colw >= 880.0
@@ -45,8 +45,9 @@ func _build(body: VBoxContainer) -> void:
 	v.add_child(top)
 	# estadísticas acumuladas: casillas de ancho fijo en columnas
 	v.add_child(UIKit.section_title(Loc.t("menu.restaurant"), "stats"))
-	var cols := UIKit.fit_columns(colw, TILE_W, 12.0, 2, 3)
-	var tile_w := UIKit.fit_width(colw, cols, 12, TILE_W)
+	var fc := UIKit.fill_columns(colw, 290.0, 12.0, 4)
+	var cols: int = fc[0]
+	var tile_w: float = fc[1]
 	var grid := UIKit.grid(cols, 12, 12)
 	var rows: Array = [["stat_burgers_made", "burgers_made", "burger"], ["stat_customers_served", "customers_served", "friend"],
 		["stat_coins_earned", "coins_earned", "coin"], ["stat_perfect_burgers", "perfect_burgers", "crown"],

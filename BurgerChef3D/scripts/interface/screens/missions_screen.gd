@@ -4,6 +4,11 @@ extends MenuScreen
 
 const KINDS: Array = ["mission", "challenge", "achievement"]
 const CARD_W := 930.0
+## Icono de cada misión según lo que cuenta (hamburguesas, clientes, monedas...).
+const STAT_ICONS: Dictionary = {"best_streak": "fire", "burgers_made": "burger", "coins_earned": "coin", "combos_served": "fries",
+	"customers_served": "friend", "items_bought": "palette", "levels_completed": "trophy", "no_burn_shifts": "grill",
+	"orders_correct": "check", "patties_cooked": "ing_patty", "perfect_burgers": "crown", "player_level": "medal",
+	"recipes_unlocked": "book", "stars_total": "star", "three_star_levels": "star", "trays_washed": "sink", "upgrades_bought": "upgrade"}
 
 var _kind_index := 0
 
@@ -13,12 +18,15 @@ func _init() -> void:
 
 func _build(body: VBoxContainer) -> void:
 	body.add_child(tab_row([["target", Loc.t("mis.tab_mission")], ["fire", Loc.t("mis.tab_challenge")], ["trophy", Loc.t("mis.tab_achievement")]], _kind_index, _on_tab, 240.0))
-	var colw := minf(CARD_W, _inner_w)
-	var list := UIKit.column(colw, 10)
+	var fc := UIKit.fill_columns(_inner_w, 600.0, 12.0, 2)
+	var colw: float = fc[1]
+	var list := UIKit.grid(int(fc[0]), 12, 10)
 	for m in Catalog.missions:
 		if str(m["kind"]) == str(KINDS[_kind_index]):
-			list.add_child(_card(m, colw))
-	body.add_child(UIKit.scroll(UIKit.centered(list)))
+			var c := _card(m, colw)
+			c.custom_minimum_size.x = colw
+			list.add_child(c)
+	body.add_child(UIKit.scroll(list))
 
 func _on_tab(i: int) -> void:
 	_kind_index = i
@@ -32,7 +40,7 @@ func _card(m: Dictionary, colw: float) -> Control:
 	var card := UIKit.card("PanelHi" if (done and not claimed) else "PanelFlat")
 	var row := UIKit.hbox(14)
 	card.add_child(row)
-	var icon_n := "target"
+	var icon_n := str(STAT_ICONS.get(str(m["stat"]), "target"))
 	if claimed:
 		icon_n = "trophy"
 	elif done:

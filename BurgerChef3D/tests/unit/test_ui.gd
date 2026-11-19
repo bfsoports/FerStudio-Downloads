@@ -9,6 +9,22 @@ func run(t) -> void:
 			t.ok(UIKit.icon(str(n), px) != null, "el icono %s se carga a %d px" % [str(n), int(px)])
 	t.eq(UIKit.icon_path("rocket"), UIKit.icon_path("play"), "el nombre antiguo «rocket» lleva al icono de jugar")
 	t.eq(UIKit.icon_path("wheel"), UIKit.icon_path("palette"), "el nombre antiguo «wheel» lleva a la paleta")
+	# iconos de ingredientes y hamburguesa apilada
+	for id in Catalog.ingredient_order:
+		t.ok(UIKit.ingredient_icon(str(id)) != "", "el ingrediente %s tiene icono" % str(id))
+	var stack := UIKit.burger_stack(["bun_bottom", "patty", "cheese", "bun_top"], 100.0, 0.4)
+	t.eq(stack.get_child_count(), 4, "la hamburguesa apilada dibuja una capa por ingrediente")
+	t.ok(stack.custom_minimum_size.y > 100.0, "la hamburguesa despiezada es más alta que ancha")
+	stack.free()
+	t.eq(UIKit.fill_columns(1237.0, 450.0, 14.0, 3)[0], 2, "las tarjetas de mejoras se reparten en 2 columnas en un móvil 20:9")
+	t.eq(UIKit.fill_columns(300.0, 450.0, 14.0, 3)[0], 1, "y en 1 si no caben")
+	# rendimiento: en escritorio la escena 3D va a resolución nativa salvo que el regulador haya bajado la calidad
+	var prev_step := SettingsManager.perf_step
+	SettingsManager.perf_step = 0
+	t.eq(SettingsManager.render_scale(), 1.0, "resolución 3D nativa sin ahorro")
+	SettingsManager.perf_step = 2
+	t.ok(SettingsManager.render_scale() < 1.0, "con el escalón 2 de ahorro baja la resolución 3D")
+	SettingsManager.perf_step = prev_step
 	var old_pack := "res://assets/icons/" + "pack"   # carpeta del pack antiguo (ya eliminada)
 	t.ok(not DirAccess.dir_exists_absolute(old_pack), "no quedan iconos del pack antiguo")
 	# el marco limita el ancho del contenido y lo centra

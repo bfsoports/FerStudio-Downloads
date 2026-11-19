@@ -4,7 +4,7 @@
 |---|---|---|
 | Código GDScript, escenas, datos JSON, textos | Creado para este proyecto | Propio |
 | Mira del HUD | Dibujada en código (punto claro con borde, `hud.gd`) | Propio |
-| Iconos de la interfaz (`assets/ui/icons/`, 48 iconos 3D cartoon, WebP de 160 px) | Creados por FerStudio con **Canva** (generación de imagen y quitar fondo, cuenta del usuario), recortados y comprimidos con `tools/slice_icons.py` | Propio (FerStudio). Revisa los términos de Canva sobre contenido generado con IA antes de publicar |
+| Iconos de la interfaz (`assets/ui/icons/`, 72 iconos 3D cartoon (6 hojas de 12), WebP de 160 px) | Creados por FerStudio con **Canva** (generación de imagen y quitar fondo, cuenta del usuario), recortados y comprimidos con `tools/slice_icons.py` | Propio (FerStudio). Revisa los términos de Canva sobre contenido generado con IA antes de publicar |
 | Fondo del menú, logotipo «Burger Chef 3D», botones JUGAR y CONTINUAR (`assets/ui/`) | Imágenes aportadas por el usuario; el texto del botón JUGAR se borró (lo pone el juego, traducible) y el fondo se amplió x2 con EDSR, con `tools/process_ui.py` | Del usuario |
 | Icono de la app (`icon.png`, `assets/icons/launcher_192.png`, `adaptive_*_432.png`) | Imagen de la hamburguesa aportada por el usuario, adaptada con `tools/gen_app_icon.py` | Del usuario |
 | Logotipo de FerStudio de la pantalla de carga (`assets/branding/ferstudio_logo.png`) | Aportado por el usuario (fondo quitado y reducido) | Del usuario / su empresa |

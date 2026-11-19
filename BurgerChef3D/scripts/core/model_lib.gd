@@ -6,6 +6,9 @@ extends RefCounted
 ## Los modelos los importa el propio editor de Godot (assets/models/), así que aquí solo se instancian.
 
 const ROOT := "res://assets/models/"
+## Modelos con muchos triángulos cuya sombra apenas se ve (cuelgan del techo, van en esquinas o pegados a la pared).
+## No proyectan sombra: así la pasada de sombras dibuja menos de la mitad de triángulos (rendimiento en móviles).
+const NO_SHADOW: Array = ["lamp", "plant", "bell", "tray", "dispenser", "fryer", "hood", "trash", "sink"]
 
 static func has(key: String) -> bool:
 	return ModelTable.MODELS.has(key)
@@ -39,7 +42,17 @@ static func spawn(key: String, stretch: Vector3 = Vector3.ONE) -> Node3D:
 	holder.scale = Vector3(s * stretch.x, s * stretch.y, s * stretch.z)
 	inst.position = Vector3(float(e[2]), float(e[3]), float(e[4]))
 	holder.add_child(inst)
+	if key in NO_SHADOW:
+		set_cast_shadow(inst, false)
 	return holder
+
+## Activa o desactiva la sombra proyectada de todas las mallas de un nodo.
+static func set_cast_shadow(node: Node, on: bool) -> void:
+	var gi := node as GeometryInstance3D
+	if gi != null:
+		gi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON if on else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	for c in node.get_children():
+		set_cast_shadow(c, on)
 
 ## Multiplica el color de albedo de todas las mallas del nodo por c (el modelo conserva su textura).
 ## Duplica el material de cada superficie una sola vez, así que llamarla de nuevo solo cambia el color y los

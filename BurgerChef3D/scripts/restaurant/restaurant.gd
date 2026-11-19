@@ -73,7 +73,7 @@ func _build_environment() -> void:
 	env.background_color = Color.html("#a9d8f2")
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	env.ambient_light_color = Color.html("#fff2dc")
-	env.ambient_light_energy = 0.6
+	env.ambient_light_energy = 0.68
 	we.environment = env
 	add_child(we)
 	var sun := DirectionalLight3D.new()
@@ -82,7 +82,8 @@ func _build_environment() -> void:
 	sun.light_color = Color.html("#fff0d6")
 	sun.shadow_enabled = true
 	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_ORTHOGONAL
-	sun.directional_shadow_max_distance = 24.0
+	sun.directional_shadow_max_distance = 18.0
+	sun.directional_shadow_fade_start = 0.85
 	sun.add_to_group(Const.GROUP_SHADOW_LIGHTS)
 	add_child(sun)
 
@@ -451,19 +452,16 @@ func _build_lighting() -> void:
 		add_child(lamp)
 		var b := Prims.sphere(self, 0.07, Vector3(p.x, room_h - lh + 0.05, p.z), bulb, 1.0, false, 10)
 		b.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	var lights: Array = [[Vector3(0, 2.7, 1.2), 0.32, 10.0, false], [Vector3(-4.5, 2.7, 5.0), 0.34, 9.0, false],
-		[Vector3(4.5, 2.7, 5.0), 0.34, 9.0, false], [Vector3(0, 2.7, 7.8), 0.3, 8.0, true],
-		[Vector3(-3, 2.7, -4), 0.32, 8.5, true], [Vector3(3.5, 2.7, -4), 0.32, 8.5, true]]
-	for e in lights:
-		var l := OmniLight3D.new()
-		l.position = e[0]
-		l.light_energy = float(e[1])
-		l.omni_range = float(e[2])
-		l.light_color = lamp_col
-		l.shadow_enabled = false
-		if bool(e[3]):
-			l.add_to_group(Const.GROUP_EXTRA_LIGHTS)
-		add_child(l)
+	# Rendimiento: en el renderizador Compatibility (móviles) cada luz puntual obliga a dibujar otra vez cada objeto que
+	# toca, así que las 6 luces de las lámparas multiplicaban el coste de la escena. Su aporte (un relleno cálido y suave)
+	# se consigue casi igual con una luz direccional de relleno sin sombras, que se calcula en la misma pasada.
+	var fill := DirectionalLight3D.new()
+	fill.rotation_degrees = Vector3(-75, -150, 0)
+	fill.light_energy = 0.32
+	fill.light_color = lamp_col
+	fill.shadow_enabled = false
+	fill.light_specular = 0.2
+	add_child(fill)
 
 # ------------------------------------------------------------------ decoración y señalización
 func _build_decor() -> void:

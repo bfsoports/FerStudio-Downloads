@@ -26,6 +26,7 @@ func _ready() -> void:
 	var is_tutorial := str(_cfg.get("mode", "")) == Const.MODE_TUTORIAL
 	GameState.tracking_enabled = not is_tutorial
 	restaurant.build()
+	_warm_up()
 	restaurant.set_menu(_cfg.get("recipes", []))
 	player.global_position = restaurant.player_spawn
 	player.setup(hud.touch)
@@ -51,6 +52,9 @@ func _ready() -> void:
 		_tutorial.name = "Tutorial"
 		add_child(_tutorial)
 		_tutorial.setup(self, restaurant, player, hud, spawner, shift)
+	var gov := PerfGovernor.new()
+	gov.name = "PerfGovernor"
+	add_child(gov)
 	_countdown()
 
 func _exit_tree() -> void:
@@ -352,3 +356,10 @@ func _on_double_requested(amount: int) -> void:
 		AudioManager.play_sfx("coin")
 		Events.toast.emit(Loc.t("ads.doubled", [amount]), "success")
 		SaveManager.request_save()
+
+## Carga por adelantado los cuerpos y animaciones de los clientes para que el primer cliente no provoque un tirón.
+func _warm_up() -> void:
+	for i in CharacterLib.BODIES.size():
+		var made := CharacterLib.spawn(i, Color.WHITE)
+		if made.has("root"):
+			(made["root"] as Node).free()

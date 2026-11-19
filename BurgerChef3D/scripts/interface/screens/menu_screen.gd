@@ -1,8 +1,8 @@
 class_name MenuScreen
 extends Control
-## Base de las pantallas del menú (mejoras, recetas, misiones, personalización...): una ventana centrada con cabecera
-## (icono, título, monedas y botón de cierre). El tamaño de la ventana se calcula con el lienzo disponible y se vuelve
-## a calcular al cambiar de pantalla o de tamaño de interfaz; el contenido usa _inner_w para repartir columnas.
+## Base de las pantallas del menú (mejoras, recetas, misiones, personalización...): ocupan la pantalla completa, con
+## una barra de cabecera (icono, título, monedas y botón de cierre) y el cuerpo debajo. Las medidas se recalculan al
+## cambiar de tamaño de pantalla o de interfaz; el contenido usa _inner_w para repartir columnas y llenar el ancho.
 
 signal back_requested
 @warning_ignore("unused_signal")   # la emiten las pantallas hijas (selección de nivel), no esta clase base
@@ -24,54 +24,21 @@ var _inner_h := 440.0         # alto útil del cuerpo (bajo la cabecera)
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var dim := PanelContainer.new()
-	dim.theme_type_variation = "PanelDim"
-	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	add_child(dim)
-	var frame := UIKit.frame(1500.0)
-	add_child(frame)
-	var margin := UIKit.margin_container(self, 12)
-	frame.add_child(margin)
-	var center := CenterContainer.new()
-	margin.add_child(center)
-	_panel = UIKit.card()
+	var shell := UIKit.screen_shell(self, Loc.t(title_key), icon_name, true, func() -> void: back_requested.emit())
+	_panel = shell["root"]
+	_coin_label = shell["coin_label"]
+	_body = shell["body"]
 	_apply_window_size()
-	center.add_child(_panel)
-	var v := UIKit.vbox(10)
-	_panel.add_child(v)
-	var head := UIKit.hbox(12)
-	head.add_child(UIKit.icon_rect(icon_name, 52))
-	var title := UIKit.label(Loc.t(title_key), "LabelHeader", 36)
-	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	title.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	title.clip_text = true
-	title.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	head.add_child(title)
-	var chip := UIKit.coin_chip(GameState.coins, 30)
-	chip.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	_coin_label = UIKit.chip_label(chip)
-	head.add_child(chip)
-	var close := UIKit.icon_button("close", "ButtonIcon", 70)
-	close.pressed.connect(func() -> void: back_requested.emit())
-	head.add_child(close)
-	v.add_child(head)
-	v.add_child(UIKit.divider())
-	_body = UIKit.vbox(12)
-	_body.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	v.add_child(_body)
 	Events.coins_changed.connect(_on_coins)
 	Events.ui_scale_changed.connect(_on_resized)
 	get_viewport().size_changed.connect(_on_resized)
 	_build(_body)
 
-## Calcula el tamaño de la ventana con el lienzo disponible (nunca más grande que la pantalla).
+## Medidas útiles del cuerpo de la pantalla (ocupa toda la pantalla menos la cabecera y la zona segura).
 func _apply_window_size() -> void:
-	var avail := UIKit.canvas_size(self)
-	var w := minf(WINDOW_W, avail.x - 2.0 * WINDOW_MARGIN)
-	var h := minf(WINDOW_H, avail.y - 2.0 * WINDOW_MARGIN)
-	_panel.custom_minimum_size = Vector2(w, h)
-	_inner_w = w - 2.0 * PAD - 6.0
-	_inner_h = h - 2.0 * PAD - 6.0 - HEADER_H
+	var inner := UIKit.screen_inner_size(self)
+	_inner_w = inner.x
+	_inner_h = inner.y
 
 func _on_resized() -> void:
 	call_deferred("_relayout")

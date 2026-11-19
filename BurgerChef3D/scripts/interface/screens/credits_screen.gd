@@ -8,22 +8,32 @@ const OFL_FREDOKA_PATH := "res://assets/fonts/OFL-Fredoka.txt"
 
 var _show_licenses := false
 
+var _col_w := 700.0
+
 func _init() -> void:
 	title_key = "menu.credits"
 	icon_name = "heart"
 
 func _build(body: VBoxContainer) -> void:
-	var v := UIKit.column(minf(700.0, _inner_w), 12)
+	# en pantallas anchas: a la izquierda el juego y el estudio, a la derecha los créditos y licencias
+	var two := _inner_w >= 980.0
+	_col_w = floorf((_inner_w - 24.0) * 0.5) if two else _inner_w
+	var cols := UIKit.hbox(24)
+	var left := UIKit.column(_col_w, 12)
+	cols.add_child(left)
+	var v := UIKit.column(_col_w, 12) if two else left
+	if two:
+		cols.add_child(v)
 	var logo := UIKit.icon_rect("burger", 96)
 	logo.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	v.add_child(logo)
+	left.add_child(logo)
 	var t := UIKit.label(Const.GAME_NAME, "LabelHeader", 40)
 	t.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	v.add_child(t)
+	left.add_child(t)
 	var ver := UIKit.label(Loc.t("credits.version", [Const.GAME_VERSION]), "LabelMuted", 20)
 	ver.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	v.add_child(ver)
-	v.add_child(_studio_card())
+	left.add_child(ver)
+	left.add_child(_studio_card())
 	var card := UIKit.card("PanelFlat")
 	var rows := UIKit.vbox(12)
 	card.add_child(rows)
@@ -44,7 +54,7 @@ func _build(body: VBoxContainer) -> void:
 	v.add_child(card)
 	var thanks := UIKit.label(Loc.t("credits.thanks"), "LabelGold", 30)
 	thanks.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	v.add_child(thanks)
+	left.add_child(thanks)
 	var lic_btn := UIKit.icon_text_button("info", Loc.t("credits.hide_licenses") if _show_licenses else Loc.t("credits.licenses"), "ButtonSecondary", UIKit.H_SMALL, 0, 30)
 	lic_btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	lic_btn.pressed.connect(_toggle_licenses)
@@ -66,7 +76,7 @@ func _build(body: VBoxContainer) -> void:
 		var ofl2 := FileAccess.get_file_as_string(OFL_FREDOKA_PATH)
 		if ofl2 != "":
 			v.add_child(_license_card("Fredoka - SIL Open Font License 1.1", ofl2))
-	body.add_child(UIKit.scroll(UIKit.centered(v)))
+	body.add_child(UIKit.scroll(UIKit.centered(cols)))
 
 ## Tarjeta del estudio: quién hace el juego, contacto y enlaces legales (los pide la Amazon Appstore).
 func _studio_card() -> Control:
@@ -81,7 +91,7 @@ func _studio_card() -> Control:
 	desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	v.add_child(desc)
 	v.add_child(UIKit.label(Loc.t("studio.contact", [Const.SUPPORT_EMAIL]), "LabelLight", 18))
-	v.add_child(StudioLinks.build(minf(700.0, _inner_w) - 40.0))
+	v.add_child(StudioLinks.build(_col_w - 40.0))
 	return card
 
 func _toggle_licenses() -> void:

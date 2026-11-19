@@ -4,6 +4,11 @@ extends MenuScreen
 ## Los artículos comprados persisten y se aplican al empezar el siguiente turno.
 
 const CARD_W := 304.0
+## Icono de cada categoría de la tienda (y de los artículos de decoración, que no tienen color).
+const CAT_ICONS: Dictionary = {"wall": "roller", "floor": "floor", "counter": "counter", "tables": "table", "chairs": "chair",
+	"lamps": "lamp", "sign": "sign", "decor": "plant"}
+const DECOR_ICONS: Dictionary = {"decor_none": "home", "decor_plants": "plant", "decor_posters": "palette", "decor_both": "plant",
+	"decor_garden": "crate"}
 
 var _cat_index := 0
 var _new_items: Array = []   # artículos que eran nuevos al abrir la tienda (se marcan como vistos al abrirla)
@@ -21,23 +26,25 @@ func _build(body: VBoxContainer) -> void:
 	var note := UIKit.label(Loc.t("cust.note"), "LabelMuted", 17)
 	note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	body.add_child(note)
-	var tab_cols := UIKit.fit_columns(_inner_w, 214.0, 8.0, 2, 4)
-	var tab_w := UIKit.fit_width(_inner_w, tab_cols, 8, 214.0)
+	var tab_fc := UIKit.fill_columns(_inner_w, 240.0, 8.0, 4)
+	var tab_cols: int = tab_fc[0]
+	var tab_w: float = tab_fc[1]
 	var tabs := UIKit.grid(tab_cols, 8, 8)
 	var group := ButtonGroup.new()
 	for i in Catalog.shop_categories.size():
 		var cat_name := Loc.t("cat." + str(Catalog.shop_categories[i]))
 		if _category_has_new(str(Catalog.shop_categories[i])):
 			cat_name += " •"
-		var b := UIKit.button(cat_name, "ButtonToggle", 50, tab_w)
+		var b := UIKit.icon_text_button(str(CAT_ICONS.get(str(Catalog.shop_categories[i]), "palette")), cat_name, "ButtonToggle", 56, tab_w, 34)
 		b.toggle_mode = true
 		b.button_group = group
 		b.button_pressed = i == _cat_index
 		b.pressed.connect(_on_cat.bind(i))
 		tabs.add_child(b)
 	body.add_child(UIKit.centered(tabs))
-	var cols := UIKit.fit_columns(_inner_w, CARD_W, 12.0, 2, 3)
-	var card_w := UIKit.fit_width(_inner_w, cols, 12, CARD_W)
+	var fc := UIKit.fill_columns(_inner_w, 270.0, 12.0, 5)
+	var cols: int = fc[0]
+	var card_w: float = fc[1]
 	var grid := UIKit.grid(cols, 12, 12)
 	for it in Catalog.items_in_category(str(Catalog.shop_categories[_cat_index])):
 		grid.add_child(_card(it, card_w))
@@ -53,24 +60,36 @@ func _on_cat(i: int) -> void:
 	_cat_index = i
 	refresh()
 
+## Imagen del artículo: el icono de su categoría y, encima en una esquina, una muestra de su color o textura.
 func _swatch(it: Dictionary) -> Control:
+	var box := Control.new()
+	box.custom_minimum_size = Vector2(96, 86)
+	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var cat := str(it.get("category", ""))
+	var icon_n := str(DECOR_ICONS.get(str(it["id"]), CAT_ICONS.get(cat, "palette")))
+	var ic := UIKit.icon_rect(icon_n, 82)
+	ic.position = Vector2(0, 0)
+	box.add_child(ic)
 	var params: Dictionary = it.get("params", {})
+	var chip: Control = null
 	if params.has("tex"):
 		var tex_rect := TextureRect.new()
 		var path := "res://assets/textures/%s.png" % str(params["tex"])
 		if ResourceLoader.exists(path):
 			tex_rect.texture = load(path) as Texture2D
-		tex_rect.custom_minimum_size = Vector2(76, 76)
 		tex_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		tex_rect.stretch_mode = TextureRect.STRETCH_SCALE
-		return tex_rect
-	if params.has("color"):
+		chip = tex_rect
+	elif params.has("color"):
 		var p := Panel.new()
-		var sb := UITheme.box(Util.html_color(str(params["color"])), UITheme.WIN_EDGE, 14, 3, false, 0)
-		p.add_theme_stylebox_override("panel", sb)
-		p.custom_minimum_size = Vector2(76, 76)
-		return p
-	return UIKit.icon_rect("palette", 70)
+		p.add_theme_stylebox_override("panel", UITheme.box(Util.html_color(str(params["color"])), UITheme.OUTLINE, 99, 3, false, 0))
+		chip = p
+	if chip != null:
+		chip.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		chip.position = Vector2(58, 48)
+		chip.size = Vector2(38, 38)
+		box.add_child(chip)
+	return box
 
 func _card(it: Dictionary, card_w: float) -> Control:
 	var id := str(it["id"])

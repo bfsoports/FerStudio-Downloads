@@ -10,7 +10,9 @@ const ICON_SRC_PX := 160
 const ICON_NAMES: Array = ["shop", "upgrade", "book", "target", "palette", "settings", "coin", "medal", "heart", "play", "skip", "home",
 	"trophy", "star", "star_empty", "clock", "check", "close", "info", "warning", "lock", "gift", "burger", "fire",
 	"trash", "cursor", "backpack", "downgrade", "rebirth", "stats", "skull", "lightning", "crown", "cash", "plus", "dice",
-	"sound_on", "sound_off", "music_on", "music_off", "calendar", "player", "friend", "chat", "utensils", "cloche", "soda", "fries"]
+	"sound_on", "sound_off", "music_on", "music_off", "calendar", "player", "friend", "chat", "utensils", "cloche", "soda", "fries",
+	"ing_bun_bottom", "ing_bun_top", "ing_patty", "ing_veggie_patty", "ing_bacon", "ing_cheese", "ing_lettuce", "ing_tomato", "ing_onion",
+	"grill", "fryer", "board", "roller", "floor", "counter", "table", "chair", "lamp", "sign", "plant", "register", "sink", "crate", "hourglass"]
 const ICON_ALIASES: Dictionary = {"rocket": "play", "wheel": "palette"}
 const H_CTA := 96.0     # botón principal grande
 const H_BTN := 78.0     # botón normal
@@ -50,6 +52,36 @@ static func icon(icon_name: String, px: float = 64.0) -> Texture2D:
 		push_error("UIKit: no existe el icono '%s'" % icon_name)
 	_icons[key] = tex
 	return tex
+
+## Icono de un ingrediente (pan, carne, queso... y patatas y bebida), o "" si no tiene.
+static func ingredient_icon(ingredient_id: String) -> String:
+	match ingredient_id:
+		"fries":
+			return "fries"
+		"drink":
+			return "soda"
+	var n := "ing_" + ingredient_id
+	return n if ICON_NAMES.has(n) else ""
+
+## Hamburguesa dibujada con los iconos de sus ingredientes apilados de abajo arriba (más clara que las barras de
+## colores). w es el ancho; el alto sale del número de capas.
+static func burger_stack(layer_ids: Array, w: float, spread: float = 0.2) -> Control:
+	var step := w * spread
+	var box := Control.new()
+	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var n := layer_ids.size()
+	var h := w * 0.62 + step * float(maxi(0, n - 1))
+	box.custom_minimum_size = Vector2(w, h)
+	for i in n:
+		var ic_name := ingredient_icon(str(layer_ids[i]))
+		if ic_name == "":
+			continue
+		var r := icon_rect(ic_name, w)
+		r.custom_minimum_size = Vector2(w, w)
+		r.position = Vector2(0, h - w * 0.69 - step * float(i))
+		r.size = Vector2(w, w)
+		box.add_child(r)
+	return box
 
 ## Ruta del archivo de un icono (con los nombres antiguos «rocket» y «wheel» redirigidos a los nuevos).
 static func icon_path(icon_name: String) -> String:
@@ -382,6 +414,74 @@ static func margin_container(node: Node, base: int = 16) -> MarginContainer:
 	m.add_theme_constant_override("margin_right", base + int(sm["right"]))
 	m.add_theme_constant_override("margin_bottom", base + int(sm["bottom"]))
 	return m
+
+# ------------------------------------------------------------------ pantallas completas
+const SCREEN_HEADER_H := 86.0   # alto de la barra de cabecera de las pantallas completas
+const SCREEN_PAD := 18.0        # margen interior del cuerpo
+const SCROLLBAR_W := 16.0       # hueco que se deja a la derecha para la barra de desplazamiento
+
+## Pantalla completa (menús y recetas de la partida): fondo chocolate que tapa todo, barra de cabecera con icono,
+## título, monedas (opcional) y botón de cierre, y un cuerpo que ocupa el resto. Respeta las muescas (zona segura).
+## Devuelve {"root", "body" (VBoxContainer), "coin_label" (o null), "close"}.
+static func screen_shell(host: Control, title_text: String, icon_name: String, with_coins: bool, on_close: Callable) -> Dictionary:
+	var root := PanelContainer.new()
+	root.add_theme_stylebox_override("panel", UITheme.screen_bg())
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	host.add_child(root)
+	var sm := safe_margins(host)
+	var v := vbox(0)
+	root.add_child(v)
+	var bar := PanelContainer.new()
+	var bar_sb := UITheme.screen_header()
+	bar_sb.content_margin_left = 16.0 + float(sm["left"])
+	bar_sb.content_margin_right = 16.0 + float(sm["right"])
+	bar_sb.content_margin_top = 8.0 + float(sm["top"])
+	bar.add_theme_stylebox_override("panel", bar_sb)
+	bar.custom_minimum_size = Vector2(0, SCREEN_HEADER_H + float(sm["top"]))
+	v.add_child(bar)
+	var head := hbox(14)
+	bar.add_child(head)
+	head.add_child(icon_rect(icon_name, 58))
+	var title := label(title_text, "LabelTitle", 40)
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	title.clip_text = true
+	title.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	head.add_child(title)
+	var coin_label: Label = null
+	if with_coins:
+		var chip_ := coin_chip(GameState.coins, 34)
+		chip_.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		coin_label = chip_label(chip_)
+		head.add_child(chip_)
+	var close := icon_button("close", "ButtonIcon", 72)
+	close.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	close.pressed.connect(on_close)
+	head.add_child(close)
+	var m := MarginContainer.new()
+	m.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	m.add_theme_constant_override("margin_left", int(SCREEN_PAD + float(sm["left"])))
+	m.add_theme_constant_override("margin_right", int(SCREEN_PAD * 0.5 + float(sm["right"])))
+	m.add_theme_constant_override("margin_top", int(SCREEN_PAD))
+	m.add_theme_constant_override("margin_bottom", int(SCREEN_PAD * 0.6 + float(sm["bottom"])))
+	v.add_child(m)
+	var body := vbox(12)
+	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	m.add_child(body)
+	return {"root": root, "body": body, "coin_label": coin_label, "close": close}
+
+## Ancho y alto útiles del cuerpo de una pantalla completa (sin la barra de desplazamiento).
+static func screen_inner_size(node: Node) -> Vector2:
+	var avail := canvas_size(node)
+	var sm := safe_margins(node)
+	var w := avail.x - float(sm["left"]) - float(sm["right"]) - SCREEN_PAD * 1.5 - SCROLLBAR_W
+	var h := avail.y - float(sm["top"]) - float(sm["bottom"]) - SCREEN_HEADER_H - SCREEN_PAD * 1.6
+	return Vector2(floorf(w), floorf(h))
+
+## Reparte inner_w en columnas de al menos min_w (entre 1 y max_cols) y devuelve [columnas, ancho de cada una].
+static func fill_columns(inner_w: float, min_w: float, gap: float, max_cols: int) -> Array:
+	var cols := clampi(int(floorf((inner_w + gap) / (min_w + gap))), 1, max_cols)
+	return [cols, floorf((inner_w - gap * float(cols - 1)) / float(cols))]
 
 ## Diálogo modal de confirmación para acciones destructivas. Funciona también con el árbol pausado.
 ## no_text / on_no (opcionales) cambian el texto del botón de cancelar y le añaden una acción; icon_name, el icono.

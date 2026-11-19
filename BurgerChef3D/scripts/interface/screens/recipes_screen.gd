@@ -8,8 +8,9 @@ func _init() -> void:
 	icon_name = "book"
 
 func _build(body: VBoxContainer) -> void:
-	var cols := 2 if _inner_w >= 2.0 * 360.0 + 14.0 else 1
-	var card_w := UIKit.fit_width(_inner_w, cols, 14, 470.0)
+	var fc := UIKit.fill_columns(_inner_w, 520.0, 14.0, 3)
+	var cols: int = fc[0]
+	var card_w: float = fc[1]
 	var grid := UIKit.grid(cols, 14, 14)
 	var unseen := GameState.unseen_recipes()
 	for rid in Catalog.recipe_order:

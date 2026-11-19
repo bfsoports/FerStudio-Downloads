@@ -6,9 +6,18 @@ extends VBoxContainer
 const PANEL_W := 740.0   # ancho máximo del panel
 
 var _panel_w := PANEL_W
+var _cols := 1                 # secciones en 1 o 2 columnas (pantalla completa ancha)
+var _grid: GridContainer = null
+var _section_w := PANEL_W
 
-func _init(width: float = PANEL_W) -> void:
-	_panel_w = minf(width, PANEL_W)
+## width: ancho disponible. Con full_width las secciones llenan ese ancho (en dos columnas si caben).
+func _init(width: float = PANEL_W, full_width: bool = false) -> void:
+	if full_width:
+		_panel_w = width
+		_cols = 2 if width >= 2.0 * 520.0 + 14.0 else 1
+	else:
+		_panel_w = minf(width, PANEL_W)
+	_section_w = floorf((_panel_w - 14.0 * float(_cols - 1)) / float(_cols))
 
 func _ready() -> void:
 	custom_minimum_size = Vector2(_panel_w, 0)
@@ -25,6 +34,8 @@ func _build() -> void:
 		remove_child(c)
 		c.queue_free()
 	var s := SettingsManager
+	_grid = UIKit.grid(_cols, 14, 14)
+	add_child(_grid)
 	var audio := _section(Loc.t("set.group_audio"), "sound_on")
 	_volume_row(audio, Loc.t("set.music"), s.music_volume, "music_on", "music_off", func(v: float) -> void: s.music_volume = v)
 	_volume_row(audio, Loc.t("set.sfx"), s.sfx_volume, "sound_on", "sound_off", func(v: float) -> void: s.sfx_volume = v)
@@ -47,7 +58,7 @@ func _build() -> void:
 	var ads_note := UIKit.label(Loc.t("set.ads_note"), "LabelMuted", 17)
 	ads_note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	help.add_child(ads_note)
-	help.add_child(StudioLinks.build(_panel_w - 40.0))
+	help.add_child(StudioLinks.build(_section_w - 40.0))
 	var reset := UIKit.icon_text_button("trash", Loc.t("set.reset"), "ButtonDanger", UIKit.H_BTN, 380, 36)
 	reset.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	reset.pressed.connect(_on_reset)
@@ -56,10 +67,11 @@ func _build() -> void:
 ## Tarjeta de sección con su título e icono; devuelve la caja donde se añaden las filas.
 func _section(title: String, icon_name: String) -> VBoxContainer:
 	var card := UIKit.card("PanelFlat")
+	card.custom_minimum_size = Vector2(_section_w, 0)
 	var v := UIKit.vbox(8)
 	card.add_child(v)
 	v.add_child(UIKit.section_title(title, icon_name))
-	add_child(card)
+	_grid.add_child(card)
 	return v
 
 func _row(parent: VBoxContainer, text: String, control: Control, icon_name: String = "") -> void:

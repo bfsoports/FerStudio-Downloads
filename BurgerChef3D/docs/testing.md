@@ -28,7 +28,7 @@
 
 - `python3 tools/check_models.py` -> 0 errores: la tabla de modelos coincide con los archivos (tamaños y desplazamientos), no sobran ni faltan archivos, todos los modelos citados por los scripts existen, todos los ingredientes tienen modelo, `assets/models` pesa 0,85 MB (máximo 3 MB), ningún modelo supera 3.000 triángulos, y las huellas de la distribución caben en la sala sin solaparse con pasillos de al menos 1,2 m (hoy entre 1,6 y 2,2 m).
 - `python3 tools/check_media.py` -> 0 errores: el vídeo es Ogg Theora + Vorbis, la música de las partidas es OGG Vorbis, y los scripts apuntan a ellos.
-- `godot --headless --path . res://tests/test_runner.tscn` -> 616 correctas, 0 fallidas (18-11-2026, Godot 4.7.2; importar antes dos veces con `--import`).
+- `godot --headless --path . res://tests/test_runner.tscn` -> 705 correctas, 0 fallidas (19-11-2026, Godot 4.7.2; importar antes dos veces con `--import`).
 - `python3 tools/check_ui_layout.py` -> 0 errores: las cuadrículas y columnas de ancho fijo de cada ventana caben (p. ej. mejoras 954 de 978 px, resultados 894 de 898 px) y el HUD y el menú caben en el marco de 1280 px. No comprueba alturas ni textos largos.
 - `tools/screenshots.sh <carpeta>` -> capturas reales del menú, Mejoras y Ajustes en 8 tamaños (20:9, 16:9, 21:9, QHD, 720p, tabletas 4:3 y 16:10). Lo ejecuta GitHub Actions en cada cambio.
 - `python3 tools/preview_layout.py` -> vistas en `docs/preview/` de la cocina con los modelos reales. Es una comprobación visual de la geometría con las fórmulas de `restaurant.gd` duplicadas a mano; no es el motor.

@@ -40,6 +40,25 @@ static func box(bg: Color, border: Color, radius: int = 16, border_w: int = 2, s
 		sb.shadow_offset = Vector2(0, 5)
 	return sb
 
+## Fondo de las pantallas completas: chocolate liso que tapa todo (sin ventana flotante ni bordes).
+static func screen_bg() -> StyleBoxFlat:
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color.html("#3a2016")
+	sb.set_content_margin_all(0)
+	return sb
+
+## Barra de cabecera de las pantallas completas: más oscura, con una línea caramelo debajo.
+static func screen_header() -> StyleBoxFlat:
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color.html("#26120a")
+	sb.border_color = WIN_EDGE
+	sb.border_width_bottom = 4
+	sb.shadow_color = Color(0, 0, 0, 0.35)
+	sb.shadow_size = 6
+	sb.shadow_offset = Vector2(0, 3)
+	sb.content_margin_bottom = 8.0
+	return sb
+
 ## Fondo de los avisos emergentes: oscuro con el borde del color del tipo de aviso.
 static func toast_box(kind: String) -> StyleBoxFlat:
 	var border := Palette.CREAM

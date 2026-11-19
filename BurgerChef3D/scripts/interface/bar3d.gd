@@ -28,7 +28,8 @@ func _init(w: float = 0.5, with_label: bool = true) -> void:
 
 func set_ratio(ratio: float, color: Color) -> void:
 	_fill.scale.x = maxf(clampf(ratio, 0.0, 1.0), 0.001)
-	_fill_mat.albedo_color = color
+	if _fill_mat.albedo_color != color:   # cambiar el material cada fotograma obliga a actualizarlo en la GPU
+		_fill_mat.albedo_color = color
 
 func set_text(text: String) -> void:
 	if _label != null and text != _last_text:

@@ -4,15 +4,21 @@ extends MenuScreen
 ## Tarjetas de ancho fijo en dos columnas: nada se estira de lado a lado.
 
 const CARD_W := 470.0   # ancho máximo de una tarjeta
-const CARD_MIN := 360.0   # por debajo de este ancho se pasa a una sola columna
+const CARD_MIN := 360.0
+## Icono propio de cada mejora (lo que mejora: plancha, freidora, tabla, caja registradora...).
+const ICONS: Dictionary = {"grill_capacity": "grill", "fryer_capacity": "fryer", "cook_speed": "fire", "prep_space": "board",
+	"storage": "crate", "patience": "hourglass", "service_points": "cloche", "coin_bonus": "register",
+	"restaurant_look": "roller", "recipe_book": "book", "decor_options": "plant", "dishwasher": "sink"}   # por debajo de este ancho se pasa a una sola columna
 
 func _init() -> void:
 	title_key = "menu.upgrades"
 	icon_name = "upgrade"
 
 func _build(body: VBoxContainer) -> void:
-	var cols := 2 if _inner_w >= 2.0 * CARD_MIN + 14.0 else 1
-	var card_w := UIKit.fit_width(_inner_w, cols, 14, CARD_W)
+	# las tarjetas llenan todo el ancho de la pantalla (2 o 3 columnas según quepan)
+	var fc := UIKit.fill_columns(_inner_w, CARD_MIN + 90.0, 14.0, 3)
+	var cols: int = fc[0]
+	var card_w: float = fc[1]
 	var grid := UIKit.grid(cols, 14, 14)
 	for id in Catalog.upgrade_order:
 		grid.add_child(_card(str(id), card_w))
@@ -34,7 +40,7 @@ func _card(id: String, card_w: float) -> Control:
 	var v := UIKit.vbox(8)
 	card.add_child(v)
 	var head := UIKit.hbox(12)
-	head.add_child(UIKit.icon_rect("upgrade", 52))
+	head.add_child(UIKit.icon_rect(str(ICONS.get(id, "upgrade")), 64))
 	var title_col := UIKit.vbox(4)
 	title_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	title_col.size_flags_vertical = Control.SIZE_SHRINK_CENTER

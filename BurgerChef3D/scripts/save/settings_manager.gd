@@ -17,6 +17,11 @@ var show_fps: bool = false
 var force_touch_ui: bool = false    # mostrar controles táctiles en escritorio (pruebas)
 var ui_scale: int = 1               # tamaño de la interfaz: 0 pequeña, 1 normal, 2 grande
 var vibration: bool = true          # vibración del móvil en las acciones (ver Haptics)
+## Escalón de ahorro que aplica PerfGovernor si los FPS caen (0 nada, 1 sin antialiasing, 2 menos resolución 3D,
+## 3 sin sombras). No se guarda: cada partida empieza con la calidad elegida.
+var perf_step: int = 0
+## Alto máximo (en píxeles) al que se dibuja la escena 3D en móviles según la calidad (baja, media, alta).
+const RENDER_HEIGHT: Array = [620.0, 760.0, 900.0]
 
 ## Factor de escala de contenido de cada tamaño de interfaz (mayor = interfaz más grande).
 const UI_SCALES: Array = [0.9, 1.0, 1.15]
@@ -80,8 +85,13 @@ func apply_graphics() -> void:
 	if tree == null:
 		return
 	apply_ui_scale()
-	get_viewport().msaa_3d = Viewport.MSAA_2X if quality >= 2 else Viewport.MSAA_DISABLED
-	var shadow_on := shadows and quality >= 1
+	var vp := get_viewport()
+	vp.msaa_3d = Viewport.MSAA_2X if quality >= 2 and perf_step < 1 else Viewport.MSAA_DISABLED
+	# En móviles la escena 3D se dibuja a una resolución interna limitada (la interfaz sigue a resolución completa):
+	# en pantallas de 1080 px o más apenas se nota y el coste por fotograma baja mucho.
+	vp.scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR
+	vp.scaling_3d_scale = render_scale()
+	var shadow_on := shadows and quality >= 1 and perf_step < 3
 	for n in tree.get_nodes_in_group(Const.GROUP_SHADOW_LIGHTS):
 		var l := n as Light3D
 		if l != null:
@@ -90,6 +100,18 @@ func apply_graphics() -> void:
 		var n3 := n as Node3D
 		if n3 != null:
 			n3.visible = quality >= 1
+
+## Escala de resolución de la escena 3D (1 = nativa). En escritorio siempre nativa.
+func render_scale() -> float:
+	if not OS.has_feature("mobile"):
+		return 1.0 if perf_step < 2 else 0.8
+	var h := float(DisplayServer.window_get_size().y)
+	if h <= 0.0:
+		return 1.0
+	var k := clampf(float(RENDER_HEIGHT[clampi(quality, 0, 2)]) / h, 0.5, 1.0)
+	if perf_step >= 2:
+		k = maxf(0.5, k * 0.82)
+	return k
 
 ## Aplica el tamaño de la interfaz a la ventana y avisa a las pantallas abiertas para que se recoloquen.
 func apply_ui_scale() -> void:
